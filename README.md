@@ -200,10 +200,17 @@ The visual language of the site was shaped by:
 
 The final result was intended to feel premium, atmospheric, and controlled, while still being clear and usable as an e-commerce experience.
 
-**Surface Evidence**
-- _Placeholder: high-fidelity homepage design_
-- _Placeholder: high-fidelity catalogue page design_
-- _Placeholder: high-fidelity product detail page design_
+**Surface Evidence**<br>
+The visuals below show the high-fidelity designs used to define the final visual dirtection of Cities Under Watch across the most important customer-facing pages.
+
+#### High-Fidelity Homepage Design
+![High-Fidelity Homepage Design](documentation/home-desktop.png)
+
+#### High-Fidelity Catalogue Page Design
+![High-Fidelity Catalogue Page Design](documentation/catalogue-desktop.png)
+
+#### High-Fidelity Product Detail Page Design
+![High-Fidelity Catalogue Page Design](documentation/product-detail-page-desktop.png)
 
 ### Design Choices
 The design choices for Cities Under Watch were made to support the brand concept and maintain consistency across the site.
