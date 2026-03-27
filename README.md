@@ -86,7 +86,9 @@ The image below shows the core user goals and site owner goals that guided the p
 
 The image below summarises the target audience profile that shaped the planning and design of Cities Under Watch.
 ![Target Audience Evidence](documentation/target-audience-evidence.png)
-- _Placeholder: major user flow diagram or notes_
+
+The diagram below shows the primary user flow that shaped the core structure of Cities Under Watch.
+![Major User Flow Evidence](documentation/major-user-flow-evidence.png)
 
 ### Scope
 The scope of the project was defined around the features needed to create a working digital download store.
