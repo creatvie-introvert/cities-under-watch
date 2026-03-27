@@ -50,7 +50,7 @@ The target audience for Cities Under Watch includes:
 ## Project Identity
 
 ### Clearly Original Concept
-Cities Under Watch is an original digital poster e-commerce project built around a fictional narrative world. It uses a custom concept, custom content, custom visual identity, and custom page structure to create a distinct brand and shopping experience.
+Cities Under Watch was developed as an original digital poster e-commerce project built around a fictional narrative world. It uses a custom concept, custom content, custom visual identity, and custom page structure to create a distinct brand and shopping experience.
 
 ### Real Target Audience and Purpose
 The site was designed for users who want to browse, purchase, and download digital poster artwork tied to a strong conceptual theme. It was structured as a believable commercial product with a clear e-commerce purpose.
@@ -72,12 +72,12 @@ The goal was for the site to feel like a genuine independent digital poster stor
 
 ## UX
 
-The user experience of Cities Under Watch was designed to support two goals at the same time: create a believable digital art brand and provide a clear trustworthy e-commerce journey. The site was designed to feel immersive and editorial without becoming difficult to use. Every major layout decision was made to balance atmosphere with clarity, so user could understand the world of the brand while still moving confidently through browsing, product selection, checkout, and account access.
+The user experience of Cities Under Watch was designed to support two goals at the same time: create a believable digital art brand and provide a clear, trustworthy e-commerce journey. The site was designed to feel immersive and editorial without becoming difficult to use. Every major layout decision was made to balance atmosphere with clarity, so users could understand the world of the brand while still moving confidently through browsing, product selection, checkout, and account access.
 
 ### Strategy
-The strategy behind Cities Under Watch was to create a digital poster store with a strong identity, a clear target audience, and a practical commercial purpose. The site was designed for users who are interested in dystopian visual vulture, speculative fiction, architecture, and concept-driven artwork, while also serving as a realistic e-commerce experience for purchasing downloadable digital prints.
+The strategy behind Cities Under Watch was to create a digital poster store with a strong identity, a clear target audience, and a practical commercial purpose. The site was designed for users who are interested in dystopian visual culture, speculative fiction, architecture, and concept-driven artwork, while also serving as a realistic e-commerce experience for purchasing downloadable digital prints.
 
-From a business perspective, the strategy was to present the project asa credible independent digital art brand rather than a generic online shop. From a user perspective, the strategy was to make the journey from discovery to purchase simple, intuitive, and visuallly cohesive.
+From a business perspective, the strategy was to present the project as a credible independent digital art brand rather than a generic online shop. From a user perspective, the strategy was to make the journey from discovery to purchase simple, intuitive, and visually cohesive.
 
 
 **Strategy Evidence**
@@ -88,8 +88,8 @@ From a business perspective, the strategy was to present the project asa credibl
 ### Scope
 The scope of the project was defined around the features needed to create a working digital download store.
 
-The ore scopre included:
-- a homepage that introducces the brand and product offer
+The core scope included:
+- a homepage that introduces the brand and product offer
 - a catalogue page for browsing prints
 - collection-based browsing by city
 - individual product detail pages
@@ -99,16 +99,16 @@ The ore scopre included:
 - order confirmation 
 - user registration and login
 - profile area with order history
-access to purchased downloads
+- access to purchased downloads
 - admin management of products, collections, files, and orders
 
-Additional supporting scopre included:
-- contect/storytelling section to strengthen the narrative identity of the brand
+Additional supporting scope included:
+- context/storytelling section to strengthen the narrative identity of the brand
 - newsletter signup
 - contact functionality
 - related products and collection discovery
 
-Features that were considered lower priority and kept outside the initial release included advanced personalistion, reviews, wishlists, and more complex recommendation systems.
+Features that were considered lower priority and kept outside the initial release included advanced personalisation, reviews, wishlists, and more complex recommendation systems.
 
 **Scope Evidence**
 - _Placeholder: feature prioritisation / MoSCoW evidence_
@@ -127,7 +127,7 @@ The most important paths were:
 - login/profile to download access
 
 To support this, the site structure was planned around a small number of clear page types:
-- hoepage
+- homepage
 - catalogue page
 - collection pages
 - product detail pages
@@ -135,7 +135,7 @@ To support this, the site structure was planned around a small number of clear p
 - checkout flow
 - support/content pages
 
-The structure was designed to keeep the main user journey simple while also giving space for editorial context, collection storytelling, and supporting brand content.
+The structure was designed to keep the main user journey simple while also giving space for editorial context, collection storytelling, and supporting brand content.
 
 **Structure Evidence**
 - _Placeholder: site map_
@@ -143,14 +143,14 @@ The structure was designed to keeep the main user journey simple while also givi
 - _Placeholder: navigation structure evidence_
 
 ### Skeleton
-Th ekeleton stage focused on arranging information clearly before visual styling was applied. Low fidelity wireframes were used tto establish content hierarchy, layout patterns, and user flow.
+The skeleton stage focused on arranging information clearly before visual styling was applied. Low fidelity wireframes were used to establish content hierarchy, layout patterns, and user flow.
 
-At this stage, the priority wsas to define:
-- where key navigation and call to action should appear
+At this stage, the priority was to define:
+- where key navigation and calls to action should appear
 - how products would be displayed in grids and collections
-- how product detail pages would guide the user towards purchase
-- how supporting section would provide context without overwhelming the commerce flow
-- how users would move into profile and download areas after purchse
+- how product detail pages would guide the user toward purchase
+- how supporting sections would provide context without overwhelming the commerce flow
+- how users would move into profile and download areas after purchase
 
 This helped ensure that the layouts were solving real user needs before high-fidelity design work began.
 
@@ -163,14 +163,14 @@ This helped ensure that the layouts were solving real user needs before high-fid
 The surface plane was used to define the final visual identity of the site. The interface was designed around a dark, editorial aesthetic that reflects the dystopian themes of the project.
 
 The visual language of the site was shaped by:
-- a dark background layout
+- a dark background palette
 - restrained but deliberate accent colour use
 - strong typography hierarchy
 - clean spacing and minimal visual clutter
 - simple, structured card and section layouts
 - image placeholders and composition choices designed to support cinematic poster artwork
 
-The final result was intended to feel premium, atnospheric, and controlled, while still being clear and usable as an e-commerce experience.
+The final result was intended to feel premium, atmospheric, and controlled, while still being clear and usable as an e-commerce experience.
 
 **Surface Evidence**
 - _Placeholder: high-fidelity homepage design_
@@ -178,10 +178,10 @@ The final result was intended to feel premium, atnospheric, and controlled, whil
 - _Placeholder: high-fidelity product detail page design_
 
 ### Design Choices
-The design choice for Cities Under Watch were made to support the brand concept and maintain consistency across the site.
+The design choices for Cities Under Watch were made to support the brand concept and maintain consistency across the site.
 
 #### Colour
-A dark colour palette was chosen to reinforce the site's themes of surveillance, control, and ystopian urban environments. Kighter text colours were used to maintain readability, while a restrained blue accent was used to highlight ey actions and selected states.
+A dark colour palette was chosen to reinforce the site's themes of surveillance, control, and dystopian urban environments. Lighter text colours were used to maintain readability, while a restrained blue accent was used to highlight key actions and selected states.
 
 **Colour Evidence**
 - _Placeholder: colour palette image_
@@ -189,7 +189,7 @@ A dark colour palette was chosen to reinforce the site's themes of surveillance,
 - _Placeholder: colour contrast testing evidence_
 
 #### Typography
-Roboto was chosen as the main typeface because it provides clarity, flexibility, and a odern feel while still fitting the edityorial tone of the project. Clear heading, body,. and label tyles were established to maintain hierarchy across all pages.
+Roboto was chosen as the main typeface because it provides clarity, flexibility, and a modern feel while still fitting the editorial tone of the project. Clear heading, body, and label styles were established to maintain hierarchy across all pages.
 
 **Typography Evidence**
 - _Placeholder: typography system image_
@@ -197,7 +197,7 @@ Roboto was chosen as the main typeface because it provides clarity, flexibility,
 - _Placeholder: type scale decisions_
 
 #### Layout
-Layouts were built mobile-first and scaled up into desktop variations. Repeated spacing, section structuresm, and component patterns were used to create consistency and make development more efficient.
+Layouts were built mobile-first and scaled up into desktop variations. Repeated spacing, section structures, and component patterns were used to create consistency and make development more efficient.
 
 **Layout Evidence**
 - _Placeholder: spacing system image_
@@ -222,9 +222,9 @@ The low-fidelity stage made it easier to remove repeated or unnecessary sections
 - _Placeholder: low-fidelity product detail wireframe_
 
 ### High-Fidelity Designs
-High-fidelity designs were created after the main structure had been validated. The high-fidelity stage focused on applying the established visual system, typography, colour palette, spacing rules, and reusable components acrosss the key pages of the site.
+High-fidelity designs were created after the main structure had been validated. The high-fidelity stage focused on applying the established visual system, typography, colour palette, spacing rules, and reusable components across the key pages of the site.
 
-The most important customer-facing pages were designed in high fidelity first, including the homepage, catalogue page, and product detail page. Once those patterns were established, the rest of thte site could follow the same system without needing every page to be redesigned from scratch.
+The most important customer-facing pages were designed in high fidelity first, including the homepage, catalogue page, and product detail page. Once those patterns were established, the rest of the site could follow the same system without needing every page to be redesigned from scratch.
 
 **High-Fidelity Evidence**
 - _Placeholder: high-fidelity homepage design_
@@ -379,10 +379,10 @@ The project uses MoSCoW prioritisation to organise features by importance:
 - advanced personalisation
 
 ### Project Board / Workflow
-The project workflow is based on building the most important user journeys first. The first priority is the core e-commerce flow:
+The project workflow was based on building the most important user journeys first. The first priority is the core e-commerce flow:
 homepage ➔ catalogue ➔ product page ➔ bag ➔ checkout ➔ order confirmation ➔ account/download access.
 
-Supporting content, collection storytelling, and secondary features will be added around this core flow once the main product and purchase journey is stable.
+Supporting content, collection storytelling, and secondary features were added around this core flow once the main product and purchase journey was stable.
 
 ---
 
@@ -404,9 +404,9 @@ The database structure for Cities Under Watch was planned before development usi
 The project uses a relational database structure to connect users, profiles, cities, collections, products, product images, downloadable files, orders, and order line items. This supports both the e-commerce functionality of the site and the collection-based structure of the catalogue.
 
 ### Entity Relationship Diagram
-The entity relationship diagram below shows the planned database structure for Cities Under Watch and illustrate how the main models connect across users, profiles, products, collections, downloadable files, and orders.
+The entity relationship diagram below shows the planned database structure for Cities Under Watch and illustrates how the main models connect across users, profiles, products, collections, downloadable files, and orders.
 
-![Ciries Under Watch ERD](documentation/erd-model-overview.png)
+![Cities Under Watch ERD](documentation/erd-model-overview.png)
 
 ---
 
@@ -436,7 +436,7 @@ The entity relationship diagram below shows the planned database structure for C
 ### Deployment and Hosting
 - Heroku
 
-### Python Packages ad Libraries
+### Python Packages and Libraries
 - Django Allauth
 - Gunicorn
 - Psycopg2
@@ -446,7 +446,7 @@ The entity relationship diagram below shows the planned database structure for C
 
 ### Front-End and UI
 - Google Fonts
-- Font Awsome
+- Font Awesome
 
 ### AI Prompting and Visual Asset Creation
 - ChatGPT
@@ -461,16 +461,16 @@ The app structure was chosen to keep the codebase organised and to ensure that e
 ### Planned App Structure
 
 #### `core`
-The `core` app was plannned to handle site-wide content and general pages such as the homepage, about page, contact. page FAQ, newsletter signup, and legal pages.
+The `core` app was planned to handle site-wide content and general pages such as the homepage, about page, contact page, FAQ, newsletter signup, and legal pages.
 
 #### `products`
 The `products` app was planned to handle the product catalogue, city collections, product detail pages, related products, and search or filter functionality.
 
 #### `bag`
-Th e'bag' app was planned to handle the shopping bag logic, including adding products, updating quantities, and removing items before checkout.
+The `bag` app was planned to handle the shopping bag logic, including adding products, updating quantities, and removing items before checkout.
 
 #### `checkout`
-The `checkout` app was plannned to handle the checkout flow, payment processing, order creation, order line items, and order confirmation.
+The `checkout` app was planned to handle the checkout flow, payment processing, order creation, order line items, and order confirmation.
 
 #### `profiles`
 The `profiles` app was planned to handle the authenticated user account area, including saved profile details, order history, and access to purchased downloads.
