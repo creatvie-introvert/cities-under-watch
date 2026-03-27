@@ -267,6 +267,10 @@ The database structure for Cities Under Watch was planned before development usi
 ### Database Design
 The project uses a relational database structure to connect users, profiles, cities, collections, products, product images, downloadable files, orders, and order line items. This supports both the e-commerce functionality of the site and the collection-based structure of the catalogue.
 
+### Entity Relationship Diagram
+
+![Ciries Under Watch ERD](documentation/erd-model-overview.png)
+
 ---
 
 ## Technologies Used
