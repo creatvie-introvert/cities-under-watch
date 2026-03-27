@@ -219,9 +219,16 @@ The design choices for Cities Under Watch were made to support the brand concept
 A dark colour palette was chosen to reinforce the site's themes of surveillance, control, and dystopian urban environments. Lighter text colours were used to maintain readability, while a restrained blue accent was used to highlight key actions and selected states.
 
 **Colour Evidence**
-- _Placeholder: colour palette image_
-- _Placeholder: colour variables / token system_
-- _Placeholder: colour contrast testing evidence_
+The visuals below show the core palette, reusable colour variables, and contrast testing used to support the visual identity and readability of Cities Under Watch.
+
+#### Colour Palette
+![Colour Palette Evidence](documentation/colour-palette-evidence.png)
+
+#### Colour Variables
+![Colour Variables Evidence](documentation/colour-variables-evidence.png)
+
+#### Colour Contrast Testing
+![Colour Contrast Testing Evidence](documentation/colour-contrast-evidence.png)
 
 #### Typography
 Roboto was chosen as the main typeface because it provides clarity, flexibility, and a modern feel while still fitting the editorial tone of the project. Clear heading, body, and label styles were established to maintain hierarchy across all pages.
