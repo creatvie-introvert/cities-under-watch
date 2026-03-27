@@ -1,14 +1,14 @@
 # Cities Under Watch
 
-Cities Under Watch is a Django e-commerce platform for dystopian digital city posters, combining narrative worldbuilding, editorial design, and downloadable art sales.
+Cities Under Watch was developed as a Django e-commerce platform for dystopian digital city posters, combining narrative worldbuilding, editorial design, and downloadable art sales.
 
 ---
 
 ## Project Overview
 
-Cities Under Watch is an original concept for a digital poster store centred on fictional and reimagined cities shaped by surveillance, authoritarian architecture, and quiet resistance. The platform allows users to browse themed collections, explore the context behind each print, purchase downloadable artwork, and access their digital orders through a personal account area.
+Cities Under Watch was developed as an original concept for a digital poster store centred on fictional and reimagined cities shaped by surveillance, authoritarian architecture, and quiet resistance. The platform allows users to browse themed collections, explore the context behind each print, purchase downloadable artwork, and access their digital orders through a personal account area.
 
-The goal is to create an authentic digital art brand and e-commerce experience that feels publishable, immersive, and commercially viable.
+The goal was to create an authentic digital art brand and e-commerce experience that felt publishable, immersive, and commercially viable.
 
 ---
 
@@ -53,7 +53,7 @@ The target audience for Cities Under Watch includes:
 Cities Under Watch is an original digital poster e-commerce project built around a fictional narrative world. It uses a custom concept, custom content, custom visual identity, and custom page structure to create a distinct brand and shopping experience.
 
 ### Real Target Audience and Purpose
-The site is designed for users who want to browse, purchase, and download digital poster artwork tied to a strong conceptual theme. It is structured as a believable commercial product with a clear e-commerce purpose.
+The site was designed for users who want to browse, purchase, and download digital poster artwork tied to a strong conceptual theme. It was structured as a believable commercial product with a clear e-commerce purpose.
 
 ### Consistent Theme
 The project theme is carried across:
@@ -66,7 +66,7 @@ The project theme is carried across:
 - supporting context sections
 
 ### Real-Store Feel
-The goal is for the site to feel like a genuine independent digital poster store rather than a student exercise.
+The goal was for the site to feel like a genuine independent digital poster store rather than a student exercise.
 
 ---
 
@@ -113,9 +113,9 @@ The project is organised around the following major epics:
 - Quality, responsiveness, and accessibility
 
 ### User Stories
-User stories were created to define the key needs, goals, and actions of different users interacting with Cities Under Watch. They were used to shape the structure of the site, prioritise core functionality, and ensure that development stayed focused on real user needs rather than unneccessary features.
+User stories were created to define the key needs, goals, and actions of different users interacting with Cities Under Watch. They were used to shape the structure of the site, prioritise core functionality, and ensure that development stayed focused on real user needs rather than unnecessary features.
 
-The stories cover the main user journeys across the platform, including browsing the catalogue, exploring collections, viewing product details, adding products to the bag, completing checkout, accessing downloads, and managing products and orders from and admin perspective.
+The stories cover the main user journeys across the platform, including browsing the catalogue, exploring collections, viewing product details, adding products to the bag, completing checkout, accessing downloads, and managing products and orders from an admin perspective.
 
 #### Browsing and discovery
 
@@ -147,7 +147,7 @@ US08
 As a shopper, I want to choose the product resolution or file option, so that I can purchase the version I want.
 
 US09
-As a shopper, I want to add a print to my bag, so that I can confirm my order before paying.
+As a shopper, I want to add a print to my bag, so that I can review it before paying.
 
 US10
 As a shopper, I want to view and manage the items in my bag, so that I can confirm my order before paying.
@@ -170,7 +170,7 @@ US15
 As a logged-in customer, I want to view my profile and order history, so that I can review my past purchases.
 
 US16
-As a logged-in customer, I want to access my purchased downloasd, so that I can download my files again whenever needed.
+As a logged-in customer, I want to access my purchased downloads, so that I can download my files again whenever needed.
 
 #### Trust, engagement, and support
 
@@ -243,10 +243,10 @@ The project uses MoSCoW prioritisation to organise features by importance:
 - advanced personalisation
 
 ### Project Board / Workflow
-The project workflow is based on building the most important user journeys first. The first priority is the core e-commmerce flow:
+The project workflow is based on building the most important user journeys first. The first priority is the core e-commerce flow:
 homepage ➔ catalogue ➔ product page ➔ bag ➔ checkout ➔ order confirmation ➔ account/download access.
 
-Supporting content, collection storytelling, and secondary features will be added around this core flow once the main product and purchase journey are stable.
+Supporting content, collection storytelling, and secondary features will be added around this core flow once the main product and purchase journey is stable.
 
 ---
 
@@ -265,7 +265,7 @@ _To be completed_
 The database structure for Cities Under Watch was planned before development using an entity relationship diagram created in dbdiagram. The aim of the data model is to support a digital e-commerce workflow while also reflecting the site's collection-based structure and narrative worldbuilding.
 
 ### Database Design
-The project uses a relational database structure to connect user, profiles, cities, collections, products, product images, downloadable files, orders, and order line items. This supports both the e-commerce functionality of the site and the collection-based structure of the catalogue.
+The project uses a relational database structure to connect users, profiles, cities, collections, products, product images, downloadable files, orders, and order line items. This supports both the e-commerce functionality of the site and the collection-based structure of the catalogue.
 
 ---
 
@@ -322,7 +322,7 @@ The intended purchase flow is:
 
 1. browse products through the catalogue or collection pages
 2. open an individual product detail page
-3. select the appropiate options, such as resolution, quantity
+3. select the appropriate options, such as resolution and quantity
 4. add the product to the shopping bag
 5. review the bag and proceed to checkout
 6. complete payment securely
