@@ -151,10 +151,17 @@ To support this, the site structure was planned around a small number of clear p
 
 The structure was designed to keep the main user journey simple while also giving space for editorial context, collection storytelling, and supporting brand content.
 
-**Structure Evidence**
-- _Placeholder: site map_
-- _Placeholder: page hierarchy diagram_
-- _Placeholder: navigation structure evidence_
+**Structure Evidence**<br>
+The visuals below show the site map, page hierarchy, and navigation structure used to define the architecture of Cities Under Watch.
+
+#### Site Map
+![Site Map Evidence](documentation/site-map-evidence.png)
+
+#### Page Hierarchy
+![Page Hierarchy Evidence](documentation/page-hierarchy-evidence.png)
+
+#### Navigation Structure
+![Navigation Structure Evidence](documentation/navigation-structure-evidence.png)
 
 ### Skeleton
 The skeleton stage focused on arranging information clearly before visual styling was applied. Low fidelity wireframes were used to establish content hierarchy, layout patterns, and user flow.
