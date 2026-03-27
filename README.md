@@ -175,10 +175,17 @@ At this stage, the priority was to define:
 
 This helped ensure that the layouts were solving real user needs before high-fidelity design work began.
 
-**Skeleton Evidence**
-- _Placeholder: low-fidelity wireframes image 1_
-- _Placeholder: low-fidelity wireframes image 2_
-- _Placeholder: notes on key layout decisions_
+**Skeleton Evidence**<br>
+The visuals below show the low-fidelity wirefranes and the key layout decisions that shaped the structure of Cities Under Watch before visual styling was applied.
+
+#### Low-Fidelity Homepage Wireframe
+![Low-Fidelity Homepage Wireframe](documentation/home-mobile.png)
+
+#### Low-Fidelity Product Page Wireframe
+![Low-Fidelity Product Page Wireframe](documentation/product-detail-page-mobile.png)
+
+#### Key Layout Decisions
+![Key Layout Decisions](documentation/key-layout-decisions-evidence.png)
 
 ### Surface
 The surface plane was used to define the final visual identity of the site. The interface was designed around a dark, editorial aesthetic that reflects the dystopian themes of the project.
