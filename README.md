@@ -419,7 +419,38 @@ The entity relationship diagram below shows the planned database structure for C
 - Python
 
 ### Frameworks, Libraries and Tools
-_To be completed_
+- Django
+
+### Database
+- PostgreSQL
+
+### Design and Planning Tools
+- Figma
+- dbdiagram
+
+### Development Tools
+- VS Code
+- Git 
+- GitHub
+
+### Deployment and Hosting
+- Heroku
+
+### Python Packages ad Libraries
+- Django Allauth
+- Gunicorn
+- Psycopg2
+- Pillow
+- django-countries
+- Stripe
+
+### Front-End and UI
+- Google Fonts
+- Font Awsome
+
+### AI Prompting and Visual Asset Creation
+- ChatGPT
+- Sora  
 
 ---
 
