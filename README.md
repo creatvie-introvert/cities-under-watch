@@ -115,10 +115,19 @@ Additional supporting scope included:
 
 Features that were considered lower priority and kept outside the initial release included advanced personalisation, reviews, wishlists, and more complex recommendation systems.
 
-**Scope Evidence**
-- _Placeholder: feature prioritisation / MoSCoW evidence_
-- _Placeholder: epics and user story evidence_
-- _Placeholder: project board screenshots_
+**Scope Evidence**<br>
+The images below show how features were prioritised using the MoSCoW method, how the project was broken down into epics and user stories, and how development was tracked through the GitHub project board workflow.
+
+#### Feature Prioritisation
+![Feature Prioritisation Evidence](documentation/feature-prioritisation-evidence.png)
+
+#### Epics and User Stories
+![Epic and User Stories Evidence](documentation/epics-user-stories-evidence.png)
+
+#### Project Board Workflow
+![Project Board Evidence](documentation/project-board-evidence.png)
+
+Project board: [Cities Under Watch Development Board](https://github.com/users/creatvie-introvert/projects/17/views/1)
 
 ### Structure
 The structure of the site was built around the main user flows of a digital commerce experience.
