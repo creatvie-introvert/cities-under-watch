@@ -80,9 +80,12 @@ The strategy behind Cities Under Watch was to create a digital poster store with
 From a business perspective, the strategy was to present the project as a credible independent digital art brand rather than a generic online shop. From a user perspective, the strategy was to make the journey from discovery to purchase simple, intuitive, and visually cohesive.
 
 
-**Strategy Evidence**
-- _Placeholder: user goals / site owner goals evidence_
-- _Placeholder: target audience summary_
+**Strategy Evidence**<br>
+The image below shows the core user goals and site owner goals that guided the planning and structure of Cities Under Watch.
+![Project Goals Evidence](documentation/project-goals-evidence.png)
+
+The image below summarises the target audience profile that shaped the planning and design of Cities Under Watch.
+![Target Audience Evidence](documentation/target-audience-evidence.png)
 - _Placeholder: major user flow diagram or notes_
 
 ### Scope
