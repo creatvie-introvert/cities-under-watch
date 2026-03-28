@@ -233,10 +233,17 @@ The visuals below show the core palette, reusable colour variables, and contrast
 #### Typography
 Roboto was chosen as the main typeface because it provides clarity, flexibility, and a modern feel while still fitting the editorial tone of the project. Clear heading, body, and label styles were established to maintain hierarchy across all pages.
 
-**Typography Evidence**
-- _Placeholder: typography system image_
-- _Placeholder: heading/body style reference_
-- _Placeholder: type scale decisions_
+**Typography Evidence**<br>
+The visuals below show the typography system, heading and body style reference, and type scale decisions used to create hierarchy and readability across Cities Under Watch.
+
+#### Typography System
+![Typography System Evidence](documentation/typography-system-evidence.png)
+
+#### Heading and Body Style Reference
+![Heading and Body Style Reference](documentation/heading-body-reference-evidence.png)
+
+#### Type Scale Decisions
+![Type Scale Decisions Evidence](documentation/type-scale-decisions-evidence.png)
 
 #### Layout
 Layouts were built mobile-first and scaled up into desktop variations. Repeated spacing, section structures, and component patterns were used to create consistency and make development more efficient.
