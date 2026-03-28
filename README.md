@@ -248,10 +248,17 @@ The visuals below show the typography system, heading and body style reference, 
 #### Layout
 Layouts were built mobile-first and scaled up into desktop variations. Repeated spacing, section structures, and component patterns were used to create consistency and make development more efficient.
 
-**Layout Evidence**
-- _Placeholder: spacing system image_
-- _Placeholder: grid/layout rules_
-- _Placeholder: responsive layout examples_
+**Layout Evidence**<br>
+The visuals below show the spacing systemm grid and layout rules, and responsive layout examples used to create consistency across Cities Under Watch.
+
+#### Spacing System
+![Spacing System Evidence](documentation/spacing-system-evidence.png)
+
+#### Grid and Layout Rules
+![Grid and Layout Rules Evidence](documentation/grid-layout-rules-evidence.png)
+
+#### Responsive Layout Examples
+![Responsive Layout Examples Evidence](documentation/responsive-layout-examples-evidence.png)
 
 #### Components
 Buttons, inputs, tags, checkboxes, radios, section headings, product cards, and feature cards were all standardised through a shared design system. This reduced inconsistency and helped keep both the design and future development process clean.
