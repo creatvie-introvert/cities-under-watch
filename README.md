@@ -263,30 +263,31 @@ The visuals below show the spacing systemm grid and layout rules, and responsive
 #### Components
 Buttons, inputs, tags, checkboxes, radios, section headings, product cards, and feature cards were all standardised through a shared design system. This reduced inconsistency and helped keep both the design and future development process clean.
 
-**Component Evidence**
-- _Placeholder: high-fidelity components page_
-- _Placeholder: button system_
-- _Placeholder: form/input components_
-- _Placeholder: card/component patterns_
-
 ### Wireframes
 The low-fidelity stage made it easier to remove repeated or unnecessary sections, simplify navigation decisions, and focus the site around the strongest user flows.
 
-**Wireframe Evidence**
-- _Placeholder: low-fidelity homepage wireframe_
-- _Placeholder: low-fidelity catalogue wireframe_
-- _Placeholder: low-fidelity product detail wireframe_
+**Wireframe Evidence**<br>
+The visuals below show the low-fidelity wireframes used to define the structure and content hierarchy of the key customer-facing pages before detailed visual styling was applied.
+
+#### Low-Fidelity Mobile Wireframes
+![Low-Fidelity Mobile Wireframes](documentation/lofi-wifi-mobile.png)
+
+#### Low-Fidelity Desktop Wireframes
+![Low-Fidelity Desktop Wireframes](documentation/lofi-wifi-desktop.png)
 
 ### High-Fidelity Designs
 High-fidelity designs were created after the main structure had been validated. The high-fidelity stage focused on applying the established visual system, typography, colour palette, spacing rules, and reusable components across the key pages of the site.
 
 The most important customer-facing pages were designed in high fidelity first, including the homepage, catalogue page, and product detail page. Once those patterns were established, the rest of the site could follow the same system without needing every page to be redesigned from scratch.
 
-**High-Fidelity Evidence**
-- _Placeholder: high-fidelity homepage design_
-- _Placeholder: high-fidelity catalogue page design_
-- _Placeholder: high-fidelity product detail page design_
-- _Placeholder: additional responsive high-fidelity screens_
+**High-Fidelity Evidence**<br>
+The visuals below show the high-fidelity designs used to define the final look, structure,and responsive behaviour of the key customer-facing pages across Cities Under Watch.
+
+#### High-Fidelity Mobile Wireframes
+![High-Fidelity Mobile Wireframes](documentation/hifi-wifi-mobile.png)
+
+#### High-Fidelity Desktop Wireframes
+![High-Fidelity Desktop Wireframes](documentation/hifi-wifi-desktop.png) 
 
 ---
 
