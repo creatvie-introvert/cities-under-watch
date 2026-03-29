@@ -14,8 +14,7 @@
             <a href="{% url 'home' %}" class="site-logo">
                 <img 
                     src="{% static 'images/branding/cuw-logo-full.webp' %}" alt="Cities Under Watch"
-                    class="site-logo__full"
-                >
+                    class="site-logo__full">
                 <img 
                     src="{% static 'images/branding/cuw-logo-icon.webp' %}" alt="Cities Under Watch"
                     class="site-logo__icon">
@@ -48,19 +47,75 @@
 
             <div class="site-header__actions site-header__actions--desktop">
                 <a href="#" class="header-action-link">
-                    Account
+                    <span class="header-action-link__icon" aria-hidden="true">
+                        <svg 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            stroke-width="1.8" 
+                            stroke-linecap="round" 
+                            stroke-linejoin="round"
+                        >
+                            <circle cx="12" cy="8" r="3.25"></circle>
+                            <path 
+                                d="M6.5 18c1.2-2.3 3.2-3.5 5.5-3.5s4.3 1.2 5.5 3.5">
+                            </path>
+                        </svg>
+                    </span>
+                    <span class="header-action-link__label">
+                        Account
+                    </span>
                 </a>
                 <a href="#" class="header-action-link">
-                    Bag
+                    <span class="header-action-link__icon" aria-hidden="true">
+                        <svg 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            stroke-width="1.8" 
+                            stroke-linecap="round" 
+                            stroke-linejoin="round"
+                        >
+                            <path d="M6 7h12l-1 11H7L6 7Z"></path>
+                            <path d="M9 7a3 3 0 0 1 6 0"></path>
+                        </svg>
+                    </span>
+                    <span class="header-action-link__label">
+                        Bag
+                    </span>
                 </a>
             </div>
 
             <div class="site-header__actions site-header__actions--mobile">
                 <a href="#" class="header-action-link">
-                    Bag
+                    <span class="header-action-link__icon" aria-hidden="true" aria-label="View bag">
+                        <svg 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            stroke-width="1.8" 
+                            stroke-linecap="round" 
+                            stroke-linejoin="round"
+                        >
+                            <path d="M6 7h12l-1 11H7L6 7Z"></path>
+                            <path d="M9 7a3 3 0 0 1 6 0"></path>
+                        </svg>
+                    </span>
                 </a>
                 <button type="button" class="menu-toggle" aria-label="Open menu">
-                    Menu
+                    <span class="header-action-link__icon" aria-hidden="true">
+                        <svg 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            stroke-width="1.8" 
+                            stroke-linecap="round"
+                        >
+                            <path d="M4 7h16"></path>
+                            <path d="M4 12h16"></path>
+                            <path d="M4 17h16"></path>
+                        </svg>
+                    </span>
                 </button>
             </div>
         </div>
