@@ -73,10 +73,25 @@ body {
 }
 
 .site-logo {
-    color: var(--color-text-primary);
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: 700;
+}
+
+.site-logo__full,
+.site-logo__icon {
+    display: block;
+    height: auto;
+}
+
+.site-logo__full {
+    max-height: 2.5rem;
+    display: none;
+}
+
+.site-logo__icon {
+    max-height: 2rem;
+    display: block;
 }
 
 .site-nav--desktop {
@@ -169,6 +184,14 @@ body {
         grid-template-columns: auto 1fr auto;
         align-items: center;
         gap: 2rem;
+    }
+
+    .site-logo__full {
+        display: block;
+    }
+
+    .site-logo__icon {
+        display: none;
     }
 
     .site-nav--desktop {

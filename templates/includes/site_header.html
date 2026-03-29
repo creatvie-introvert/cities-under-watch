@@ -1,3 +1,5 @@
+{% load static %}
+
 <section class="announcement-banner">
     <div class="container">
         <p>
@@ -10,7 +12,13 @@
     <div class="container">
         <div class="site-header__inner">
             <a href="{% url 'home' %}" class="site-logo">
-                Logo
+                <img 
+                    src="{% static 'images/branding/cuw-logo-full.webp' %}" alt="Cities Under Watch"
+                    class="site-logo__full"
+                >
+                <img 
+                    src="{% static 'images/branding/cuw-logo-icon.webp' %}" alt="Cities Under Watch"
+                    class="site-logo__icon">
             </a>
 
             <nav class="site-nav site-nav--desktop" aria-label="Primary navigation">
