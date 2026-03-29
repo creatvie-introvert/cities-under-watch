@@ -1,0 +1,1 @@
+console.log('Cities Under Watch base.js loaded')
