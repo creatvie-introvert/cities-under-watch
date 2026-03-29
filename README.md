@@ -176,7 +176,7 @@ At this stage, the priority was to define:
 This helped ensure that the layouts were solving real user needs before high-fidelity design work began.
 
 **Skeleton Evidence**<br>
-The visuals below show the low-fidelity wirefranes and the key layout decisions that shaped the structure of Cities Under Watch before visual styling was applied.
+The visuals below show the low-fidelity wireframes and the key layout decisions that shaped the structure of Cities Under Watch before visual styling was applied.
 
 #### Low-Fidelity Homepage Wireframe
 ![Low-Fidelity Homepage Wireframe](documentation/home-mobile.png)
@@ -201,7 +201,7 @@ The visual language of the site was shaped by:
 The final result was intended to feel premium, atmospheric, and controlled, while still being clear and usable as an e-commerce experience.
 
 **Surface Evidence**<br>
-The visuals below show the high-fidelity designs used to define the final visual dirtection of Cities Under Watch across the most important customer-facing pages.
+The visuals below show the high-fidelity designs used to define the final visual direction of Cities Under Watch across the most important customer-facing pages.
 
 #### High-Fidelity Homepage Design
 ![High-Fidelity Homepage Design](documentation/home-desktop.png)
@@ -249,7 +249,7 @@ The visuals below show the typography system, heading and body style reference, 
 Layouts were built mobile-first and scaled up into desktop variations. Repeated spacing, section structures, and component patterns were used to create consistency and make development more efficient.
 
 **Layout Evidence**<br>
-The visuals below show the spacing systemm grid and layout rules, and responsive layout examples used to create consistency across Cities Under Watch.
+The visuals below show the spacing system, grid and layout rules, and responsive layout examples used to create consistency across Cities Under Watch.
 
 #### Spacing System
 ![Spacing System Evidence](documentation/spacing-system-evidence.png)
@@ -436,7 +436,7 @@ The project uses MoSCoW prioritisation to organise features by importance:
 - advanced personalisation
 
 ### Project Board / Workflow
-The project workflow was based on building the most important user journeys first. The first priority is the core e-commerce flow:
+The project workflow was based on building the most important user journeys first. The first priority was the core e-commerce flow:
 homepage ➔ catalogue ➔ product page ➔ bag ➔ checkout ➔ order confirmation ➔ account/download access.
 
 Supporting content, collection storytelling, and secondary features were added around this core flow once the main product and purchase journey was stable.
@@ -444,6 +444,8 @@ Supporting content, collection storytelling, and secondary features were added a
 ---
 
 ## Features
+
+The feature set of Cities Under Watch was planned around the core digital commerce journey, supported by account access, download functionality, and brand-led editorial content.
 
 ### Existing Features
 _To be completed_
@@ -458,7 +460,7 @@ _To be completed_
 The database structure for Cities Under Watch was planned before development using an entity relationship diagram created in dbdiagram. The aim of the data model is to support a digital e-commerce workflow while also reflecting the site's collection-based structure and narrative worldbuilding.
 
 ### Database Design
-The project uses a relational database structure to connect users, profiles, cities, collections, products, product images, downloadable files, orders, and order line items. This supports both the e-commerce functionality of the site and the collection-based structure of the catalogue.
+The project used a relational database structure to connect users, profiles, cities, collections, products, product images, downloadable files, orders, and order line items. This supports both the e-commerce functionality of the site and the collection-based structure of the catalogue.
 
 ### Entity Relationship Diagram
 The entity relationship diagram below shows the planned database structure for Cities Under Watch and illustrates how the main models connect across users, profiles, products, collections, downloadable files, and orders.
@@ -572,6 +574,8 @@ The e-commerce functionality is designed specifically for digital downloads rath
 
 ## Testing
 
+Testing was planned to include validation, manual testing, automated testing where appropiate, and ongoing bug tracking throughout development.
+
 ### Validation
 _To be completed_
 
@@ -590,6 +594,8 @@ _To be completed_
 ---
 
 ## Deployment
+
+Deployment was planned to use Heroku, with envirnoment variables and external services configured securely for production use.
 
 ### Local Development
 _To be completed_
