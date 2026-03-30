@@ -124,7 +124,15 @@
                         </svg>
                     </span>
                 </a>
-                <button type="button" class="menu-toggle" aria-label="Open menu">
+
+                <button 
+                    type="button" 
+                    class="menu-toggle" 
+                    aria-label="Open menu"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                    data-mobile-menu-toggle
+                >
                     <span class="header-action-link__icon" aria-hidden="true">
                         <svg 
                             viewBox="0 0 24 24" 
@@ -141,5 +149,45 @@
                 </button>
             </div>
         </div>
+
+        <nav 
+            id="mobile-menu"
+            class="mobile-menu"
+            aria-label="Mobile navigation"
+            hidden
+            data-mobile-menu
+        >
+            <ul class="mobile-menu__list">
+                <li>
+                    <a href="#">
+                        Shop
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Collections
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        Support
+                    </a>
+                </li>
+            </ul>
+
+            <div class="mobile-menu__secondary">
+                <a href="#">
+                    Account
+                </a>
+                <a href="#">
+                    Bag
+                </a>
+            </div>
+        </nav>
     </div>
 </header>

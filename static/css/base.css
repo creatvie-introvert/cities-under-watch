@@ -186,6 +186,10 @@ body {
     color: var(--color-accent-primary);
 }
 
+.menu-toggle[aria-expanded="true"] {
+    color: var(--color-accent-primary);
+}
+
 .header-action-link,
 .menu-toggle {
     display: inline-flex;
@@ -219,6 +223,57 @@ body {
     display: flex;
     align-items: center;
     gap: 1rem;
+}
+
+.mobile-menu {
+    display: block;
+    width: 100%;
+    padding: 0 0 var(--space-4);
+    border-top: 1px solid var(--color-border-subtle);
+    background-color: var(--color-true-black);
+}
+
+.mobile-menu[hidden] {
+    display: none;
+}
+
+.mobile-menu__list,
+.mobile-menu__secondary {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu__list {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-4) 0;
+    gap: var(--space-4);
+}
+
+.mobile-menu__list a,
+.mobile-menu__secondary a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: 
+        color 0.2s ease
+        opacity 0.2s ease;
+}
+
+.mobile-menu__list a:focus-visible,
+.mobile-menu__secondary a:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+}
+
+.mobile-menu__list a:active,
+.mobile-menu__secondary a:active {
+    color: var(--color-accent-primary);
+}
+
+.mobile-menu__secondary {
+    gap: var(--space-3);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border-subtle);
 }
 
 .home-hero,
@@ -281,7 +336,9 @@ body {
     .site-nav a:hover,
     .header-action-link:hover,
     .menu-toggle:hover,
-    .announcement-banner__close:hover {
+    .announcement-banner__close:hover,
+    .mobile-menu__list a:hover,
+    .mobile-menu__secondary a:hover {
         color: var(--color-text-secondary);
     }
 
@@ -371,5 +428,9 @@ body {
 
     .site-header__actions--mobile {
         display: none;
+    }
+
+    .mobile-menu {
+        display: none !important;
     }
 }
