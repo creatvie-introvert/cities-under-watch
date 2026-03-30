@@ -1,10 +1,32 @@
 {% load static %}
 
-<section class="announcement-banner">
+<section class="announcement-banner" data-announcement-banner>
     <div class="container">
-        <p>
-            Instant access to digital poster editions — no shipping required.
-        </p>
+        <div class="announcement-banner__inner">
+            <p class="announcement-banner__text">
+                Instant access to digital poster editions — no shipping required.
+            </p>
+
+            <button
+                type="button"
+                class="announcement-banner__close"
+                aria-label="Close announcement"
+                data-announcement-close
+            >
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <path d="M6 6l12 12"></path>
+                    <path d="M18 6l-12 12"></path>
+                </svg>
+            </button>
+        </div>
     </div>
 </section>
 
@@ -87,8 +109,8 @@
             </div>
 
             <div class="site-header__actions site-header__actions--mobile">
-                <a href="#" class="header-action-link">
-                    <span class="header-action-link__icon" aria-hidden="true" aria-label="View bag">
+                <a href="#" class="header-action-link" aria-label="View bag">
+                    <span class="header-action-link__icon" aria-hidden="true">
                         <svg 
                             viewBox="0 0 24 24" 
                             fill="none" 
