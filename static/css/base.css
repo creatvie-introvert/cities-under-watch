@@ -744,6 +744,48 @@ body {
     justify-content: center;
 }
 
+.coming-soon-section .container {
+    padding: 0 var(--space-4);
+}
+
+.coming-soon-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.coming-soon-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    text-align: left;
+}
+
+.coming-soon-text h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    line-height: 3rem;
+    font-weight: 700;
+}
+
+.coming-soon-text > p:last-of-type {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.625rem;
+    max-width: 22rem;
+}
+
+.coming-soon-section .section-actions {
+    justify-content: flex-start;
+}
+
+.coming-soon-image .image-placeholder {
+    min-height: 14rem;
+    border-radius: 0.75rem;
+}
+
 .hero-actions,
 .section-actions {
     display: flex;
@@ -930,6 +972,18 @@ body {
 
     .feature-card .image-placeholder {
         min-height: 10rem;
+    }
+
+    .coming-soon-section .container {
+        padding: 0 var(--space-6);
+    }
+
+    .coming-soon-content {
+        gap: var(--space-10);
+    }
+
+    .coming-soon-image .image-placeholder {
+        min-height: 18rem;
     }
 }
 
@@ -1195,5 +1249,39 @@ body {
     .feature-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: var(--space-8);
+    }
+
+    .coming-soon-section .container {
+        padding: 0;
+    }
+
+    .coming-soon-content {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 26rem);
+        align-items: center;
+        gap: var(--space-12);
+    }
+
+    .coming-soon-text {
+        max-width: 30rem;
+    }
+
+    .coming-soon-text h2 {
+        font-size: 3rem;
+        line-height: 3.5rem;
+    }
+
+    .coming-soon-text > p:last-of-type {
+        max-width: 28rem;
+    }
+
+    .coming-soon-image {
+        justify-self: end;
+        width: 100%;
+        max-width: 26rem;
+    }
+
+    .coming-soon-image .image-placeholder {
+        min-height: 20rem;
     }
 }
