@@ -1,0 +1,104 @@
+{% load static %}
+
+<footer class="site-footer">
+    <div class="container">
+        <div class="site-footer__inner">
+            <div class="site-footer__brand">
+                <a 
+                    href="{% url 'home' %}"
+                    class="site-footer__logo"
+                    aria-label="Cities Under Watch home"
+                >
+                    <img 
+                        src="{% static 'images/branding/cuw-logo-full.webp' %}" alt="Cities Under Watch"
+                        class="site-footer__logo-image"
+                    >    
+                </a>
+                <p class="site-footer__description">
+                    A dystopian digital poster store exploring surveillance,
+                    architecture, and quiet resistance through collectible editions.
+                </p>
+            </div>
+
+            <div class="site-footer__links">
+                <div class="site-footer__column">
+                    <h2 class="site-footer__heading">Explore</h2>
+                    <ul class="site-footer__list">
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Collections</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="site-footer__column">
+                    <h2 class="site-footer__heading">Account</h2>
+                    <ul class="site-footer__list">
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Orders</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="site-footer__column">
+                    <h2 class="site-footer__heading">Legal</h2>
+                    <ul class="site-footer__list">
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Refunds</a></li>
+                    </ul>
+                </div>
+
+                <div class="site-footer__column site-footer__column--newsletter">
+                    <h2 class="site-footer__heading">Updates</h2>
+                    <p class="site-footer__updates-text">
+                        Stay informed about new colloections, releases, and exclusive previews of upcoming cities.
+                    </p>
+                    <form action="#" method="post" class="site-footer__newsletter">
+                        <label for="footer-newsletter-email" class="visually-hidden">
+                            Email address
+                        </label>
+                        <div class="site-footer__newsletter-row">
+                            <input 
+                                type="email"
+                                id="footer-newsletter-email"
+                                name="email"
+                                class="site-footer__input"
+                                placeholder="Enter your email"
+                            >
+                            <button type="submit" class="site-footer__subscribe-button">
+                                Join
+                            </button>
+                        </div>
+                    </form>
+                    <p class="site-footer__updates-note">
+                        By subscribing you agree to our Privacy Policy and consent to receive updates.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="site-footer__bottom">
+            <p class="site-footer__copyright">
+                © 2026 Cities Under Watch. All rights reserved.
+            </p>
+            <div class="site-footer__social" aria-label="Social media links">
+                <a href="#" class="site-footer__social-link" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="site-footer__social-link" aria-label="Instagram">
+                    <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="site-footer__social-link" aria-label="X">
+                    <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="site-footer__social-link" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="site-footer__social-link" aria-label="YouTube">
+                    <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
