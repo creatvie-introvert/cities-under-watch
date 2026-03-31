@@ -57,7 +57,7 @@ body {
     width: 1px;
     height: 1px;
     padding: 0;
-    margin: -1;
+    margin: -1px;
     overflow: hidden;
     clip: rect(0 0 0 0);
     white-space: nowrap;
@@ -499,6 +499,37 @@ body {
 }
 
 /* =========================
+   Buttons
+========================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    border: 1px solid var(--color-border-subtle);
+}
+
+.btn-primary {
+    background-color: var(--color-accent-primary);
+    color: var(--color-true-black);
+    border: 1px solid var(--color-accent-primary);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border-strong);
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+    transform: translateY(1px);
+}
+
+/* =========================
    Shared Section Spacing
 ========================= */
 
@@ -555,8 +586,8 @@ body {
 .hero-text p {
     margin: 0;
     color: var(--color-text-secondary);
-    font-size: 1.5rem;
-    line-height: 2.5rem;
+    font-size: 1.125rem;
+    line-height: 1.875rem;
     max-width: 32rem;
 }
 
@@ -593,7 +624,8 @@ body {
 
 .section-heading h2 {
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
     font-weight: 700;
 }
 
@@ -639,9 +671,9 @@ body {
 
 .product-card h3 {
     margin: 0;
-    font-size: 0.75rem;
-    line-height: 1rem;
-    font-weight: 500;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
 }
 
 .product-card__format {
@@ -739,8 +771,8 @@ body {
 
 .feature-card h3 {
     margin: 0;
-    font-size: 1.125rem;
-    line-height: 1.5rem;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
     font-weight: 700;
 }
 
@@ -748,6 +780,7 @@ body {
     margin: 0;
     color: var(--color-text-secondary);
     font-size: 0.875rem;
+    line-height: 1.375rem;
     max-width: 18rem;
 }
 
@@ -776,8 +809,8 @@ body {
 
 .coming-soon-text h2 {
     margin: 0;
-    font-size: 2.5rem;
-    line-height: 3rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
     font-weight: 700;
 }
 
@@ -859,37 +892,6 @@ body {
     flex-wrap: wrap;
     gap: var(--space-4);
     margin-top: 0;
-}
-
-/* =========================
-   Buttons
-========================= */
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.75rem 1.25rem;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    border: 1px solid var(--color-border-subtle);
-}
-
-.btn-primary {
-    background-color: var(--color-accent-primary);
-    color: var(--color-true-black);
-    border: 1px solid var(--color-accent-primary);
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: var(--color-text-primary);
-    border: 1px solid var(--color-border-strong);
-}
-
-.btn-primary:active,
-.btn-secondary:active {
-    transform: translateY(1px);
 }
 
 /* =========================
@@ -1220,8 +1222,8 @@ body {
     }
 
     .hero-text h1 {
-        font-size: 4.5rem;
-        line-height: 5rem;
+        font-size: 3.5rem;
+        line-height: 4rem;
     }
 
     .hero-text p {
@@ -1257,8 +1259,8 @@ body {
     }
 
     .section-heading h2 {
-        font-size: 3rem;
-        line-height: 3.5rem;
+        font-size: 2.5rem;
+        line-height: 3rem;
     }
 
     .section-heading > p:last-of-type {
@@ -1357,8 +1359,8 @@ body {
     }
 
     .coming-soon-text h2 {
-        font-size: 3rem;
-        line-height: 3.5rem;
+        font-size: 2.5rem;
+        line-height: 3rem;
     }
 
     .coming-soon-text > p:last-of-type {
