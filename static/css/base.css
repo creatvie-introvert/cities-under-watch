@@ -1,3 +1,7 @@
+/* =========================
+   Design Tokens
+========================= */
+
 :root {
     /* Background */
     --color-background-base: #0F0F10;
@@ -36,6 +40,11 @@
     /* Radius */
     --radius-md: 0.5rem;
 }
+
+/* =========================
+   Global Base
+========================= */
+
 body {
     margin: 0;
     font-family: var(--font-family-base);
@@ -43,10 +52,18 @@ body {
     color: var(--color-text-primary);
 }
 
+/* =========================
+   Shared Layout
+========================= */
+
 .container {
     width: min(100% - 2rem, 1200px);
     margin-inline: auto;
 }
+
+/* =========================
+   Announcement Banner
+========================= */
 
 .announcement-banner {
     background-color: var(--color-surface-2);
@@ -102,6 +119,10 @@ body {
 .announcement-banner__close:active {
     transform: translateY(1px);
 }
+
+/* =========================
+   Header
+========================= */
 
 .site-header {
     background-color: var(--color-true-black);
@@ -225,6 +246,10 @@ body {
     gap: 1rem;
 }
 
+/* =========================
+   Mobile Menu
+========================= */
+
 .mobile-menu {
     display: block;
     width: 100%;
@@ -275,6 +300,10 @@ body {
     padding-top: var(--space-4);
     border-top: 1px solid var(--color-border-subtle);
 }
+
+/* =========================
+   Footer
+========================= */
 
 .site-footer {
     background-color: var(--color-true-black);
@@ -457,6 +486,10 @@ body {
     transform: translateY(1px);
 }
 
+/* =========================
+   Shared Section Spacing
+========================= */
+
 .home-hero,
 .concept-intro-section,
 .featured-prints-section,
@@ -467,6 +500,10 @@ body {
 .newsletter-section {
     padding: 4rem 0;
 }
+
+/* =========================
+   Shared Content Patterns
+========================= */
 
 .image-placeholder {
     min-height: 200px;
@@ -484,6 +521,10 @@ body {
     gap: 1rem;
     margin-top: 1.5rem;
 }
+
+/* =========================
+   Buttons
+========================= */
 
 .btn {
     display: inline-flex;
@@ -511,6 +552,10 @@ body {
 .btn-secondary:active {
     transform: translateY(1px);
 }
+
+/* =========================
+   Hover States
+========================= */
 
 @media (hover: hover) and (pointer: fine) {
     .site-nav a:hover,
@@ -544,6 +589,10 @@ body {
         background-color: var(--color-surface-1);
     }
 }
+
+/* =========================
+   Tablet Breakpoint
+========================= */
 
 @media (min-width: 768px) {
     .site-footer {
@@ -581,6 +630,10 @@ body {
         justify-content: space-between;
     }
 }
+
+/* =========================
+   Desktop Breakpoint
+========================= */
 
 @media (min-width: 992px) {
     .announcement-banner__inner {
