@@ -557,6 +557,47 @@ body {
     border-radius: 0.75rem;
 }
 
+.concept-intro-section .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+    padding: 0 var(--space-4);
+}
+
+.section-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+    text-align: center;
+}
+
+.eyebrow {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    line-height: 1rem;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.section-heading > p:last-of-type {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.625rem;
+    max-width: 34rem;
+}
+
+.section-image .image-placeholder {
+    min-height: 14rem;
+    border-radius: 0.75rem;
+}
+
 .hero-actions,
 .section-actions {
     display: flex;
@@ -682,6 +723,23 @@ body {
     }
 
     .hero-image .image-placeholder {
+        min-height: 18rem;
+    }
+
+    .concept-intro-section .container {
+        gap: var(--space-10);
+        padding: 0 var(--space-6);
+    }
+
+    .section-heading h2 {
+        max-width: none;
+    }
+
+    .section-heading > p:last-of-type {
+        max-width: 38rem;
+    }
+
+    .section-image .image-placeholder {
         min-height: 18rem;
     }
 }
@@ -849,6 +907,42 @@ body {
     }
 
     .hero-actions {
+        gap: var(--space-3);
+    }
+
+    .concept-intro-section .container {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-12);
+        padding: 0;
+    }
+
+    .section-heading {
+        gap: var(--space-4);
+        max-width: 34rem;
+        margin-inline: auto;
+    }
+
+    .section-heading h2 {
+        font-size: 3rem;
+        line-height: 3.5rem;
+    }
+
+    .section-heading > p:last-of-type {
+        max-width: 36rem;
+    }
+
+    .section-image {
+        width: 100%;
+    }
+
+    .section-image .image-placeholder {
+        min-height: 24rem;
+        max-width: 40rem;
+        margin-inline: auto;
+    }
+
+    .section-actions {
         gap: var(--space-3);
     }
 }
