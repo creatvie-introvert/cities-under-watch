@@ -148,6 +148,8 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
 if 'USE_AWS' in os.environ:
     AWS_STORAGE_BUCKET_NAME = 'cities-under-watch-leanne'
     AWS_S3_REGION_NAME = 'eu-north-1'
@@ -180,7 +182,6 @@ if 'USE_AWS' in os.environ:
 
 else:
     STATIC_URL = 'static/'
-    STATICFILES_DIRS = [BASE_DIR / 'static']
     MEDIA_URL = '/media/'
     MEDIA_ROOT = BASE_DIR / 'media'
 
