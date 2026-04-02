@@ -33,7 +33,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'cities-under-watch-65fda223b0f3.herokuapp'
+    'cities-under-watch-65fda223b0f3.herokuapp.com'
 ]
 
 
