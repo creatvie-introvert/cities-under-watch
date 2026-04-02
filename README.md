@@ -448,7 +448,18 @@ Supporting content, collection storytelling, and secondary features were added a
 The feature set of Cities Under Watch was planned around the core digital commerce journey, supported by account access, download functionality, and brand-led editorial content.
 
 ### Existing Features
-_To be completed_
+The following core foundation features were implemented as part of the project:
+
+- a responsice homepage that introduced the brand, product offer, and primary browsing paths
+- django-allauth setup to support account signup, login, logout, and email verification
+- a shared base template structure to support reusable site-wide layout patterns
+- early deployment to Heroku
+- a production PostgreSQL database connected to the deployed application
+- AWS S3 configured for static and media file hosting in production
+- CSS and JavaSCript assers loading correctly in the live deployed environment
+
+These features estabilished the technical and structural foundation of the platform and supported the later development of the catalogue, product pages, and wider e-commerce flow.
+_To be continued_
 
 ### Features Left to Implement
 _To be completed_
@@ -604,7 +615,17 @@ _To be completed_
 _To be completed_
 
 ### Environment Variables
-_To be completed_
+Sensitive setting were stored using environment variables rather than being hard-coded into the project.
+
+The project used environment variables for:
+- `SECRET_KEY`
+- `DATABASE_URL`
+- `DEVELOPMENT`
+- `USE_AWS`
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+
+Local development values were stored in `env.py`, ehich was excluded from version control. Production values were stored in Heroku Config Vars.
 
 ---
 
@@ -613,6 +634,8 @@ _To be completed_
 This project is version controlled using Git and GitHub.
 
 Development will follow a clean and regular commit history using meaningful commit messages.
+
+A structured commit history was maintained during the foundation phase to document setup, authentication, deployment, and static file configurationm clearly.
 
 ---
 
