@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'allauth.account',
 
     'core',
+    'products',
 ]
 
 MIDDLEWARE = [
