@@ -44,31 +44,15 @@
 
             <nav class="site-nav site-nav--desktop" aria-label="Primary navigation">
                 <ul class="site-nav__list">
-                    <li>
-                        <a href="#">
-                            Shop
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Collections
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            About
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Support
-                        </a>
-                    </li>
+                    <li><a href="{% url 'product_list' %}">Shop</a></li>
+                    <li><a href="#">Collections</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Support</a></li>
                 </ul>
             </nav>
 
             <div class="site-header__actions site-header__actions--desktop">
-                <a href="#" class="header-action-link">
+                <a href="{% url 'account_login' %}" class="header-action-link">
                     <span class="header-action-link__icon" aria-hidden="true">
                         <svg 
                             viewBox="0 0 24 24" 
@@ -158,35 +142,15 @@
             data-mobile-menu
         >
             <ul class="mobile-menu__list">
-                <li>
-                    <a href="#">
-                        Shop
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Collections
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        About
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        Support
-                    </a>
-                </li>
+                <li><a href="{% url 'product_list' %}">Shop</a></li>
+                <li><a href="#">Collections</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Support</a></li>
             </ul>
 
             <div class="mobile-menu__secondary">
-                <a href="#">
-                    Account
-                </a>
-                <a href="#">
-                    Bag
-                </a>
+                <a href="{% url 'account_login' %}">Account</a>
+                <a href="#">Bag</a>
             </div>
         </nav>
     </div>
