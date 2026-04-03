@@ -7,7 +7,7 @@
         <div class="container">
             <div class="page-header page-header--catalogue">
                 <p class="eyebrow">Catalogue</p>
-                <h1 class="page-header-title">Shop all prints</h1>
+                <h1 class="page-header__title">Shop all prints</h1>
                 <p class="page-header__text">
                     Browse the complete collection of Cities Under Watch editions across all available series.
                 </p>
@@ -15,7 +15,9 @@
                     <button type="button" class="btn btn-primary">
                         Filter
                     </button>
-                    <button type="button" class="btn btn-secondary"></button>
+                    <button type="button" class="btn btn-secondary">
+                        Search
+                    </button>
                 </div>
             </div>
         </div>
@@ -89,6 +91,93 @@
             {% else %}
                 <p>No products are available yet.</p>
             {% endif %}
+        </div>
+    </section>
+
+    <section class="collection-showcase-section">
+        <div class="container">
+            <div class="collection-showcase">
+                <div class="collection-showcase__intro">
+                    <p class="eyebrow">Collections</p>
+                    <h2>Explore curated city editions</h2>
+                    <p>
+                        Browse complete series organised by city. Each collection tells a unified story of architectural control and resistance.
+                    </p>
+                    <a href="#" class="btn btn-secondary">View all</a>
+                </div>
+
+                <div class="collection-showcase__list">
+                    {% if featured_collection %}
+                        <article class="collection-preview-card collection-preview-card--featured">
+                            <div class="collection-preview-card__image">
+                                <div class="image-placeholder">
+                                    Collection image
+                                </div>
+                            </div>
+
+                            <div class="collection-preview-card__content">
+                                <div class="collection-preview-card__tags">
+                                    <span class="collection-preview-card__tag">
+                                        {{ featured_collection.city.name }}
+                                    </span>
+                                    <span class="collection-preview-card__tag">
+                                        Available
+                                    </span>
+                                </div>
+
+                                <h3>{{ featured_collection.name }}</h3>
+
+                                {% if featured_collection.short_description %}
+                                    <p>
+                                        {{ featured_collection.short_description }}
+                                    </p>
+                                {% elif featured_collection.description %}
+                                    <p>
+                                        {{ featured_collection.description|truncatewords:20 }}
+                                    </p>
+                                {% endif %}
+
+                                <a href="#" class="collection-preview-card__link">Explore</a>
+                            </div>
+                        </article>
+                    {% endif %}
+
+                    {% for collection in coming_soon_collections %}
+                        <article class="collection-preview-card">
+                            <div class="collection-preview-card__image">
+                                <div class="image-placeholder">
+                                    Collection image
+                                </div>
+                            </div>
+
+                            <div class="collection-preview-card__content">
+                                <div class="collection-preview-card__tags">
+                                    <span class="collection-preview-card__tag">
+                                        Coming
+                                    </span>
+                                    <span class="collection-preview-card__tag">
+                                        {{ collection.city.name }}
+                                    </span>
+                                </div>
+
+                                <h3>{{ collection.name }}</h3>
+
+                                {% if collection.short_description %}
+                                    <p>{{ collection.short_description }}</p>
+                                {% elif collection.description %}
+                                    <p>
+                                        {{ collection.description|truncatewords:20 }}
+                                    </p>
+                                {% endif %}
+
+                                <a href="#" class="collection-preview-card__link">
+                                    Notify me
+                                </a>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </section>
 {% endblock %}

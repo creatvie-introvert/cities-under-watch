@@ -23,7 +23,7 @@ class Collection(models.Model):
         AVAILABLE = 'available', 'Available'
         COMING_SOON = 'coming_soon', 'Coming Soon'
         ARCHIVED = 'archived', 'Archived'
-    
+
     city = models.ForeignKey(
         City,
         on_delete=models.CASCADE,
