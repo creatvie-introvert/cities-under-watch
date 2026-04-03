@@ -3,21 +3,88 @@
 {% block extra_title %} — Shop All{% endblock %}
 
 {% block content %}
-    <section class="featured-prints-section">
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header page-header--catalogue">
+                <p class="eyebrow">Catalogue</p>
+                <h1 class="page-header-title">Shop all prints</h1>
+                <p class="page-header__text">
+                    Browse the complete collection of Cities Under Watch editions across all available series.
+                </p>
+                <div class="page-header__actions">
+                    <button type="button" class="btn btn-primary">
+                        Filter
+                    </button>
+                    <button type="button" class="btn btn-secondary"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-highlight-section">
+        <div class="container">
+            <div class="feature-highlight">
+                <div class="section-heading">
+                    <p class="eyebrow">Editions</p>
+                    <h2>Each print tells a story of control</h2>
+                    <p>
+                        Cities Under Watch presents architectural visions of surveillance and power. Every edition arrives as a high-resolution digital file, ready to print at any scale.
+                    </p>
+                </div>
+
+                <div class="feature-highlight__media">
+                    <div class="image-placeholder">
+                        Feature image placeholder
+                    </div>
+                </div>
+
+                <div class="feature-highlight__points">
+                    <article class="feature-point">
+                        <h3>Instant delivery</h3>
+                        <p>
+                            Download immediately after purchase. No waiting. No shipping delays.
+                        </p>
+                    </article>
+
+                    <article class="feature-point">
+                        <h3>Print on demand</h3>
+                        <p>
+                            Choose your own paper, size, and framing. Full creative control over the final piece.
+                        </p>
+                    </article>
+
+                    <article class="feature-point">
+                        <h3>Permanent access</h3>
+                        <p>
+                            Your files remain available in your account indefinitely. Download again anytime.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-grid-section">
         <div class="container">
             <div class="section-heading">
-                <p class="eyebrow">Catalogue</p>
-                <h1>Shop All Prints</h1>
+                <p class="eyebrow">Explore</p>
+                <h2>More editions await</h2>
                 <p>
-                    Browse all currently available Cities Under Watch poster editions.
+                    The catalogue continues below with additional prints from our expanding archive.
                 </p>
             </div>
 
             {% if products %}
-                <div class="prints-grid">
+                <div class="prints-grid catalogue-grid">
                     {% for product in products %}
                         {% include "products/includes/product_card.html" %}
                     {% endfor %}
+                </div>
+
+                <div class="product-grid-section__actions">
+                    <button type="button" class="btn btn-secondary">
+                        Load More
+                    </button>
                 </div>
             {% else %}
                 <p>No products are available yet.</p>
