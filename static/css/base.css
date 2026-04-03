@@ -537,6 +537,7 @@ body {
 .page-header-section,
 .featured-highlight-section,
 .product-grid-section,
+.collection-showcase-section,
 .concept-intro-section,
 .featured-prints-section,
 .narrative-section,
@@ -730,6 +731,115 @@ body {
 .product-grid-section__actions {
     display: flex;
     justify-content: center;
+}
+
+.collection-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.collection-showcase__intro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    text-align: left;
+}
+
+.collection-showcase__intro h2 {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+}
+
+.collection-showcase__intro > p:last-of-type {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.625rem;
+    max-width: 22rem;
+}
+
+.collection-showcase__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.collection-preview-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.collection-preview-card__image {
+    width: 100%;
+}
+
+.collection-preview-card__image .image-placeholder {
+    min-height: 10rem;
+    border-radius: 0.75rem;
+}
+
+.collection-preview-card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+    text-align: left;
+}
+
+.collection-preview-card__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+}
+
+.collection-preview-card__tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 1.75rem;
+    padding: 0 0.75rem;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 999px;
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+    box-sizing: border-box;
+}
+
+.collection-preview-card__content h3 {
+    margin: 0;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+}
+
+.collection-preview-card__content p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.625rem;
+}
+
+.collection-preview-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--color-accent-primary);
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+}
+
+.collection-preview-card__link::after {
+    content: ">";
+    line-height: 1;
 }
 
 .section-image .image-placeholder {
@@ -1026,6 +1136,11 @@ body {
     margin-top: 0;
 }
 
+.collection-preview-card__link:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+}
+
 /* =========================
    Hover States
 ========================= */
@@ -1042,6 +1157,10 @@ body {
 
     .product-card__title a:hover {
         color: var(--color-text-secondary);
+    }
+
+    .collection-preview-card__link:hover {
+        opacity: 0.85;
     }
 
     .btn-primary:hover {
@@ -1246,6 +1365,18 @@ body {
 
     .newsletter-note {
         max-width: 26rem;
+    }
+
+    .collection-showcase {
+        gap: var(--space-10);
+    }
+
+    .collection-showcase__intro > p:last-of-type {
+        max-width: 24rem;
+    }
+
+    .collection-preview-card__image .image-placeholder {
+        min-height: 12rem;
     }
 }
 
@@ -1625,5 +1756,58 @@ body {
 
     .newsletter-note {
         max-width: 28rem;
+    }
+
+    .collection-showcase {
+        display: grid;
+        grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+        gap: var(--space-12);
+        align-items: start;
+    }
+
+    .collection-showcase__intro {
+        position: sticky;
+        top: var(--space-8);
+    }
+
+    .collection-showcase__intro > p:last-of-type {
+        max-width: 18rem;
+    }
+
+    .collection-showcase__list {
+        gap: var(--space-5);
+    }
+
+    .collection-preview-card {
+        display: grid;
+        grid-template-columns: 6.5rem minmax(0, 1fr);
+        grid-area: var(--space-5);
+        align-items: start;
+    }
+
+    .collection-preview-card__image .image-placeholder {
+        min-height: 6.5rem;
+        aspect-ratio: 1 / 1;
+    }
+
+    .collection-preview-card__content {
+        gap: var(--space-2);
+    }
+
+    .collection-preview-card__content h3 {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+
+    .collection-preview-card__content p {
+        max-width: 28rem;
+    }
+
+    .collection-preview-card__tags {
+        margin-bottom: var(--space-2);
+    }
+
+    .collection-preview-card__link {
+        margin-top: var(--space-2);
     }
 }

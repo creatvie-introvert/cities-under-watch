@@ -33,6 +33,10 @@ class Collection(models.Model):
     slug = models.SlugField(max_length=120, unique=True)
     short_description = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
+    planned_product_count = models.PositiveIntegerField(
+        default=0,
+        help_text='Use for display counts, coming soon colections'
+    )
     release_status = models.CharField(
         max_length=20,
         choices=ReleaseStatus.choices,
@@ -45,7 +49,7 @@ class Collection(models.Model):
     class Meta:
         ordering = ['name']
         unique_together = ('city', 'name')
-    
+
     def __str__(self):
         return self.name
 
