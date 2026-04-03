@@ -1337,8 +1337,8 @@ body {
     }
 
     .prints-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: var(--space-8);
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: var(--space-6);
     }
 
     .product-card .image-placeholder {
