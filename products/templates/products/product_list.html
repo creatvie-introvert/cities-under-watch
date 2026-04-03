@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block extra_title %} — Shop All{% endblock %}
+
+{% block content %}
+    <section class="featured-prints-section">
+        <div class="container">
+            <div class="section-heading">
+                <p class="eyebrow">Catalogue</p>
+                <h1>Shop All Prints</h1>
+                <p>
+                    Browse all currently available Cities Under Watch poster editions.
+                </p>
+            </div>
+
+            {% if products %}
+                <div class="prints-grid">
+                    {% for product in products %}
+                        <article class="product-card">
+                            {% with primary_image=product.images.first %}
+                                {% if primary_image %}
+                                    <img 
+                                        src="{{ primary_image.image.url }}" alt="{{ primary_image.alt_text|default:product.title }}"
+                                        class="product-card__image"
+                                    >
+                                {% else %}
+                                    <div class="image-placeholder">
+                                        Print image
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+
+                            <h3>{{ product.title }}</h3>
+
+                            {% if product.short_description %}
+                                    <p class="product-card__format">
+                                        {{ product.short_description }}
+                                    </p>
+                            {% endif %}
+
+                            <p class="product-card__price">
+                                £{{ product.price }}
+                            </p>
+
+                            <a href="#" class="product-card__action">
+                                View product
+                            </a>
+                        </article>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No products are available yet.</p>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}
