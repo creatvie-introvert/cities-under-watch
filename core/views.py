@@ -1,6 +1,22 @@
 from django.shortcuts import render
+from products.models import Product
 
 
 def index(request):
     """Render the home page."""
-    return render(request, "core/index.html")
+    featured_products = (
+        Product.objects
+        .filter(
+            is_active=True,
+            is_featured=True,
+            collection__city__is_active=True,
+        )
+        .select_related('collection', 'collection__city')
+        .prefetch_related('images')[:3]
+    )
+
+    context = {
+        'featured_products': featured_products,
+    }
+
+    return render(request, "core/index.html", context)

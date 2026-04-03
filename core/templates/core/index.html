@@ -70,41 +70,13 @@
             </div>
 
             <div class="prints-grid">
-                <article class="product-card">
-                    <div class="image-placeholder">
-                        Print image
-                    </div>
-                    <h3>Tower Authority</h3>
-                    <p class="product-card__format">4K</p>
-                    <p class="product-card__price">£18</p>
-                    <button type="button" class="product-card__action">
-                        Add to cart
-                    </button>
-                </article>
-
-                <article class="product-card">
-                    <div class="image-placeholder">
-                        Print image
-                    </div>
-                    <h3>Tower Authority</h3>
-                    <p class="product-card__format">4K</p>
-                    <p class="product-card__price">£18</p>
-                    <button type="button" class="product-card__action">
-                        Add to cart
-                    </button>
-                </article>
-
-                <article class="product-card">
-                    <div class="image-placeholder">
-                        Print image
-                    </div>
-                    <h3>Tower Authority</h3>
-                    <p class="product-card__format">4K</p>
-                    <p class="product-card__price">£18</p>
-                    <button type="button" class="product-card__action">
-                        Add to cart
-                    </button>
-                </article>
+                {% if featured_products %}
+                    {% for product in featured_products %}
+                        {% include "products/includes/product_card.html" %}
+                    {% endfor %}
+                {% else %}
+                    <p>No featured prints are available yet.</p>
+                {% endif %}
             </div>
 
             <div class="section-actions">
