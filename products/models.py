@@ -80,7 +80,7 @@ class Product(models.Model):
 
     class Meta:
         ordering = ['title']
-    
+
     def __str__(self):
         return self.title
 
@@ -99,6 +99,6 @@ class ProductImage(models.Model):
 
     class Meta:
         ordering = ['sort_order', 'id']
-    
+
     def __str__(self):
         return f"{self.product.title} image"

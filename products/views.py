@@ -1,5 +1,5 @@
 from django.db.models import Count, Q
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Product, Collection
 
 
@@ -13,7 +13,7 @@ def product_list(request):
         page = int(page)
     except ValueError:
         page = 1
-    
+
     if page < 1:
         page = 1
 
@@ -91,3 +91,35 @@ def product_list(request):
     }
 
     return render(request, 'products/product_list.html', context)
+
+
+def product_detail(request, slug):
+    product = get_object_or_404(
+        Product.objects
+        .filter(
+            is_active=True,
+            collection__city__is_active=True,
+        )
+        .select_related('collection', 'collection__city')
+        .prefetch_related('images'),
+        slug=slug,
+    )
+
+    related_products = (
+        Product.objects
+        .filter(
+            is_active=True,
+            collection=product.collection,
+            collection__city__is_active=True,
+        )
+        .exclude(id=product.id)
+        .select_related('collection', 'collection__city')
+        .prefetch_related('images')[:4]
+    )
+
+    context = {
+        'product': product,
+        'related_products': related_products,
+    }
+
+    return render(request, 'products/product_detail.html', context)
