@@ -72,9 +72,23 @@
                 <button type="button" class="btn btn-primary">
                     Filter
                 </button>
-                <button type="button" class="btn btn-secondary">
-                    Search
-                </button>
+                <form 
+                    method="get" 
+                    action="{% url 'product_list' %}" class="catalogue-search-form"
+                >
+                <label for="catalogue-search" class="visually-hidden">
+                    Search prints
+                </label>
+                <input 
+                    type="text"
+                    name="q"
+                    id="catalogue-search"
+                    class="catalogue-search-form__input"
+                    placeholder="Search prints"
+                    value="{{ request.GET.q }}"
+                >
+                <button type="submit" class="btn btn-primary">Search</button>
+                </form>
             </div>
 
             {% if products %}
