@@ -168,9 +168,12 @@
 
                 {% if has_more_products %}
                     <div class="product-grid-section__actions">
-                        <button type="button" class="btn btn-secondary">
+                        <a 
+                            href="{% url 'product_list' %}?page={{ next_page }}{% is search_term %}&q={{ search_term|urlencode }}{% endif %}{% if selected_collection %}&collection={{ selected_collection|urlencode }}{% endif %}#product-grid" 
+                            class="btn btn-secondary"
+                        >
                             Load more
-                        </button>
+                        </a>
                     </div>
                 {% endif %}
             {% else %}

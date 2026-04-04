@@ -7,6 +7,15 @@ def product_list(request):
     query = request.GET.get('q', '').strip()
     selected_collection = request.GET.get('collection', '').strip()
     products_limit = 9
+    page = request.GET.get('page', '1').strip()
+
+    try:
+        page = int(page)
+    except ValueError:
+        page = 1
+    
+    if page < 1:
+        page = 1
 
     products = (
         Product.objects
@@ -26,8 +35,10 @@ def product_list(request):
         products = products.filter(collection__slug=selected_collection)
 
     total_products = products.count()
-    has_more_products = total_products > products_limit
-    products = products[:products_limit]
+    products_to_show = page * products_limit
+    has_more_products = total_products > products_to_show
+    next_page = page + 1 if has_more_products else None
+    products = products[:products_to_show]
 
     featured_collection = (
         Collection.objects
@@ -76,6 +87,7 @@ def product_list(request):
         'available_collections': available_collections,
         'selected_collection': selected_collection,
         'has_more_products': has_more_products,
+        'next_page': next_page,
     }
 
     return render(request, 'products/product_list.html', context)
