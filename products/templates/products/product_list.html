@@ -69,9 +69,6 @@
             </div>
 
             <div class="product-grid-section__controls">
-                <button type="button" class="btn btn-primary">
-                    Filter
-                </button>
                 <form 
                     method="get" 
                     action="{% url 'product_list' %}#product-grid" class="catalogue-search-form"
@@ -90,14 +87,75 @@
                     <button type="submit" class="btn btn-primary">
                         Search
                     </button>
-                    {% if search_term %}
+                </form>
+
+                <button 
+                    type="button" 
+                    class="btn btn-secondary"
+                    data-filter-toggle
+                    aria-expanded="false"
+                    aria-controls="catalogue-filter-panel"
+                >
+                    Filter
+                </button>
+
+                {% if search_term or selected_collection %}
                     <a 
                         href="{% url 'product_list' %}#product-grid" 
-                        class="btn btn-secondary"
+                        class="catalogue-search-clear"
                     >
                         Clear
                     </a>
+                {% endif %}
+            </div>
+
+            <div 
+                id="catalogue-filter-panel"
+                class="catalogue-filter-panel"
+                hidden
+                data-filter-panel
+            >
+                <form 
+                    method="get" 
+                    action="{% url 'product_list' %}#product-grid"
+                    class="catalogue-filter-form"
+                >
+                    {% if search_term %}
+                        <input type="hidden" name="q" value="{{ search_term }}">
                     {% endif %}
+
+                    <div class="catalogue-filter-form__field">
+                        <p class="catalogue-filter-form__label">
+                            Collection
+                        </p>
+                        
+                        <div class="catalogue-filter-pills">
+                                <label class="catalogue-filter-pill">
+                                    <input 
+                                        type="radio"
+                                        name="collection"
+                                        value=""
+                                        {% if not selected_collection %}checked{% endif %}
+                                    >
+                                    <span>All collections</span>
+                                </label>
+
+                                {% for collection in available_collections %}
+                                    <label class="catalogue-filter-pill">
+                                        <input 
+                                            type="radio"
+                                            name="collection"
+                                            value="{{ collection.slug }}"
+                                            {% if collection.slug == selected_collection %}checked{% endif %}>
+                                            <span>{{ collection.name }}</span>
+                                    </label>
+                                {% endfor %}
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        Apply
+                    </button>
                 </form>
             </div>
 

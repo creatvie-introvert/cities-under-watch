@@ -46,5 +46,44 @@ function initMobileMenu() {
     });
 }
 
+function initCatalogueFilterToggle() {
+    const filterToggleButton = document.querySelector("[data-filter-toggle]");
+    const filterPanel = document.querySelector("[data-filter-panel]");
+
+    if (!filterToggleButton || !filterPanel) {
+        return;
+    }
+
+    console.log("Catalogue filter toggle initialised");
+
+    function openFilterPanel() {
+        filterToggleButton.setAttribute("aria-expanded", "true");
+        filterPanel.hidden = false;
+    }
+
+    function closeFilterPanel() {
+        filterToggleButton.setAttribute("aria-expanded", "false");
+        filterPanel.hidden = true;
+    }
+
+    filterToggleButton.addEventListener("click", () => {
+        const isExpanded = filterToggleButton.getAttribute("aria-expanded") === "true";
+
+        if (isExpanded) {
+            closeFilterPanel();
+        }
+        else {
+            openFilterPanel();
+        }
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeFilterPanel();
+        }
+    });
+}
+
 initAnnouncementBanner();
 initMobileMenu();
+initCatalogueFilterToggle();
