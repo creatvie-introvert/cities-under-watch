@@ -11,6 +11,12 @@
                 <p class="page-header__text">
                     Browse the complete collection of Cities Under Watch editions across all available series.
                 </p>
+
+                <div class="page-header__actions">
+                    <a href="#product-grid" class="btn btn-primary">
+                        Browse prints
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -169,7 +175,7 @@
                 {% if has_more_products %}
                     <div class="product-grid-section__actions">
                         <a 
-                            href="{% url 'product_list' %}?page={{ next_page }}{% is search_term %}&q={{ search_term|urlencode }}{% endif %}{% if selected_collection %}&collection={{ selected_collection|urlencode }}{% endif %}#product-grid" 
+                            href="{% url 'product_list' %}?page={{ next_page }}{% if search_term %}&q={{ search_term|urlencode }}{% endif %}{% if selected_collection %}&collection={{ selected_collection|urlencode }}{% endif %}#product-grid" 
                             class="btn btn-secondary"
                         >
                             Load more
