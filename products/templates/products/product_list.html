@@ -119,6 +119,7 @@
                     method="get" 
                     action="{% url 'product_list' %}#product-grid"
                     class="catalogue-filter-form"
+                    data-auto-filter-form
                 >
                     {% if search_term %}
                         <input type="hidden" name="q" value="{{ search_term }}">
@@ -136,6 +137,7 @@
                                         name="collection"
                                         value=""
                                         {% if not selected_collection %}checked{% endif %}
+                                        data-auto-filter-input
                                     >
                                     <span>All collections</span>
                                 </label>
@@ -146,16 +148,14 @@
                                             type="radio"
                                             name="collection"
                                             value="{{ collection.slug }}"
-                                            {% if collection.slug == selected_collection %}checked{% endif %}>
+                                            {% if collection.slug == selected_collection %}checked{% endif %}
+                                            data-auto-filter-input
+                                        >
                                             <span>{{ collection.name }}</span>
                                     </label>
                                 {% endfor %}
                         </div>
                     </div>
-
-                    <button type="submit" class="btn btn-primary">
-                        Apply
-                    </button>
                 </form>
             </div>
 

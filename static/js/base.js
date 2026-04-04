@@ -54,8 +54,6 @@ function initCatalogueFilterToggle() {
         return;
     }
 
-    console.log("Catalogue filter toggle initialised");
-
     function openFilterPanel() {
         filterToggleButton.setAttribute("aria-expanded", "true");
         filterPanel.hidden = false;
@@ -84,6 +82,22 @@ function initCatalogueFilterToggle() {
     });
 }
 
+function initCatalogueAutoFilterSubmit() {
+    const filterForm = document.querySelector("[data-auto-filter-form]");
+    const filterInputs = document.querySelectorAll("[data-auto-filter-input]");
+
+    if (!filterForm || !filterInputs.length) {
+        return;
+    }
+
+    filterInputs.forEach((input) => {
+        input.addEventListener("change", () => {
+            filterForm.submit();
+        });
+    });
+}
+
 initAnnouncementBanner();
 initMobileMenu();
 initCatalogueFilterToggle();
+initCatalogueAutoFilterSubmit();
