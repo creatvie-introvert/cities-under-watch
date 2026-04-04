@@ -58,7 +58,7 @@
         </div>
     </section>
 
-    <section class="product-grid-section">
+    <section id="product-grid" class="product-grid-section">
         <div class="container">
             <div class="section-heading">
                 <p class="eyebrow">Explore</p>
@@ -74,20 +74,30 @@
                 </button>
                 <form 
                     method="get" 
-                    action="{% url 'product_list' %}" class="catalogue-search-form"
+                    action="{% url 'product_list' %}#product-grid" class="catalogue-search-form"
                 >
-                <label for="catalogue-search" class="visually-hidden">
-                    Search prints
-                </label>
-                <input 
-                    type="text"
-                    name="q"
-                    id="catalogue-search"
-                    class="catalogue-search-form__input"
-                    placeholder="Search prints"
-                    value="{{ search_term }}"
-                >
-                <button type="submit" class="btn btn-primary">Search</button>
+                    <label for="catalogue-search" class="visually-hidden">
+                        Search prints
+                    </label>
+                    <input 
+                        type="text"
+                        name="q"
+                        id="catalogue-search"
+                        class="catalogue-search-form__input"
+                        placeholder="Search prints"
+                        value="{{ search_term }}"
+                    >
+                    <button type="submit" class="btn btn-primary">
+                        Search
+                    </button>
+                    {% if search_term %}
+                    <a 
+                        href="{% url 'product_list' %}#product-grid" 
+                        class="btn btn-secondary"
+                    >
+                        Clear
+                    </a>
+                    {% endif %}
                 </form>
             </div>
 
