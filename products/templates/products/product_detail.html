@@ -5,15 +5,15 @@
 {% block content %}
     <section class="product-detail-section">
         <div class="container">
-            <div class="product_detail">
-                <div class="product_detail__gallery">
-                    <div class="product_detail__main-image">
+            <div class="product-detail">
+                <div class="product-detail__gallery">
+                    <div class="product-detail__main-image">
                         {% with primary_image=product.images.all.0 %}
-                            {% if product_image %}
+                            {% if primary_image %}
                                 <img 
                                     src="{{ primary_image.image.url }}" 
                                     alt="{{ primary_image.alt_text|default:product.title }}"
-                                    class="product_detail__main-image-file"
+                                    class="product-detail__main-image-file"
                                 >
                             {% else %}
                                 <div class="image-placeholder">
@@ -23,16 +23,16 @@
                         {% endwith %}
                     </div>
 
-                    <div class="product_detail__thumbnails">
+                    <div class="product-detail__thumbnails">
                         {% if product.images.all %}
                             {% for image in product.images.all %}
                                 <button 
-                                    type="button" class="product_detail__thumbnail"
+                                    type="button" class="product-detail__thumbnail"
                                 >
                                     <img 
                                         src="{{ image.image.url }}" 
-                                        alt=" {{ image.alt_text|default:product.title }}"
-                                        class="product_detail__thumbnail-image"
+                                        alt="{{ image.alt_text|default:product.title }}"
+                                        class="product-detail__thumbnail-image"
                                     >
                                 </button>
                             {% endfor %}
@@ -44,7 +44,7 @@
                     </div>
                 </div>
 
-                <div class="product_detail__content">
+                <div class="product-detail__content">
                     <div class="product-detail__meta">
                         <p class="eyebrow">Print</p>
                         <h1 class="product-detail__title">
