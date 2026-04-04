@@ -166,11 +166,13 @@
                     {% endfor %}
                 </div>
 
-                <div class="product-grid-section__actions">
-                    <button type="button" class="btn btn-secondary">
-                        Load More
-                    </button>
-                </div>
+                {% if has_more_products %}
+                    <div class="product-grid-section__actions">
+                        <button type="button" class="btn btn-secondary">
+                            Load more
+                        </button>
+                    </div>
+                {% endif %}
             {% else %}
                 <p>No products are available yet.</p>
             {% endif %}

@@ -6,6 +6,7 @@ from .models import Product, Collection
 def product_list(request):
     query = request.GET.get('q', '').strip()
     selected_collection = request.GET.get('collection', '').strip()
+    products_limit = 9
 
     products = (
         Product.objects
@@ -23,6 +24,10 @@ def product_list(request):
 
     if selected_collection:
         products = products.filter(collection__slug=selected_collection)
+
+    total_products = products.count()
+    has_more_products = total_products > products_limit
+    products = products[:products_limit]
 
     featured_collection = (
         Collection.objects
@@ -70,6 +75,7 @@ def product_list(request):
         'search_term': query,
         'available_collections': available_collections,
         'selected_collection': selected_collection,
+        'has_more_products': has_more_products,
     }
 
     return render(request, 'products/product_list.html', context)
