@@ -33,6 +33,12 @@ class Collection(models.Model):
     slug = models.SlugField(max_length=120, unique=True)
     short_description = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
+    image = models.ImageField(
+        upload_to='collections/',
+        blank=True,
+        null=True
+    )
+    image_alt_text = models.CharField(max_length=255, blank=True)
     planned_product_count = models.PositiveIntegerField(
         default=0,
         help_text='Use for display counts, coming soon colections'

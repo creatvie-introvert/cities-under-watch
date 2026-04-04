@@ -110,9 +110,17 @@
                     {% if featured_collection %}
                         <article class="collection-preview-card collection-preview-card--featured">
                             <div class="collection-preview-card__image">
-                                <div class="image-placeholder">
-                                    Collection image
-                                </div>
+                                {% if featured_collection.image %}
+                                    <img 
+                                        src="{{ featured_collection.image.url }}" 
+                                        alt="{{ featured_collection.image_alt_text|default:featured_collection.name }}"
+                                        class="collection-preview-card__image-file"
+                                    >
+                                {% else %}
+                                    <div class="image-placeholder">
+                                        Collection image
+                                    </div>
+                                {% endif %}
                             </div>
 
                             <div class="collection-preview-card__content">
@@ -147,9 +155,17 @@
                     {% for collection in coming_soon_collections %}
                         <article class="collection-preview-card">
                             <div class="collection-preview-card__image">
-                                <div class="image-placeholder">
-                                    Collection image
-                                </div>
+                                {% if collection.image %}
+                                    <img 
+                                        src="{{ collection.image.url }}" 
+                                        alt="{{ collection.image_alt_text|default:collection.name }}"
+                                        class="collection-preview-card__image-file"
+                                    >
+                                {% else %}
+                                    <div class="image-placeholder">
+                                        Collection image
+                                    </div>
+                                {% endif %}
                             </div>
 
                             <div class="collection-preview-card__content">
