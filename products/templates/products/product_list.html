@@ -93,7 +93,7 @@
                     type="button" 
                     class="btn btn-secondary"
                     data-filter-toggle
-                    aria-expanded="false"
+                    aria-expanded="{% if selected_collection %}true{% else %}false{% endif %}"
                     aria-controls="catalogue-filter-panel"
                 >
                     Filter
@@ -112,7 +112,7 @@
             <div 
                 id="catalogue-filter-panel"
                 class="catalogue-filter-panel"
-                hidden
+                {% if not selected_collection %}hidden{% endif %}
                 data-filter-panel
             >
                 <form 
