@@ -46,7 +46,13 @@
 
                 <div class="product-detail__content">
                     <div class="product-detail__meta">
-                        <p class="eyebrow">Print</p>
+                        <nav class="product-detail__breadcrumbs" aria-label="Breadcrumb">
+                            <a href="{% url 'product_list' %}">Shop all</a>
+                            <span aria-hidden="true">></span>
+                            <a href="#">{{ product.collection.city.name }}</a>
+                            <span aria-hidden="true">></span>
+                            <span aria-current="page">{{ product.title }}</span>
+                        </nav>
                         <h1 class="product-detail__title">
                             {{ product.title }}
                         </h1>
@@ -94,20 +100,6 @@
                                     Print ready
                                 </span>                               
                             </div>
-                        </div>
-
-                        <div class="product-detail__field-group">
-                            <label for="product-quantity" class="product-detail__label">
-                                Quantity
-                            </label>
-                            <input 
-                                type="number"
-                                id="product-quantity"
-                                name="quantity"
-                                value="1"
-                                min="1"
-                                class="product-detail__quantity-input"
-                            >
                         </div>
 
                         <div class="product-detail__actions">
