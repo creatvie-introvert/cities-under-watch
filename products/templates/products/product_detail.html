@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block extra_title %} — {{ product.title }}{% endblock %}
+
+{% block content %}
+    <section class="product-detail-section">
+        <div class="container">
+            <div class="product_detail">
+                <div class="product_detail__gallery">
+                    <div class="product_detail__main-image">
+                        {% with primary_image=product.images.all.0 %}
+                            {% if product_image %}
+                                <img 
+                                    src="{{ primary_image.image.url }}" 
+                                    alt="{{ primary_image.alt_text|default:product.title }}"
+                                    class="product_detail__main-image-file"
+                                >
+                            {% else %}
+                                <div class="image-placeholder">
+                                    Main product image
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+
+                    <div class="product_detail__thumbnails">
+                        {% if product.images.all %}
+                            {% for image in product.images.all %}
+                                <button 
+                                    type="button" class="product_detail__thumbnail"
+                                >
+                                    <img 
+                                        src="{{ image.image.url }}" 
+                                        alt=" {{ image.alt_text|default:product.title }}"
+                                        class="product_detail__thumbnail-image"
+                                    >
+                                </button>
+                            {% endfor %}
+                        {% else %}
+                            <div class="image-placeholder">
+                                Thumbnail gallery
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="product_detail__content">
+                    <div class="product-detail__meta">
+                        <p class="eyebrow">Print</p>
+                        <h1 class="product-detail__title">
+                            {{ product.title }}
+                        </h1>
+                        <p class="product-detail__price">
+                            £{{ product.price }}
+                        </p>
+                    </div>
+
+                    <div class="product-detail__review-summary">
+                        <p>★★★★★ <span>4.8 / 5</span></p>
+                    </div>
+
+                    <div class="product-detail__intro">
+                        {% if product.short_description %}
+                            <p>{{ product.short_description }}</p>
+                        {% elif product.description %}
+                            <p>{{ product.description }}</p>
+                        {% endif %}
+                    </div>
+
+                    <form class="product-detail__purchase-form">
+                        <div class="product-detail__field-group">
+                            <label for="product-format" class="product-detail__label">
+                                Format
+                            </label>
+                            <select 
+                                name="format" 
+                                id="product-format"
+                                class="product-detail__select"
+                            >
+                                <option>Digital download</option>
+                            </select>
+                        </div>
+
+                        <div class="product-detail__field-group">
+                            <p class="product-detail__label">Resolution</p>
+                            <div class="product-detail__option-pills">
+                                <span class="product-detail__option-pill">
+                                    High resolution
+                                </span>
+                                <span class="product-detail__option-pill">
+                                    300 DPI
+                                </span>
+                                <span class="product-detail__option-pill">
+                                    Print ready
+                                </span>                               
+                            </div>
+                        </div>
+
+                        <div class="product-detail__field-group">
+                            <label for="product-quantity" class="product-detail__label">
+                                Quantity
+                            </label>
+                            <input 
+                                type="number"
+                                id="product-quantity"
+                                name="quantity"
+                                value="1"
+                                min="1"
+                                class="product-detail__quantity-input"
+                            >
+                        </div>
+
+                        <div class="product-detail__actions">
+                            <button type="button" class="btn btn-secondary">
+                                Add to bag
+                            </button>
+                            <button type="button" class="btn btn-primary">
+                                Buy now
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="product-detail__accordion-group">
+                        <details class="product-detail__accordion-item">
+                            <summary>Details</summary>
+                            <div class="product-detail__accordion-content">
+                                <p>
+                                    This archival poster edition is supplied as a high-resolution digital artwork suitable for personal printing and display.
+                                </p>
+                            </div>
+                        </details>
+
+                        <details class="product-detail__accordion-item">
+                            <summary>Download</summary>
+                            <div class="product-detail__accordion-content">
+                                <p>
+                                    Your download will be available immediately after purchase and can be accessed again through your account.
+                                </p>
+                            </div>
+                        </details>
+
+                        <details class="product-detail__accordion-item">
+                            <summary>License</summary>
+                            <div class="product-detail__accordion-content">
+                                <p>
+                                    For personal use only. Redistribution, resale, or commercial reproduction is not permitted.
+                                </p>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="porduct-context-section">
+        <div class="container">
+            <div class="product-context">
+                <div class="section-heading">
+                    <p class="eyebrow">Context</p>
+                    <h2>The narrative behind the image</h2>
+                    {% if product.context %}
+                        <p>{{ product.context_text }}</p>
+                    {% else %}
+                        <p>
+                            This edition explores, control.surveillance, and monumental power through speculative architectural storytelling.
+                        </p>
+                    {% endif %}
+                </div>
+
+                <div class="product-context__action">
+                    <a href="#" class="btn btn-secondary">
+                        Explore collection
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="related-products-section">
+        <div class="container">
+            <div class="section-heading">
+                <p class="eyebrow">Related prints</p>
+                <h2>Continue the collection</h2>
+                <p>
+                    Explore more editions from the same series.
+                </p>
+            </div>
+
+            {% if related_products %}
+                <div class="prints-grid related-products-grid">
+                    {% for related_product in related_products %}
+                        {% include "products/includes/product_card.html" with product=related_product %}
+                    {% endfor %}
+                </div>
+
+                <div class="related-products-section__actions">
+                    <a href="{% url 'product_list' %}" class="btn btn-secondary">
+                        View all prints
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+    {% include "includes/newsletter_cta.html" %}
+{% endblock %}
