@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block extra_title %} — Collections{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <p class="eyebrow">Collections</p>
+                <h1 class="page-header__title">Cities reimagined</h1>
+                <p class="page-header__text">
+                    Browse city-based collections of speculative poster editions drawn from the world of Cities Under Watch.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="collection-index-section">
+        <div class="container">
+            {% if collections %}
+                <div class="collection-index-grid">
+                    {% for collection in collections %}
+                        <article class="collection-index-card">
+                            <div class="collection-index-card__image">
+                                {% if collection.image %}
+                                    <img 
+                                        src="{{ collection.image.url }}" 
+                                        alt="{{ collection.image_alt_text|default:collection.name }}"
+                                        class="collection-index-card__image-file"
+                                    >
+                                {% else %}
+                                    <div class="image-placeholder">
+                                        Collection image
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="collection-index-card__content">
+                                <div class="collection-index-card__meta">
+                                    <span class="collection-index-card__tag">
+                                        {{ collection.city.name }}
+                                    </span>
+
+                                    <h3 class="collection-index-card__title">
+                                        {{ collection.name }}
+                                    </h3>
+
+                                    {% if collection.short_description %}
+                                        <p class="collection-index-card__text">
+                                            {{ collection.short_description }}
+                                        </p>
+                                    {% elif collection.description %}
+                                        <p class="collection-index-card__text">
+                                            {{ collection.description|truncatewords:24 }}
+                                        </p>
+                                    {% endif %}
+
+                                    <p class="collection-index-card__count">
+                                        {{ collection.product_count }} prints
+                                    </p>
+
+                                    <div class="collection-index-card__actions">
+                                        <a href="#" class="btn btn-secondary">
+                                            Explore collection
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No collections are available yet.</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="collection-promo-section">
+        <div class="container">
+            <div class="product-context">
+                <div class="section-heading">
+                    <p class="eyebrow">Coming next</p>
+                    <h2>More cities are being built in the dark</h2>
+                    <p>
+                        New surveillance worlds are in development and will join the archive soon.
+                    </p>
+                </div>
+
+                <div class="product-context__action">
+                    <a href="{% url 'product_list' %}" class="btn btn-secondary">
+                        Browse all prints
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% include "includes/newsletter_cta.html" %}
+{% endblock %}

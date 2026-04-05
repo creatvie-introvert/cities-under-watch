@@ -93,6 +93,30 @@ def product_list(request):
     return render(request, 'products/product_list.html', context)
 
 
+def collection_list(request):
+    collections = (
+        Collection.objects
+        .filter(
+            release_status=Collection.ReleaseStatus.AVAILABLE,
+            city__is_active=True,
+        )
+        .select_related('city')
+        .annotate(
+            product_count=Count(
+                'products',
+                filter=Q(products__is_active=True)
+            )
+        )
+        .order_by('name')
+    )
+
+    context = {
+        'collections': collections,
+    }
+
+    return render(request, 'products/collection_list.html', context)
+
+
 def product_detail(request, slug):
     product = get_object_or_404(
         Product.objects
