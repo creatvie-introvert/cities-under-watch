@@ -117,6 +117,60 @@ def collection_list(request):
     return render(request, 'products/collection_list.html', context)
 
 
+def collection_detail(request, slug):
+    collection = get_object_or_404(
+        Collection.objects
+        .filter(
+            release_status=Collection.ReleaseStatus.AVAILABLE,
+            city__is_active=True,
+        )
+        .select_related('city')
+        .annotate(
+            product_count=Count(
+                'products',
+                filter=Q(product__is_active=True)
+            )
+        ),
+        slug=slug,
+    )
+
+    collection_products = {
+        Product.objects
+        .filter(
+            is_active=True,
+            collection=collection,
+            collection__city__is_active=True,
+        )
+        .select_related('colection', 'collection__city')
+        .prefetch_related('images')
+        .order_by('title')
+    }
+
+    other_collections = (
+        Collection.objects.filter(
+            release_status=Collection.ReleaseStatus.AVAILABLE,
+            city__is_sctive=True,
+        )
+        .exclude(id=collection.id)
+        .select_related('city')
+        .annotate(
+            product_count=Count(
+                'products',
+                filter=Q(products__is_active=True)
+            )
+        )
+        .order_by('name')[:3]
+    )
+
+    context = {
+        'collection': collection,
+        'collection_products': collection_products,
+        'other_collections': other_collections,
+    }
+
+    return render(request, 'products/collection_detail.html', context)
+
+
 def product_detail(request, slug):
     product = get_object_or_404(
         Product.objects
