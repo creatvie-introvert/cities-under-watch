@@ -1358,7 +1358,15 @@ body {
     box-sizing: border-box;
 }
 
-.product-detail__thumbnail:focus {
+.product-detail__thumbnail.is-active .product-detail__thumbnail-image {
+    border-color: var(--color-accent-primary);
+}
+
+.product-detail__thumbnail.is-active {
+    border-radius: 0.75rem;
+}
+
+.product-detail__thumbnail:focus-visible {
     outline: 2px solid var(--color-accent-primary);
     outline-offset: 2px;
 }

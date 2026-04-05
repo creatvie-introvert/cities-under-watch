@@ -7,41 +7,48 @@
         <div class="container">
             <div class="product-detail">
                 <div class="product-detail__gallery">
-                    <div class="product-detail__main-image">
-                        {% with primary_image=product.images.all.0 %}
+                    {% with primary_image=product.images.all|first %}
+                        <div class="product-detail__main-image">
                             {% if primary_image %}
                                 <img 
                                     src="{{ primary_image.image.url }}" 
                                     alt="{{ primary_image.alt_text|default:product.title }}"
                                     class="product-detail__main-image-file"
+                                    id="product-main-image"
+                                    data-product-main-image
                                 >
                             {% else %}
                                 <div class="image-placeholder">
                                     Main product image
                                 </div>
                             {% endif %}
-                        {% endwith %}
-                    </div>
+                        </div>
 
-                    <div class="product-detail__thumbnails">
-                        {% if product.images.all %}
-                            {% for image in product.images.all %}
-                                <button 
-                                    type="button" class="product-detail__thumbnail"
-                                >
-                                    <img 
-                                        src="{{ image.image.url }}" 
-                                        alt="{{ image.alt_text|default:product.title }}"
-                                        class="product-detail__thumbnail-image"
+                        <div class="product-detail__thumbnails">
+                            {% if product.images.all %}
+                                {% for image in product.images.all %}
+                                    <button 
+                                        type="button" class="product-detail__thumbnail{% if forloop.first %} is-active{% endif %}"
+                                        data-product-thumbnail
+                                        data-image-src="{{ image.image.url }}"
+                                        data-image-alt="{{ image.alt_text|default:product.title }}"
+                                        aria-label="Show image {{ forloop.counter }} of {{ product.title }}"
+                                        aria-pressed="{% if forloop.first %}true{% else %}false{% endif %}"
                                     >
-                                </button>
-                            {% endfor %}
-                        {% else %}
-                            <div class="image-placeholder">
-                                Thumbnail gallery
-                            </div>
-                        {% endif %}
-                    </div>
+                                        <img 
+                                            src="{{ image.image.url }}" 
+                                            alt="{{ image.alt_text|default:product.title }}"
+                                            class="product-detail__thumbnail-image"
+                                        >
+                                    </button>
+                                {% endfor %}
+                            {% else %}
+                                <div class="image-placeholder">
+                                    Thumbnail gallery
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endwith %}
                 </div>
 
                 <div class="product-detail__content">

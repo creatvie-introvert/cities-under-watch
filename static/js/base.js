@@ -97,7 +97,39 @@ function initCatalogueAutoFilterSubmit() {
     });
 }
 
+function initProductGallery() {
+    const mainImage = document.querySelector("[data-product-main-image]");
+    const thumbnailButtons = document.querySelectorAll("[data-product-thumbnail]");
+
+    if (!mainImage || !thumbnailButtons.length) {
+        return;
+    }
+
+    thumbnailButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const newImageSrc = button.getAttribute("data-image-alt");
+            const newImageAlt = button.getAttribute("data-image-alt");
+
+            if (!newImageSrc) {
+                return;
+            }
+
+            mainImage.src = newImageSrc;
+            mainImage.alt = newImageAlt || "";
+
+            thumbnailButtons.forEach((thumbnailButton) => {
+                thumbnailButton.classList.remove("is-active");
+                thumbnailButton.setAttribute("aria-pressed", "false");
+            });
+
+            button.classList.add("is-active");
+            button.setAttribute("aria-pressed", "true");
+        });
+    });
+}
+
 initAnnouncementBanner();
 initMobileMenu();
 initCatalogueFilterToggle();
 initCatalogueAutoFilterSubmit();
+initProductGallery();
