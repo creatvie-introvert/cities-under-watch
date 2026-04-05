@@ -1,5 +1,5 @@
 <article class="product-card">
-    <a href="#" class="product-card__image-link">
+    <a href="{% url 'product_detail' product.slug %}" class="product-card__image-link">
         {% with primary_image=product.images.all|first %}
             {% if primary_image %}
                 <img 
@@ -15,7 +15,9 @@
     </a>
 
     <h3 class="product-card__title">
-        <a href="#">{{ product.title }}</a>
+        <a href="{% url 'product_detail' product.slug %}">
+            {{ product.title }}
+        </a>
     </h3>
 
     {% if product.short_description %}
@@ -28,7 +30,7 @@
         £{{ product.price }}
     </p>
 
-    <a href="#" class="product-card__action">
+    <a href="{% url 'product_detail' product.slug %}" class="product-card__action">
         View print
     </a>
 </article>
