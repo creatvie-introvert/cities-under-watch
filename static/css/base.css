@@ -1555,6 +1555,42 @@ body {
 }
 
 /* =========================
+   Product Context Section
+========================= */
+
+.product-context-section {
+    padding: var(--space-8) 0;
+}
+
+.product-context {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+    text-align: center;
+}
+
+.product-cntext .section-heading {
+    max-width: 20rem;
+    margin-inline: auto;
+}
+
+.product-context .section-heading > p:last-of-type {
+    max-width: 19rem;
+    font-size: 1rem;
+    line-height: 1.625rem;
+}
+
+.product-context__action {
+    display: flex;
+    justify-content: center;
+}
+
+.product-context__action .btn {
+    min-width: 10rem;
+}
+
+/* =========================
    Hover States
 ========================= */
 
@@ -1841,6 +1877,18 @@ body {
 
     .product-detail__actions .btn {
         flex: 1;
+    }
+
+    .product-context-section {
+        padding: var(--space-10) 0;
+    }
+
+    .product-context .section-heading {
+        max-width: 32rem;
+    }
+
+    .product-context .section-heading > p:last-of-type {
+        max-width: 30rem;
     }
 }
 
@@ -2364,5 +2412,21 @@ body {
         font-size: 0.75rem;
         line-height: 1.25rem;
         max-width: 26rem;
+    }
+
+    .product-context-section {
+        padding: var(--space-12) 0;
+    }
+
+    .product-context {
+        gap: var(--space-8);
+    }
+
+    .product-context .section-heading {
+        max-width: 40rem;
+    }
+
+    .product-context .section-heading > p:last-of-type {
+        max-width: 36rem;
     }
 }
