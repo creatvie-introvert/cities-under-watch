@@ -40,30 +40,30 @@
                                     <span class="collection-index-card__tag">
                                         {{ collection.city.name }}
                                     </span>
+                                </div>
 
-                                    <h3 class="collection-index-card__title">
-                                        {{ collection.name }}
-                                    </h3>
+                                <h3 class="collection-index-card__title">
+                                    {{ collection.name }}
+                                </h3>
 
-                                    {% if collection.short_description %}
-                                        <p class="collection-index-card__text">
-                                            {{ collection.short_description }}
-                                        </p>
-                                    {% elif collection.description %}
-                                        <p class="collection-index-card__text">
-                                            {{ collection.description|truncatewords:24 }}
-                                        </p>
-                                    {% endif %}
-
-                                    <p class="collection-index-card__count">
-                                        {{ collection.product_count }} prints
+                                {% if collection.short_description %}
+                                    <p class="collection-index-card__text">
+                                        {{ collection.short_description }}
                                     </p>
+                                {% elif collection.description %}
+                                    <p class="collection-index-card__text">
+                                        {{ collection.description|truncatewords:24 }}
+                                    </p>
+                                {% endif %}
 
-                                    <div class="collection-index-card__actions">
-                                        <a href="#" class="btn btn-secondary">
-                                            Explore collection
-                                        </a>
-                                    </div>
+                                <p class="collection-index-card__count">
+                                    {{ collection.product_count }} prints
+                                </p>
+
+                                <div class="collection-index-card__actions">
+                                    <a href="#" class="btn btn-secondary">
+                                        Explore collection
+                                    </a>
                                 </div>
                             </div>
                         </article>
@@ -77,19 +77,25 @@
 
     <section class="collection-promo-section">
         <div class="container">
-            <div class="product-context">
-                <div class="section-heading">
-                    <p class="eyebrow">Coming next</p>
+            <div class="collection-promo">
+                <div class="collection-promo-content">
+                    <p class="eyebrow">Unreleased</p>
                     <h2>More cities are being built in the dark</h2>
                     <p>
-                        New surveillance worlds are in development and will join the archive soon.
+                        The catalogue expands. Each new city arrives as a complete vision of urban control, architectural domination, and the quiet spaces where resistance persists. Stay informed as we unveil the next metropolis.
                     </p>
+
+                    <div class="collection-promo__actions">
+                        <a href="#" class="btn btn-secondary">
+                            Notify me
+                        </a>
+                    </div>
                 </div>
 
-                <div class="product-context__action">
-                    <a href="{% url 'product_list' %}" class="btn btn-secondary">
-                        Browse all prints
-                    </a>
+                <div class="collection-promo__media">
+                    <div class="image-placeholder">
+                        Promo image
+                    </div>
                 </div>
             </div>
         </div>
