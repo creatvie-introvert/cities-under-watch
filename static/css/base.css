@@ -1873,6 +1873,65 @@ body {
 }
 
 /* =========================
+   Collection Story Section
+========================= */
+
+.collection-story-section {
+    padding: var(--space-8) 0;
+}
+
+.collection-story {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    text-align: left;
+}
+
+.collection-story__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+    text-align: left;
+}
+
+.collection-story__title {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+}
+
+.collection-story__text {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.625rem;
+}
+
+.collection-story__media {
+    width: 100%;
+}
+
+.collection-story__media .image-placeholder,
+.collection-story__image,
+.collection-story__video {
+    display: flex;
+    width: 100%;
+    min-height: 14rem;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.75rem;
+    box-sizing: border-box;
+    object-fit: cover;
+    background-color: var(--color-surface-1);
+}
+
+.collection-story__video {
+    aspect-ratio: 16 / 9;
+}
+
+/* =========================
    Hover States
 ========================= */
 
@@ -2222,6 +2281,20 @@ body {
     .collection-hero__image,
     .collection-hero__media .image-placeholder {
         min-height: 20rem;
+    }
+
+    .collection-story-section {
+        padding: var(--space-10) 0;
+    }
+
+    .collection-story {
+        gap: var(--space-8);
+    }
+
+    .collection-story__media .image-placeholder,
+    .collection-story__image,
+    .collection-story__video {
+        min-height: 18rem;
     }
 }
 
@@ -2894,5 +2967,36 @@ body {
     .collection-hero__image,
     .collection-hero__media .image-placeholder {
         min-height: 22rem;
+    }
+
+    .collection-story-section {
+        padding: var(--space-12) 0;
+    }
+
+    .collection-story {
+        gap: var(--space-8);
+        align-items: center;
+    }
+
+    .collection-story__content {
+        align-items: center;
+        text-align: center;
+        max-width: 44rem;
+        margin-inline: auto;
+    }
+
+    .collection-story__text {
+        max-width: 40rem;
+    }
+
+    .collection-story_media {
+        max-width: 100%;
+    }
+
+    .collection-story__media .image-placeholder,
+    .collection-story__image,
+    .collection-story__video {
+        min-height: 28rem;
+        max-width: 100%;
     }
 }
