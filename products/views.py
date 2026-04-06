@@ -128,28 +128,41 @@ def collection_detail(request, slug):
         .annotate(
             product_count=Count(
                 'products',
-                filter=Q(product__is_active=True)
+                filter=Q(products__is_active=True)
             )
         ),
         slug=slug,
     )
 
-    collection_products = {
+    collection_products = (
         Product.objects
         .filter(
             is_active=True,
             collection=collection,
             collection__city__is_active=True,
         )
-        .select_related('colection', 'collection__city')
+        .select_related('collection', 'collection__city')
         .prefetch_related('images')
         .order_by('title')
-    }
+    )
+
+    collection_products = (
+        Product.objects
+        .filter(
+            is_active=True,
+            collection=collection,
+            collection__city__is_active=True,
+        )
+        .select_related('collection', 'collection__city')
+        .prefetch_related('images')
+        .order_by('title')
+    )
 
     other_collections = (
-        Collection.objects.filter(
+        Collection.objects
+        .filter(
             release_status=Collection.ReleaseStatus.AVAILABLE,
-            city__is_sctive=True,
+            city__is_active=True,
         )
         .exclude(id=collection.id)
         .select_related('city')

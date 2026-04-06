@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+
+{% block extra_title %} — {{ collection.name }}{% endblock %}
+
+{% block content %}
+    <section class="collection-hero-section">
+        <div class="container">
+            <div class="collection-hero">
+                <div class="collection-hero__content">
+                    <nav class="collection-hero__breadcrumbs" aria-label="Breadcrumb">
+                        <a href="{% url 'collection_list' %}">Collections</a>
+                        <span aria-hidden="true">></span>
+                        <span aria-current="page">{{ collection.name }}</span>
+                    </nav>
+
+                    <p class="eyebrow">{{ collection.city.name }}</p>
+
+                    <h1 class="collection-hero__title">
+                        {{ collection.name }}
+                    </h1>
+
+                    {% if collection.short_description %}
+                        <p class="collection-hero__intro">
+                            {{ collection.short_description }}
+                        </p>
+                    {% elif collection.description %}
+                        <p class="collection-hero__intro">
+                            {{ collection.description|truncatewords:28 }}
+                        </p>
+                    {% endif %}
+
+                    <div class="collection-hero__actions">
+                        <a href="#collection-prints" class="btn btn-secondary">
+                            Browse prints
+                        </a>
+                    </div>
+                </div>
+
+                <div class="collection-hero__media">
+                    {% if collection.image %}
+                        <img 
+                            src="{{ collection.image.url }}" 
+                            alt="{{ collection.image_alt_text|default:collection.name }}"
+                            class="collection-hero__image"
+                        >
+                    {% else %}
+                        <div class="image-placeholder">
+                            Collection image
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="collection-story-section">
+        <div class="container">
+            <div class="collection-story">
+                <div class="collection-story__content">
+                    <h2 class="collection-story__title">
+                        A city remade
+                    </h2>
+                    <p class="collection-story__text">
+                        London Under Watch imagines the city as a controlled metropolis of surveillance, propaganda, and resistance. Towers rise over transit systems, public screens dictate behaviour, and hidden acts of defiance survive in the gaps between authority.
+                    </p>
+                    <p class="collection-story__text">
+                        Each print captures a different fragment of that world — a district, a structure, a warning, or a moment of quiet rebellion. Together, they form a portrait of a city reshaped by control.
+                    </p>
+                </div>
+
+                <div class="collection-story__media">
+                    <div class="image-placeholder">
+                        Story media placeholder
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="collection-prints" class="collection-prints-section">
+        <div class="container">
+            <div class="section-heading">
+                <p class="eyebrow">Prints</p>
+                <h2>Explore the collection</h2>
+                <p>
+                    Browse the full London Under Watch series and choose the print that captures your corner of the city.
+                </p>
+            </div>
+
+            {% if collection_products %}
+                <div class="prints-grid collection-prints-grid">
+                    {% for product in collection_products %}
+                        {% include "products/includes/product_card.html" %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p>No prints are available for this collection yet.</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="collection-narrative-section">
+        <div class="container">
+            <div class="section-heading">
+                <p class="eyebrow">Narrative</p>
+                <h2>How a city becomes a system</h2>
+                <p>
+                    Each collection is built from recurring signs of control.
+                </p>
+            </div>
+
+            <div class="collection-narrative">
+                <details class="collection-narrative__item" open>
+                    <summary>01 — Surveillance becomes architecture</summary>
+                    <div class="collection-narrative__content">
+                        Placeholder content for the first narrative point.
+                    </div>
+                </details>
+
+                <details class="collection-narrative__item" open>
+                    <summary>02 — Order become spectacle</summary>
+                    <div class="collection-narrative__content">
+                        Placeholder content for the second narrative point.
+                    </div>
+                </details>
+
+                <details class="collection-narrative__item" open>
+                    <summary>02 — Resistance leave traces</summary>
+                    <div class="collection-narrative__content">
+                        Placeholder content for the third narrative point.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+    
+    {% if other_collection %}
+    <section class="additional-collections-section">
+        <div class="container">
+            <div class="section-heading">
+                <p class="eyebrow">Elsewhere</p>
+                <h2>Other cities under watch</h2>
+                <p>The collection expands across the globe</p>
+            </div>
+
+            <div class="collection-index-grid">
+                {% for ccollection in other_collections %}
+                    <article class="collection-index-card">
+                        <div class="collection-index-card__image">
+                            {% if collection.image %}
+                                <img 
+                                    src="{{ collection.image.url }}" 
+                                    alt="{{ collection.image_alt_text|default:collection.name }}"
+                                    class="collection-index-card__image-file"
+                                >
+                            {% else %}
+                                <div class="image-placeholder">
+                                    Collection image
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="collection-index-card__content">
+                            <div class="collection-index-card__meta">
+                                <span class="collection-index-card__tag">
+                                    {{ collection.city.name }}
+                                </span>
+                            </div>
+
+                            <h3 class="collection-index-card__title">
+                                {{ collection.name }}
+                            </h3>
+
+                            {% if collection.short_description %}
+                                <p class="collection-index-card__text">
+                                    {{ collection.short_description }}
+                                </p>
+                            {% elif collection.description %}
+                                <p class="collection-index-card__text">
+                                    {{ collection.description|truncatewords:24 }}
+                                </p>
+                            {% endif %}
+
+                            <p class="collection-index-card__count">
+                                {{ collection.product_count }} prints
+                            </p>
+
+                            <div class="collection-index-card__actions">
+                                <a 
+                                    href="{% url 'collection_detail' collection.slug %}" 
+                                    class="btn btn-secondary"
+                                >
+                                    Explore collection
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    {% include "includes/newsletter_cta.html" %}
+{% endblock %}
