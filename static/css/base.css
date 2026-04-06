@@ -1932,6 +1932,39 @@ body {
 }
 
 /* =========================
+   Collection Prints Section
+========================= */
+
+.collection-prints-section {
+    padding: var(--space-8) 0;
+}
+
+.collection-prints-section .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.collection-prints-section .section-heading {
+    gap: var(--space-2);
+    margin-inline: auto;
+}
+
+.collection-prints-section .section-heading h2 {
+    margin: 0;
+}
+
+.collection-prints-section .section-heading > p:last-of-type {
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    max-width: 19rem;
+}
+
+.collection-prints-grid {
+    gap: var(--space-6) var(--space-4);
+}
+
+/* =========================
    Hover States
 ========================= */
 
@@ -2295,6 +2328,22 @@ body {
     .collection-story__image,
     .collection-story__video {
         min-height: 18rem;
+    }
+
+    .collection-prints-section {
+        padding: var(--space-10) 0; 
+    }
+
+    .collection-prints-section .container {
+        gap: var(--space-8);
+    }
+
+    .collection-prints-section .section-heading {
+        max-width: 24rem;
+    }
+
+    .collection-prints-section .section-heading > p:last-of-type {
+        max-width: 22rem;
     }
 }
 
@@ -2998,5 +3047,28 @@ body {
     .collection-story__video {
         min-height: 28rem;
         max-width: 100%;
+    }
+
+    .collection-prints-section {
+        padding: var(--space-12) 0;
+    }
+
+    .collection-prints-section .container {
+        gap: var(--space-10);
+    }
+
+    .collection-prints-section .section-heading {
+        gap: var(--space-3);
+        max-width: 30rem;
+    }
+
+    .collection-prints-section .section-heading > p:last-of-type {
+        max-width: 28rem;
+        font-size: 1rem;
+        line-height: 1.625rem;
+    }
+
+    .collection-prints-grid {
+        gap: var(--space-6);
     }
 }
