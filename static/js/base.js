@@ -107,7 +107,7 @@ function initProductGallery() {
 
     thumbnailButtons.forEach((button) => {
         button.addEventListener("click", () => {
-            const newImageSrc = button.getAttribute("data-image-alt");
+            const newImageSrc = button.getAttribute("data-image-src");
             const newImageAlt = button.getAttribute("data-image-alt");
 
             if (!newImageSrc) {
@@ -128,8 +128,60 @@ function initProductGallery() {
     });
 }
 
+function initCollectionNarrative() {
+    const narrative = document.querySelector("[data-collection-narrative]");
+    const panels = document.querySelectorAll("[data-narrative-panel]");
+    const triggers = document.querySelectorAll("[data-narrative-trigger]")
+
+    if (!narrative || !panels.length || !triggers.length) {
+        return;
+    }
+
+    function setActivePanel(activePanel) {
+        panels.forEach((panel) => {
+            const trigger = panel.querySelector("[data-narrative-trigger]");
+
+            panel.classList.remove("collection-narrative__panel--active");
+            panel.classList.add("collection-narrative__panel--collapsed");
+
+            if (trigger) {
+                trigger.setAttribute("aria-expanded", "false");
+            }
+        });
+
+        const activeTrigger = activePanel.querySelector("[data-narrative-trigger]");
+        const activeIndex = Array.from(panels).indexOf(activePanel) + 1;
+
+        activePanel.classList.remove("collection-narrative__panel--collapsed");
+        activePanel.classList.add("collection-narrative__panel--active");
+
+        narrative.setAttribute("data-active-panel", String(activeIndex));
+
+        if (activeTrigger) {
+            activeTrigger.setAttribute("aria-expanded", "true");
+        }
+    }
+
+    const initialActivePanel = narrative.querySelector(".collection-narrative__panel--active") || panels[0];
+
+    setActivePanel(initialActivePanel);
+
+    triggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+            const panel = trigger.closest("[data-narrative-panel]");
+
+            if (!panel) {
+                return;
+            }
+
+            setActivePanel(panel);
+        });
+    });
+}
+
 initAnnouncementBanner();
 initMobileMenu();
 initCatalogueFilterToggle();
 initCatalogueAutoFilterSubmit();
 initProductGallery();
+initCollectionNarrative();

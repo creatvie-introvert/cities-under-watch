@@ -101,8 +101,8 @@
             {% endif %}
         </div>
     </section>
-
-    <div class="collection-narrative-section">
+    
+    <section class="collection-narrative-section">
         <div class="container">
             <div class="section-heading">
                 <p class="eyebrow">The structure</p>
@@ -110,14 +110,28 @@
                 <p>Each collection is built from recurring signs of control.</p>
             </div>
 
-            <div class="collection-narrative">
-                <article class="collection-narrative__panel collection-narrative__panel--active">
+            <div class="collection-narrative" data-collection-narrative>
+                <article
+                    class="collection-narrative__panel collection-narrative__panel--active"
+                    data-narrative-panel
+                >
+                    <button
+                        type="button"
+                        class="collection-narrative__trigger"
+                        data-narrative-trigger
+                        aria-expanded="true"
+                    >
+                        <span class="visually-hidden">
+                            Open narrative panel 01
+                        </span>
+                    </button>
+
                     <div class="collection-narrative__number">
                         01
                     </div>
 
                     <div class="collection-narrative__body">
-                        <h3 class="collection-narrative__tile">
+                        <h3 class="collection-narrative__title">
                             Surveillance becomes architecture
                         </h3>
 
@@ -137,13 +151,27 @@
                     </div>
                 </article>
 
-                <article class="collection-narrative__panel collection-narrative__panel--active">
+                <article
+                    class="collection-narrative__panel collection-narrative__panel--collapsed"
+                    data-narrative-panel
+                >
+                    <button
+                        type="button"
+                        class="collection-narrative__trigger"
+                        data-narrative-trigger
+                        aria-expanded="false"
+                    >
+                        <span class="visually-hidden">
+                            Open narrative panel 02
+                        </span>
+                    </button>
+
                     <div class="collection-narrative__number">
                         02
                     </div>
 
                     <div class="collection-narrative__body">
-                        <h3 class="collection-narrative__tile">
+                        <h3 class="collection-narrative__title">
                             Order becomes spectacle
                         </h3>
 
@@ -163,13 +191,27 @@
                     </div>
                 </article>
 
-                <article class="collection-narrative__panel collection-narrative__panel--active">
+                <article
+                    class="collection-narrative__panel collection-narrative__panel--collapsed"
+                    data-narrative-panel
+                >
+                    <button
+                        type="button"
+                        class="collection-narrative__trigger"
+                        data-narrative-trigger
+                        aria-expanded="false"
+                    >
+                        <span class="visually-hidden">
+                            Open narrative panel 03
+                        </span>
+                    </button>
+
                     <div class="collection-narrative__number">
                         03
                     </div>
 
                     <div class="collection-narrative__body">
-                        <h3 class="collection-narrative__tile">
+                        <h3 class="collection-narrative__title">
                             Restricted transit
                         </h3>
 
@@ -189,13 +231,27 @@
                     </div>
                 </article>
 
-                <article class="collection-narrative__panel collection-narrative__panel--active">
+                <article
+                    class="collection-narrative__panel collection-narrative__panel--collapsed"
+                    data-narrative-panel
+                >
+                    <button
+                        type="button"
+                        class="collection-narrative__trigger"
+                        data-narrative-trigger
+                        aria-expanded="false"
+                    >
+                        <span class="visually-hidden">
+                            Open narrative panel 04
+                        </span>
+                    </button>
+
                     <div class="collection-narrative__number">
                         04
                     </div>
 
                     <div class="collection-narrative__body">
-                        <h3 class="collection-narrative__tile">
+                        <h3 class="collection-narrative__title">
                             Resistance leaves traces
                         </h3>
 
@@ -216,8 +272,8 @@
                 </article>
             </div>
         </div>
-    </div>
-    
+    </section>
+
     {% if other_collection %}
     <section class="additional-collections-section">
         <div class="container">
