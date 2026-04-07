@@ -60,6 +60,31 @@ class Collection(models.Model):
         return self.name
 
 
+class CollectionNarrativePanel(models.Model):
+    collection = models.ForeignKey(
+        Collection,
+        on_delete=models.CASCADE,
+        related_name="narrative_panels"
+    )
+    panel_number = models.PositiveSmallIntegerField()
+    title = models.CharField(max_length=255)
+    text = models.TextField()
+    label = models.CharField(max_length=100)
+    image = models.ImageField(
+        upload_to="collection_narratives",
+        blank=True,
+        null=True
+    )
+    image_alt = models.CharField(max_length=255, blank=True)
+
+    class Meta:
+        ordering = ['panel_number']
+        unique_together = ['collection', 'panel_number']
+    
+    def __str__(self):
+        return f'{self.collection.title} - Panel {self.panel_number}'
+
+
 class Product(models.Model):
     collection = models.ForeignKey(
         Collection,
