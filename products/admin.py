@@ -1,5 +1,19 @@
 from django.contrib import admin
-from .models import City, Collection, Product, ProductImage
+from .models import City, Collection, CollectionNarrativePanel, Product, ProductImage
+
+
+class CollectionNarrativePanelInline(admin.TabularInline):
+    model = CollectionNarrativePanel
+    extra = 4
+    fields = (
+        'panel_number',
+        'title',
+        'text',
+        'label',
+        'image',
+        'image_alt',
+    )
+    ordering = ('panel_number',)
 
 
 @admin.register(City)
@@ -23,6 +37,15 @@ class CollectionAdmin(admin.ModelAdmin):
     list_filter = ('release_status', 'is_featured', 'city',)
     search_fields = ('name', 'slug', 'city_name')
     prepopulated_fields = {'slug': ('name',)}
+    inlines = [CollectionNarrativePanelInline]
+
+
+@admin.register(CollectionNarrativePanel)
+class CollectionNarrativePanelAdmin(admin.ModelAdmin):
+    list_display = ('collection', 'panel_number', 'title', 'label')
+    list_filter = ('collection',)
+    search_fields = ('collection__name', 'title', 'label')
+    ordering = ('collection', 'panel_number')
 
 
 class ProductImageInline(admin.TabularInline):

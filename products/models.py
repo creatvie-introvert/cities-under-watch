@@ -82,7 +82,7 @@ class CollectionNarrativePanel(models.Model):
         unique_together = ['collection', 'panel_number']
     
     def __str__(self):
-        return f'{self.collection.title} - Panel {self.panel_number}'
+        return f'{self.collection.name} - Panel {self.panel_number}'
 
 
 class Product(models.Model):
