@@ -197,7 +197,7 @@
                     <p>
                         Browse complete series organised by city. Each collection tells a unified story of architectural control and resistance.
                     </p>
-                    <a href="#" class="btn btn-secondary">View all</a>
+                    <a href="{% url 'collection_list' %}" class="btn btn-secondary">View all</a>
                 </div>
 
                 <div class="collection-showcase__list">
@@ -239,7 +239,9 @@
                                     </p>
                                 {% endif %}
 
-                                <a href="#" class="collection-preview-card__link">
+                                <a 
+                                    href="{% url 'collection_detail' featured_collection.slug %}" class="collection-preview-card__link"
+                                >
                                     Explore
                                 </a>
                             </div>

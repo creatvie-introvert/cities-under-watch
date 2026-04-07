@@ -166,7 +166,7 @@
         </div>
     </section>
 
-    {% if other_collection %}
+    {% if other_collections %}
     <section class="additional-collections-section">
         <div class="container">
             <div class="section-heading">
@@ -176,7 +176,7 @@
             </div>
 
             <div class="collection-index-grid">
-                {% for ccollection in other_collections %}
+                {% for collection in other_collections %}
                     <article class="collection-index-card">
                         <div class="collection-index-card__image">
                             {% if collection.image %}
