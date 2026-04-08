@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+from products.models import Product
 
 
 def view_bag(request):
@@ -17,8 +18,8 @@ def add_to_bag(request, item_id):
         messages.info(request, f'"{product.title}" is already in your bag.')
     else:
         bag[str(item_id)] = 1
-        messages.success(request, f'Added "{product.title}" to your bag.' )
-    
+        messages.success(request, f'Added "{product.title}" to your bag.')
+
     request.session['bag'] = bag
 
     return redirect(redirect_url)
