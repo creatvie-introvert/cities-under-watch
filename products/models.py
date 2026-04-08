@@ -80,7 +80,7 @@ class CollectionNarrativePanel(models.Model):
     class Meta:
         ordering = ['panel_number']
         unique_together = ['collection', 'panel_number']
-    
+
     def __str__(self):
         return f'{self.collection.name} - Panel {self.panel_number}'
 

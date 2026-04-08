@@ -548,7 +548,8 @@ body {
 .process-section,
 .quality-section,
 .coming-soon-section,
-.newsletter-section {
+.newsletter-section,
+.bag-section {
     padding: 4rem 0;
 }
 
@@ -2131,6 +2132,189 @@ body {
 }
 
 /* =========================
+   Bag Section
+========================= */
+
+.bag-section .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.bag-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.bag-items {
+    display: flex;
+    flex-direction: colum;
+    gap: var(--space-6);
+}
+
+.bag-items .section-heading {
+    max-width: 20rem;
+    margin-inline: auto;
+}
+
+.bag-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface-2);
+}
+
+.bag-item__media {
+    width: 100%;
+}
+
+.bag-item__image,
+.bag-item__media .image-placeholder {
+    display: block;
+    width: 100%;
+    min-height: 12rem;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.75rem;
+    box-sizing: border-box;
+}
+
+.bag-item__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    text-align: left;
+}
+
+.bag-item__eyebrow {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+}
+
+.bag-item__title {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.bag-item__meta {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 500;
+}
+
+.bag-item__description {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+}
+
+.bag-item__details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: 0;
+    padding-left: 1rem;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+}
+
+.bag-item__price {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+}
+
+.bag-summary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.bag-summary .section-heading {
+    max-width: 20rem;
+    margin-inline: auto;
+}
+
+.bag-summary__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: var(--space-5);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface-2);
+}
+
+.bag-summary__label {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.bag-summary__amount {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.bag-summary__notes {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: 0;
+    padding-left: 1rem;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+}
+
+.bag-summary__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.bag-summary__actions .btn {
+    width: 100%;
+}
+
+.bag-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+    text-align: center;
+}
+
+.bag-empty .section-heading {
+    max-width: 24rem;
+    margin-inline: auto;
+}
+
+/* =========================
    Hover States
 ========================= */
 
@@ -2552,6 +2736,48 @@ body {
 
     .additional-collections-section .section-heading > p:last-of-type {
         max-width: 22rem;
+    }
+
+    .bag-section .container {
+        gap: var(--space-10);
+    }
+
+    .bag-layout {
+        gap: var(--space-10);
+    }
+
+    .bag-items .section-heading,
+    .bag-summary .section-heading {
+        max-width: 24rem;
+    }
+
+    .bag-item {
+        padding: var(--space-5);
+    }
+
+    .bag-item__image,
+    .bag-item__media .image-placeholder {
+        min-height: 14rem;
+    }
+
+    .bag-summary__card {
+        padding: var(--space-4);
+        max-width: 34rem;
+        margin-inline: auto;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .bag-summary__actions {
+        flex-direction: row;
+    }
+
+    .bag-summary__actions .btn {
+        flex: 1;
+    }
+
+    .bag-empty .section-heading {
+        max-width: 28rem;
     }
 }
 
@@ -3510,5 +3736,87 @@ body {
         max-width: 28rem;
         font-size: 1rem;
         line-height: 1.625rem;
+    }
+
+    .bag-section {
+        padding: var(--space-12) 0;
+    }
+
+    .bag-section .container {
+        gap: var(--space-12);
+    }
+
+    .bag-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+        gap: var(--space-12);
+        align-items: start;
+    }
+
+    .bag-items {
+        gap: var(--space-8);
+    }
+
+    .bag-items .section-heading {
+        max-width: 28rem;
+    }
+
+    .bag-item {
+        display: grid;
+        grid-template-columns: 14rem minmax(0, 1fr);
+        gap: var(--space-6);
+        align-items: start;
+        padding: var(--space-6);
+    }
+
+    .bag-item__image,
+    .bag-item__media .image-placeholder {
+        min-height: 12rem;
+        height: 100%;
+    }
+
+    .bag-item__content {
+        gap: var(--space-2);
+    }
+
+    .bag-item__title {
+        font-size: 1.75rem;
+        line-height: 2.25rem;
+    }
+
+    .bag-item__description {
+        max-width: 30rem;
+    }
+
+    .bag-summary {
+        position: sticky;
+        top: var(--space-8);
+        gap: var(--space-5);
+    }
+
+    .bag-summary .section-heading {
+        max-width: 22rem;
+    }
+
+    .bag-summary__card {
+        max-width: none;
+        margin-inline: 0;
+    }
+
+    .bag-summary__amount {
+        font-size: 2.5rem;
+        line-height: 3rem;
+    }
+
+    .bag-summary__actions {
+        flex-direction: column;
+    }
+
+    .bag-summary__actions .btn {
+        width: 100%;
+    }
+
+    .bag-empty .section-heading {
+        max-width: 32rem;
     }
 }
