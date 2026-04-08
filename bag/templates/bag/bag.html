@@ -12,7 +12,7 @@
                     Review your selections and proceed to secure checkout
                 </p>
 
-                <div class="page-header-actions">
+                <div class="page-header__actions">
                     <a href="#bag-items" class="btn btn-primary">Checkout</a>
                     <a href="{% url 'product_list' %}" class="btn btn-secondary">
                         Continue shopping
@@ -22,101 +22,106 @@
         </div>
     </section>
 
-    <section class="bag-section" id="#bag-items">
+    <section class="bag-section" id="bag-items">
         <div class="container">
             {% if bag_items %}
                 <div class="bag-layout">
-                    <div class="section-heading">
-                        <p class="eyebrow">Items</p>
-                        <h2>Your selections</h2>
+                    <div class="bag-items">
+                        <div class="section-heading">
+                            <p class="eyebrow">Items</p>
+                            <h2>Your selections</h2>
+                        </div>
+
+                        {% for item in bag_items %}
+                            <article class="bag-item">
+                                <div class="bag-item__media">
+                                    {% with primary_image=item.product.images.first %}
+                                        {% if primary_image %}
+                                            <img 
+                                                src="{{ primary_image.image.url }}" 
+                                                alt="{{ primary_image.alt_text|default:item.product.title}}"
+                                                class="bag-item__image"
+                                            >
+                                        {% else %}
+                                            <div class="image_placeholder">
+                                                Item image
+                                            </div>
+                                        {% endif %}
+                                    {% endwith %}
+                                </div>
+
+                                <div class="bag-item__content">
+                                    <p class="eyebrow">
+                                        High-resolution digital artwork ready for download after purchase.
+                                    </p>
+
+                                    <h2 class="bag-item__title">
+                                        {{ item.product.title}}
+                                    </h2>
+
+                                    {% if item.product.collection %}
+                                        <p class="bag-item__meta">
+                                            {{ item.product.collection.name }}
+                                        </p>
+                                    {% endif %}
+
+                                    {% if item.product.short_description %}
+                                        <p class="bag-item__description">
+                                            {{ item.product.short_description }}
+                                        </p>
+                                    {% elif item.product.description %}
+                                        <p class="bag-item__description">
+                                            {{ item.product.description|truncatewords:20 }}
+                                        </p>
+                                    {% endif %}
+
+                                    <ul class="bag-item__details">
+                                        <li>Digital download</li>
+                                        <li>One copy per purchase</li>
+                                        <li>No shipping required</li>
+                                    </ul>
+
+                                    <p class="bag-item__price">
+                                        £{{ item.product.price }}
+                                    </p>
+                                </div>
+                            </article>
+                        {% endfor %}
                     </div>
 
-                    {% for item in bag_items %}
-                        <article class="bag-item">
-                            <div class="bag-item__media">
-                                {% with primary_image=item.product.images.first %}
-                                    {% if primary_image %}
-                                        <img 
-                                            src="{{ primary_image.image.url }}" 
-                                            alt="{{ primary_image.alt_text|default:item.product.title}}"
-                                            class="bag-item__image"
-                                        >
-                                    {% else %}
-                                        <div class="image_placeholder">
-                                            Item image
-                                        </div>
-                                    {% endif %}
-                                {% endwith %}
+                    <aside class="bag-summary">
+                        <div class="section-heading">
+                            <p class="eyebrow">Summary</p>
+                            <h2>Order total</h2>
+                            <p>Review the cost of your digital files before payment.</p>
+                        </div>
+
+                        <div class="bag-summary__card">
+                            <p class="bag-summary__label">Subtotal</p>
+                            <p class="bag-summary__amount">
+                                £{{ total|floatformat:2 }}
+                            </p>
+
+                            <ul class="bag-summary__notes">
+                                <li>High-resolution download included</li>
+                                <li>Instant access after purchase</li>
+                                <li>Secure encrypted checkout</li>
+                                <li>No delivery charges</li>
+                                <li>Personal use digital product</li>
+                            </ul>
+
+                            <div class="bag-summary__actions">
+                                <a href="#" class="btn btn-primary">
+                                    Proceed to checkout
+                                </a>
+                                <a href="{% url 'product_list' %}" class="btn btn-secondary">
+                                    Continue shopping
+                                </a>
                             </div>
-
-                            <div class="bag-item__content">
-                                <p class="eyebrow">
-                                    High-resolution digital artwork ready for download after purchase.
-                                </p>
-
-                                <h2 class="bag-item__title">
-                                    {{ item.product.title}}
-                                </h2>
-
-                                {% if item.product.collection %}
-                                    <p class="bag-item__meta">
-                                        {{ item.product.collection.name }}
-                                    </p>
-                                {% endif %}
-
-                                {% if item.product.short_description %}
-                                    <p class="bag-item__description">
-                                        {{ item.product.short_description }}
-                                    </p>
-                                {% elif item.product.description %}
-                                    <p class="bag-item__description">
-                                        {{ item.product.description|truncatewords:20 }}
-                                    </p>
-                                {% endif %}
-
-                                <ul class="bag-item__details">
-                                    <li>Digital download</li>
-                                    <li>One copy per purchase</li>
-                                    <li>No shipping required</li>
-                                </ul>
-
-                                <p class="bag-item__price">
-                                    £{{ item.product.price }}
-                                </p>
-                            </div>
-                        </article>
-                    {% endfor %}
+                        </div>
+                    </aside>
                 </div>
 
-                <aside class="bag-summary">
-                    <div class="section-heading">
-                        <p class="eyebrow">Summary</p>
-                        <h2>Order total</h2>
-                        <p>Review the cost of your digital files before payment.</p>
-                    </div>
-
-                    <div class="bag-summary__card">
-                        <p class="bag-summary__label">Subtotal</p>
-                        <p class="bag-summary__amount">
-                            £{{ total|floatformat:2 }}
-                        </p>
-
-                        <ul class="bag-summary__notes">
-                            <li>High-resolution download included</li>
-                            <li>Instant access after purchase</li>
-                            <li>Secure encrypted checkout</li>
-                            <li>No delivery charges</li>
-                            <li>Personal use digital product</li>
-                        </ul>
-
-                        <div class="bag-summary__actions">
-                            <a href="#" class="btn btn-primary">
-                                Proceed to checkout
-                            </a>
-                            <a href="{% url 'product_list' %}" class="btn btn-secondary"></a>
-                        </div>
-                    </div>
-                </aside>
             {% else %}
                 <div class="bag-empty">
                     <div class="section-heading">
