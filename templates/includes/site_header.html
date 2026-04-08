@@ -72,7 +72,7 @@
                         Account
                     </span>
                 </a>
-                <a href="#" class="header-action-link">
+                <a href="{% url 'view_bag' %}" class="header-action-link">
                     <span class="header-action-link__icon" aria-hidden="true">
                         <svg 
                             viewBox="0 0 24 24" 
@@ -93,7 +93,7 @@
             </div>
 
             <div class="site-header__actions site-header__actions--mobile">
-                <a href="#" class="header-action-link" aria-label="View bag">
+                <a href="{% url 'view_bag' %}" class="header-action-link" aria-label="View bag">
                     <span class="header-action-link__icon" aria-hidden="true">
                         <svg 
                             viewBox="0 0 24 24" 
@@ -150,7 +150,7 @@
 
             <div class="mobile-menu__secondary">
                 <a href="{% url 'account_login' %}">Account</a>
-                <a href="#">Bag</a>
+                <a href="{% url 'view_bag' %}">Bag</a>
             </div>
         </nav>
     </div>
