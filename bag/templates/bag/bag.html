@@ -84,6 +84,18 @@
                                     <p class="bag-item__price">
                                         £{{ item.product.price }}
                                     </p>
+
+                                    <form 
+                                        action="{% url 'remove_from_bag' item.product.id %}"
+                                        method="post"
+                                        class="bag-item__remove-form"
+                                    >
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-secondary
+                                        ">
+                                            Remove
+                                        </button>
+                                    </form>
                                 </div>
                             </article>
                         {% endfor %}

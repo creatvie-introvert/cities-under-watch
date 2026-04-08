@@ -2353,6 +2353,14 @@ body {
     font-weight: 700;
 }
 
+.bag-item__remove-form {
+    margin-top: var(--space-2);
+}
+
+.bag-item__remove-form .btn {
+    width: auto;
+}
+
 .bag-summary {
     display: flex;
     flex-direction: column;

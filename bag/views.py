@@ -23,3 +23,19 @@ def add_to_bag(request, item_id):
     request.session['bag'] = bag
 
     return redirect(redirect_url)
+
+
+def remove_from_bag(request, item_id):
+    """Remove a product from the shopping bag."""
+    product = get_object_or_404(Product, pk=item_id)
+    bag = request.session.get('bag', {})
+
+    if str(item_id) in bag:
+        bag.pop(str(item_id))
+        messages.success(request, f'Removed "{product.title}" from your bag.')
+    else:
+        messages.info(request, f'"{product.title}" is not in your bag.')
+
+    request.session['bag'] = bag
+
+    return redirect('view_bag')
