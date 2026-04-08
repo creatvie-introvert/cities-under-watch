@@ -88,12 +88,15 @@
                     </span>
                     <span class="header-action-link__label">
                         Bag
+                        {% if product_count %}
+                            ({{ product_count }})
+                        {% endif %}
                     </span>
                 </a>
             </div>
 
             <div class="site-header__actions site-header__actions--mobile">
-                <a href="{% url 'view_bag' %}" class="header-action-link" aria-label="View bag">
+                <a href="{% url 'view_bag' %}" class="header-action-link--bag-mobile" aria-label="View bag">
                     <span class="header-action-link__icon" aria-hidden="true">
                         <svg 
                             viewBox="0 0 24 24" 
@@ -107,6 +110,12 @@
                             <path d="M9 7a3 3 0 0 1 6 0"></path>
                         </svg>
                     </span>
+
+                    {% if product_count %}
+                        <span class="header-action-link__count">
+                            {{ product_count }}
+                        </span>
+                    {% endif %}
                 </a>
 
                 <button 
@@ -150,7 +159,9 @@
 
             <div class="mobile-menu__secondary">
                 <a href="{% url 'account_login' %}">Account</a>
-                <a href="{% url 'view_bag' %}">Bag</a>
+                <a href="{% url 'view_bag' %}">
+                    Bag{% if product_count %} ({{ product_count }}){% endif %}
+                </a>
             </div>
         </nav>
     </div>

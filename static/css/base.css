@@ -252,6 +252,26 @@ body {
     line-height: 1;
 }
 
+.header-action-link--bag-mobile {
+    position: relative;
+}
+
+.header-action-link__count {
+    position: absolute;
+    top: -0.35rem;
+    right: -0.45rem;
+    min-width: 1rem;
+    padding: 0 0.25rem;
+    border-radius: 999px;
+    background-color: var(--color-accent-primary);
+    color: var(--color-true-black);
+    font: 0.625rem;
+    line-height: 1rem;
+    font-weight: 700;
+    text-align: center;
+    box-sizing: border-box;
+}
+
 .site-header__actions--desktop {
     display: none;
 }
