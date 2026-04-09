@@ -2369,6 +2369,46 @@ body {
     line-height: 1.5rem;
     font-weight: 500;
     box-shadow: 0 0.75rem 2rem rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--space-3);
+    opacity: 1;
+    transform: translateY(0);
+    transition: 
+        opacity 0.25s ease,
+        transform 0.25s ease;
+}
+
+.message__text {
+    margin: 0;
+    flex: 1;
+}
+
+.message__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--color-text-primary);
+    font-size: 1.125rem;
+    line-height: 1;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.message__close:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+}
+
+.message.is-hiding {
+    opacity: 0;
+    transform: translateY(-0.5rem);
 }
 
 .message.success {

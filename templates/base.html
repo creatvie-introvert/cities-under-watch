@@ -36,10 +36,18 @@
     </header>
 
     {% if messages %}
-        <div class="message-container">
+        <div class="message-container" data-toast-container>
             {% for message in messages %}
-                <div class="message {{ message.tags }}">
-                    {{ message }}
+                <div class="message {{ message.tags }}" data-toast>
+                    <p class="message__text">{{ message }}</p>
+                    <button
+                        type="button"
+                        class="message__close"
+                        aria-label="Dismiss message"
+                        data-toast-close
+                    >
+                        x
+                    </button>
                 </div>
             {% endfor %}
         </div>

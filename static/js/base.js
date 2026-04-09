@@ -179,9 +179,40 @@ function initCollectionNarrative() {
     });
 }
 
+function initToasts() {
+    const toasts = document.querySelectorAll("[data-toast");
+
+    if (!toasts.length) {
+        return;
+    }
+
+    function hideToast(toast) {
+        toast.classList.add("is-hiding");
+
+        window.setTimeout(() => {
+            toast.remove();
+        }, 250);
+    }
+
+    toasts.forEach((toast) => {
+        const closeButton = toast.querySelector("[data-toast-close");
+
+        if (closeButton) {
+            closeButton.addEventListener("click", () => {
+                hideToast(toast);
+            });
+        }
+
+        window.setTimeout(() => {
+            hideToast(toast);
+        }, 4000);
+    });
+}
+
 initAnnouncementBanner();
 initMobileMenu();
 initCatalogueFilterToggle();
 initCatalogueAutoFilterSubmit();
 initProductGallery();
 initCollectionNarrative();
+initToasts();
