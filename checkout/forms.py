@@ -42,7 +42,7 @@ class OrderForm(forms.ModelForm):
             placeholder = placeholders[field_name]
 
             if field.required:
-                placeholder = f'{placeholders} *'
+                placeholder = f'{placeholder} *'
 
             field.widget.attrs['placeholder'] = placeholder
             field.widget.attrs['class'] = 'checkout-form__input'

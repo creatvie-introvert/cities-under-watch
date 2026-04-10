@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} | Checkout{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <p class="eyebrow">Checkout</p>
+                <h1 class="page-header__title">Secure checkout</h1>
+                <p class="page-header__text">
+                    Complete your order details below and review your purchase before payment.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-layout">
+                <div class="checkout-main">
+                    <div class="section-heading checkout-main__heading">
+                        <p class="eyebrow">Details</p>
+                        <h2>Your information</h2>
+                        <p>
+                            Please complete the form below to continue with your order.
+                        </p>
+                    </div>
+
+                    <form action="{% url 'checkout' %}" method="post" id="payment-form" class="checkout-form">
+                        {% csrf_token %}
+
+                        <fieldset class="checkout-form__fieldset">
+                            <legend class="checkout-form__legend">
+                                Contact details
+                            </legend>
+                            {{ order_form.full_name }}
+                            {{ order_form.email }}
+                            {{ order_form.phone_number }}
+                        </fieldset>
+
+                        <fieldset class="checkout-form__fieldset">
+                            <legend class="checkout-form__legend">
+                                Delivery
+                            </legend>
+                            {{ order_form.country_code }}
+                            {{ order_form.postcode }}
+                            {{ order_form.town_or_city }}
+                            {{ order_form.street_address1 }}
+                            {{ order_form.street_address2 }}
+                            {{ order_form.county }}
+                        </fieldset>
+
+                        <fieldset class="checkout-form__fieldset">
+                            <legend class="checkout-form__legend">
+                                Payment
+                            </legend>
+                            <div id="card-element" class="checkout-form__card-element"></div>
+                            <div id="card-errors" class="checkout-form__card-errors" role="alert"></div>
+                        </fieldset>
+
+                        <div class="checkout-form__actions">
+                            <a 
+                                href="{% url 'view_bag' %}" 
+                                class="btn btn-secondary"
+                            >
+                                Back to bag
+                            </a>
+                            <button 
+                                type="submit" 
+                                id="submit-button" 
+                                class="btn btn-primary"
+                            >
+                                Complete order
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <aside class="checkout-summary">
+                    <div class="section-heading checkout-summary__heading">
+                        <p class="eyebrow">Summary</p>
+                        <h2>Your order</h2>
+                    </div>
+
+                    <div class="checkout-summary__card">
+                        {% for item in bag_items %}
+                            <article class="checkout-summary__item">
+                                <div class="checkout-summary__item-content">
+                                    <h3 class="checkout-summary__item-title">
+                                        {{ item.product.title }}
+                                    </h3>
+
+                                    {% if item.product.collection %}
+                                        <p class="checkout-summary__item-meta">
+                                            {{ item.product.collection.name }}
+                                        </p>
+                                    {% endif %}
+
+                                    <p class="checkout-summary__item-price">
+                                        £{{ item.product.price }}
+                                    </p>
+                                </div>
+                            </article>
+                        {% endfor %}
+
+                        <hr class="checkout-summary__divider">
+
+                        <div class="checkout-summary__totals">
+                            <p class="checkout-summary__total-label">Items</p>
+                            <p class="checkout-summary__total-value">
+                                {{ product_count }}
+                            </p>
+
+                            <p class="checkout-summary__total-label">Total</p>
+                            <p class="checkout-summary__total-value">
+                                £{{ total|floatformat:2 }}
+                            </p>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+{% endblock %}
