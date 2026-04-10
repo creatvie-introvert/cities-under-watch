@@ -91,6 +91,23 @@
                     <div class="checkout-summary__card">
                         {% for item in bag_items %}
                             <article class="checkout-summary__item">
+                                <div class="checkout-summary__item-media">
+                                    {% with primary_image=item.product.images.first %}
+                                        {% if primary_image %}
+                                            <img 
+                                                src="{{ primary_image.image.url }}" 
+                                                alt="{{ primary_image.alt_text|default:item.product.title }}"
+                                                class="checkout-summary__item-image"
+                                            >
+                                        {% else %}
+                                            <div class="image-placeholder checkout-summary__item-placeholder">
+                                                Image
+                                            </div>
+                                        {% endif %}
+                                    {% endwith %}
+                                </div>
+
+
                                 <div class="checkout-summary__item-content">
                                     <h3 class="checkout-summary__item-title">
                                         {{ item.product.title }}
