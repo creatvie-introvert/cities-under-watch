@@ -25,6 +25,13 @@ def checkout(request):
         currency=settings.STRIPE_CURRENCY,
     )
 
+    if not settings.STRIPE_PUBLIC_KEY:
+        messages.warning(
+            request,
+            'Stripe public key is missing. Did you forget ',
+            'to set oit in your environment?',
+        )
+
     order_form = OrderForm()
 
     context = {
