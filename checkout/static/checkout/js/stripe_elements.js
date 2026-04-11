@@ -12,7 +12,7 @@ const style = {
     base: {
         color: "#f5f5f5",
         fontFamily: "Roboto, Arial, sans-serif",
-        fontSmoothin: "antialised",
+        fontSmoothing: "antialised",
         fontSize: "16px",
         "::placeholder": {
             color: "#8c919b",
@@ -27,12 +27,24 @@ const style = {
 const card = elements.create("card", { style: style });
 card.mount("#card-element");
 
+const cardElementContainer = document.getElementById("card-element");
+
+card.on("focus", function () {
+    cardElementContainer.classList.add("checkout-form__card-element--focus");
+});
+
+card.on("blur", function() {
+    cardElementContainer.classList.remove("checkout-form__card-element--focus");
+});
+
 card.addEventListener("change", function(event) {
     const errorDiv = document.getElementById("card-errors");
 
     if (event.error) {
         errorDiv.textContent = event.error.message;
+        cardElementContainer.classList.add("checkout-form__card-element--invalid");
     } else {
         errorDiv.textContent = "";
+        cardElementContainer.classList.remove("checkout-form__card-element--invalid");
     }
 });
