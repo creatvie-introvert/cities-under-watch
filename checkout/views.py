@@ -29,7 +29,7 @@ def checkout(request):
         messages.warning(
             request,
             'Stripe public key is missing. Did you forget ',
-            'to set oit in your environment?',
+            'to set it in your environment?',
         )
 
     order_form = OrderForm()

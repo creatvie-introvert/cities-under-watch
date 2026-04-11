@@ -89,27 +89,14 @@
     outline-offset: 2px;
 }
 
-.checkout-form__card-element {
+.checkout-form__payment-element {
     width: 100%;
     min-height: 3rem;
-    padding: 0.875rem var(--space-4);
+    padding: 0.75rem;
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-md);
     background-color: var(--color-surface-1);
     box-sizing: border-box;
-    transition: 
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background-color 0.2s ease;
-}
-
-.checkout-form__card-element--focus {
-    border-color: var(--color-accent-primary);
-    box-shadow: 0 0 0 2px rgba(77, 163, 255, 0.2);
-}
-
-.checkout-form__card-element--invalid {
-    border-color: #ff9f9f;
 }
 
 .checkout-form__card-errors {
@@ -286,7 +273,7 @@
         margin-bottom: 0;
     }
 
-    .checkout-form__card-element,
+    .checkout-form__payment-element,
     .checkout-form__card-errors {
         grid-column: 1 / -1;
     }
