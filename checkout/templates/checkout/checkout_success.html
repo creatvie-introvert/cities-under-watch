@@ -55,38 +55,51 @@
                             <p class="eyebrow">Access</p>
                             <h2>Download your files</h2>
                             <p>
-                                Your digital downloads will appear here.
+                                Your purchased files are ready to download below.
                             </p>
                         </div>
 
                         <div class="checkout-success-downloads__card">
                             <p class="checkout-success-downloads__label">
-                                Files ready to prepare
+                                Files ready to download
                             </p>
 
                             <div class="checkout-success-downloads__list">
                                 {% for lineitem in order.lineitems.all %}
-                                    <div class="checkout-success-downloads__item">
-                                        <div class="checkout-success-downloads__item-content">
-                                            <p class="checkout-success-downloads__item-title">
-                                                {{ lineitem.product.title }}
-                                            </p>
-                                        </div>
+                                    {% if lineitem.product.downloads.all %}
+                                        {% for download in lineitem.product.downloads.all %}
+                                            <div class="checkout-success-downloads__item">
+                                                <div class="checkout-success-downloads__item-content">
+                                                    <p class="checkout-success-downloads__item-title">
+                                                        {{ lineitem.product.title }} — {{ download.title }}
+                                                    </p>
+                                                </div>
 
-                                        <button 
-                                            type="button"
-                                            class="btn btn-secondary checkout-success-downloads__button"
-                                            disabled
-                                            aria-disabled="true"
-                                        >
-                                            Coming soon
-                                        </button>
-                                    </div>
+                                                <a 
+                                                    href="{% url 'download_order_file' order.order_number download.id %}"
+                                                    class="btn btn-secondary checkout-success-downloads__button"
+                                                >
+                                                    Download
+                                                </a>
+                                            </div>
+                                        {% endfor %}
+                                    {% else %}
+                                            <div class="checkout-success-downloads__item">
+                                                <div class="checkout-success-downloads__item-content">
+                                                    <p class="checkout-success-downloads__item-title">
+                                                        {{ lineitem.product.title }}
+                                                    </p>
+                                                    <p class="checkout-success-downloads__note">
+                                                        No download files are attached to this product yet.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
 
                             <p class="checkout-success-downloads__note">
-                                Instant delivery will be added soon.
+                                Download links are shown for all files attached to the products in this order.
                             </p>
                         </div>
                     </div>

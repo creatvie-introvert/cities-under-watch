@@ -10,4 +10,9 @@ urlpatterns = [
         views.checkout_success,
         name='checkout_success',
     ),
+    path(
+        'success/<order_number>/download/<int:download_id>/',
+        views.download_order_file,
+        name='download_order_file',
+    ),
 ]

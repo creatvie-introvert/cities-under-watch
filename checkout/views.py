@@ -3,6 +3,7 @@ import json
 import stripe
 from django.conf import settings
 from django.contrib import messages
+from django.http import FileResponse, Http404
 from django.shortcuts import (
     get_object_or_404,
     redirect,
@@ -11,7 +12,7 @@ from django.shortcuts import (
 from django.urls import reverse
 
 from bag.contexts import bag_contents
-from products.models import Product
+from products.models import Product, ProductDownload
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 
@@ -129,4 +130,27 @@ def checkout_success(request, order_number):
         request,
         'checkout/checkout_success.html',
         context,
+    )
+
+
+def download_order_file(request, order_number, download_id):
+    """Serve a download file only if it belongs to a purchased product."""
+    order = get_object_or_404(Order, order_number=order_number)
+    download = get_object_or_404(ProductDownload, pk=download_id)
+
+    purchased_product_ids = order.lineitems.values_list(
+        'product_id',
+        flat=True,
+    )
+
+    if download.product_id not in purchased_product_ids:
+        raise Http404("This file is not available for this order.")
+
+    if not download.file:
+        raise Http404('File not found.')
+
+    return FileResponse(
+        download.file.open('rb'),
+        as_attachment=True,
+        filename=download.file.name.split('/')[-1],
     )
