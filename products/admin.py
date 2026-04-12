@@ -1,5 +1,12 @@
 from django.contrib import admin
-from .models import City, Collection, CollectionNarrativePanel, Product, ProductImage
+from .models import (
+    City,
+    Collection,
+    CollectionNarrativePanel,
+    Product,
+    ProductDownload,
+    ProductImage,
+)
 
 
 class CollectionNarrativePanelInline(admin.TabularInline):
@@ -53,6 +60,11 @@ class ProductImageInline(admin.TabularInline):
     extra = 1
 
 
+class productDownloadInline(admin.TabularInline):
+    model = ProductDownload
+    extra = 1
+
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = (
@@ -79,7 +91,7 @@ class ProductAdmin(admin.ModelAdmin):
         'collection_city_name',
     )
     prepopulated_fields = {'slug': ('title',)}
-    inlines = [ProductImageInline]
+    inlines = [ProductImageInline, productDownloadInline]
 
 
 @admin.register(ProductImage)
@@ -87,3 +99,10 @@ class ProductImageAdmin(admin.ModelAdmin):
     list_display = ('product', 'is_primary', 'sort_order', 'created_at')
     list_filter = ('is_primary',)
     search_fields = ('product__title', 'alt_text')
+
+
+@admin.register(ProductDownload)
+class ProductDownloadAdmin(admin.ModelAdmin):
+    list_display = ('product', 'title', 'sort_order', 'created_at')
+    list_filter = ('product__collection',)
+    search_fields = ('product__title', 'title')

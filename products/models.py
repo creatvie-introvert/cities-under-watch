@@ -127,3 +127,21 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return f"{self.product.title} image"
+
+
+class ProductDownload(models.Model):
+    product = models.ForeignKey(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='downloads',
+    )
+    title = models.CharField(max_length=150)
+    file = models.FileField(upload_to='product_downloads/')
+    sort_order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ['sort_order', 'id']
+
+    def __str__(self):
+        return f"{self.product.title} - {self.title}"
