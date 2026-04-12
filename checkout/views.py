@@ -96,6 +96,9 @@ def checkout(request):
         intent = stripe.PaymentIntent.create(
             amount=round(total * 100),
             currency=settings.STRIPE_CURRENCY,
+            metadata={
+                'bag': json.dumps(bag),
+            }
         )
 
         if not settings.STRIPE_PUBLIC_KEY:
@@ -186,17 +189,78 @@ def stripe_webhook(request):
     if event['type'] == 'payment_intent.succeeded':
         intent = event['data']['object']
         stripe_pid = intent['id']
+        metadata = intent['metadata']
 
         try:
             order = Order.objects.get(stripe_pid=stripe_pid)
             print(
-                f"Webhook matched order {order.order_number}"
+                f"Webhook matched order {order.order_number} "
                 f"to PaymentIntent {stripe_pid}"
             )
         except Order.DoesNotExist:
             print(
-                f"Webhook could not find an order for PayemntIntent {stripe_pid}"
+                f"Webhook could not find an order for PayemntIntent "
+                f"{stripe_pid}. Attempting recovery"
             )
+
+            try:
+                bag_json = metadata.get('bag', '')
+                bag = json.loads(bag_json) if bag_json else {}
+
+                if not bag:
+                    print(
+                        f"Webhook recover failed for PaymentIntent "
+                        f"{stripe_pid}: bag metadata missing"
+                    )
+                    return HttpResponse(status=200)
+
+                charges = intent['charges']['data']
+                billing_details = {}
+                address = {}
+
+                if charges:
+                    billing_details = charges[0]['billing_details']
+                    if billing_details.get('address'):
+                        address = billing_details['address']
+
+                recovered_order = Order.objects.create(
+                    full_name=billing_details.get('name', 'Unknown'),
+                    email=billing_details.get('email', ''),
+                    phone_number=billing_details.get('phone', ''),
+                    country_code=address.get('country', '') or 'GB',
+                    postcode=address.get('postal_code', ''),
+                    town_or_city=address.get('city', ''),
+                    street_address1=address.get('line1', ''),
+                    street_address2=address.get('line2', ''),
+                    county=address.get('state', ''),
+                    original_bag=json.dumps(bag),
+                    stripe_pid=stripe_pid,
+                )
+
+                for item_id, quantity in bag.items():
+                    product = Product.objects.get(pk=item_id)
+                    OrderLineItem.objects.create(
+                        order=recovered_order,
+                        product=product,
+                        quantity=quantity,
+                    )
+
+                print(
+                    f"Webhook recovered missing order "
+                    f"{recovered_order.order_number} for PaymentIntent {stripe_pid}"
+                )
+
+            except Product.DoesNotExist:
+                print(
+                    f"Webhook recovery failed for paymentIntent {stripe_pid}: "
+                    f"product missing."
+                )
+
+            except Exception as error:
+                print(
+                    f"Webhook recovery failed for paymentIntent {stripe_pid}: "
+                    f"{error}"
+                )
 
     elif event['type'] == 'payment_intent.payment_failed':
         intent = event['data']['object']
