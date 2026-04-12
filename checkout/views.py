@@ -42,21 +42,29 @@ def checkout(request):
         order_form = OrderForm(form_data)
 
         if order_form.is_valid():
+            client_secret = request.POST.get('client_secret', '')
+            stripe_pid = client_secret.split('_secret')[0]
+
+            if not stripe_pid:
+                messages.error(
+                    request,
+                    'There was a problem identifying your payment. Please try again.'
+                )
+                return redirect(reverse('checkout'))
+
             order = order_form.save(commit=False)
             order.original_bag = json.dumps(bag)
-            order.stripe_pid = request.POST.get(
-                'client_secret', ''
-            ).split('_secret')[0]
+            order.stripe_pid = stripe_pid
             order.save()
 
-            for item_id, qunatity in bag.items():
+            for item_id, quantity in bag.items():
                 try:
                     product = Product.objects.get(pk=item_id)
 
                     order_line_item = OrderLineItem(
                         order=order,
                         product=product,
-                        quantity=qunatity,
+                        quantity=quantity,
                     )
                     order_line_item.save()
 
@@ -174,13 +182,24 @@ def stripe_webhook(request):
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError:
         return HttpResponse(status=400)
-    
+
     if event['type'] == 'payment_intent.succeeded':
         intent = event['data']['object']
-        print(f"PaymentIntent succeeded: {intent['id']}")
-    
+        stripe_pid = intent['id']
+
+        try:
+            order = Order.objects.get(stripe_pid=stripe_pid)
+            print(
+                f"Webhook matched order {order.order_number}"
+                f"to PaymentIntent {stripe_pid}"
+            )
+        except Order.DoesNotExist:
+            print(
+                f"Webhook could not find an order for PayemntIntent {stripe_pid}"
+            )
+
     elif event['type'] == 'payment_intent.payment_failed':
         intent = event['data']['object']
         print(f"PaymentIntent failed: {intent['id']}")
-    
+
     return HttpResponse(status=200)
