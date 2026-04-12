@@ -64,6 +64,8 @@
                             <div id="payment-errors" class="checkout-form__card-errors" role="alert"></div>
                         </fieldset>
 
+                        <input type="hidden" name="client_secret" value="{{ client_secret }}">
+
                         <div class="checkout-form__actions">
                             <a 
                                 href="{% url 'view_bag' %}" 

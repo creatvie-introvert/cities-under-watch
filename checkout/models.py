@@ -82,7 +82,7 @@ class OrderLineItem(models.Model):
         blank=False,
         on_delete=models.CASCADE,
     )
-    resolution = models.CharField(max_length=50, null=False, blank=False)
+    resolution = models.CharField(max_length=50, null=True, blank=True)
     quantity = models.IntegerField(null=False, blank=False, default=1)
     lineitem_total = models.DecimalField(
         max_digits=10,
