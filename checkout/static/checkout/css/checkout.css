@@ -241,6 +241,172 @@
     font-weight: 700;
 }
 
+/* =========================
+   Checkout Success Page
+========================= */
+
+.checkout-success-section {
+    padding: 0 0 4rem;
+}
+
+.checkout-success-section .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.checkout-success-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.checkout-success-main,
+.checkout-success-summary {
+    min-width: 0;
+}
+
+.checkout-success-main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10);
+}
+
+.checkout-success-intro,
+.checkout-success-downloads,
+.checkout-success-summary__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: var(--space-5);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface-2);
+}
+
+.checkout-success-intro__heading,
+.checkout-success-downloads__heading {
+    align-items: flex-start;
+    text-align: left;
+    margin-inline: 0;
+    max-width: 32rem;
+}
+
+.checkout-success-intro__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.checkout-success-intro__actions .btn {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.checkout-success-downloads__card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.checkout-success-downloads__label,
+.checkout-success-summary__section-label {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    line-height: 1;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.checkout-success-downloads__list,
+.checkout-success-summary__section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.checkout-success-downloads__list,
+.checkout-success-summary__section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.checkout-success-downloads__item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.checkout-success-downloads__item:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.checkout-success-downloads__item-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    min-width: 0;
+}
+
+.checkout-success-downloads__note {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+}
+
+.checkout-success-downloads__button[disabled] {
+    border-color: var(--color-border-subtle);
+    background-color: transparent;
+    color: var(--color-text-muted);
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+.checkout-success-summary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    min-width: 0;
+}
+
+.checkout-success-summary__card {
+    min-width: 0;
+}
+
+.checkout-success-summary__row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+}
+
+.checkout-success-summary__term,
+.checkout-success-summary__value {
+    margin: 0;
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+}
+
+.checkout-success-summary__term {
+    color: var(--color-text-secondary);
+}
+
+.checkout-success-summary__value {
+    color: var(--color-text-primary);
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.checkout-success-summary__section:last-child .checkout-success-summary__row:last-child .checkout-success-summary__term,
+.checkout-success-summary__section:last-child .checkout-success-summary__row:last-child .checkout-success-summary__value {
+    font-weight: 700;
+}
 
 /* =========================
    Tablet
@@ -300,6 +466,47 @@
     .checkout-summary__card {
         padding: var(--space-6);
     }
+
+    .checkout-success-section .container {
+        gap: var(--space-10);
+    }
+
+    .checkout-success-layout {
+        gap: var(--space-10);
+    }
+
+    .checkout-success-intro,
+    .checkout-success-downloads,
+    .checkout-success-summary__card {
+        padding: var(--space-6);
+    }
+
+    .checkout-success-intro__actions {
+        flex-direction: row;
+        gap: var(--space-4);
+    }
+
+    .checkout-success-intro__actions .btn {
+        flex: 1 1 0;
+        width: auto;
+    }
+
+    .checkout-success-downloads__item {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+        gap: var(--space-4);
+    }
+
+    .checkout-success-summary__row {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: var(--space-4);
+        align-items: start;
+    }
+
+    .checkout-success-summary__value {
+        text-align: right;
+    }
 }
 
 
@@ -335,5 +542,25 @@
 
     .checkout-summary__heading {
         max-width: 22rem;
+    }
+
+    .checkout-success-section {
+        padding: 0 0 5rem;
+    }
+
+    .checkout-success-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: var(--space-12);
+        align-items: start;
+    }
+
+    .checkout-success-main {
+        gap: var(--space-10);
+    }
+
+    .checkout-success-summary {
+        position: sticky;
+        top: var(--space-8);
     }
 }

@@ -1,0 +1,264 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} | Order received{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <h1 class="page-header__title">Order received</h1>
+                <p class="page-header__text">
+                    Your payment was successful. Your order number is 
+                    <strong>{{ order.order_number }}</strong>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="checkout-success-section">
+        <div class="container">
+            <div class="checkout-success-layout">
+                <div class="checkout-success-main">
+                    <div class="checkout-success-intro">
+                        <div class="section-heading checkout-success-intro__heading">
+                            <p class="eyebrow">Thank you</p>
+                            <h2>Your order has been received</h2>
+                            <p>
+                                We have received your order and sent a confirmation to email to
+                                <strong>{{ order.email }}</strong>.
+                            </p>
+                        </div>
+
+                        <div class="checkout-success-intro__actions">
+                            <a 
+                                href="{% url 'product_list' %}" 
+                                class="btn btn-primary"
+                            >
+                                Continue shopping
+                            </a>
+                            <a 
+                                href="#order-summary" 
+                                class="btn btn-secondary"
+                            >
+                                View order summary
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="checkout-success-downloads">
+                        <div class="section-heading checkout-success-downloads__heading">
+                            <p class="eyebrow">Access</p>
+                            <h2>Download your files</h2>
+                            <p>
+                                Your digital downloads will appear here.
+                            </p>
+                        </div>
+
+                        <div class="checkout-success-downloads__card">
+                            <p class="checkout-success-downloads__label">
+                                Files ready to prepare
+                            </p>
+
+                            <div class="checkout-success-downloads__list">
+                                {% for lineitem in order.lineitems.all %}
+                                    <div class="checkout-success-downloads__item">
+                                        <div class="checkout-success-downloads__item-content">
+                                            <p class="checkout-success-downloads__item-title">
+                                                {{ lineitem.product.title }}
+                                            </p>
+                                        </div>
+
+                                        <button 
+                                            type="button"
+                                            class="btn btn-secondary checkout-success-downloads__button"
+                                            disabled
+                                            aria-disabled="true"
+                                        >
+                                            Coming soon
+                                        </button>
+                                    </div>
+                                {% endfor %}
+                            </div>
+
+                            <p class="checkout-success-downloads__note">
+                                Instant delivery will be added soon.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <aside class="checkout-success-summary" id="order-summary">
+                    <div class="section-heading checkout-summary__heading">
+                        <p class="eyebrow">Receipt</p>
+                        <h2>Order Summary</h2>
+                    </div>
+
+                    <div class="checkout-success-summary__card">
+                        <div class="checkout-success-summary__section">
+                            <p class="checkout-success-summary__section-label">
+                                Order info
+                            </p>
+
+                            <div class="checkout-success-summary__row">
+                                <p class="checkout-success-summary__term">
+                                    Order number
+                                </p>
+                                <p class="checkout-success-summary__value">
+                                    {{ order.order_number }}
+                                </p>
+                            </div>
+
+                            <div class="checkout-success-summary__row">
+                                <p class="checkout-success-summary__term">
+                                    Order date
+                                </p>
+                                <p class="checkout-success-summary__value">
+                                    {{ order.created_at|date:"j F Y, g:i a" }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="checkout-success-summary__section">
+                            <p class="checkout-success-summary__section-label">
+                                Order details
+                            </p>
+
+                            {% for lineitem in order.lineitems.all %}
+                                <div class="checkout-success-summary__row">
+                                    <p class="checkout-success-summary__term">
+                                        {{ lineitem.product.title }}
+                                    </p>
+                                    <p class="checkout-success-summary__value">
+                                        {{ lineitem.quantity }} x £{{ lineitem.product.price }}
+                                    </p>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="checkout-success-summary__section">
+                            <p class="checkout-success-summary__section-label">
+                                Customer details
+                            </p>
+
+                            <div class="checkout-success-summary__row">
+                                <p class="checkout-success-summary__term">
+                                    Full name
+                                </p>
+                                <p class="checkout-success-summary__value">
+                                    {{ order.full_name }}
+                                </p>
+                            </div>
+
+                            <div class="checkout-success-summary__row">
+                                <p class="checkout-success-summary__term">
+                                    Email
+                                </p>
+                                <p class="checkout-success-summary__value">
+                                    {{ order.email }}
+                                </p>
+                            </div>
+
+                            <div class="checkout-success-summary__row">
+                                <p class="checkout-success-summary__term">
+                                    Phone
+                                </p>
+                                <p class="checkout-success-summary__value">
+                                    {{ order.phone_number }}
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="checkout-success-summary__section">
+                            <p class="checkout-success-summary__section-label">
+                                Billing info
+                            </p>
+
+                            <div class="checkout-success-summary__row">
+                                <p class="checkout-success-summary__term">
+                                    Address line 1
+                                </p>
+                                <p class="checkout-success-summary__value">
+                                    {{ order.street_address1 }}
+                                </p>
+                            </div>
+
+                            {% if order.street_address2 %}
+                                <div class="checkout-success-summary__row">
+                                    <p class="checkout-success-summary__term">
+                                        Address line 2
+                                    </p>
+                                    <p class="checkout-success-summary__value">
+                                        {{ order.street_address2 }}
+                                    </p>
+                                </div>
+                            {% endif %}
+
+                            <div class="checkout-success-summary__row">
+                                <p class="checkout-success-summary__term">
+                                    Town
+                                </p>
+                                <p class="checkout-success-summary__value">
+                                    {{ order.town_or_city }}
+                                </p>
+                            </div>
+
+                            {% if order.county %}
+                                <div class="checkout-success-summary__row">
+                                    <p class="checkout-success-summary__term">
+                                        County
+                                    </p>
+                                    <p class="checkout-success-summary__value">
+                                        {{ order.county }}
+                                    </p>
+                                </div>
+                            {% endif %}
+
+                            {% if order.postcode %}
+                                <div class="checkout-success-summary__row">
+                                    <p class="checkout-success-summary__term">
+                                        Postcode
+                                    </p>
+                                    <p class="checkout-success-summary__value">
+                                        {{ order.postcode }}
+                                    </p>
+                                </div>
+                            {% endif %}
+
+                            <div class="checkout-success-summary__row">
+                                <p class="checkout-success-summary__term">
+                                    Country code
+                                </p>
+                                <p class="checkout-success-summary__value">
+                                    {{ order.country_code }}
+                                </p>
+                            </div>
+
+                            <div class="checkout-success-summary__row">
+                                <p class="checkout-success-summary__term">
+                                    Order total
+                                </p>
+                                <p class="checkout-success-summary__value">
+                                    £{{ order.order_total }}
+                                </p>
+                            </div>
+
+                            <div class="checkout-success-summary__row">
+                                <p class="checkout-success-summary__term">
+                                    Grand total
+                                </p>
+                                <p class="checkout-success-summary__value">
+                                    £{{ order.grand_total }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+{% endblock %}
