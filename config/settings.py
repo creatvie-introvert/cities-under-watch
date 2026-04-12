@@ -124,6 +124,8 @@ STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
 
 STRIPE_CURRENCY = 'gbp'
 
+STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')
+
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 

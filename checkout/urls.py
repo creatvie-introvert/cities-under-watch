@@ -15,4 +15,5 @@ urlpatterns = [
         views.download_order_file,
         name='download_order_file',
     ),
+    path('wh/', views.stripe_webhook, name='stripe_webhook'),
 ]

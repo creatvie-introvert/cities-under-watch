@@ -3,7 +3,8 @@ import json
 import stripe
 from django.conf import settings
 from django.contrib import messages
-from django.http import FileResponse, Http404
+from django.http import FileResponse, Http404, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import (
     get_object_or_404,
     redirect,
@@ -154,3 +155,32 @@ def download_order_file(request, order_number, download_id):
         as_attachment=True,
         filename=download.file.name.split('/')[-1],
     )
+
+
+@csrf_exempt
+def stripe_webhook(request):
+    """Handle Stripe webhooks."""
+    payload = request.body
+    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload,
+            sig_header,
+            settings.STRIPE_WH_SECRET,
+        )
+    except ValueError:
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError:
+        return HttpResponse(status=400)
+    
+    if event['type'] == 'payment_intent.succeeded':
+        intent = event['data']['object']
+        print(f"PaymentIntent succeeded: {intent['id']}")
+    
+    elif event['type'] == 'payment_intent.payment_failed':
+        intent = event['data']['object']
+        print(f"PaymentIntent failed: {intent['id']}")
+    
+    return HttpResponse(status=200)
