@@ -72,7 +72,7 @@ def checkout(request):
                     messages.error(
                         request,
                         (
-                            "One of the products in your baskest wasn't found "
+                            "One of the products in your basket wasn't found "
                             "in our database. "
                             "Please contact us for assistance."
                         ),
@@ -92,14 +92,29 @@ def checkout(request):
         current_bag = bag_contents(request)
         total = current_bag['total']
 
-        stripe.api_key = settings.STRIPE_SECRET_KEY
-        intent = stripe.PaymentIntent.create(
-            amount=round(total * 100),
-            currency=settings.STRIPE_CURRENCY,
-            metadata={
-                'bag': json.dumps(bag),
-            }
-        )
+        if not settings.STRIPE_SECRET_KEY:
+            messages.error(
+                request,
+                'Payment configuration is missing. Please try again later.',
+            )
+            return redirect(reverse('view_bag'))
+        
+        try:
+            stripe.api_key = settings.STRIPE_SECRET_KEY
+            intent = stripe.PaymentIntent.create(
+                amount=round(total * 100),
+                currency=settings.STRIPE_CURRENCY,
+                metadata={
+                    'bag': json.dumps(bag),
+                }
+            )
+        
+        except stripe.error.StripeError:
+            messages.error(
+                request,
+                'There was a problem connecting to payment services. Please try again.',
+            )
+            return redirect(reverse('view_bag'))
 
         if not settings.STRIPE_PUBLIC_KEY:
             messages.warning(
@@ -175,6 +190,9 @@ def stripe_webhook(request):
     sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
     event = None
 
+    if not settings.STRIPE_WH_SECRET:
+        return HttpResponse(status=500)
+
     try:
         event = stripe.Webhook.construct_event(
             payload,
@@ -199,7 +217,7 @@ def stripe_webhook(request):
             )
         except Order.DoesNotExist:
             print(
-                f"Webhook could not find an order for PayemntIntent "
+                f"Webhook could not find an order for PaymentIntent "
                 f"{stripe_pid}. Attempting recovery"
             )
 
@@ -209,7 +227,7 @@ def stripe_webhook(request):
 
                 if not bag:
                     print(
-                        f"Webhook recover failed for PaymentIntent "
+                        f"Webhook recovery failed for PaymentIntent "
                         f"{stripe_pid}: bag metadata missing"
                     )
                     return HttpResponse(status=200)
