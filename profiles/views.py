@@ -46,6 +46,26 @@ def profile_orders(request):
 
 
 @login_required
+def profile_order_detail(request, order_number):
+    """Display a single order belonging to the logged-in user."""
+    profile = request.user.userprofile
+
+    order = get_object_or_404(
+        Order,
+        order_number=order_number,
+        user=request.user,
+    )
+
+    context = {
+        'profile': profile,
+        'order': order,
+        'on_profile_page': True,
+    }
+
+    return render(request, 'profiles/profile_order_detail.html', context)
+
+
+@login_required
 def profile_downloads(request):
     """Display all downloadable files purchased by the user."""
     profile = request.user.userprofile
