@@ -19,11 +19,12 @@ class UserProfile(models.Model):
     county = models.CharField(max_length=80, null=True, blank=True)
 
     def __str__(self):
-        return self.user.email
+        return self.user.email or self.user.username
 
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
-    instance.userprofile.save()
+    else:
+        User.objects.get_or_create(user=instance)
