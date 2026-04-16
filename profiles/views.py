@@ -19,11 +19,13 @@ def profile(request):
     else:
         form = UserProfileForm(instance=profile)
 
-    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    recent_orders = Order.objects.filter(
+        user=request.user
+    ).order_by('-created_at')[:3]
 
     context = {
         'form': form,
-        'orders': orders,
+        'recent_orders': recent_orders,
         'on_profile_page': True,
     }
 
