@@ -18,7 +18,11 @@
         >
             Downloads
         </a>
-        <a href="#" class="profile-dashboard__nav-link">Profile settings</a>
+        <a 
+            href="{% url 'profile_settings' %}" class="profile-dashboard__nav-link"
+        >
+            Profile settings
+        </a>
         <a 
             href="{% url 'account_logout' %}" class="profile-dashboard__nav-link"
         >

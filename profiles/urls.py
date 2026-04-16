@@ -12,5 +12,5 @@ urlpatterns = [
         views.account_download_file,
         name='account_download_file',
     ),
-    path('settings/', views.profile_settings, name='profile_settings.html'),
+    path('settings/', views.profile_settings, name='profile_settings'),
 ]

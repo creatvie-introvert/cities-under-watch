@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} | Profile Settings{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <p class="eyebrow">Account</p>
+                <h1 class="page-header__title">Profile settings</h1>
+                <p class="page-header__text">
+                    Update your saved billing details for faster checkout next time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="checkout-section profile-page">
+        <div class="container">
+            <div class="profile-dashboard">
+                {% include "profiles/includes/account_nav.html" %}
+
+                <section class="profile-dashboard__orders-card" id="recent-orders">Settings</p>
+                    <h2 class="profile-dashboard__card-title">Saved details</h2>
+                    <p class="profile-dashboard__card-text">
+                        These details can be reused to prefil checkout for future purchases.
+                    </p>
+
+                    <form action="{% url 'profile_settings' %}" method="post" class="checkout-form">
+                        {% csrf_token %}
+
+                        <fieldset class="checkout-form__fieldset">
+                            <legend class="checkout-form__legend">
+                                Billing details
+                            </legend>
+                            {{ form.full_name }}
+                            {{ form.phone_number }}
+                            {{ form.country_code }}
+                            {{ form.postcode }}
+                            {{ form.town_or_city }}
+                            {{ form.street_address1 }}
+                            {{ form.street_address2 }}
+                            {{ form.county }}
+                        </fieldset>
+
+                        <div class="checkout-form__actions">
+                            <button type="submit" class="btn btn-primary">
+                                Update details
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock %}
