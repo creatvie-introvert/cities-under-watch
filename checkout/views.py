@@ -55,6 +55,10 @@ def checkout(request):
             order = order_form.save(commit=False)
             order.original_bag = json.dumps(bag)
             order.stripe_pid = stripe_pid
+
+            if request.user.is_authenticated:
+                order.user = request.user
+
             order.save()
 
             for item_id, quantity in bag.items():
@@ -98,7 +102,7 @@ def checkout(request):
                 'Payment configuration is missing. Please try again later.',
             )
             return redirect(reverse('view_bag'))
-        
+
         try:
             stripe.api_key = settings.STRIPE_SECRET_KEY
             intent = stripe.PaymentIntent.create(
@@ -108,7 +112,7 @@ def checkout(request):
                     'bag': json.dumps(bag),
                 }
             )
-        
+
         except stripe.error.StripeError:
             messages.error(
                 request,
