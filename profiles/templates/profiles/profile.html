@@ -30,30 +30,7 @@
     <section class="checkout-section profile-page">
         <div class="container">
             <div class="profile-dashboard">
-                <aside class="profile-dashboard__nav-card">
-                    <p class="profile-dashboard__eyebrow">Quick access</p>
-                    <h2 class="profile-dashboard__card-title">
-                        Navigate your account
-                    </h2>
-                    <p class="profile-dashboard__card-text">
-                        Find orders, downloads and account settings in one place.
-                    </p>
-
-                    <nav class="profile-dashboard__nav" aria-label="Account navigation">
-                        <a href="#" class="profile-dashboard__nav-link">
-                            Orders
-                        </a>
-                        <a href="#" class="profile-dashboard__nav-link">
-                            Downloads
-                        </a>
-                        <a href="#" class="profile-dashboard__nav-link">
-                            Profile settings
-                        </a>
-                        <a href="{% url 'account_logout' %}" class="profile-dashboard__nav-link">
-                            Log out
-                        </a>
-                    </nav>
-                </aside>
+                {% include "profiles/includes/account_nav.html" %}
 
                 <section class="profile-dashboard__orders-card" id="recent-orders">
                     <p class="profile-dashboard__eyebrow">Recent activity</p>
