@@ -409,6 +409,166 @@
 }
 
 /* =========================
+   Profile Dashboard
+========================= */
+
+.profile-page .container {
+    gap: var(--space-8);
+}
+
+.profile-dashboard__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-top: var(--space-6);
+}
+
+.profile-dashboard__actions .btn {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.profile-dashboard {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.profile-dashboard__nav-card,
+.profile-dashboard__orders-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: var(--space-5);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface-2);
+}
+
+.profile-dashboard__eyebrow {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.profile-dashboard__card-title {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.profile-dashboard__card-text {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.625rem;
+    max-width: 32rem;
+}
+
+.profile-dashboard__nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.profile-dashboard__nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    padding-bottom: var(--space-3);
+    border-bottom: 1ps solid var(--color-border-subtle);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 500;
+}
+
+.profile-dashboard__nav-link:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.profile-dashboard__nav-link::after {
+    content: ">";
+    color: var(--color-text-secondary);
+    line-height: 1;
+}
+
+.profile-dashboard__nav-link:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+}
+
+.profile-dashboard__orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.profile-dashboard__order-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.profile-dashboard__order-item:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.profile-dashboard__order-title {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.profile-dashboard__order-meta {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+}
+
+.profile-dashboard__order-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+    margin-top: var(--space-2);
+}
+
+.profile-dashboard__order-links a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 500;
+}
+
+.profile-dashboard__order-links a:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+}
+
+.profile-dashboard__empty {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+}
+
+/* =========================
    Tablet
 ========================= */
 
@@ -507,6 +667,23 @@
     .checkout-success-summary__value {
         text-align: right;
     }
+
+    .profile-dashboard__actions {
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--space-4);
+        margin-top: var(--space-8);
+    }
+
+    .profile-dashboard__actions .btn {
+        width: auto;
+        min-width: 10rem;
+    }
+
+    .profile-dashboard__nav-card,
+    .profile-dashboard__orders-card {
+        padding: var(--space-6);
+    }
 }
 
 
@@ -562,5 +739,22 @@
     .checkout-success-summary {
         position: sticky;
         top: var(--space-8);
+    }
+
+    .profile-dashboard {
+        display: grid;
+        grid-template-columns: 18rem minmax(0, 1fr);
+        gap: var(--space-8);
+        align-items: start;
+    }
+
+    .profile-dashboard__nav-card {
+        position: sticky;
+        top: var(--space-8);
+    }
+
+    .profile-dashboard__card-title {
+        font-size: 2.25rem;
+        line-height: 2.75rem;
     }
 }
