@@ -13,4 +13,9 @@ urlpatterns = [
         name='account_download_file',
     ),
     path('settings/', views.profile_settings, name='profile_settings'),
+    path(
+        'orders/<str:order_number>/',
+        views.profile_order_detail,
+        name='profile_order_detail',
+    ),
 ]
