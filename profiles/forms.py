@@ -7,7 +7,7 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
         exclude = ('user',)
-    
+
     def __init__(self, *args, **kwargs):
         """Add placeholder, remove labels, and apply shared styling classes."""
         super().__init__(*args, **kwargs)

@@ -1,9 +1,12 @@
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import FileResponse, Http404
 from django.shortcuts import render, get_object_or_404
 
 from checkout.models import Order
 from products.models import ProductDownload
+
+from .forms import UserProfileForm
 
 
 @login_required
@@ -81,3 +84,28 @@ def account_download_file(request, download_id):
         as_attachment=True,
         filename=download.file.name.split('/')[-1],
     )
+
+
+@login_required
+def profile_settings(request):
+    """Display and update the user's saved profile details."""
+    profile = request.user.userprofile
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request,
+                'Your profile details have been updated.',
+            )
+    else:
+        form = UserProfileForm(instance=profile)
+
+    context = {
+        'profile': profile,
+        'form': form,
+        'on_profile_page': True,
+    }
+
+    return render(request, 'profiles/profile_settings.html', context)
