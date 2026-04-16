@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_title %} | My Profile{% endblock %}
+{% block extra_title %} | My Orders{% endblock %}
 
 {% block extracss %}
     <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
@@ -12,17 +12,10 @@
         <div class="container">
             <div class="page-header">
                 <p class="eyebrow">Account</p>
-                <h1 class="page-header__title">
-                    Hello{% if profile.full_name %}, {{ profile.full_name }}{% else %}, {{ request.user.username }}{% endif %}
-                </h1>
+                <h1 class="page-header__title">Your orders</h1>
                 <p class="page-header__text">
-                    Manage your orders, downloads, and account settings from one place.
+                    Access your digital purchases and past order details anytime.
                 </p>
-            </div>
-
-            <div class="profile-dashboard__actions">
-                <a href="#recent-orders" class="btn btn-primary">Orders</a>
-                <a href="#" class="btn btn-secondary">Downloads</a>
             </div>
         </div>
     </section>
@@ -32,19 +25,22 @@
             <div class="profile-dashboard">
                 {% include "profiles/includes/account_nav.html" %}
 
-                <section class="profile-dashboard__orders-card" id="recent-orders">
+                <section class="profile-dashboard__orders-card">
                     <p class="profile-dashboard__eyebrow">Recent activity</p>
-                    <h2 class="profile-dashboard__card-title">Recent orders</h2>
+                    <h2 class="profile-dashboard__card-title">Order history</h2>
                     <p class="profile-dashboard__card-text">
-                        Your latest purchases appear here for quick access to files and details.
+                        Your latestpurchases appear here for quick access to files and details.
                     </p>
 
-                    {% if recent_orders %}
+                    {% if orders %}
                         <div class="profile-dashboard__orders-list">
-                            {% for order in recent_orders %}
+                            {% for order in orders %}
                                 <article class="profile-dashboard__order-item">
                                     <p class="profile-dashboard__order-title">
                                         Order #{{ order.order_number|slice:":6" }}
+                                    </p>
+                                    <p class="profile-dashboard__order-meta">
+                                        Purchased on {{ order.created_at|date:"j M Y" }}
                                     </p>
                                     <p class="profile-dashboard__order-meta">
                                         Total: £{{ order.grand_total }}
