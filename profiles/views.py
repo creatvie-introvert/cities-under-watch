@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import FileResponse, Http404
 from django.shortcuts import render, get_object_or_404
 
-from checkout.models import Order
+from checkout.models import Order, OrderLineItem
 from products.models import ProductDownload
 
 from .forms import UserProfileForm
@@ -73,13 +73,19 @@ def profile_downloads(request):
     """Display all downloadable files purchased by the user."""
     profile = request.user.userprofile
 
-    downloads = ProductDownload.objects.filter(
-        product__orderlineitem__order__user=request.user
-    ).distinct().order_by('product__title', 'sort_order')
+    lineitems = OrderLineItem.objects.filter(
+        order__user=request.user,
+        product__downloads__isnull=False,
+    ).select_related(
+        'order',
+        'product',
+    ).prefetch_related(
+        'product__downloads',
+    ).order_by('-created_at', 'product__title')
 
     context = {
         'profile': profile,
-        'downloads': downloads,
+        'lineitems': lineitems,
         'on_profile_page': True,
         'active_tab': 'downloads',
     }

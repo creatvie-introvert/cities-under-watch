@@ -32,21 +32,34 @@
                         Every downloadable file attached to your purchased products is listed here.
                     </p>
 
-                    {% if downloads %}
+                    {% if lineitems %}
                         <div class="profile-dashboard__orders-list">
-                            {% for download in downloads %}
+                            {% for lineitem in lineitems %}
                                 <article class="profile-dashboard__order-item">
                                     <p class="profile-dashboard__order-title">
                                         {{ download.product.title }}
                                     </p>
                                     <p class="profile-dashboard__order-meta">
-                                        {{ download.title }}
+                                        Order #{{ lineitem.order.order_number|slice:":6" }}
                                     </p>
-                                    <div class="profile-dashboard__order-links">
-                                        <a href="{% url 'account_download_file' download.id %}">
-                                            Download file
-                                        </a>
-                                    </div>
+                                    <p class="profile-dashboard__order-meta">
+                                        Purchased on {{ lineitem.order.created_at|date:"j M Y" }}
+                                    </p>
+
+                                    {% for download in lineitem.product.downloads.all %}
+                                        <p class="profile-dashboard__order-meta">
+                                            File: {{ download.title }}
+                                        </p>
+
+                                        <div class="profile-dashboard__order-links">
+                                            <a href="{% url 'account_download_file' download.id %}">
+                                                Download file
+                                            </a>
+                                            <a href="{% url 'profile_order_detail' lineitem.order.order_number %}">
+                                                View order
+                                            </a>
+                                        </div>
+                                    {% endfor %}
                                 </article>
                             {% endfor %}
                         </div>
