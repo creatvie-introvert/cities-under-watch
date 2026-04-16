@@ -46,8 +46,7 @@
                                         Total: £{{ order.grand_total }}
                                     </p>
                                     <div class="profile-dashboard__order-links">
-                                        <a href="#">View downloads</a>
-                                        <a href="#">View details</a>
+                                        <a href="{% url 'profile_order_detail' order.order_number %}">View details</a>
                                     </div>
                                 </article>
                             {% endfor %}

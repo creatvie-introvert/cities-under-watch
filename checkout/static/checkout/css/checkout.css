@@ -483,7 +483,7 @@
     justify-content: space-between;
     gap: var(--space-3);
     padding-bottom: var(--space-3);
-    border-bottom: 1ps solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-subtle);
     color: var(--color-text-primary);
     text-decoration: none;
     font-size: 1rem;
@@ -566,6 +566,52 @@
     color: var(--color-text-secondary);
     font-size: 0.9375rem;
     line-height: 1.5rem;
+}
+
+.profile-dashboard__nav-link.is-active {
+    padding: 0.5rem 0.75rem;
+    margin: -0.5rem -0.75rem;
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-weight: 700;
+}
+
+.profile-dashboard__nav-link.is-active::after {
+    color: var(--color-accent-primary);
+}
+
+ .profile-dashboard__nav-link[aria-current="page"] {
+    color: var(--color-accent-primary);
+ }
+
+/* =========================
+   Hover State
+========================= */
+
+@media (hover:hover) and (pointer: fine) {
+    .profile-dashboard__nav-link:hover {
+        color: var(--color-text-secondary);
+    }
+
+    .profile-dashboard__nav-link:hover::after {
+        color: var(--color-text-primary);
+    }
+
+    .profile-dashboard__nav-link.is-active:hover {
+        color: var(--color-text-primary);
+    }
+
+    .profile-dashboard__nav-link.is-active:hover::after {
+        color: var(--color-accent-primary);
+    }
+
+    .profile-dashboard__nav-links a:hover {
+        color: var(--color-text-secondary);
+    }
+
+    .profile-dashboard__order-links a:hover {
+        color: var(--color-text-secondary);
+    }
 }
 
 /* =========================

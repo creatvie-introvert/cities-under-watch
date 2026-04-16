@@ -9,17 +9,26 @@
 
     <nav class="profile-dashboard__nav" aria-label="Account navigation">
         <a 
-            href="{% url 'profile_orders' %}" class="profile-dashboard__nav-link"
+            href="{% url 'profile' %}" class="profile-dashboard__nav-link {% if active_tab == 'dashboard' %} is-active{% endif %}"
+            {% if active_tab == 'dashboard' %}aria-current="page"{% endif %}
+        >
+            Dashboard
+        </a>
+        <a 
+            href="{% url 'profile_orders' %}" class="profile-dashboard__nav-link {% if active_tab == 'orders' %} is-active{% endif %}"
+            {% if active_tab == 'orders' %}aria-current="page"{% endif %}
         >
             Orders
         </a>
         <a 
-            href="{% url 'profile_downloads' %}" class="profile-dashboard__nav-link"
+            href="{% url 'profile_downloads' %}" class="profile-dashboard__nav-link {% if active_tab == 'downloads' %} is-active{% endif %}"
+            {% if active_tab == 'downloads' %}aria-current="page"{% endif %}
         >
             Downloads
         </a>
         <a 
-            href="{% url 'profile_settings' %}" class="profile-dashboard__nav-link"
+            href="{% url 'profile_settings' %}" class="profile-dashboard__nav-link {% if active_tab == 'settings' %} is-active{% endif %}"
+            {% if active_tab == 'settings' %}aria-current="page"{% endif %}
         >
             Profile settings
         </a>

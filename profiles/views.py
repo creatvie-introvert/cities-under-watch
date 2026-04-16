@@ -22,6 +22,7 @@ def profile(request):
         'profile': profile,
         'recent_orders': recent_orders,
         'on_profile_page': True,
+        'active_tab': 'dashboard',
     }
 
     return render(request, 'profiles/profile.html', context)
@@ -40,6 +41,7 @@ def profile_orders(request):
         'profile': profile,
         'orders': orders,
         'on_profile_page': True,
+        'active_tab': 'orders',
     }
 
     return render(request, 'profiles/profile_orders.html', context)
@@ -60,6 +62,7 @@ def profile_order_detail(request, order_number):
         'profile': profile,
         'order': order,
         'on_profile_page': True,
+        'active_tab': 'orders',
     }
 
     return render(request, 'profiles/profile_order_detail.html', context)
@@ -78,6 +81,7 @@ def profile_downloads(request):
         'profile': profile,
         'downloads': downloads,
         'on_profile_page': True,
+        'active_tab': 'downloads',
     }
 
     return render(request, 'profiles/profile_downloads.html', context)
@@ -126,6 +130,7 @@ def profile_settings(request):
         'profile': profile,
         'form': form,
         'on_profile_page': True,
+        'active_tab': 'settings',
     }
 
     return render(request, 'profiles/profile_settings.html', context)
