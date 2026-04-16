@@ -20,3 +20,21 @@ def profile(request):
     }
 
     return render(request, 'profiles/profile.html', context)
+
+
+@login_required
+def profile_orders(request):
+    """Display the user's full order history."""
+    profile = request.user.userprofile
+
+    orders = Order.objects.filter(
+        user=request.user
+    ).order_by('-created_at')
+
+    context = {
+        'profile': profile,
+        'orders': orders,
+        'on_profile_page': True,
+    }
+
+    return render(request, 'profiles/profile_orders.html', context)
