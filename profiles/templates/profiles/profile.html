@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} — My Profile{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <p class="eyebrow">Account</p>
+                <h1 class="page-header__title">
+                    Hello{% if form.instance.full_name %}, {{ form.instance.full_name }}{% else %}, {{ request.user.username }}{% endif %}
+                </h1>
+                <p class="page-header__text">
+                    Manage your saved billing details and view your order history.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="checkout-section">
+        <div class="container">
+            <div class="checkout-layout">
+                <div class="section-heading checkout-main__heading">
+                    <p class="eyebrow">Details</p>
+                    <h2>Saved billing details</h2>
+                    <p>
+                        These details can be reused to prefill checkout in future.
+                    </p>
+                </div>
+
+                <form action="{% url 'profile' %}" method="post" class="checkout-form">
+                    {% csrf_token %}
+
+                    <fieldset class="checkout-form__fieldset">
+                        <legend class="checkout-form__legend">
+                            Saved details
+                        </legend>
+                        {{ form.full_name }}
+                        {{ form.phone_number }}
+                        {{ form.country_code }}
+                        {{ form.postcode }}
+                        {{ form.town_or_city }}
+                        {{ form.street_address1 }}
+                        {{ form.street_address2 }}
+                        {{ form.street_county }}
+                    </fieldset>
+
+                    <div class="checkout-form__actions">
+                        <button type="submit" class="btn btn-secondary">
+                            Update details
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <aside class="checkout-summary">
+                <div class="section-heading checkout-summary__heading">
+                    <p class="eyebrow">Orders</p>
+                    <h2>Order history</h2>
+                </div>
+
+                <div class="checkout-summary__card">
+                    {% if orders %}
+                        {% for order in orders %}
+                            <article class="checkout-summary__item">
+                                <div class="checkout-summary__item-content">
+                                    <h3 class="checkout-summary__item-title">
+                                        {{ order.order_number }}
+                                    </h3>
+                                    <p class="checkout-summary__item-meta">
+                                        {{ order.created_at|date:"j F Y, g:i a" }}
+                                    </p>
+                                    <p class="checkout-summary__item-price">
+                                        £{{ order.grand_total }}
+                                    </p>
+                                </div>
+                            </article>
+                        {% endfor %}
+                    {% else %}
+                            <p>
+                                You have not placed anby orders yet.
+                            </p>
+                    {% endif %}
+                </div>
+            </aside>
+        </div>
+    </section>
+{% endblock %}

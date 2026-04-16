@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
-from checkout.model import Order
+from checkout.models import Order
 from .forms import UserProfileForm
 
 
@@ -16,15 +16,15 @@ def profile(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Profile updated successfully.')
-        else:
-            form = UserProfileForm(instance=profile)
-        
-        orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    else:
+        form = UserProfileForm(instance=profile)
 
-        context = {
-            'form': form,
-            'orders': orders,
-            'on_profile_page': True,
-        }
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
 
-        return render(request, 'profiles/profile.html', context)
+    context = {
+        'form': form,
+        'orders': orders,
+        'on_profile_page': True,
+    }
+
+    return render(request, 'profiles/profile.html', context)
