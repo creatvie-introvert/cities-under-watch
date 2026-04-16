@@ -9,81 +9,79 @@
             <div class="page-header">
                 <p class="eyebrow">Account</p>
                 <h1 class="page-header__title">
-                    Hello{% if form.instance.full_name %}, {{ form.instance.full_name }}{% else %}, {{ request.user.username }}{% endif %}
+                    Hello{% if profile.full_name %}, {{ profile.full_name }}{% else %}, {{ request.user.username }}{% endif %}
                 </h1>
                 <p class="page-header__text">
-                    Manage your saved billing details and view your order history.
+                    Manage your orders, downloads, and account settings from one place.
                 </p>
+            </div>
+
+            <div class="profile-dashboard__actions">
+                <a href="#recent-orders" class="btn btn-primary">Orders</a>
+                <a href="#" class="btn btn-secondary">Downloads</a>
             </div>
         </div>
     </section>
 
-    <section class="checkout-section">
+    <section class="checkout-section profile-page">
         <div class="container">
-            <div class="checkout-layout">
-                <div class="section-heading checkout-main__heading">
-                    <p class="eyebrow">Details</p>
-                    <h2>Saved billing details</h2>
-                    <p>
-                        These details can be reused to prefill checkout in future.
+            <div class="profile-dashboard">
+                <aside class="profile-dashboard__nav-card">
+                    <p class="profile-dashboard__eyebrow">Quick access</p>
+                    <h2 class="profile-dashboard__card-title">
+                        Navigate your account
+                    </h2>
+                    <p class="profile-dashboard__card-text">
+                        Find orders, downloads and account settings in one place.
                     </p>
-                </div>
 
-                <form action="{% url 'profile' %}" method="post" class="checkout-form">
-                    {% csrf_token %}
+                    <nav class="profile-dashboard__nav" aria-label="Account navigation">
+                        <a href="#" class="profile-dashboard__nav-link">
+                            Orders
+                        </a>
+                        <a href="#" class="profile-dashboard__nav-link">
+                            Downloads
+                        </a>
+                        <a href="#" class="profile-dashboard__nav-link">
+                            Profile settings
+                        </a>
+                        <a href="{% url 'account_logout' %}" class="profile-dashboard__nav-link">
+                            Log out
+                        </a>
+                    </nav>
+                </aside>
 
-                    <fieldset class="checkout-form__fieldset">
-                        <legend class="checkout-form__legend">
-                            Saved details
-                        </legend>
-                        {{ form.full_name }}
-                        {{ form.phone_number }}
-                        {{ form.country_code }}
-                        {{ form.postcode }}
-                        {{ form.town_or_city }}
-                        {{ form.street_address1 }}
-                        {{ form.street_address2 }}
-                        {{ form.street_county }}
-                    </fieldset>
+                <section class="profile-dashboard__orders-card" id="recent-orders">
+                    <p class="profile-dashboard__eyebrow">Recent activity</p>
+                    <h2 class="profile-dashboard__card-title">Recent orders</h2>
+                    <p class="profile-dashboard__card-text">
+                        Your latest purchases appear here for quick access to files and details.
+                    </p>
 
-                    <div class="checkout-form__actions">
-                        <button type="submit" class="btn btn-secondary">
-                            Update details
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <aside class="checkout-summary">
-                <div class="section-heading checkout-summary__heading">
-                    <p class="eyebrow">Orders</p>
-                    <h2>Order history</h2>
-                </div>
-
-                <div class="checkout-summary__card">
-                    {% if orders %}
-                        {% for order in orders %}
-                            <article class="checkout-summary__item">
-                                <div class="checkout-summary__item-content">
-                                    <h3 class="checkout-summary__item-title">
-                                        {{ order.order_number }}
-                                    </h3>
-                                    <p class="checkout-summary__item-meta">
-                                        {{ order.created_at|date:"j F Y, g:i a" }}
+                    {% if recent_orders %}
+                        <div class="profile-dashboard__orders-list">
+                            {% for order in recent_orders %}
+                                <article class="profile-dashboard__order-item">
+                                    <p class="profile-dashboard__order-title">
+                                        Order #{{ order.order_number|slice:":6" }}
                                     </p>
-                                    <p class="checkout-summary__item-price">
-                                        £{{ order.grand_total }}
+                                    <p class="profile-dashboard__order-meta">
+                                        Total: £{{ order.grand_total }}
                                     </p>
-                                </div>
-                            </article>
-                        {% endfor %}
+                                    <div class="profile-dashboard__order-links">
+                                        <a href="#">Download</a>
+                                        <a href="#">View details</a>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </div>
                     {% else %}
-                            <p>
-                                You have not placed anby orders yet.
-                            </p>
+                        <p class="profile-dashboard__empty">
+                            You have not placed any orders yet.
+                        </p>
                     {% endif %}
-                </div>
-            </aside>
+                </section>
+            </div>
         </div>
     </section>
 {% endblock %}
