@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} | My Downloads{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <p class="eyebrow">Account</p>
+                <h1 class="page-header__title">Your downloads</h1>
+                <p class="page-header__text">
+                    Access every file you have purchased and download them again.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="checkout-section profile-page">
+        <div class="container">
+            <div class="profile-dashboard">
+                {% include "profiles/includes/account_nav.html" %}
+
+                <section class="profile-dashboard__orders-card">
+                    <p class="profile-dashboard__eyebrow">Library</p>
+                    <h2 class="profile-dashboard__card-title">Purchased</h2>
+                    <p class="profile-dashboard__card-text">
+                        Every downloadable file attached to your purchased products is listed here.
+                    </p>
+
+                    {% if downloads %}
+                        <div class="profile-dashboard__orders-list">
+                            {% for download in downloads %}
+                                <article class="profile-dashboard__order-item">
+                                    <p class="profile-dashboard__order-title">
+                                        {{ download.product.title }}
+                                    </p>
+                                    <p class="profile-dashboard__order-meta">
+                                        {{ download.title }}
+                                    </p>
+                                    <div class="profile-dashboard__order-links">
+                                        <a href="{% url 'account_download_file' download.id %}">
+                                            Download file
+                                        </a>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="profile-dashboard__empty">
+                            You do not have any downloads yet.
+                        </p>
+                    {% endif %}
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock %}

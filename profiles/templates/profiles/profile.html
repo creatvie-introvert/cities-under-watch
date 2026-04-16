@@ -21,8 +21,18 @@
             </div>
 
             <div class="profile-dashboard__actions">
-                <a href="#recent-orders" class="btn btn-primary">Orders</a>
-                <a href="#" class="btn btn-secondary">Downloads</a>
+                <a 
+                    href="{% url 'profile_orders' %}" 
+                    class="btn btn-primary"
+                >
+                    Orders
+                </a>
+                <a 
+                    href="{% url 'profile_downloads' %}"
+                    class="btn btn-secondary"
+                >
+                    Downloads
+                </a>
             </div>
         </div>
     </section>
@@ -50,8 +60,12 @@
                                         Total: £{{ order.grand_total }}
                                     </p>
                                     <div class="profile-dashboard__order-links">
-                                        <a href="#">View downloads</a>
-                                        <a href="#">View details</a>
+                                        <a 
+                                            href="{% url 'profile_downloads' %}"
+                                        >
+                                            View downloads
+                                        </a>
+                                        <a href="{% url 'profile_orders' %}">View all orders</a>
                                     </div>
                                 </article>
                             {% endfor %}

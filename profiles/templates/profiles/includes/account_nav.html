@@ -13,7 +13,11 @@
         >
             Orders
         </a>
-        <a href="#" class="profile-dashboard__nav-link">Downloads</a>
+        <a 
+            href="{% url 'profile_downloads' %}" class="profile-dashboard__nav-link"
+        >
+            Downloads
+        </a>
         <a href="#" class="profile-dashboard__nav-link">Profile settings</a>
         <a 
             href="{% url 'account_logout' %}" class="profile-dashboard__nav-link"
