@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} | Order Details{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <p class="eyebrow">Account</p>
+                <h1 class="page-header__title">Order details</h1>
+                <p class="page-header__text">
+                    Review your purchase and accesss the files included with this order.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="checkout-section profile-page">
+        <div class="container">
+            <div class="profile-dashboard">
+                {% include "profiles/includes/account_nav.html" %}
+
+                <section class="profile-dashboard__orders-card">
+                    <p class="profile-dashboard__eyebrow">Order</p>
+                    <h2 class="profile-dashboard__card-title">
+                        Order #{{ order.order_number|slice:":6" }}
+                    </h2>
+                    <p class="profile-dashboard__card-text">
+                        Placed on {{ order.created_at|date:"j F Y, g:i a" }}
+                    </p>
+
+                    <div class="profile-dashboard__orders-list">
+                        {% for lineitem in order.lineitems.all %}
+                            <article class="profile-dashboard__order-item">
+                                <p class="profile-dashboard__order-title">
+                                    {{ lineitem.product.title }}
+                                </p>
+                                <p class="profile-dashboard__order-meta">
+                                    Quantity: {{ lineitem.quantity }}
+                                </p>
+                                <p class="profile-dashboard__order-meta">
+                                    Line total: £{{ lineitem.lineitem_total }}
+                                </p>
+
+                                {% if lineitem.product.downloads.all %}
+                                    <div class="profile-dashboard__order-links">
+                                        {% for download in lineitem.product.downloads.all %}
+                                            <a href="{% url 'account_download_file' download.id %}">
+                                                {{ download.title }}
+                                            </a>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </article>
+                        {% endfor %}
+                    </div>
+
+                    <div class="checkout-success-summary__card">
+                        <div class="checkout-success-summary__section">
+                            <p class="checkout-success-summary__section-label">
+                                Order summary
+                            </p>
+
+                            <div class="checkout-success-summary__row">
+                                <p class="checkout-success-summary__term">
+                                    Order number
+                                </p>
+                                <p class="checkout-success-summary__value">
+                                    {{ order.order_number }}
+                                </p>
+                            </div>
+
+                            <div class="checkout-success-summary__row">
+                                <p class="checkout-success-summary__term">
+                                    Order date
+                                </p>
+                                <p class="checkout-success-summary__value">
+                                    {{ order.created_at|date:"j F Y, g:1 a" }}
+                                </p>
+                            </div>
+
+                            <div class="checkout-success-summary__row">
+                                <p class="checkout-success-summary__term">
+                                    Order total
+                                </p>
+                                <p class="checkout-success-summary__value">
+                                    {{ order.order_total }}
+                                </p>
+                            </div>
+
+                            <div class="checkout-success-summary__row">
+                                <p class="checkout-success-summary__term">
+                                    Grand total
+                                </p>
+                                <p class="checkout-success-summary__value">
+                                    {{ order.grand_total }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock %}
