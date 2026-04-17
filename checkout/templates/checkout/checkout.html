@@ -56,6 +56,20 @@
                             {{ order_form.county }}
                         </fieldset>
 
+                        {% if request.user.is_authenticated %}
+                            <div class="checkout-form__save-info">
+                                <label for="id-save-info" class="checkout-form__save-info-label">
+                                    <input 
+                                        type="checkbox"
+                                        name="save_info"
+                                        id="id-save-info"
+                                        class="checkout-form__save-info-checkbox"
+                                    >
+                                    Save these details to my profile
+                                </label>
+                            </div>
+                        {% endif %}
+
                         <fieldset class="checkout-form__fieldset">
                             <legend class="checkout-form__legend">
                                 Payment

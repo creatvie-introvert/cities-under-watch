@@ -16,6 +16,7 @@ from bag.contexts import bag_contents
 from products.models import Product, ProductDownload
 from .forms import OrderForm
 from .models import Order, OrderLineItem
+from profiles.forms import UserProfileForm
 
 
 def checkout(request):
@@ -40,6 +41,7 @@ def checkout(request):
         }
 
         order_form = OrderForm(form_data)
+        save_info = request.POST.get('save_info')
 
         if order_form.is_valid():
             client_secret = request.POST.get('client_secret', '')
@@ -84,6 +86,7 @@ def checkout(request):
                     order.delete()
                     return redirect(reverse('view_bag'))
 
+            request.session['save_info'] = save_info
             return redirect(
                 reverse('checkout_success', args=[order.order_number])
             )
@@ -160,6 +163,29 @@ def checkout_success(request, order_number):
     """Handle successful checkouts."""
     order = get_object_or_404(Order, order_number=order_number)
 
+    if request.user.is_authenticated:
+        save_info = request.session.get('save_info')
+
+        order.user = request.user
+        order.save()
+
+        if save_info:
+            profile = request.user.userprofile
+            profile_data = {
+                'full_name': order.full_name,
+                'phone_number': order.phone_number,
+                'country_code': order.country_code,
+                'postcode': order.postcode,
+                'town_or_city': order.town_or_city,
+                'street_address1': order.street_address1,
+                'street_address2': order.street_address2,
+                'county': order.county,
+            }
+
+            profile_form = UserProfileForm(profile_data, instance=profile)
+            if profile_form.is_valid():
+                profile_form.save()
+
     messages.success(
         request,
         f'Order successfully processed. Your order number is {order_number}.',
@@ -167,6 +193,9 @@ def checkout_success(request, order_number):
 
     if 'bag' in request.session:
         del request.session['bag']
+
+    if 'save_info' in request.session:
+        del request.session['save_info']
 
     context = {
         'order': order,
