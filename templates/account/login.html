@@ -51,14 +51,30 @@
                             </legend>
 
                             {% for field in form %}
-                                {{ field }}
-                                {% if field.errors %}
-                                    <div class="checkout-form__card-errors">
-                                        {% for error in field.errors %}
-                                            <p>{{ error }}</p>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
+                                <div class="auth-form__field{% if field.field.widget.input_type == 'checkbox' %} auth-form__field--checkbox{% endif %}">
+                                    {% if field.field.widget.input_type == 'checkbox' %}
+                                        <label for="{{ field.id_for_label }}" class="auth-form__checkbox-label">
+                                            {{ field }}
+                                            <span>{{ field.label }}</span>
+                                        </label>
+                                    {% else %}
+                                        {{ field }}
+                                    {% endif %}
+
+                                    {% if field.help_text %}
+                                        <small class="auth-form__helptext">
+                                            {{ field.help_text }}
+                                        </small>
+                                    {% endif %}
+
+                                    {% if field.errors %}
+                                        <div class="checkout-form__card-errors">
+                                            {% for error in field.errors %}
+                                                <p>{{ error }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
                             {% endfor %}
                         </fieldset>
 

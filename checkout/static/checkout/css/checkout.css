@@ -585,6 +585,142 @@
  }
 
 /* =========================
+   Custom Auth
+========================= */
+
+.profile-dashboard--auth,
+.profile-dashboard--auth .profile-dashboard__orders-card,
+.profile-dashboard--auth .checkout-form,
+.profile-dashboard--auth .checkout-form__fieldset {
+    min-width: 0;
+}
+
+.profile-dashboard--auth {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.profile-dashboard--auth .profile-dashboard__orders-card {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.profile-dashboard--auth .checkout-form__fieldset {
+    overflow: hidden;
+}
+
+.auth-form__field {
+    min-width: 0;
+}
+
+.auth-form__field--checkbox {
+    display: flex;
+    align-items: center;
+    min-height: 3rem;
+}
+
+.profile-dashboard--auth .checkout-form input:not([type="checkbox"]):not([type="hidden"]),
+.profile-dashboard--auth .checkout-form select,
+.profile-dashboard--auth .checkout-form textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 3rem;
+    padding: 0 var(--space-4);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-1);
+    color: var(--color-text-primary);
+    font: inherit;
+    box-sizing: border-box;
+}
+
+.profile-dashboard--auth .checkout-form textarea {
+    padding-block: var(--space-3);
+    min-height: 7rem;
+    resize: vertical;
+}
+
+.profile-dashboard--auth .checkout-form input::placeholder,
+.profile-dashboard--auth .checkout-form textarea::placeholder {
+    color: var(--color-text-muted);
+}
+
+.profile-dashboard--auth .checkout-form input:focus-visible,
+.profile-dashboard--auth .checkout-form select:focus-visible,
+.profile-dashboard--auth .checkout-form textarea:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+}
+
+.profile-dashboard--auth .checkout-form label {
+    display: block;
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 500;
+}
+
+.auth-form__checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: 0;
+    color: var(--color-text-primary);
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+    cursor: pointer;
+}
+
+.auth-form__checkbox-label input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    accent-color: var(--color-accent-primary);
+    flex-shrink: 0;
+}
+
+.auth-form__checkbox-label span {
+    color: var(--color-text-secondary);
+}
+
+.auth-form__helptext,
+.profile-dashboard--auth .checkout-form .helptext {
+    display: block;
+    margin-top: var(--space-2);
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+}
+
+.profile-dashboard--auth .checkout-form ul.errorlist {
+    list-style: none;
+    margin: var(--space-2) 0 0;
+    padding: 0;
+    color: #ff9f9f;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+}
+
+.profile-dashboard--auth .checkout-form__fieldset > * + * {
+    margin-top: var(--space-3);
+}
+
+.profile-dashboard--auth .auth-form__helptext a,
+.profile-dashboard--auth .checkout-form a {
+    color: var(--color-accent-primary);
+    text-decoration: none;
+}
+
+.profile-dashboard--auth .auth-form__helptext a:focus-visible,
+.profile-dashboard--auth .checkout-form a:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+}
+
+/* =========================
    Hover State
 ========================= */
 
@@ -605,12 +741,13 @@
         color: var(--color-accent-primary);
     }
 
-    .profile-dashboard__nav-links a:hover {
+    .profile-dashboard__order-links a:hover {
         color: var(--color-text-secondary);
     }
 
-    .profile-dashboard__order-links a:hover {
-        color: var(--color-text-secondary);
+    .profile-dashboard--auth .auth-form__helptext a:hover,
+    .profile-dashboard--auth .checkout-form a:hover {
+        color: var(--color-text-primary);
     }
 }
 
@@ -730,6 +867,22 @@
     .profile-dashboard__orders-card {
         padding: var(--space-6);
     }
+
+    .profile-dashboard--auth .checkout-form__fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+    }
+
+    .profile-dashboard--auth .checkout-form__actions {
+        flex-direction: row;
+        gap: var(--space-4);
+    }
+
+    .profile-dashboard--auth .checkout-form__actions .btn {
+        flex: 1 1 0;
+        width: auto;
+    }
 }
 
 
@@ -802,5 +955,13 @@
     .profile-dashboard__card-title {
         font-size: 2.25rem;
         line-height: 2.75rem;
+    }
+
+    .profile-dashboard--auth {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+        max-width: 48rem;
+        margin: 0 auto;
     }
 }
