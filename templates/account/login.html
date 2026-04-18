@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load account %}
+
+{% block extra_title %} | Log in{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <p class="eyebrow">Account</p>
+                <h1 class="page-header__title">Log in</h1>
+                <p class="page-header__text">
+                    Access your account, downloads, and order history.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="checkout-section profile-page">
+        <div class="container">
+            <div class="profile-dashboard profile-dashboard--auth">
+                <section class="profile-dashboard__orders-card">
+                    <p class="profile-dashboard__eyebrow">Welcome back</p>
+                    <h2 class="profile-dashboard__card-title">
+                        Log in to your account
+                    </h2>
+                    <p class="profile-dashboard__card-text">
+                        Enter your email address and password to continue.
+                    </p>
+
+                    <form action="{% url 'account_login' %}" method="post" class="checkout-form">
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            <div class="checkout-form__card-errors">
+                                {% for error in form.non_field_errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <fieldset class="checkout-form__fieldset">
+                            <legend class="checkout-form__legend">
+                                Account details
+                            </legend>
+
+                            {% for field in form %}
+                                {{ field }}
+                                {% if field.errors %}
+                                    <div class="checkout-form__card-errors">
+                                        {% for error in field.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </fieldset>
+
+                        {% if redirect_field_value %}
+                            <input 
+                                type="hidden"
+                                name="{{ redirect_field_name }}"
+                                value="{{ redirect_field_value }}"
+                            >
+                        {% endif %}
+
+                        <div class="checkout-form__actions">
+                            <a href="{% url 'home' %}" class="btn btn-secondary">
+                                 Back to home
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                Log in
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="profile-dashboard__order-links">
+                        <a href="{% url 'account_signup' %}">
+                            Create an account
+                        </a>
+                        <a href="{% url 'account_reset_password' %}">
+                            Forgot password?
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock %}
