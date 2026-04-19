@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load account %}
+
+{% block extra_title %} | Create account{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <p class="eyebrow">Account</p>
+                <h1 class="page-header__title">Create an account</h1>
+                <p class="page-header__text">
+                    Save your details, access downloads, and view your order history.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="checkout-section profile-page">
+        <div class="container">
+            <div class="profile-dashboard profile-dashboard--auth">
+                <section class="profile-dashboard__orders-card">
+                    <p class="profile-dashboard__eyebrow">Join now</p>
+                    <h2 class="profile-dashboard__card-title">
+                        Create your account
+                    </h2>
+                    <p class="profile-dashboard__card-text">
+                        Enter your details below to get started.
+                    </p>
+
+                    <form action="{% url 'account_signup' %}" method="post" class="checkout-form">
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            <div class="checkout-form__card-errors">
+                                {% for error in form.non_field_errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <fieldset class="checkout-form__fieldset">
+                            <legend class="checkout-form__legend">
+                                Account details
+                            </legend>
+
+                            {% for field in form %}
+                                <div class="auth-form__field{% if field.field.widget.input_type == 'checkbox' %} auth-form__field--checkbox{% endif %}">
+                                    {% if field.field.widget.input_type == 'checkbox' %}
+                                        <label for="{{ field.id_for_label }}" class="auth-form__checkbox-label">
+                                            {{ field }}
+                                            <span>{{ field.label }}</span>
+                                        </label>
+                                    {% else %}
+                                        {{ field }}
+                                    {% endif %}
+
+                                    {% if field.help_text %}
+                                        <small class="auth-form__helptext">
+                                            {{ field.help_text }}
+                                        </small>
+                                    {% endif %}
+
+                                    {% if field.errors %}
+                                        <div class="checkout-form__card-errors">
+                                            {% for error in field.errors %}
+                                                <p>{{ error }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </fieldset>
+
+                        {% if redirect_field_value %}
+                            <input 
+                                type="hidden"
+                                name="{{ redirect_field_name }}"
+                                value="{{ redirect_field_value }}"
+                            >
+                        {% endif %}
+
+                        <div class="checkout-form__actions">
+                            <a href="{% url 'home' %}" class="btn btn-secondary">
+                                Back to home
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                Create account
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="profile-dashboard__order-links">
+                        <a href="{% url 'account_login' %}">
+                            Already have an account?
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock %}
