@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load account %}
+
+{% block extra_title %} | Verify your email{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <p class="eyebrow">Account</p>
+                <h1 class="page-header__title">Verify your email</h1>
+                <p class="page-header__text">
+                    We have sent a verification email to confim your account.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="checkout-section profile-page">
+        <div class="container">
+            <div class="profile-dashboard profile-dashboard--auth">
+                <section class="profile-dashboard__orders-card">
+                    <p class="profile-dashboard__eyebrow">Almost there</p>
+                    <h2 class="profile-dashboard__card-title">
+                        Check your inbox
+                    </h2>
+                    <p class="profile-dashboard__card-text">
+                        Open the email we sent and follow the verification link to activate your account.
+                    </p>
+
+                    <div class="checkout-form__actions">
+                        <a href="{% url 'account_login' %}" class="btn btn-secondary">
+                            Back to log in
+                        </a>
+                        <a href="{% url 'home' %}" class="btn btn-primary">
+                            Return home
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock %}
