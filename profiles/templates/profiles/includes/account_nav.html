@@ -4,37 +4,35 @@
         Navigate your account
     </h2>
     <p class="profile-dashboard__card-text">
-        Find orders, downloads and account settings in one place.
+        Find orders, downloads,settings, and security tools in one place.
     </p>
 
     <nav class="profile-dashboard__nav" aria-label="Account navigation">
-        <a 
-            href="{% url 'profile' %}" class="profile-dashboard__nav-link {% if active_tab == 'dashboard' %} is-active{% endif %}"
-            {% if active_tab == 'dashboard' %}aria-current="page"{% endif %}
-        >
+        <a href="{% url 'profile' %}" class="profile-dashboard__nav-link {% if active_tab == 'dashboard' %} is-active{% endif %}"
+        {% if active_tab == 'dashboard' %}aria-current="page"{% endif %}>
             Dashboard
         </a>
-        <a 
-            href="{% url 'profile_orders' %}" class="profile-dashboard__nav-link {% if active_tab == 'orders' %} is-active{% endif %}"
-            {% if active_tab == 'orders' %}aria-current="page"{% endif %}
-        >
+        <a href="{% url 'profile_orders' %}" class="profile-dashboard__nav-link {% if active_tab == 'orders' %} is-active{% endif %}"
+        {% if active_tab == 'orders' %}aria-current="page"{% endif %}>
             Orders
         </a>
-        <a 
-            href="{% url 'profile_downloads' %}" class="profile-dashboard__nav-link {% if active_tab == 'downloads' %} is-active{% endif %}"
-            {% if active_tab == 'downloads' %}aria-current="page"{% endif %}
-        >
+        <a href="{% url 'profile_downloads' %}" class="profile-dashboard__nav-link {% if active_tab == 'downloads' %} is-active{% endif %}"
+        {% if active_tab == 'downloads' %}aria-current="page"{% endif %}>
             Downloads
         </a>
-        <a 
-            href="{% url 'profile_settings' %}" class="profile-dashboard__nav-link {% if active_tab == 'settings' %} is-active{% endif %}"
-            {% if active_tab == 'settings' %}aria-current="page"{% endif %}
-        >
+        <a href="{% url 'profile_settings' %}" class="profile-dashboard__nav-link {% if active_tab == 'settings' %} is-active{% endif %}"
+        {% if active_tab == 'settings' %}aria-current="page"{% endif %}>
             Profile settings
         </a>
-        <a 
-            href="{% url 'account_logout' %}" class="profile-dashboard__nav-link"
-        >
+        <a href="{% url 'account_email' %}" class="profile-dashboard__nav-link {% if active_tab == 'email' %} is-active{% endif %}"
+        {% if active_tab == 'email' %}aria-current="page"{% endif %}>
+            Email addresses
+        </a>
+        <a href="{% url 'account_change_password' %}" class="profile-dashboard__nav-link {% if active_tab == 'password' %} is-active{% endif %}"
+        {% if active_tab == 'password' %}aria-current="page"{% endif %}>
+            Change password
+        </a>
+        <a href="{% url 'account_logout' %}" class="profile-dashboard__nav-link">
             Log out
         </a>
     </nav>
