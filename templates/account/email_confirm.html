@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load account %}
+
+{% block extra_title %} | Confirm email{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <p class="eyebrow">Account</p>
+                <h1 class="page-header__title">Confirm your email</h1>
+                <p class="page-header__text">
+                    Verify your email address to finifh setting up your account.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="checkout-section profile-page">
+        <div class="container">
+            <div class="profile-dashboard profile-dashboard--auth">
+                <section class="profile-dashboard__orders-card">
+                    {% if confirmation %}
+                        <p class="profile-dashboard__eyebrow">
+                            Email verification
+                        </p>
+                        <h2 class="profile-dashboard__card-title">
+                            Confirm your address
+                        </h2>
+                        <p class="profile-dashboard__card-text">
+                            Please confirm that
+                            <strong>
+                                {{ confirmation.email_address.email }}
+                            </strong>
+                            is the correct email address for your account.
+                        </p>
+
+                        <form action="{% url 'account_confirm_email' confirmation.key %}" method="post" class="checkout-form">
+                            {% csrf_token %}
+
+                            <div class="checkout-form__actions">
+                                <a href="{% url 'home' %}" class="btn btn-secondary">
+                                    Return home
+                                </a>
+                                <button type="submit" class="btn btn-primary">
+                                    Confirm email
+                                </button>
+                            </div>
+                        </form>
+                    {% else %}
+                        <p class="profile-dashboard__eyebrow">
+                            Email verification
+                        </p>
+                        <h2 class="profile-dashboard__card-title">
+                            Verification link invalid
+                        </h2>
+                        <p class="profile-dashboard__card-text">
+                            This confirmation link is invalid or has expired. Request a new verification email to continue.
+                        </p>
+
+                        <div class="checkout-form__actions">
+                            <a href="{% url 'account_email' %}" class="btn btn-secondary">
+                                Manage email
+                            </a>
+                            <a href="{% url 'account_login' %}" class="btn btn-primary">
+                                Back to log in
+                            </a>
+                        </div>
+                    {% endif %}
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock %}
