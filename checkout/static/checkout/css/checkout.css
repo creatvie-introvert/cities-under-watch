@@ -720,6 +720,32 @@
     outline-offset: 2px;
 }
 
+.auth-form__email-option {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+    cursor: pointer;
+}
+
+.auth-form__email-option:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.auth-form__email-option input[type="radio"] {
+    margin-top: 0.2rem;
+    accent-color: var(--color-accent-primary);
+    flex-shrink: 0;
+}
+
+.auth-form__email-option span {
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+}
+
 /* =========================
    Hover State
 ========================= */

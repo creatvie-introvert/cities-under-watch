@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load account %}
+
+{% block extra_title %} | Email addresses{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <p class="eyebrow">Account</p>
+                <h1 class="page-header__title">Email addresses</h1>
+                <p class="page-header__text">
+                    Manage your account email addresses and verification status.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="checkout-section profile-page">
+        <div class="container">
+            <div class="profile-dashboard profile-dashboard--auth">
+                <section class="profile-dashboard__orders-card">
+                    <p class="profile-dashboard__eyebrow">Email settings</p>
+                    <h2 class="profile-dashboard__card-title">
+                        Manage your email
+                    </h2>
+                    <p class="profile-dashboard__card-text">
+                        Add a new email address, resend verification, or update your primary email.
+                    </p>
+
+                    {% if emailaddresses %}
+                        <form action="{% url 'account_email' %}" method="post" class="checkout-form">
+                            {% csrf_token %}
+
+                            <fieldset class="checkout-form__fieldset">
+                                <legend class="checkout-form__legend">
+                                    Your email addresses
+                                </legend>
+
+                                <div class="profile-dashboard__orders-list">
+                                    {% for emailaddress in emailaddresses %}
+                                        <label for="email_radio_{{ forloop.counter }}" class="auth-form__checkbox-label auth-form__email-option">
+                                            <input 
+                                                id="email_radio_{{ forloop.counter }}"
+                                                type="radio"
+                                                name="email"
+                                                value="{{ emailaddress.email }}"
+                                                {% if emailaddress.primary or emailaddress.email == user.email %}checkded{% endif %}
+                                            >
+                                            <span>
+                                                {{ emailaddress.email }}
+                                                {% if emailaddress.verified %}
+                                                    — Verified
+                                                {% else %}
+                                                    — Unverified
+                                                {% endif %}
+                                                {% if emailaddress.primary %}
+                                                    — Primary
+                                                {% endif %}
+                                            </span>
+                                        </label>
+                                    {% endfor %}
+                                </div>
+                            </fieldset>
+
+                            <div class="checkout-form__actions">
+                                <button type="submit" name="action_primary" class="btn btn-secondary">
+                                    Make primary
+                                </button>
+                                <button type="submit" name="action_send" class="btn btn-secondary">
+                                    Re-send verification
+                                </button>
+                                <button type="submit" name="action_remove" class="btn btn-secondary">
+                                    Remove
+                                </button>
+                            </div>
+                        </form>
+                    {% endif %}
+
+                    <form action="{% url 'account_email' %}" method="post" class="checkout-form">
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            <div class="checkout-form__card-errors">
+                                {% for error in form.non_field_errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <fieldset class="checkout-form__fieldset">
+                            <legend class="checkout-form__legend">
+                                Add email address
+                            </legend>
+
+                            {% for field in form %}
+                                <div class="auth-form__field">
+                                    {{ field }}
+
+                                    {% if field.help_text %}
+                                        <small class="auth-form__helptext">
+                                            {{ field.help_text }}
+                                        </small>
+                                    {% endif %}
+
+                                    {% if field.errors %}
+                                        <div class="checkout-form__card-errors">
+                                            {% for error in field.errors %}
+                                                <p>{{ error }}</p>
+                                            {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </fieldset>
+
+                        <div class="checkout-form__actions">
+                            <a href="{% url 'profile' %}" class="btn btn-secondary">
+                                Back to account
+                            </a>
+                            <button type="submit" name="action_add" class="btn btn-primary">
+                                Add email
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock %}
