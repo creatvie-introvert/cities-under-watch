@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load account %}
+
+{% block extra_title %} | Log out{% endblock %}
+
+{% block extracss %}
+    <link rel="stylesheet" href="{% static 'checkout/css/checkout.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <p class="eyebrow">Account</p>
+                <h1 class="page-header__title">Log out</h1>
+                <p class="page-header__text">
+                    You are about to sign out of your account.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="checkout-section profile-page">
+        <div class="container">
+            <div class="profile-dashboard profile-dashboard--auth">
+                <section class="profile-dashboard__orders-card">
+                    <p class="profile-dashboard__eyebrow">Sign out</p>
+                    <h2 class="profile-dashboard__card-title">
+                        Confirm log out
+                    </h2>
+                    <p class="profile-dashboard__card-text">
+                        You will need to log in again to access your downloads, orders, and saved details.
+                    </p>
+
+                    <form action="{% url 'account_logout' %}" method="post" class="checkout-form">
+                        {% csrf_token %}
+
+                        <div class="checkout-form__actions">
+                            <a href="{% url 'profile' %}" class="btn btn-secondary">
+                                Back to account
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                Log out
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock %}
