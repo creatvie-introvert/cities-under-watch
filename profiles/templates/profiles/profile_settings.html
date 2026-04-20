@@ -14,7 +14,7 @@
                 <p class="eyebrow">Account</p>
                 <h1 class="page-header__title">Profile settings</h1>
                 <p class="page-header__text">
-                    Update your saved billing details for faster checkout next time.
+                    Update your saved billing details, then manage your account email and password from one place.
                 </p>
             </div>
         </div>
@@ -25,10 +25,11 @@
             <div class="profile-dashboard">
                 {% include "profiles/includes/account_nav.html" %}
 
-                <section class="profile-dashboard__orders-card" id="recent-orders">Settings</p>
+                <section class="profile-dashboard__orders-card" id="recent-orders">
+                    <p class="profile-dashboard__eyebrow">Settings</p>
                     <h2 class="profile-dashboard__card-title">Saved details</h2>
                     <p class="profile-dashboard__card-text">
-                        These details can be reused to prefil checkout for future purchases.
+                        These details can be reused to prefill checkout for future purchases.
                     </p>
 
                     <form action="{% url 'profile_settings' %}" method="post" class="checkout-form">
@@ -54,6 +55,15 @@
                             </button>
                         </div>
                     </form>
+
+                    <div class="profile-dashboard__order-links">
+                        <a href="{% url 'account_email' %}">
+                            Manage email addresses
+                        </a>
+                        <a href="{% url 'account_change_password' %}">
+                            Change password
+                        </a>
+                    </div>
                 </section>
             </div>
         </div>
