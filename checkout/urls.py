@@ -11,6 +11,11 @@ urlpatterns = [
         name='checkout_success',
     ),
     path(
+        'cache-checkout-data/',
+        views.cache_checkout_data,
+        name='cache_checkout_data',
+    ),
+    path(
         'success/<order_number>/download/<int:download_id>/',
         views.download_order_file,
         name='download_order_file',

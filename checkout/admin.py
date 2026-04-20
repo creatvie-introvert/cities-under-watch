@@ -24,6 +24,7 @@ class OrderAdmin(admin.ModelAdmin):
 
     fields = (
         'order_number',
+        'user',
         'full_name',
         'email',
         'phone_number',
@@ -43,6 +44,7 @@ class OrderAdmin(admin.ModelAdmin):
 
     list_display = (
         'order_number',
+        'user',
         'full_name',
         'email',
         'phone_number',

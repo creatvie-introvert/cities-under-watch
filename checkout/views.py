@@ -3,6 +3,7 @@ import json
 import stripe
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import get_user_model
 from django.http import FileResponse, Http404, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import (
@@ -17,6 +18,74 @@ from products.models import Product, ProductDownload
 from .forms import OrderForm
 from .models import Order, OrderLineItem
 from profiles.forms import UserProfileForm
+
+User = get_user_model()
+
+
+def _get_user_from_metadata(user_id):
+    """Return a user from Stripe metadata, or None for guest checkout."""
+    if not user_id or user_id == 'anonymous':
+        return None
+
+    try:
+        return User.objects.get(pk=user_id)
+    except User.DoesNotExist:
+        return None
+
+
+def _update_profile_from_order(user, order):
+    """Update a user's profile from order billing details."""
+    profile = user.userprofile
+
+    profile_data = {
+        'full_name': order.full_name,
+        'phone_number': order.phone_number,
+        'country_code': order.country_code,
+        'postcode': order.postcode,
+        'town_or_city': order.town_or_city,
+        'street_address1': order.street_address1,
+        'street_address2': order.street_address2,
+        'county': order.county,
+    }
+
+    profile_form = UserProfileForm(profile_data, instance=profile)
+    if profile_form.is_valid():
+        profile_form.save()
+
+
+@csrf_exempt
+def cache_checkout_data(request):
+    """Store checkout metadata on the PaymentIntent before confirmation."""
+    if request.method != 'POST':
+        return HttpResponse(status=405)
+
+    try:
+        client_secret = request.POST.get('client_secret', '')
+        stripe_pid = client_secret.split('_secret')[0]
+
+        save_info = 'true' if request.POST.get('save_info') == 'on' else 'false'
+        bag = request.session.get('bag', {})
+
+        user_id = request.user.id if request.user.is_authenticated else 'anonymous'
+
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(
+            stripe_pid,
+            metadata={
+                'bag': json.dumps(bag),
+                'save_info': save_info,
+                'user_id': str(user_id),
+            },
+        )
+
+        return HttpResponse(status=200)
+
+    except Exception as error:
+        messages.error(
+            request,
+            'Sorry, your payment cannot be processed right now. Please try again later.',
+        )
+        return HttpResponse(content=str(error), status=400)
 
 
 def checkout(request):
@@ -113,6 +182,8 @@ def checkout(request):
                 currency=settings.STRIPE_CURRENCY,
                 metadata={
                     'bag': json.dumps(bag),
+                    'save_info': 'false',
+                    'user_id': str(request.user.id) if request.user.is_authenticated else 'anonymous',
                 }
             )
 
@@ -256,6 +327,9 @@ def stripe_webhook(request):
         intent = event['data']['object']
         stripe_pid = intent['id']
         metadata = intent['metadata']
+        
+        user = _get_user_from_metadata(metadata.get('user_id'))
+        save_info = metadata.get('save_info') == 'true'
 
         try:
             order = Order.objects.get(stripe_pid=stripe_pid)
@@ -263,6 +337,14 @@ def stripe_webhook(request):
                 f"Webhook matched order {order.order_number} "
                 f"to PaymentIntent {stripe_pid}"
             )
+
+            if user and order.user is None:
+                order.user = user
+                order.save()
+
+            if user and save_info:
+                _update_profile_from_order(user, order)
+            
         except Order.DoesNotExist:
             print(
                 f"Webhook could not find an order for PaymentIntent "
@@ -290,6 +372,7 @@ def stripe_webhook(request):
                         address = billing_details['address']
 
                 recovered_order = Order.objects.create(
+                    user=user,
                     full_name=billing_details.get('name', 'Unknown'),
                     email=billing_details.get('email', ''),
                     phone_number=billing_details.get('phone', ''),
@@ -310,6 +393,9 @@ def stripe_webhook(request):
                         product=product,
                         quantity=quantity,
                     )
+                
+                if user and save_info:
+                    _update_profile_from_order(user, recovered_order)
 
                 print(
                     f"Webhook recovered missing order "

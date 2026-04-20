@@ -22,12 +22,12 @@ const appearance = {
     rules: {
         ".Input": {
             backgroundColor: "#17181a",
-            border: "1ppx solid #525866",
+            border: "1px solid #525866",
             boxShadow: "none",
         },
         ".Input:focus": {
             border: "1px solid #4da3ff",
-            boxShadow: "0 0 0 2pc rgba(77, 163, 255, 0.2)",
+            boxShadow: "0 0 0 2px rgba(77, 163, 255, 0.2)",
         },
         ".Label": {
             color: "#f5f5f5",
@@ -90,6 +90,32 @@ form.addEventListener("submit", async function(event) {
 
     submitButton.disabled = true;
     errorDiv.textContent = "";
+
+    const csrfToken = document.querySelector("[name=csrfmiddlewaretoken]")?.value;
+    const saveInfo = document.getElementById("id-save-info")?.checked ? "on" : "";
+
+    try {
+        const response = await fetch("/checkout/cache-checkout-data/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": csrfToken,
+            },
+            body: new URLSearchParams({
+                client_secret: clientSecret,
+                save_info: saveInfo,
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to cache checkout data.");
+        }
+    } catch (error) {
+        errorDiv.textContent =
+            "Sorry, your payment could not be prepared. Please try again."
+        submitButton.disabled = false;
+        return;
+    }
 
     const { error, paymentIntent } = await stripe.confirmPayment({
         elements,
