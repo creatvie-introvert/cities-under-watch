@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_title %} — Home{% endblock %}
+{% block extra_title %} | Home{% endblock %}
 
 
 {% block content %}
@@ -42,11 +42,11 @@
                     Each poster is a vision of a familiar city transformed. Surveillance systems grid the skyline. Regime architecture dominates the horizon. Transit routes become instruments of control. But in the margins, resistance persists.
                 </p>
                 <div class="section-actions">
-                    <a href="#" class="btn btn-primary">
-                        Learn
-                    </a>
-                    <a href="#" class="btn btn-secondary">
+                    <a href="{% url 'about' %}" class="btn btn-secondary">
                         About
+                    </a>
+                    <a href="{% url 'collection_list' %}" class="btn btn-primary">
+                        Browse collections
                     </a>
                 </div>
             </div>

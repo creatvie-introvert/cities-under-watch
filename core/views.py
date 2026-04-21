@@ -19,4 +19,9 @@ def index(request):
         'featured_products': featured_products,
     }
 
-    return render(request, "core/index.html", context)
+    return render(request, 'core/index.html', context)
+
+
+def about(request):
+    """Render the about page."""
+    return render(request, 'core/about.html')

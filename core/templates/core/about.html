@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} | About{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="page-header">
+            <p class="eyebrow">About</p>
+            <h1 class="page-header__title">Cities reimagined</h1>
+            <p class="page-header__text">
+                We document the architecture of control through graphic art and design.
+            </p>
+            <div class="page-header__actions">
+                <a href="{% url 'collection_list' %}" class="btn btn-primary">
+                    View collections
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-story-section">
+        <div class="container">
+            <div class="section-heading">
+                <p class="eyebrow">Origin</p>
+                <h2>Why we started Cities Under Watch</h2>
+                <p>
+                    This project began with a simple question: what would London look like if every sytem of control we see emerging today was fully realised? The answer demanded illustration.
+                </p>
+            </div>
+
+            <div class="about-story-section__media">
+                <div class="image-placeholder">
+                    About feature image placeholder
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-principles-section">
+        <div class="container">
+            <div class="section-heading">
+                <p class="eyebrow">Pillars</p>
+                <h2>Three ideas that shape our work</h2>
+                <p>
+                    We build from observation and research. Every detail — the watchtower placement, the propaganda grid, the transit routes — comes from studying how power actually operates in cities today.
+                </p>
+            </div>
+
+            <div class="about-principles-grid">
+                <article class="about-principles-card">
+                    <div class="image-placeholder">
+                        Observation image
+                    </div>
+                    <h3>Observation</h3>
+                    <p>
+                        We study the architecture of control in real cities.
+                    </p>
+                </article>
+
+                <article class="about-principles-card">
+                    <div class="image-placeholder">
+                        Extrapolation image
+                    </div>
+                    <h3>Extrapolation</h3>
+                    <p>
+                        We imagine what comes next if current systems continue unchecked.
+                    </p>
+                </article>
+
+                <article class="about-principles-card">
+                    <div class="image-placeholder">
+                        Critique image
+                    </div>
+                    <h3>Critique</h3>
+                    <p>
+                        We make the invisible visible through graphic art and design.
+                    </p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-dual-section">
+        <div class="container">
+            <div class="about-dual">
+                <div class="about-dual__media">
+                    <div class="image-placeholder">
+                        Resistance image placeholder
+                    </div>
+                </div>
+
+                <div class="about-dual__content">
+                    <p class="eyebrow">Lore</p>
+                    <h2>Each city tells a story of resistance</h2>
+                    <p class="about-dual__intro">
+                        Our collections document different cities at different stages of control. Some are fully realised regimes. Others show the moment before the system locks into place. All contain traces of those who refuse to disappear.
+                    </p>
+
+                    <div class="about-dual__points">
+                        <article class="about-dual__point">
+                            <h3>The regime</h3>
+                            <p>
+                                Monumental architecture, surveillance networks, propaganda systems, and total transit control.
+                            </p>
+                        </article>
+
+                        <article class="about-dual__point">
+                            <h3>The resistance</h3>
+                            <p>
+                                Hidden in the margins, coded in the streets, waiting in the dark.
+                            </p>
+                        </article>
+                    </div>
+
+                    <div class="section-actions">
+                        <a href="{% url 'collection_list' %}" class="btn btn-primary">
+                            Browse collections
+                        </a>
+                        <a href="{% url 'product_list' %}" class="btn btn-secondary">
+                            Shop prints
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
