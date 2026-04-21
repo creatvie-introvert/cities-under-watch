@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} | FAQ{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="Container">
+            <div class="page-header">
+                <p class="eyebrow">FAQ</p>
+                <h1 class="page-header__title">Frequently asked questions</h1>
+                <p class="page-header__text">
+                    Everything you need to know about purchasing, downloading, and using Cities Under Watch digital editions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-layout">
+                <section class="faq-list">
+                    <details class="faq-item" open>
+                        <summary>What do I receive after purchase?</summary>
+                        <div class="faq-item__content">
+                            <p>
+                                After checkout, you receive access to your purchased digital file or files. You can download them from the success page immediately after purchase and again later from your account downloads page.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Are these physical posters?</summary>
+                        <div class="faq-item__content">
+                            <p>
+                                No. Cities Under Watch products are digital downloads. No physical item is shipped.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Do I need an account to buy?</summary>
+                        <div class="faq-item__content">
+                            <p>
+                                No. You can complete checkout as a guest. Creating an account makes it easier to access your order history, saved details, and downloads later.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Where can I find my downloads later?</summary>
+                        <div class="faq-item__content">
+                            <p>
+                                If you purchased while logged in, you can return to your account dashboard and open the downloads page at any time to access eligible purchased files again.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Can I print the files myself?</summary>
+                        <div class="faq-item__content">
+                            <p>
+                                Yes. You can print the files at home if your setup supports it, or use a professional print service for a higher quality result.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>Do you offer refunds?</summary>
+                        <div class="faq-item__content">
+                            <p>
+                                Because these are digital products delivered instantly, refunds are generally limited. Please review the refund policy for the full details before purchasing.
+                            </p>
+                        </div>
+                    </details>
+
+                    <details class="faq-item">
+                        <summary>
+                            What should I do if I have a problem with my order?
+                        </summary>
+                        <div class="faq-item__content">
+                            <p>
+                                Use the contact page and include your order number where possible. That helps support requests get resolved more quickly.
+                            </p>
+                        </div>
+                    </details>
+                </section>
+
+                <aside class="faq-sidebar">
+                    <section class="faq-card">
+                        <p class="eyebrow">Need help?</p>
+                        <h2 class="faq-card__title">Still have a question?</h2>
+                        <p class="faq-card__text">
+                            If you cannot find the answer here, use the contact page and send a message with as much detail as possible.
+                        </p>
+                        <div class="section-actions">
+                            <a href="{% url 'contact' %}" class="btn btn-primary">
+                                Contact
+                            </a>
+                        </div>
+                    </section>
+
+                    <section class="faq-card">
+                        <p class="eyebrow">Account</p>
+                        <h2 class="faq-card__title">Useful links</h2>
+                        <p class="faq-card__text">
+                            Quick access to the most relevant account pages for orders and downloads.
+                        </p>
+                        <div class="faq-sidebar__links">
+                            <a href="{% url 'profile_orders' %}" class="btn btn-secondary">
+                                Downloads
+                            </a>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </section>
+{% endblock %}

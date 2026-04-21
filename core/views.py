@@ -30,3 +30,8 @@ def about(request):
 def contact(request):
     """Render the contact page."""
     return render(request, 'core/contact.html')
+
+
+def faq(request):
+    """Render the FAQ page."""
+    return render(request, 'core/faq.html')

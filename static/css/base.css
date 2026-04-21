@@ -2699,6 +2699,117 @@ body {
 }
 
 /* =========================
+   FAQ Page
+========================= */
+
+.faq-section {
+    padding: 4rem 0;
+}
+
+.faq-section .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.faq-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.faq-item,
+.faq-card {
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface-2);
+}
+
+.faq-item {
+    padding: var(--space-4) var(--space-5);
+}
+
+.faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+.faq-item summary::after {
+    content: "+";
+    color: var(--color-text-secondary);
+    font-size: 1.25rem;
+    line-height: 1;
+    font-weight: 700;
+}
+
+.faq-item[open] summary::after {
+    content: "-";
+}
+
+.faq-item__content {
+    padding-top: var(--space-4);
+}
+
+.faq-item__content p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.625rem;
+}
+
+.faq-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: var(--space-5);
+}
+
+.faq-card__title {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.faq-card__text {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.625rem;
+}
+
+.faq-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.faq-sidebar__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.faq-sidebar__links .btn {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* =========================
    Hover States
 ========================= */
 
@@ -3237,6 +3348,32 @@ body {
     .contact-sidebar__links .btn {
         width: auto;
         flex-direction: 1 1 0;
+    }
+
+    .faq-section {
+        padding: 5rem 0;
+    }
+
+    .faq-section .container {
+        gap: var(--space-10);
+    }
+
+    .faq-layout {
+        gap: var(--space-8);
+    }
+
+    .faq-card {
+        padding: var(--space-6);
+    }
+
+    .faq-sidebar__links {
+        flex-direction: row;
+        gap: var(--space-4);
+    }
+
+    .faq-sidebar__links .btn {
+        width: auto;
+        flex: 1 1 0;
     }
 }
 
@@ -4334,6 +4471,21 @@ body {
     }
 
     .contact-sidebar {
+        gap: var(--space-5);
+    }
+
+    .faq-section {
+        padding: 5rem 0;
+    }
+
+    .faq-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 22rem;
+        gap: var(--space-12);
+        align-items: start;
+    }
+
+    .faq-sidebar {
         gap: var(--space-5);
     }
 }
