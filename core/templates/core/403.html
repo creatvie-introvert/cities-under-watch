@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block extra_title %} | Page not found{% endblock %}
+{% block extra_title %} | Permission denied{% endblock %}
 
 {% block content %}
     <section class="page-header-section">
         <div class="Container">
             <div class="page-header">
-                <p class="eyebrow">404</p>
-                <h1 class="page-header__title">Page not found</h1>
+                <p class="eyebrow">403</p>
+                <h1 class="page-header__title">Permission denied</h1>
                 <p class="page-header__text">
-                    The page you were looking for does not exist, may have moved, or is no longer available.
+                    You do not have permission to access this page or resource.
                 </p>
             </div>
         </div>
@@ -19,21 +19,21 @@
     <section class="error-page-section">
         <div class="container">
             <div class="error-page-card">
-                <p class="eyebrow">Lost your way?</p>
+                <p class="eyebrow">Restricted access</p>
                 <h2 class="error-page-card__title">
-                    Let's get you back on track
+                    This area is not available to you
                 </h2>
                 <p class="error-page-card__text">
-                    You can return to the homepage, browse the shop, or explore the latest collections from here.
+                    The page you tried to open may be restricted to account holders, store owners, or authorised users only.
                 </p>
 
                 <div class="error-page-card__actions">
                     <a href="{% url 'home' %}" class="btn btn-primary">Home</a>
-                    <a href="{% url 'product_list' %}" class="btn btn-secondary">
-                        Shop
+                    <a href="{% url 'account_login' %}" class="btn btn-secondary">
+                        Log in
                     </a>
-                    <a href="{% url 'collection_list' %}" class="btn btn-secondary">
-                        Collections
+                    <a href="{% url 'contact' %}" class="btn btn-secondary">
+                        Contact
                     </a>
                 </div>
             </div>
