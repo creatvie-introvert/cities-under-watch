@@ -121,6 +121,10 @@ CONTACT_EMAIL = os.environ.get(
     'CONTACT_EMAIL',
     'lrogers1986@hotmail.com'
 )
+ORDER_CONFIRMATION_FROM_EMAIL = os.environ.get(
+    'ORDER_CONFIRMATION_FROM_EMAIL',
+    DEFAULT_FROM_EMAIL
+)
 
 ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']

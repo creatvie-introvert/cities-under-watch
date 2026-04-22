@@ -93,14 +93,14 @@ def contact(request):
                 'Your message has been sent successfully.',
             )
             return redirect('contact')
-        
+
         messages.error(
             request,
             'There was a problem with your form. Please check your details.'
         )
     else:
         form = ContactForm()
-    
+
     context = {
         'form': form,
     }
