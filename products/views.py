@@ -1,6 +1,8 @@
 from django.db.models import Count, Q
 from django.shortcuts import render, get_object_or_404
+
 from .models import Product, Collection
+from core.forms import NewsletterSubscriberForm
 
 
 def product_list(request):
@@ -79,6 +81,8 @@ def product_list(request):
         .order_by('name')
     )
 
+    newsletter_form = NewsletterSubscriberForm()
+
     context = {
         'products': products,
         'featured_collection': featured_collection,
@@ -88,6 +92,7 @@ def product_list(request):
         'selected_collection': selected_collection,
         'has_more_products': has_more_products,
         'next_page': next_page,
+        'newsletter_form': newsletter_form,
     }
 
     return render(request, 'products/product_list.html', context)
@@ -132,18 +137,6 @@ def collection_detail(request, slug):
             )
         ),
         slug=slug,
-    )
-
-    collection_products = (
-        Product.objects
-        .filter(
-            is_active=True,
-            collection=collection,
-            collection__city__is_active=True,
-        )
-        .select_related('collection', 'collection__city')
-        .prefetch_related('images')
-        .order_by('title')
     )
 
     collection_products = (
