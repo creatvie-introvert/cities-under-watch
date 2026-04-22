@@ -2900,6 +2900,60 @@ body {
 }
 
 /* =========================
+   Error Pages
+========================= */
+
+.error-page-section {
+    padding: 4rem 0;
+}
+
+.error-page-section .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.error-page-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-5);
+    padding: var(--space-5);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface-2);
+    text-align: center;
+}
+
+.error-page-card__title {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.error-page-card__text {
+    margin: 0;
+    max-width: 34rem;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.625rem;
+}
+
+.error-page-card__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    width: 100%;
+}
+
+.error-page-card__actions .btn {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* =========================
    Hover States
 ========================= */
 
@@ -3490,6 +3544,29 @@ body {
     .policy-sidebar__links .btn {
         width: auto;
         flex: 1 1 0;
+    }
+
+    .error-page-section {
+        padding: 5rem 0;
+    }
+
+    .error-page-section .container {
+        gap: var(--space-10);
+    }
+
+    .error-page-card {
+        padding: var(--space-6);
+    }
+
+    .error-page-card__actions {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .error-page-card__actions .btn {
+        width: auto;
+        min-width: 10rem;
     }
 }
 
@@ -4618,5 +4695,14 @@ body {
 
     .polcy-sidebar {
         gap: var(--space-5);
+    }
+
+    .error-page-section {
+        padding: 5rem 0;
+    }
+
+    .error-page-card {
+        max-width: 48rem;
+        margin-inline: auto;
     }
 }
