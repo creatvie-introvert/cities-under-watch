@@ -1,9 +1,39 @@
-from django.shortcuts import render
+from django.contrib import messages
+from django.shortcuts import render, redirect
+
+from .forms import NewsletterSubscriberForm
+from .models import NewsletterSubscriber
 from products.models import Product
 
 
 def index(request):
-    """Render the home page."""
+    """Render the home page and handle newsletter signups."""
+    if request.method == 'POST':
+        newsletter_form = NewsletterSubscriberForm(request.POST)
+
+        if newsletter_form.is_valid():
+            email = newsletter_form.cleaned_data['email']
+
+            if NewsletterSubscriber.objects.filter(email=email).exists():
+                messages.info(
+                    request,
+                    'This email is already subscribed to updates.',
+                )
+            else:
+                newsletter_form.save()
+                messages.success(
+                    request,
+                    'Thanks for sunscrobing. You will be notified about new releases.'
+                )
+
+                return redirect('home')
+
+            messages.error(
+                request,
+                'Please enter a valid email address.',
+            )
+            return redirect('home')
+
     featured_products = (
         Product.objects
         .filter(
@@ -15,8 +45,11 @@ def index(request):
         .prefetch_related('images')[:3]
     )
 
+    newsletter_form = NewsletterSubscriberForm()
+
     context = {
         'featured_products': featured_products,
+        'newsletter_form': newsletter_form,
     }
 
     return render(request, 'core/index.html', context)

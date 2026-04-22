@@ -5,7 +5,6 @@
 
 
 {% block content %}
-
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
@@ -150,8 +149,12 @@
             </div>
 
             <div class="section-actions">
-                <a href="{% url 'product_list' %}" class="btn btn-primary">Shop</a>
-                <a href="#" class="btn btn-secondary">Details</a>
+                <a href="{% url 'product_list' %}" class="btn btn-primary">
+                    Shop
+                </a>
+                <a href="{% url 'faq' %}" class="btn btn-secondary">
+                    FAQ
+                </a>
             </div>
         </div>
     </section>
@@ -199,8 +202,12 @@
             </div>
 
             <div class="section-actions">
-                <a href="{% url 'product_list' %}" class="btn btn-primary">Shop</a>
-                <a href="#" class="btn btn-secondary">Details</a>
+                <a href="{% url 'product_list' %}" class="btn btn-primary">
+                    Shop
+                </a>
+                <a href="{% url 'delivery_policy' %}" class="btn btn-secondary">
+                    Delivery policy                    
+                </a>
             </div>
         </div>
     </section>
@@ -215,7 +222,7 @@
                         New editions and future collections will expand the world of Cities Under Watch beyond the current release.
                     </p>
                     <div class="section-actions">
-                        <a href="#" class="btn btn-primary">Notify me</a>
+                        <a href="#newsletter-signup" class="btn btn-primary">Notify me</a>
                         <a href="{% url 'collection_list' %}" class="btn btn-secondary">Collections</a>
                     </div>
                 </div>
@@ -230,5 +237,4 @@
     </section>
 
     {% include "includes/newsletter_cta.html" %}
-
 {% endblock %}

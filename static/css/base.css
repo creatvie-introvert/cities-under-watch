@@ -1310,6 +1310,18 @@ body {
     line-height: 1rem;
 }
 
+.newsletter-errors {
+    margin-top: var(--space-2);
+    color: #ff9f9f;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    text-align: center;
+}
+
+.newsletter-errors p {
+    margin: 0;
+}
+
 .hero-actions,
 .section-actions {
     display: flex;

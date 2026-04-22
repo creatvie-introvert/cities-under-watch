@@ -1,4 +1,4 @@
-<section class="newsletter-section">
+<section class="newsletter-section" id="newsletter-signup">
     <div class="container">
         <div class="section-heading">
             <h2>Stay informed</h2>
@@ -7,21 +7,28 @@
             </p>
         </div>
 
-        <form action="#" method="post" class="newsletter-form">
-            <label for="newsletter-email" class="visually-hidden">
+        <form action="{% url 'home' %}#newsletter-signup" method="post" class="newsletter-form">
+            {% csrf_token %}
+
+            <label for="{{ newsletter_form.email.id_for_label }}" class="visually-hidden">
                 Email address
             </label>
-            <input 
-                type="email" 
-                id="newsletter-email" 
-                name="email" 
-                placeholder="Enter your email"
-            >
+
+            {{ newsletter_form.email }}
+            
             <button type="submit" class="btn btn-primary">Subscribe</button>
         </form>
 
+        {% if newsletter_form.email.errors %}
+            <div class="newsletter-errors">
+                {% for error in newsletter_form.email.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         <p class="newsletter-note">
-            By subscribing, you agree to receive updates from Cities Under Watch.
+            By subscribing, you agree to receive updates from Cities Under.Watch.
         </p>
     </div>
 </section>
