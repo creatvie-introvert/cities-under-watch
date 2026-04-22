@@ -115,8 +115,11 @@ def collection_list(request):
         .order_by('name')
     )
 
+    newsletter_form = NewsletterSubscriberForm()
+
     context = {
         'collections': collections,
+        'newsletter_form': newsletter_form,
     }
 
     return render(request, 'products/collection_list.html', context)
