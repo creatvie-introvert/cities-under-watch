@@ -35,3 +35,23 @@ def contact(request):
 def faq(request):
     """Render the FAQ page."""
     return render(request, 'core/faq.html')
+
+
+def privacy_policy(request):
+    """Render the privacy policy page."""
+    return render(request, 'core/privacy_policy.html')
+
+
+def terms_and_conditions(request):
+    """Render the terms and conditions page."""
+    return render(request, 'core/terms_and_conditions.html')
+
+
+def refund_policy(request):
+    """Render the refund policy page."""
+    return render(request, 'core/refund_policy.html')
+
+
+def delivery_policy(request):
+    """Render the delivery policy page."""
+    return render(request, 'core/delivery_policy.html')

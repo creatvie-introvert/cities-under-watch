@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} | Privacy Policy{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="Container">
+            <div class="page-header">
+                <p class="eyebrow">Legal</p>
+                <h1 class="page-header__title">Privacy policy</h1>
+                <p class="page-header__text">
+                    How personal information is collected, used, and stored across Cities Under Watch.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="policy-section">
+        <div class="container">
+            <div class="policy-layout">
+                <section class="policy-card">
+                    <p class="eyebrow">Privacy</p>
+                    <h2 class="policy-card__title">Your information</h2>
+                    <p class="policy-card__intro">
+                         This page explains what information may be collected when users browse, purchase, or contact Cities Under Watch, and how that information is used.
+                    </p>
+
+                    <div class="policy-content">
+                        <div class="policy-block">
+                            <h3>Information collected</h3>
+                            <p>
+                                Personal information may include details such as your name, email address, billing details, and order history when you create an account, place an order, or submit a contact form.
+                            </p>
+                        </div>
+
+                        <div class="policy-block">
+                            <h3>How information is used</h3>
+                            <p>
+                                Information is used to process orders, provide access to downloads, respond to enquiries, and improve the overall user experience of the site.
+                            </p>
+                        </div>
+
+                        <div class="policy-block">
+                            <h3>Payments</h3>
+                            <p>
+                                Payment processing is handled securely through Stripe. Sensitive payment details are not stored directly by this site.
+                            </p>
+                        </div>
+
+                        <div class="policy-block">
+                            <h3>Account data</h3>
+                            <p>
+                                If you choose to save your details, selected billing information may be stored in your account profile to make future checkout faster and more convenient.
+                            </p>
+                        </div>
+
+                        <div class="policy-block">
+                            <h3>Your rights</h3>
+                            <p>
+                                You may contact the site owner to request clarification about stored account information or to request deletion where appropriate.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="policy-sidebar">
+                    <section class="policy-card">
+                        <p class="eyebrow">Need help?</p>
+                        <h2 class="policy-card__title">
+                            Questions about privacy?
+                        </h2>
+                        <p class="policy-card__intro">
+                            Use the contact page if you need clarification about how information is used on this site.
+                        </p>
+                        <div class="policy-sidebar__links">
+                            <a href="{% url 'contact' %}" class="btn btn-primary">
+                                Contact
+                            </a>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </section>
+{% endblock %}

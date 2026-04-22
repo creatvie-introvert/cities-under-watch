@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} | Delivery Policy{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="Container">
+            <div class="page-header">
+                <p class="eyebrow">Legal</p>
+                <h1 class="page-header__title">Delivery policy</h1>
+                <p class="page-header__text">
+                    How digital downloads are delivered after purchase and where you can access them later.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="policy-section">
+        <div class="container">
+            <div class="policy-layout">
+                <section class="policy-card">
+                    <p class="eyebrow">Delivery</p>
+                    <h2 class="policy-card__title">Digital access</h2>
+                    <p class="policy-card__intro">
+                        Cities Under Watch sells digital products only. No physical shipping is required unless explicitly stated otherwise.
+                    </p>
+
+                    <div class="policy-content">
+                        <div class="policy-block">
+                            <h3>Instant access</h3>
+                            <p>
+                                Purchased files are made available after successful checkout. Users can access downloads from the order success page and, when logged in, through their account downloads page.
+                            </p>
+                        </div>
+
+                        <div class="policy-block">
+                            <h3>Account access</h3>
+                            <p>
+                                Logged-in customers can return later to view order history and re-download eligible purchased files through the account area.
+                            </p>
+                        </div>
+
+                        <div class="policy-block">
+                            <h3>File delivery</h3>
+                            <p>
+                                Download access depends on the purchased product and the files attached to it. If a file appears to be missing, contact support with your order details.
+                            </p>
+                        </div>
+
+                        <div class="policy-block">
+                            <h3>No shipping required</h3>
+                            <p>
+                                As these are digital editions, there are no shipping fees and no postal delivery times to account for.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="policy-sidebar">
+                    <section class="policy-card">
+                        <p class="eyebrow">Account</p>
+                        <h2 class="policy-card__title">Useful links</h2>
+                        <p class="policy-card__intro">
+                            Orders and downloads can be accessed through your account when signed in.
+                        </p>
+                        <div class="policy-sidebar__links">
+                            <a href="{% url 'profile_orders' %}" class="btn btn-secondary">
+                                Orders
+                            </a>
+                            <a href="{% url 'profile_downloads' %}" class="btn btn-secondary">
+                                Downloads
+                            </a>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </section>
+{% endblock %}

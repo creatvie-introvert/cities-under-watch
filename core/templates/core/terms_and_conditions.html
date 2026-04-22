@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} | Terms and Conditions{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="Container">
+            <div class="page-header">
+                <p class="eyebrow">Legal</p>
+                <h1 class="page-header__title">Terms and conditions</h1>
+                <p class="page-header__text">
+                    The terms that apply when you browse, purchase, or use digital products from Cities Under Watch.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="policy-section">
+        <div class="container">
+            <div class="policy-layout">
+                <section class="policy-card">
+                    <p class="eyebrow">Terms</p>
+                    <h2 class="policy-card__title">Using the site</h2>
+                    <p class="policy-card__intro">
+                        By using this site, you agree to the terms below. These terms apply to browsing, account use, purchases, and access to digital downloads.
+                    </p>
+
+                    <div class="policy-content">
+                        <div class="policy-block">
+                            <h3>Digital products</h3>
+                            <p>
+                                All products sold through Cities Under Watch are digital items unless clearly stated otherwise.
+                            </p>
+                        </div>
+
+                        <div class="policy-block">
+                            <h3>Account responsibility</h3>
+                            <p>
+                                Users are responsible for maintaining the security of their account login details and for ensuring that account information is accurate.
+                            </p>
+                        </div>
+
+                        <div class="policy-block">
+                            <h3>Intellectual property</h3>
+                            <p>
+                                All artwork, designs, branding, and content remain the intellectual property of Cities Under Watch unless explicitly stated otherwise.
+                            </p>
+                        </div>
+
+                        <div class="policy-block">
+                            <h3>Permitted use</h3>
+                            <p>
+                                Purchased files are intended for personal use unless a separate licence or commercial permission has been granted in writing.
+                            </p>
+                        </div>
+
+                        <div class="policy-block">
+                            <h3>Site availability</h3>
+                            <p>
+                                Reasonable effort is made to keep the site available and accurate, but uninterrupted access cannot be guaranteed at all times.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="policy-sidebar">
+                    <section class="policy-card">
+                        <p class="eyebrow">Related</p>
+                        <h2 class="policy-card__title">
+                            Useful pages
+                        </h2>
+                        <p class="policy-card__intro">
+                            You may also want to review the refund and delivery policies before making a purchase.
+                        </p>
+                        <div class="policy-sidebar__links">
+                            <a href="{% url 'refund_policy' %}" class="btn btn-secondary">
+                                Refunds
+                            </a>
+                            <a href="{% url 'delivery_policy' %}" class="btn btn-primary">
+                                Delivery
+                            </a>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </section>
+{% endblock %}

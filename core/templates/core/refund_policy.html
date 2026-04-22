@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_title %} | Refund Policy{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="Container">
+            <div class="page-header">
+                <p class="eyebrow">Legal</p>
+                <h1 class="page-header__title">Refund policy</h1>
+                <p class="page-header__text">
+                    How refund requests are handled for digital products purchased through Cities Under Watch.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="policy-section">
+        <div class="container">
+            <div class="policy-layout">
+                <section class="policy-card">
+                    <p class="eyebrow">Refunds</p>
+                    <h2 class="policy-card__title">Digital purchase policy</h2>
+                    <p class="policy-card__intro">
+                        Because products are digital and download access is provided immediately after successful purchase, refund eligibility is limited.
+                    </p>
+
+                    <div class="policy-content">
+                        <div class="policy-block">
+                            <h3>General position</h3>
+                            <p>
+                                Refunds are generally not offered once a digital product has been delivered or made available for download.
+                            </p>
+                        </div>
+
+                        <div class="policy-block">
+                            <h3>Possible exceptions</h3>
+                            <p>
+                                A refund may be considered where there is a technical issue, duplicate order, or another clear problem that prevents the customer from receiving what was purchased.
+                            </p>
+                        </div>
+
+                        <div class="policy-block">
+                            <h3>Order issues</h3>
+                            <p>
+                                If you believe there has been an error with your purchase, use the contact page and include your order number so the issue can be reviewed.
+                            </p>
+                        </div>
+
+                        <div class="policy-block">
+                            <h3>Review process</h3>
+                            <p>
+                                Each request is assessed individually. Approval is not automatic and may depend on the circumstances of the order.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="policy-sidebar">
+                    <section class="policy-card">
+                        <p class="eyebrow">Support</p>
+                        <h2 class="policy-card__title">
+                            Need help with an order?
+                        </h2>
+                        <p class="policy-card__intro">
+                            Use the contact page and include your order number for faster support.
+                        </p>
+                        <div class="policy-sidebar__links">
+                            <a href="{% url 'contact' %}" class="btn btn-primary">
+                                Contact
+                            </a>
+                            <a href="{% url 'faq' %}" class="btn btn-secondary">
+                                FAQ
+                            </a>
+                        </div>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </section>
+{% endblock %}

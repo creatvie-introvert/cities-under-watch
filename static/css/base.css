@@ -2810,6 +2810,96 @@ body {
 }
 
 /* =========================
+   Policy Pages
+========================= */
+
+.policy-section {
+    padding: 4rem 0;
+}
+
+.policy-section .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.policy-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.policy-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: 1px solid var(--color-border-subtle);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface-2);
+}
+
+.policy-card__title {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.policy-card__intro {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.625rem;
+    max-width: 42rem;
+}
+
+.policy-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.policy-block {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.policy-block h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    line-height: 1.625rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.policy-block p,
+.policy-block li {
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.policy-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.policy-sidebar__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.policy-sidebar__links .btn {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* =========================
    Hover States
 ========================= */
 
@@ -3372,6 +3462,32 @@ body {
     }
 
     .faq-sidebar__links .btn {
+        width: auto;
+        flex: 1 1 0;
+    }
+
+    .policy-section {
+        padding: 5rem 0;
+    }
+
+    .policy-section .container {
+        gap: var(--space-10);
+    }
+
+    .policy-layout {
+        gap: var(--space-8);
+    }
+
+    .policy-card {
+        padding: var(--space-6);
+    }
+
+    .policy-sidebar__links {
+        flex-direction: row;
+        gap: var(--space-4);
+    }
+
+    .policy-sidebar__links .btn {
         width: auto;
         flex: 1 1 0;
     }
@@ -4486,6 +4602,21 @@ body {
     }
 
     .faq-sidebar {
+        gap: var(--space-5);
+    }
+
+    .policy-section {
+        padding: 5rem 0;
+    }
+
+    .policy-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 22rem;
+        gap: var(--space-12);
+        align-items: start;
+    }
+
+    .polcy-sidebar {
         gap: var(--space-5);
     }
 }
