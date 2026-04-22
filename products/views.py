@@ -171,10 +171,13 @@ def collection_detail(request, slug):
         .order_by('name')[:3]
     )
 
+    newsletter_form = NewsletterSubscriberForm()
+
     context = {
         'collection': collection,
         'collection_products': collection_products,
         'other_collections': other_collections,
+        'newsletter_form': newsletter_form,
     }
 
     return render(request, 'products/collection_detail.html', context)
@@ -201,12 +204,15 @@ def product_detail(request, slug):
         )
         .exclude(id=product.id)
         .select_related('collection', 'collection__city')
-        .prefetch_related('images')[:4]
+        .prefetch_related('images')[:3]
     )
+
+    newsletter_form = NewsletterSubscriberForm()
 
     context = {
         'product': product,
         'related_products': related_products,
+        'newsletter_form': newsletter_form,
     }
 
     return render(request, 'products/product_detail.html', context)

@@ -56,7 +56,9 @@
                         <nav class="product-detail__breadcrumbs" aria-label="Breadcrumb">
                             <a href="{% url 'product_list' %}">Shop all</a>
                             <span aria-hidden="true">></span>
-                            <a href="#">{{ product.collection.city.name }}</a>
+                            <a href="{% url 'collection_detail' product.collection.slug %}">
+                                {{ product.collection.name }}
+                            </a>
                             <span aria-hidden="true">></span>
                             <span aria-current="page">{{ product.title }}</span>
                         </nav>
@@ -175,13 +177,13 @@
                         <p>{{ product.context_text }}</p>
                     {% else %}
                         <p>
-                            This edition explores, control.surveillance, and monumental power through speculative architectural storytelling.
+                            This edition explores control, surveillance, and monumental power through speculative architectural storytelling.
                         </p>
                     {% endif %}
                 </div>
 
                 <div class="product-context__action">
-                    <a href="#" class="btn btn-secondary">
+                    <a href="{% url 'collection_detail' product.collection.slug %}" class="btn btn-secondary">
                         Explore collection
                     </a>
                 </div>
