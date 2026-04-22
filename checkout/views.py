@@ -6,13 +6,14 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 from django.http import FileResponse, Http404, HttpResponse
-from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import (
     get_object_or_404,
     redirect,
     render,
 )
+from django.template.loader import render_to_string
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 from bag.contexts import bag_contents
 from products.models import Product, ProductDownload
@@ -58,72 +59,13 @@ def _send_order_confirmation_email(request, order):
     """Send a plain-text order confirmation email."""
     subject = f'Cities Under Watch order confirmation - {order.order_number}'
 
-    lines = [
-        f'Thank you for your order, {order.full_name}.',
-        f'Order number: {order.order_number}',
-        f'Order date: {order.created_at.strftime("%d %B %Y, %H:%M")}',
-        '',
-        'Items ordered:',
-    ]
-
-    for lineitem in order.lineitems.all():
-        lines.append(
-            f'- {lineitem.product.title} X {lineitem.quantity} — £{lineitem.lineitem_total}'
-        )
-    
-    lines.extend([
-        '',
-        f'Order total: £{order.order_total}',
-        f'Grand total: £{order.grand_total}',
-        '',
-        'Billing details:',
-        f'{order.full_name}',
-        f'{order.street_address1}',
-    ])
-
-    if order.street_address2:
-        lines.append(order.street_address2)
-    
-    lines.append(order.town_or_city)
-
-    if order.county:
-        lines.append(order.county)
-    
-    if order.postcode:
-        lines.append(order.postcode)
-    
-    lines.extend([
-        order.country_code,
-        '',
-        'Downloads:',
-    ])
-
-    for lineitem in order.lineitems.all():
-        downloads = lineitem.product.downloads.all()
-        if downloads:
-            for download in downloads:
-                download_url = request.build_absolute_uri(
-                    reverse(
-                        'download_order_file',
-                        args=[order.order_number, download.id],
-                    )
-                )
-                lines.append(
-                    f'— {lineitem.product.title} — {download.title}: {download_url}'
-                )
-        else:
-            lines.append(
-                f'— {lineitem.product.title}: No download files are attached yet.'
-            )
-    
-    lines.extend([
-        '',
-        'You can also access your order and downloads from your account.',
-        '',
-        'Cities Under Watch'
-    ])
-
-    message = '\n'.join(lines)
+    message = render_to_string(
+        'checkout/emails/order_confirmation_email.txt',
+        {
+            'order': order,
+            'request': request,
+        },
+    )
 
     send_mail(
         subject=subject,

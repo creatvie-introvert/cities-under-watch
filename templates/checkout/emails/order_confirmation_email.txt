@@ -1,0 +1,40 @@
+{% autoescape off %}
+Thank you for your order, {{ order.full_name }}.
+
+Order number: {{ order.order_number }}
+Order date: {{ order.created_at|date:"d F Y, H:i" }}
+
+Items ordered:
+{% for lineitem in order.lineitems.all %}
+- {{ lineitem.product.title }} x {{ lineitem.quantity }} - £{{ lineitem.lineitem_total }}
+{% endfor %}
+
+Order total: £{{ order.order_total }}
+Grand total: £{{ order.grand_total }}
+
+Billing details:
+{{ order.full_name }}
+{{ order.street_address1 }}
+{% if order.street_address2 %}{{ order.street_address2 }}
+{% endif %}{{ order.town_or_city }}
+{% if order.county %}{{ order.county }}
+{% endif %}{% if order.postcode %}{{ order.postcode }}
+{% endif %}{{ order.country_code }}
+
+Downloads:
+{% for lineitem in order.lineitems.all %}
+{% with downloads=lineitem.product.downloads.all %}
+{% if downloads %}
+{% for download in downloads %}
+- {{ lineitem.product.title }} - {{ download.title }}: {{ request.build_absolute_uri }}{% url 'download_order_file' order.order_number download.id %}
+{% endfor %}
+{% else %}
+- {{ lineitem.product.title }}: No download files are attached yet.
+{% endif %}
+{% endwith %}
+{% endfor %}
+
+You can also access your order and downloads from your account.
+
+Cities Under Watch
+{% endautoescape %}
