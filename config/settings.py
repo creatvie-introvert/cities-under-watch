@@ -113,6 +113,14 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = os.environ.get(
+    'DEFAULT_FROM_EMAIL',
+    'noreply@citiesunderwatch.com'
+)
+CONTACT_EMAIL = os.environ.get(
+    'CONTACT_EMAIL',
+    'lrogers1986@hotmail.com'
+)
 
 ACCOUNT_LOGIN_METHODS = {'email'}
 ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
