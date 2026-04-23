@@ -261,3 +261,41 @@ def add_product(request):
     }
 
     return render(request, 'products/add_product.html', context)
+
+
+def edit_product(request, slug):
+    """Allow superusers to edit an existing product."""
+    access_denied = _require_superuser(request)
+    if access_denied:
+        return access_denied
+    
+    product = get_object_or_404(Product, slug=slug)
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, instance=product)
+
+        if form.is_valid():
+            product = form.save()
+            messages.success(
+                request,
+                f'Product "{product.title}" was updated successfully.',
+            )
+            return redirect('product_detail', slug=product.slug)
+        
+        messages.error(
+            request,
+            'There was a problem updating the product. Please check the form.'
+        )
+    else:
+        form = ProductForm(instance=product)
+        messages.info(
+            request,
+            f'You are editing "{product.title}".',
+        )
+    
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, 'products/edit_product.html', context)
