@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block extra_title %} | Add products{% endblock %}
+{% block extra_title %} | Add product{% endblock %}
 
 {% block content %}
     <section class="page-header-section">
@@ -30,7 +30,7 @@
 
                         {% if form.non_field_errors %}
                             <div class="product-admin-form__errors">
-                                {% for error in form.non_fied_errors %}
+                                {% for error in form.non_field_errors %}
                                     <p>{{ error }}</p>
                                 {% endfor %}
                             </div>
@@ -38,7 +38,7 @@
 
                         <div class="product-admin-form__grid">
                             <div class="product-admin-form__field product-admin-form__field--full">
-                                <label for="{{ form.collection.id_for_label }}">
+                                <label for="{{ form.collection.id_for_label }}" class="product-admin-form__label">
                                     Collection
                                 </label>
                                 {{ form.collection }}
@@ -57,8 +57,8 @@
                                 </label>
                                 {{ form.title }}
                                 {% if form.title.errors %}
-                                    <div class="product-admin-form__error">
-                                        {% for error in form.title.error %}
+                                    <div class="product-admin-form__errors">
+                                        {% for error in form.title.errors %}
                                             <p>{{ error }}</p>
                                         {% endfor %}
                                     </div>
@@ -66,7 +66,7 @@
                             </div>
 
                             <div class="product-admin-form__field">
-                                <label for="{{ form.slug.id_for_label }}">
+                                <label for="{{ form.slug.id_for_label }}" class="product-admin-form__label">
                                     Slug
                                 </label>
                                 {{ form.slug }}
@@ -80,7 +80,7 @@
                             </div>
 
                             <div class="product-admin-form__field">
-                                <label for="{{ form.sku.id_for_label }}">
+                                <label for="{{ form.sku.id_for_label }}" class="product-admin-form__label">
                                     SKU
                                 </label>
                                 {{ form.sku }}
@@ -94,7 +94,7 @@
                             </div>
 
                             <div class="product-admin-form__field">
-                                <label for="{{ form.price.id_for_label }}">
+                                <label for="{{ form.price.id_for_label }}" class="product-admin-form__label">
                                     Price
                                 </label>
                                 {{ form.price }}
@@ -114,7 +114,7 @@
                                 {{ form.short_description }}
                                 {% if form.short_description.errors %}
                                     <div class="product-admin-form__errors">
-                                        {% for error in form.short_description %}
+                                        {% for error in form.short_description.errors %}
                                             <p>{{ error }}</p>
                                         {% endfor %}
                                     </div>
@@ -156,7 +156,7 @@
                                 </label>
 
                                 <label class="product-admin-form__checkbox-label">
-                                    {{ for.is_featured }}
+                                    {{ form.is_featured }}
                                     <span>Featured product</span>
                                 </label>
                             </div>

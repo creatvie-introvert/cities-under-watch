@@ -179,8 +179,38 @@ function initCollectionNarrative() {
     });
 }
 
+function initProductSlugAutofill() {
+    const titleInput = document.querySelector("#id_title");
+    const slugInput = document.querySelector("#id_slug");
+
+    if (!titleInput || !slugInput) {
+        return;
+    }
+
+    let slugEditedManually = slugInput.value.trim() !== "";
+
+    function slugify(value) {
+        return value
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9\s-]/g, "")
+            .replace(/\s+/g, "-")
+            .replace(/-+/g, "-");
+    }
+
+    slugInput.addEventListener("input", () => {
+        slugEditedManually = slugInput.value.trim() !== "";
+    });
+
+    titleInput.addEventListener("input", () => {
+        if(!slugEditedManually) {
+            slugInput.value = slugify(titleInput.value);
+        }
+    });
+}
+
 function initToasts() {
-    const toasts = document.querySelectorAll("[data-toast");
+    const toasts = document.querySelectorAll("[data-toast]");
 
     if (!toasts.length) {
         return;
@@ -195,7 +225,7 @@ function initToasts() {
     }
 
     toasts.forEach((toast) => {
-        const closeButton = toast.querySelector("[data-toast-close");
+        const closeButton = toast.querySelector("[data-toast-close]");
 
         if (closeButton) {
             closeButton.addEventListener("click", () => {
@@ -215,4 +245,5 @@ initCatalogueFilterToggle();
 initCatalogueAutoFilterSubmit();
 initProductGallery();
 initCollectionNarrative();
+initProductSlugAutofill();
 initToasts();
