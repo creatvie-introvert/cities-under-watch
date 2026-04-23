@@ -1,0 +1,178 @@
+{% extends "base.html" %}
+
+{% block extra_title %} | Add products{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <p class="eyebrow">Product management</p>
+                <h1 class="page-header__title">Add a product</h1>
+                <p class="page-header__text">
+                    Create a new product for the Cities Under Watch catalogue.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-admin-section">
+        <div class="container">
+            <div class="product-admin-layout">
+                <section class="product-admin-card">
+                    <p class="eyebrow">Create</p>
+                    <h2 class="product-admin-card__title">Product details</h2>
+                    <p class="product-admin-card__text">
+                        Add the core product information below. Images can be handled separately afterwards.
+                    </p>
+
+                    <form action="{% url 'add_product' %}" method="post" class="product-admin-form">
+                        {% csrf_token %}
+
+                        {% if form.non_field_errors %}
+                            <div class="product-admin-form__errors">
+                                {% for error in form.non_fied_errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+
+                        <div class="product-admin-form__grid">
+                            <div class="product-admin-form__field product-admin-form__field--full">
+                                <label for="{{ form.collection.id_for_label }}">
+                                    Collection
+                                </label>
+                                {{ form.collection }}
+                                {% if form.collection.errors %}
+                                    <div class="product-admin-form__errors">
+                                        {% for error in form.collection.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="product-admin-form__field">
+                                <label for="{{ form.title.id_for_label }}" class="product-admin-form__label">
+                                    Title
+                                </label>
+                                {{ form.title }}
+                                {% if form.title.errors %}
+                                    <div class="product-admin-form__error">
+                                        {% for error in form.title.error %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="product-admin-form__field">
+                                <label for="{{ form.slug.id_for_label }}">
+                                    Slug
+                                </label>
+                                {{ form.slug }}
+                                {% if form.slug.errors %}
+                                    <div class="product-admin-form__errors">
+                                        {% for error in form.slug.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="product-admin-form__field">
+                                <label for="{{ form.sku.id_for_label }}">
+                                    SKU
+                                </label>
+                                {{ form.sku }}
+                                {% if form.sku.errors %}
+                                    <div class="product-admin-form__errors">
+                                        {% for error in form.sku.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="product-admin-form__field">
+                                <label for="{{ form.price.id_for_label }}">
+                                    Price
+                                </label>
+                                {{ form.price }}
+                                {% if form.price.errors %}
+                                    <div class="product-admin-form__errors">
+                                        {% for error in form.price.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="product-admin-form__field product-admin-form__field--full">
+                                <label for="{{ form.short_description.id_for_label }}" class="product-admin-form__label">
+                                    Short description
+                                </label>
+                                {{ form.short_description }}
+                                {% if form.short_description.errors %}
+                                    <div class="product-admin-form__errors">
+                                        {% for error in form.short_description %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="product-admin-form__field product-admin-form__field--full">
+                                <label for="{{ form.description.id_for_label }}" class="product-admin-form__label">
+                                    Description
+                                </label>
+                                {{ form.description }}
+                                {% if form.description.errors %}
+                                    <div class="product-admin-form__errors">
+                                        {% for error in form.description.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="product-admin-form__field product-admin-form__field--full">
+                                <label for="{{ form.context_text.id_for_label }}" class="product-admin-form__label">
+                                    Context text
+                                </label>
+                                {{ form.context_text }}
+                                {% if form.context_text.errors %}
+                                    <div class="product-admin-form__errors">
+                                        {% for error in form.context_text.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="product-admin-form__checkbox-group">
+                                <label class="product-admin-form__checkbox-label">
+                                    {{ form.is_active }}
+                                    <span>Active product</span>
+                                </label>
+
+                                <label class="product-admin-form__checkbox-label">
+                                    {{ for.is_featured }}
+                                    <span>Featured product</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="product-admin-form__actions">
+                            <a href="{% url 'product_list' %}" class="btn btn-secondary">
+                                Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                Add product
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock %}

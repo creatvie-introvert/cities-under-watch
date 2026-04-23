@@ -1,8 +1,22 @@
+from django.contrib import messages
 from django.db.models import Count, Q
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
 
+from .forms import ProductForm
 from .models import Product, Collection
 from core.forms import NewsletterSubscriberForm
+
+
+def _require_superuser(request):
+    """Redirect non-superusers away from product admin views."""
+    if not request.user.is_authenticated or not request.user.is_superuser:
+        messages.error(
+            request,
+            'Only store owners can access product management.',
+        )
+        return redirect(reverse('home'))
+    return None
 
 
 def product_list(request):
@@ -216,3 +230,34 @@ def product_detail(request, slug):
     }
 
     return render(request, 'products/product_detail.html', context)
+
+
+def add_product(request):
+    """Allow superusers to add a product."""
+    access_denied = _require_superuser(request)
+    if access_denied:
+        return access_denied
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST)
+
+        if form.is_valid():
+            product = form.save()
+            messages.success(
+                request,
+                f'Product "{product.title}" was added successfully.',
+            )
+            return redirect('product_detail', slug=product.slug)
+
+        messages.error(
+            request,
+            'There was a problem adding the product. Please check the form.',
+        )
+    else:
+        form = ProductForm()
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'products/add_product.html', context)

@@ -2713,6 +2713,158 @@ body {
 }
 
 /* =========================
+   Product Admin
+========================= */
+
+.product-admin-section {
+    padding: 4rem 0;
+}
+
+.product-admin-section .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+}
+
+.product-admin-layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.product-admin-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: var(--space-5);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface-2);
+}
+
+.product-admin-card__title {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.product-admin-card__text {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.625rem;
+    max-width: 42rem;
+}
+
+.product-admin-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.product-admin-form__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+}
+
+.product-admin-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    min-width: 0;
+}
+
+.product-admin-form__field--full {
+    grid-column: 1 / -1;
+}
+
+.product-admin-form__label {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 500;
+}
+
+.product-admin-form__input,
+.product-admin-form__select,
+.product-admin-form__textarea {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0 var(--space-4);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface-1);
+    color: var(--color-text-primary);
+    font: inherit;
+    box-sizing: border-box;
+}
+
+.product-admin-form__textarea {
+    min-height: 10rem;
+    padding-block: var(--space-3);
+    resize: vertical;
+}
+
+.product-admin-form__input::placeholder,
+.product-admin-form__textarea::placeholder {
+    color: var(--color-text-muted);
+}
+
+.product-admin-form__input:focus-visible,
+.product-admin-form__select:focus-visible,
+.product-admin-form__textarea:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+}
+
+.product-admin-form__checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.product-admin-form__checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-text-primary);
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    font-weight: 500;
+}
+
+.product-admin-form__checkbox {
+    width: 1rem;
+    height: 1rem;
+    accent-color: var(--color-accent-primary);
+}
+
+.product-admin-form__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.product-admin-form__actions .btn {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.product-admin-form__errors {
+    color: #ff9f9f;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+}
+
+.product-admin-form__errors p {
+    margin: 0;
+}
+
+/* =========================
    FAQ Page
 ========================= */
 
@@ -3506,6 +3658,35 @@ body {
     .contact-sidebar__links .btn {
         width: auto;
         flex-direction: 1 1 0;
+    }
+
+    .product-admin-section {
+        padding: 5rem 0;
+    }
+
+    .product-admin-section .container {
+        gap: var(--space-10);
+    }
+
+    .product-admin-layout {
+        gap: var(--space-8);
+    }
+
+    .product-admin-card {
+        padding: var(--space-6);
+    }
+
+    .product-admin-form__grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .product-admin-form__actions {
+        flex-direction: row;
+    }
+
+    .product-admin-form__actions .btn {
+        width: auto;
+        min-width: 10rem;
     }
 
     .faq-section {
@@ -4679,6 +4860,16 @@ body {
 
     .contact-sidebar {
         gap: var(--space-5);
+    }
+
+    .product-admin-section {
+        padding: 5rem 0;
+    }
+
+    .product-admin-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-12);
     }
 
     .faq-section {
