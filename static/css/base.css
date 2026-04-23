@@ -1144,6 +1144,27 @@ body {
     transform: translateY(1px);
 }
 
+.product-card__admin-actions {
+    display: flex;
+    gap: var(--space-3);
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.product-card__admin-link {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    font-weight: 500;
+}
+
+.product-card__admin-link:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+}
+
 .featured-prints-section .section-actions {
     justify-content: center;
 }
@@ -1597,6 +1618,13 @@ body {
     color: var(--color-text-secondary);
     font-size: 1rem;
     line-height: 1.625rem;
+}
+
+.product-detail__admin-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    grid-column: 1 / -1;
 }
 
 /* =========================
@@ -3187,6 +3215,10 @@ body {
     .product-card__action:hover {
         border-color: var(--color-text-primary);
         background-color: var(--color-surface-1);
+    }
+
+    .product-card__admin-link:hover {
+        color: var(--color-text-primary);
     }
 
     .catalogue-search-clear:hover {

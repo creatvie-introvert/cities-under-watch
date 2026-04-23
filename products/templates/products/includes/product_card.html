@@ -33,4 +33,15 @@
     <a href="{% url 'product_detail' product.slug %}" class="product-card__action">
         View print
     </a>
+
+    {% if request.user.is_superuser %}
+        <div class="product-card__admin-actions">
+            <a href="{% url 'edit_product' product.slug %}" class="product-card__admin-link">
+                Edit
+            </a>
+            <a href="{% url 'delete_product' product.slug %}" class="product-card__admin-link">
+                Delete
+            </a>
+        </div>
+    {% endif %}
 </article>
