@@ -2864,6 +2864,27 @@ body {
     margin: 0;
 }
 
+.product-admin-delete-summary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface-1);
+}
+
+.product-admin-delete-summary p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.9375rem;
+    line-height: 1.5rem;
+}
+
+.product-admin-delete-summary strong {
+    color: var(--color-text-primary);
+}
+
 /* =========================
    FAQ Page
 ========================= */

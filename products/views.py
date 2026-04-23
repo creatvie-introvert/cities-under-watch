@@ -299,3 +299,27 @@ def edit_product(request, slug):
     }
 
     return render(request, 'products/edit_product.html', context)
+
+
+def delete_product(request, slug):
+    """Allow superusers to delete an existing product."""
+    access_denied = _require_superuser(request)
+    if access_denied:
+        return access_denied
+    
+    product = get_object_or_404(Product, slug=slug)
+    product_title = product.title
+
+    if request.method == 'POST':
+        product.delete()
+        messages.success(
+            request,
+            f'Product "{product_title}" was deleted successfully.',
+        )
+        return redirect('product_list')
+    
+    context = {
+        'product': product,
+    }
+
+    return render(request, 'products/delete_product.html', context)

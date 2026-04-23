@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block extra_title %} | Delete Product{% endblock %}
+
+{% block content %}
+    <section class="page-header-section">
+        <div class="container">
+            <div class="page-header">
+                <p class="eyebrow">Product management</p>
+                <h1 class="page-header__title">Delete product</h1>
+                <p class="page-header__text">
+                    Review the product below before permanently removing it from the catalogue.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="product-admin-section">
+        <div class="container">
+            <div class="product-admin-layout">
+                <section class="product-admin-card">
+                    <p class="eyebrow">Delete</p>
+                    <h2 class="product-admin-card__title">
+                        {{ product.title }}
+                    </h2>
+                    <p class="product-admin-card__text">
+                        This action cannot be undone. Deleting this product will remove it from the storefront.
+                    </p>
+
+                    <div class="product-admin-delete-summary">
+                        <p>
+                            <strong>Collection:</strong> {{ product.collection.name }}
+                        </p>
+                        <p>
+                            <strong>Slug:</strong> {{ product.slug }}
+                        </p>
+                        <p>
+                            <strong>SKU:</strong> {{ product.sku }}
+                        </p>
+                        <p>
+                            <strong>Price:</strong> £{{ product.price }}
+                        </p>
+                    </div>
+
+                    <form action="{% url 'delete_product' product.slug %}" method="post" class="product-admin-form">
+                        {% csrf_token %}
+                        <div class="product-admin-form__action">
+                            <a href="{% url 'product_detail' product.slug %}" class="btn btn-secondary">
+                                Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                Delete product
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </section>
+{% endblock %}
