@@ -34,8 +34,21 @@
                 <div class="site-footer__column">
                     <h2 class="site-footer__heading">Account</h2>
                     <ul class="site-footer__list">
-                        <li><a href="{% url 'account_login' %}">Login</a></li>
-                        <li><a href="#">Orders</a></li>
+                        {% if request.user.is_authenticated %}
+                            <li><a href="{% url 'profile' %}">Account</a></li>
+                            <li>
+                                <a href="{% url 'profile_orders' %}">Orders</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{% url 'account_login' %}">Login</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'account_login' %}?next={% url 'profile_orders' %}">
+                                    Orders
+                                </a>
+                            </li>
+                        {% endif %}
                         <li><a href="{% url 'faq' %}">FAQ</a></li>
                     </ul>
                 </div>
@@ -61,7 +74,7 @@
                 <div class="site-footer__column site-footer__column--newsletter">
                     <h2 class="site-footer__heading">Updates</h2>
                     <p class="site-footer__updates-text">
-                        Stay informed about new colloections, releases, and exclusive previews of upcoming cities.
+                        Stay informed about new collections, releases, and exclusive previews of upcoming cities.
                     </p>
                     <form action="#" method="post" class="site-footer__newsletter">
                         <label for="footer-newsletter-email" class="visually-hidden">
