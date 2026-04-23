@@ -11,4 +11,9 @@ urlpatterns = [
     path('terms/', views.terms_and_conditions, name='terms_and_conditions'),
     path('refunds/', views.refund_policy, name='refund_policy'),
     path('delivery/', views.delivery_policy, name='delivery_policy'),
+    path(
+        'newsletter-subscribe/',
+        views.newsletter_subscribe,
+        name='newsletter_subscribe',
+    ),
 ]

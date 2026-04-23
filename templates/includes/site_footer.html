@@ -76,10 +76,14 @@
                     <p class="site-footer__updates-text">
                         Stay informed about new collections, releases, and exclusive previews of upcoming cities.
                     </p>
-                    <form action="#" method="post" class="site-footer__newsletter">
+                    <form action="{% url 'newsletter_subscribe' %}" method="post" class="site-footer__newsletter">
+                        {% csrf_token %}
+                        <input type="hidden" name="next_url" value="{{ request.path }}">
+
                         <label for="footer-newsletter-email" class="visually-hidden">
                             Email address
                         </label>
+
                         <div class="site-footer__newsletter-row">
                             <input 
                                 type="email"
@@ -93,6 +97,7 @@
                             </button>
                         </div>
                     </form>
+
                     <p class="site-footer__updates-note">
                         By subscribing you agree to our Privacy Policy and consent to receive updates.
                     </p>

@@ -130,3 +130,34 @@ def refund_policy(request):
 def delivery_policy(request):
     """Render the delivery policy page."""
     return render(request, 'core/delivery_policy.html')
+
+
+def newsletter_subscribe(request):
+    """Handle newsletter signups from shared forms like the site footer."""
+    if request.method != 'POST':
+        return redirect('home')
+    
+    form = NewsletterSubscriberForm(request.POST)
+    next_url = request.POST.get('next_url', '/')
+
+    if form.is_valid():
+        email = form.cleaned_data['email']
+
+        if NewsletterSubscriber.objects.filter(email=email).exists():
+            messages.info(
+                request,
+                'This email is already subscribed to updates.',
+            )
+        else:
+            NewsletterSubscriber.objects.create(email=email)
+            messages.success(
+                request,
+                'You have been subscribed to newsletter updates.',
+            )
+    else:
+        messages.error(
+            request,
+            'Please enter a valid email address.',
+        )
+
+    return redirect(next_url)
