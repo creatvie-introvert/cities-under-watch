@@ -44,7 +44,7 @@
 
                     <form action="{% url 'delete_product' product.slug %}" method="post" class="product-admin-form">
                         {% csrf_token %}
-                        <div class="product-admin-form__action">
+                        <div class="product-admin-form__actions">
                             <a href="{% url 'product_detail' product.slug %}" class="btn btn-secondary">
                                 Cancel
                             </a>

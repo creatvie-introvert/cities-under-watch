@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Collection, Product
+from .models import Collection, Product, ProductImage
 
 
 class ProductForm(forms.ModelForm):
@@ -67,4 +67,33 @@ class ProductForm(forms.ModelForm):
         })
         self.fields['is_featured'].widget.attrs.update({
             'class': 'product-admin-form__checkbox',
+        })
+
+
+class ProductImageForm(forms.ModelForm):
+    class Meta:
+        model = ProductImage
+        fields = (
+            'image',
+            'alt_text',
+            'is_primary',
+            'sort_order',
+        )
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['image'].widget.attrs.update({
+            'class': 'product-admin-form__input',
+        })
+        self.fields['alt_text'].widget.attrs.update({
+            'class': 'product-admin-form__input',
+            'placeholder': "Image alt text",
+        })
+        self.fields['is_primary'].widget.attrs.update({
+            'class': 'product-admin-form__checkbox',
+        })
+        self.fields['sort_order'].widget.attrs.update({
+            'class': 'product-admin-form__input',
+            'placeholder': '0',
         })

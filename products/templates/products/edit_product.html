@@ -6,7 +6,7 @@
     <section class="page-header-section">
         <div class="container">
             <div class="page-header">
-                <p class="eyebrow">product management</p>
+                <p class="eyebrow">Product management</p>
                 <h1 class="page-header__title">Edit product</h1>
                 <p class="page-header__text">
                     Update an existing product in the Cities Under Watch catalogue.
@@ -37,7 +37,7 @@
                         {% endif %}
 
                         <div class="product-admin-form__grid">
-                            <div class="product-admin-form__field">
+                            <div class="product-admin-form__field product-admin-form__field--full">
                                 <label for="{{ form.collection.id_for_label }}" class="product-admin-form__label">
                                     Collection
                                 </label>
@@ -171,6 +171,94 @@
                             </button>
                         </div>
                     </form>
+                </section>
+
+                <section class="product-admin-card">
+                    <p class="eyebrow">Images</p>
+                    <h2 class="product-admin-card__title">
+                        Manage product images
+                    </h2>
+                    <p class="product-admin-card__text">
+                        Add, review, and remove images for this product.
+                    </p>
+
+                    <form action="{% url 'add_product_image' product.slug %}" method="post" enctype="multipart/form-data" class="product-admin-form">
+                        {% csrf_token %}
+
+                        <div class="product-admin-form__grid">
+                            <div class="product-admin-form__field product-admin-form__field--full">
+                                <label for="{{ image_form.image.id_for_label }}" class="product-admin-form__label">
+                                    Image file
+                                </label>
+                                {{ image_form.image }}
+                            </div>
+
+                            <div class="product-admin-form__field product-admin-form__field--full">
+                                <label for="{{ image_form.alt_text.id_for_label }}" class="product-admin-form__label">
+                                    Alt text
+                                </label>
+                                {{ image_form.alt_text }}
+                            </div>
+
+                            <div class="product-admin-form__field">
+                                <label for="{{ image_form.sort_order.id_for_label }}" class="product-admin-form__label">
+                                    Sort order
+                                </label>
+                                {{ image_form.sort_order }}
+                            </div>
+
+                            <div class="product-admin-form__checkbox-group">
+                                <label class="product-admin-form__checkbox-label">
+                                    {{ image_form.is_primary }}
+                                    <span>Primary image</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="product-admin-form__actions">
+                            <button type="submit" class="btn btn-primary">
+                                Add image
+                            </button>
+                        </div>
+                    </form>
+
+                    {% if product_images %}
+                        <div class="product-admin-images">
+                            {% for product_image in product_images %}
+                                <article class="product-admin-image-card">
+                                    <div class="product-admin-image-card__preview">
+                                        <img 
+                                            src="{{ product_image.image.url }}" 
+                                            alt="{{ product_image.alt_text|default:product.title }}"
+                                            class="product-admin-image-card__img"
+                                        >
+                                    </div>
+
+                                    <div class="product-admin-image-card__content">
+                                        <p>
+                                            <strong>Alt text:</strong> {{ product_image.alt_text|default:"Not set" }}
+                                        </p>
+                                        <p>
+                                            <strong>Sort order:</strong> {{ product_image.sort_order }}
+                                        </p>
+                                        <p>
+                                            <strong>Primary:</strong> {% if product_image.is_primary %}Yes{% else %}No{% endif %}
+                                        </p>
+
+                                        <form action="{% url 'delete_product_image' product.slug product_image.id %}" method="post" class="product-admin-image-card__actions">
+                                            {% csrf_token %}
+
+                                            <button type="submit" class="btn btn-secondary">
+                                                Delete image
+                                            </button>
+                                        </form>
+                                    </div>
+                                </article>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        <p>No images have been added yet.</p>
+                    {% endif %}
                 </section>
             </div>
         </div>

@@ -3,8 +3,8 @@ from django.db.models import Count, Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
-from .forms import ProductForm
-from .models import Product, Collection
+from .forms import ProductForm, ProductImageForm
+from .models import Product, Collection, ProductImage
 from core.forms import NewsletterSubscriberForm
 
 
@@ -284,7 +284,7 @@ def edit_product(request, slug):
         
         messages.error(
             request,
-            'There was a problem updating the product. Please check the form.'
+            'There was a problem updating the product. Please check the form.',
         )
     else:
         form = ProductForm(instance=product)
@@ -296,6 +296,8 @@ def edit_product(request, slug):
     context = {
         'form': form,
         'product': product,
+        'image_form': ProductImageForm(),
+        'product_images': product.images.all(),
     }
 
     return render(request, 'products/edit_product.html', context)
@@ -323,3 +325,86 @@ def delete_product(request, slug):
     }
 
     return render(request, 'products/delete_product.html', context)
+
+
+def add_product_image(request, slug):
+    """Allow superusers to add an image to a product."""
+    access_denied = _require_superuser(request)
+    if access_denied:
+        return access_denied
+    
+    product = get_object_or_404(Product, slug=slug)
+
+    if request.method == 'POST':
+        form = ProductImageForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            product_image = form.save(commit=False)
+            product_image.product = product
+
+            if product_image.is_primary:
+                ProductImage.objects.filter(product=product).update(is_primary=False)
+            
+            product_image.save()
+            messages.success(
+                request,
+                f'Image added to "{product.title}" successfully.',
+            )
+        else:
+            messages.error(
+                request,
+                'There was a problem adding the image. Please check the form.',
+            )
+
+    return redirect('edit_product', slug=product.slug)
+
+
+def edit_product_image(request, slug, image_id):
+    """Allow superusers to edit an existing product image."""
+    access_denied = _require_superuser(request)
+    if access_denied:
+        return access_denied
+    
+    product = get_object_or_404(Product, slug=slug)
+    product_image = get_object_or_404(ProductImage, pk=image_id, product=product)
+
+    if request.method == 'POST':
+        form = ProductImageForm(request.POST, request.FILES, instance=product_image)
+
+        if form.is_valid():
+            updated_image = form.save(commit=False)
+
+            if updated_image.is_primary:
+                ProductImage.objects.filter(product=product).exclude(pk=updated_image.pk).update(is_primary=False)
+
+            updated_image.save()
+            messages.success(
+                request,
+                f'Image for "{product.title}" updated successfully.',
+            )
+        else:
+            messages.error(
+                request,
+                'There was a problem updating the image. Please check the form.',
+            )
+    
+    return redirect('edit_product', slug=product.slug)
+
+
+def delete_product_image(request, slug, image_id):
+    """Allow superusers to delete a product image."""
+    access_denied = _require_superuser(request)
+    if access_denied:
+        return access_denied
+    
+    product = get_object_or_404(Product, slug=slug)
+    product_image = get_object_or_404(ProductImage, pk=image_id, product=product)
+
+    if request.method == 'POST':
+        product_image.delete()
+        messages.success(
+            request,
+            f'Image removed from "{product.title}" successfully.',
+        )
+    
+    return redirect('edit_product', slug=product.slug)

@@ -2913,6 +2913,55 @@ body {
     color: var(--color-text-primary);
 }
 
+.product-admin-images {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+}
+
+.product-admin-image-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 0.75rem;
+    background-color: var(--color-surface-1);
+}
+
+.product-admin-image-card__preview {
+    width: 100%;
+}
+
+.product-admin-image-card__img {
+    display: block;
+    width: 100%;
+    max-width: 16rem;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border: 1px solid var(--color-border-subtle);
+    border: 0.75rem;
+}
+
+.product-admin-image-card__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.product-admin-image-card__content p {
+    margin: 0;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+}
+
+.product-admin-image-card__actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
 /* =========================
    FAQ Page
 ========================= */
@@ -3740,6 +3789,21 @@ body {
     .product-admin-form__actions .btn {
         width: auto;
         min-width: 10rem;
+    }
+
+    .product-admin-image-card {
+        display: grid;
+        grid-template-columns: 16rem minmax(0, 1fr);
+        gap: var(--space-5);
+        align-items: start;
+    }
+
+    .product-admin-image-card__actions {
+        flex-direction: row;
+    }
+
+    .product-admin-image-card__actions .btn {
+        width: auto;
     }
 
     .faq-section {
