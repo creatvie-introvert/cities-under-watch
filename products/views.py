@@ -369,7 +369,12 @@ def edit_product_image(request, slug, image_id):
     product_image = get_object_or_404(ProductImage, pk=image_id, product=product)
 
     if request.method == 'POST':
-        form = ProductImageForm(request.POST, request.FILES, instance=product_image)
+        post_data = request.POST.copy()
+
+        if 'is_primary' not in post_data:
+            post_data['is_primary'] = ''
+        
+        form = ProductImageForm(post_data, request.FILES, instance=product_image)
 
         if form.is_valid():
             updated_image = form.save(commit=False)

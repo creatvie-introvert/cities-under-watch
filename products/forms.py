@@ -97,3 +97,11 @@ class ProductImageForm(forms.ModelForm):
             'class': 'product-admin-form__input',
             'placeholder': '0',
         })
+    
+    def clean_images(self):
+        image = self.cleaned_data.get('image')
+
+        if self.instance and self.instance.pk and not image:
+            return self.instance.image
+        
+        return image

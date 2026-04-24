@@ -2962,6 +2962,16 @@ body {
     gap: var(--space-3);
 }
 
+.product-admin-image-card__actions .btn {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.product-admin-image-card__delete-form {
+    display: flex;
+    flex-direction: column;
+}
+
 /* =========================
    FAQ Page
 ========================= */
@@ -3804,6 +3814,19 @@ body {
 
     .product-admin-image-card__actions .btn {
         width: auto;
+    }
+
+    .product-admin-image-card__actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .product-admin-image-card__actions .btn {
+        width: auto;
+    }
+
+    .product-admin-image-card__delete-form {
+        display: inline-flex;
     }
 
     .faq-section {
