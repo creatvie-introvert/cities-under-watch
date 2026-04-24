@@ -3,8 +3,8 @@ from django.db.models import Count, Q
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 
-from .forms import ProductForm, ProductImageForm
-from .models import Product, Collection, ProductImage
+from .forms import ProductForm, ProductImageForm, ProductDownloadForm
+from .models import Product, Collection, ProductImage, ProductDownload
 from core.forms import NewsletterSubscriberForm
 
 
@@ -268,7 +268,7 @@ def edit_product(request, slug):
     access_denied = _require_superuser(request)
     if access_denied:
         return access_denied
-    
+
     product = get_object_or_404(Product, slug=slug)
 
     if request.method == 'POST':
@@ -281,7 +281,7 @@ def edit_product(request, slug):
                 f'Product "{product.title}" was updated successfully.',
             )
             return redirect('product_detail', slug=product.slug)
-        
+
         messages.error(
             request,
             'There was a problem updating the product. Please check the form.',
@@ -292,12 +292,14 @@ def edit_product(request, slug):
             request,
             f'You are editing "{product.title}".',
         )
-    
+
     context = {
         'form': form,
         'product': product,
         'image_form': ProductImageForm(),
         'product_images': product.images.all(),
+        'download_form': ProductDownloadForm(),
+        'product_downloads': product.downloads.all(),
     }
 
     return render(request, 'products/edit_product.html', context)
@@ -410,6 +412,92 @@ def delete_product_image(request, slug, image_id):
         messages.success(
             request,
             f'Image removed from "{product.title}" successfully.',
+        )
+    
+    return redirect('edit_product', slug=product.slug)
+
+
+def add_product_download(request, slug):
+    """Allow superuser to add a download file to a product."""
+    access_denied = _require_superuser(request)
+    if access_denied:
+        return access_denied
+    
+    product = get_object_or_404(Product, slug=slug)
+
+    if request.method == 'POST':
+        form = ProductDownloadForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            product_download = form.save(commit=False)
+            product_download.product = product
+            product_download.save()
+            messages.success(
+                request,
+                f'Download added to "{product.title}" successfully.',
+            )
+        else:
+            messages.error(
+                request,
+                'There was a problem adding the download. Please check the form.'
+            )
+    
+    return redirect('edit_product', slug=product.slug)
+
+
+def edit_product_download(request, slug, download_id):
+    """Allow superusers to edit an existing product download."""
+    access_denied = _require_superuser(request)
+    if access_denied:
+        return access_denied
+    
+    product = get_object_or_404(Product, slug=slug)
+    product_download = get_object_or_404(
+        ProductDownload,
+        pk=download_id,
+        product=product,
+    )
+
+    if request.method == 'POST':
+        form = ProductDownloadForm(
+            request.POST,
+            request.FILES,
+            instance=product_download,
+        )
+
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request,
+                f'Download for "{product.title}" updated successfully.',
+            )
+        else:
+            messages.error(
+                request,
+                'There was a problem updating the download. Please check the form.',
+            )
+    
+    return redirect('edit_product', slug=product.slug)
+
+
+def delete_product_download(request, slug, download_id):
+    """Allow superusers to delete a product download."""
+    access_denied = _require_superuser(request)
+    if access_denied:
+        return access_denied
+    
+    product = get_object_or_404(Product, slug=slug)
+    product_download = get_object_or_404(
+        ProductDownload,
+        pk=download_id,
+        product=product,
+    )
+
+    if request.method == 'POST':
+        product_download.delete()
+        messages.success(
+            request,
+            f'Download removed from "{product.title}" successfully.',
         )
     
     return redirect('edit_product', slug=product.slug)

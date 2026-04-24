@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Collection, Product, ProductImage
+from .models import Collection, Product, ProductImage, ProductDownload
 
 
 class ProductForm(forms.ModelForm):
@@ -79,7 +79,7 @@ class ProductImageForm(forms.ModelForm):
             'is_primary',
             'sort_order',
         )
-    
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -97,11 +97,44 @@ class ProductImageForm(forms.ModelForm):
             'class': 'product-admin-form__input',
             'placeholder': '0',
         })
-    
-    def clean_images(self):
+
+    def clean_image(self):
         image = self.cleaned_data.get('image')
 
         if self.instance and self.instance.pk and not image:
             return self.instance.image
-        
+
         return image
+
+
+class ProductDownloadForm(forms.ModelForm):
+    class Meta:
+        model = ProductDownload
+        fields = (
+            'title',
+            'file',
+            'sort_order',
+        )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.fields['title'].widget.attrs.update({
+            'class': 'product-admin-form__input',
+            'placeholder': 'Download title',
+        })
+        self.fields['file'].widget.attrs.update({
+            'class': 'product-admin-form__input',
+        })
+        self.fields['sort_order'].widget.attrs.update({
+            'class': 'product-admin-form__input',
+            'placeholder': '0',
+        })
+
+    def clean_file(self):
+        file = self.cleaned_data.get('file')
+
+        if self.instance and self.instance.pk and not file:
+            return self.instance.file
+
+        return file

@@ -21,6 +21,21 @@ urlpatterns = [
         views.delete_product_image,
         name='delete_product_image',
     ),
+    path(
+        'edit/<slug:slud>/downloads/add/',
+        views.add_product_download,
+        name='add_product_download',
+    ),
+    path(
+        'edit/<slug:slud>/downloads/<int:download_id>/edit/',
+        views.edit_product_download,
+        name='edit_product_download',
+    ),
+    path(
+        'edit/<slug:slud>/downloads/<int:download_id>/delete/',
+        views.delete_product_download,
+        name='delete_product_download',
+    ),
     path('collections/', views.collection_list, name='collection_list'),
     path(
         'collections/<slug:slug>/',
