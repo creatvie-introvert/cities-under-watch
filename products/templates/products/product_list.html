@@ -34,12 +34,10 @@
                 </div>
 
                 <div class="feature-highlight__media">
-                    <div class="image-placeholder">
-                        <img 
-                            src="{% static 'images/site/catalogue/shop-editions-digital-poster-collection.webp' %}" 
-                            alt="A curated display of dystopian digital poster editions shown as prints and on screen." 
-                            class="feature-highlight__image-file">
-                    </div>
+                    <img 
+                        src="{% static 'images/site/catalogue/shop-editions-digital-poster-collection.webp' %}" 
+                        alt="A curated display of dystopian digital poster editions shown as prints and on screen." 
+                        class="feature-highlight__image-file">
                 </div>
 
                 <div class="feature-highlight__points">
@@ -81,8 +79,7 @@
             <div class="product-grid-section__controls">
                 <form 
                     method="get" 
-                    action="{% url 'product_list' %}#product-grid" class="catalogue-search-form"
-                >
+                    action="{% url 'product_list' %}#product-grid" class="catalogue-search-form">
                     <label for="catalogue-search" class="visually-hidden">
                         Search prints
                     </label>
@@ -109,11 +106,18 @@
                     Filter
                 </button>
 
+                {% if request.user.is_authenticated and request.user.is_superuser %}
+                    <a 
+                        href="{% url 'add_product' %}" 
+                        class="btn btn-primary">
+                        Add product
+                    </a>
+                {% endif %}
+
                 {% if search_term or selected_collection %}
                     <a 
                         href="{% url 'product_list' %}#product-grid" 
-                        class="catalogue-search-clear"
-                    >
+                        class="catalogue-search-clear">
                         Clear
                     </a>
                 {% endif %}
@@ -123,14 +127,12 @@
                 id="catalogue-filter-panel"
                 class="catalogue-filter-panel"
                 {% if not selected_collection %}hidden{% endif %}
-                data-filter-panel
-            >
+                data-filter-panel>
                 <form 
                     method="get" 
                     action="{% url 'product_list' %}#product-grid"
                     class="catalogue-filter-form"
-                    data-auto-filter-form
-                >
+                    data-auto-filter-form>
                     {% if search_term %}
                         <input type="hidden" name="q" value="{{ search_term }}">
                     {% endif %}
@@ -147,8 +149,7 @@
                                         name="collection"
                                         value=""
                                         {% if not selected_collection %}checked{% endif %}
-                                        data-auto-filter-input
-                                    >
+                                        data-auto-filter-input>
                                     <span>All collections</span>
                                 </label>
 
@@ -159,9 +160,10 @@
                                             name="collection"
                                             value="{{ collection.slug }}"
                                             {% if collection.slug == selected_collection %}checked{% endif %}
-                                            data-auto-filter-input
-                                        >
-                                            <span>{{ collection.name }}</span>
+                                            data-auto-filter-input>
+                                            <span>
+                                                {{ collection.name }}
+                                            </span>
                                     </label>
                                 {% endfor %}
                         </div>
@@ -180,8 +182,7 @@
                     <div class="product-grid-section__actions">
                         <a 
                             href="{% url 'product_list' %}?page={{ next_page }}{% if search_term %}&q={{ search_term|urlencode }}{% endif %}{% if selected_collection %}&collection={{ selected_collection|urlencode }}{% endif %}#product-grid" 
-                            class="btn btn-secondary"
-                        >
+                            class="btn btn-secondary">
                             Load more
                         </a>
                     </div>
@@ -201,7 +202,11 @@
                     <p>
                         Browse complete series organised by city. Each collection tells a unified story of architectural control and resistance.
                     </p>
-                    <a href="{% url 'collection_list' %}" class="btn btn-secondary">View all</a>
+                    <a 
+                        href="{% url 'collection_list' %}" 
+                        class="btn btn-secondary">
+                        View all
+                    </a>
                 </div>
 
                 <div class="collection-showcase__list">
@@ -244,8 +249,7 @@
                                 {% endif %}
 
                                 <a 
-                                    href="{% url 'collection_detail' featured_collection.slug %}" class="collection-preview-card__link"
-                                >
+                                    href="{% url 'collection_detail' featured_collection.slug %}" class="collection-preview-card__link">
                                     Explore
                                 </a>
                             </div>
@@ -259,8 +263,7 @@
                                     <img 
                                         src="{{ collection.image.url }}" 
                                         alt="{{ collection.image_alt_text|default:collection.name }}"
-                                        class="collection-preview-card__image-file"
-                                    >
+                                        class="collection-preview-card__image-file">
                                 {% else %}
                                     <div class="image-placeholder">
                                         Collection image
@@ -281,14 +284,17 @@
                                 <h3>{{ collection.name }}</h3>
 
                                 {% if collection.short_description %}
-                                    <p>{{ collection.short_description }}</p>
+                                    <p>
+                                        {{ collection.short_description }}
+                                    </p>
                                 {% elif collection.description %}
                                     <p>
                                         {{ collection.description|truncatewords:20 }}
                                     </p>
                                 {% endif %}
 
-                                <a href="#newsletter-signup" class="collection-preview-card__link">
+                                <a 
+                                    href="#newsletter-signup" class="collection-preview-card__link">
                                     Notify me
                                 </a>
                             </div>
