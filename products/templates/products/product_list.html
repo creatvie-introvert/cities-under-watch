@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block extra_title %} — Shop All{% endblock %}
 
@@ -34,7 +35,10 @@
 
                 <div class="feature-highlight__media">
                     <div class="image-placeholder">
-                        Feature image placeholder
+                        <img 
+                            src="{% static 'images/site/catalogue/shop-editions-digital-poster-collection.webp' %}" 
+                            alt="A curated display of dystopian digital poster editions shown as prints and on screen." 
+                            class="feature-highlight__image-file">
                     </div>
                 </div>
 

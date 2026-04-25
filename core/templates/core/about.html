@@ -5,7 +5,7 @@
 
 {% block content %}
     <section class="page-header-section">
-        <div class="Container">
+        <div class="container">
             <div class="page-header">
                 <p class="eyebrow">About</p>
                 <h1 class="page-header__title">Cities reimagined</h1>
@@ -32,9 +32,10 @@
             </div>
 
             <div class="about-story-section__media">
-                <div class="image-placeholder">
-                    About feature image placeholder
-                </div>
+                <img 
+                    src="{% static 'images/site/about/about-origin-dystopian-london-artist-sketch.webp' %}" 
+                    alt="A designer sketching a dystopian city from a desk overlooking a surveillance-heavy skyline." 
+                    class="about-story-section__image-file">
             </div>
         </div>
     </section>
@@ -51,9 +52,10 @@
 
             <div class="about-principles-grid">
                 <article class="about-principles-card">
-                    <div class="image-placeholder">
-                        Observation image
-                    </div>
+                    <img 
+                        src="{% static 'images/site/about/about-principle-observation-research-board.webp' %}" 
+                        alt="A research board of city sketches, surveillance references, and planning materials." 
+                        class="about-principle-card__image-file">
                     <h3>Observation</h3>
                     <p>
                         We study the architecture of control in real cities.
@@ -61,9 +63,10 @@
                 </article>
 
                 <article class="about-principles-card">
-                    <div class="image-placeholder">
-                        Extrapolation image
-                    </div>
+                    <img 
+                        src="{% static 'images/site/about/about-principle-extrapolation-future-city-plan.webp' %}" 
+                        alt="A speculative future city plan combining surveillance routes, maps, and architectural projections." 
+                        class="about-principle-card__image-file">
                     <h3>Extrapolation</h3>
                     <p>
                         We imagine what comes next if current systems continue unchecked.
@@ -71,9 +74,10 @@
                 </article>
 
                 <article class="about-principles-card">
-                    <div class="image-placeholder">
-                        Critique image
-                    </div>
+                    <img 
+                        src="{% static 'images/site/about/about-principle-critique-visible-control-systems.webp' %}" 
+                        alt="A dystopian city artwork overlaid with surveillance networks and control-system diagrams." 
+                        class="about-principle-card__image-file">
                     <h3>Critique</h3>
                     <p>
                         We make the invisible visible through graphic art and design.
@@ -87,9 +91,10 @@
         <div class="container">
             <div class="about-dual">
                 <div class="about-dual__media">
-                    <div class="image-placeholder">
-                        Resistance image placeholder
-                    </div>
+                    <img 
+                        src="{% static 'images/site/about/about-lore-regime-resistance-city.webp' %}" 
+                        alt="A surveillance-controlled city with hidden groups gathered in shadowed corners beneath the regime skyline." 
+                        class="about-dual__image-file">
                 </div>
 
                 <div class="about-dual__content">

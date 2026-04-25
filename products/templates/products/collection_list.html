@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block extra_title %} — Collections{% endblock %}
 
@@ -93,9 +94,10 @@
                 </div>
 
                 <div class="collection-promo__media">
-                    <div class="image-placeholder">
-                        Promo image
-                    </div>
+                    <img 
+                        src="{% static 'images/site/collections/collection-unreleased-cities-being-built.webp' %}" 
+                        alt="A dystopian city under construction with cranes, scaffolded towers, elevated transit, and surveillance drones in the rain." 
+                        class="collection-promo__image-file">
                 </div>
             </div>
         </div>
