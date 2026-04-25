@@ -450,7 +450,7 @@ The feature set of Cities Under Watch was planned around the core digital commer
 ### Existing Features
 The following core foundation features were implemented as part of the project:
 
-- a responsice homepage that introduced the brand, product offer, and primary browsing paths
+- a responsive homepage that introduced the brand, product offer, and primary browsing paths
 - django-allauth setup to support account signup, login, logout, and email verification
 - a shared base template structure to support reusable site-wide layout patterns
 - early deployment to Heroku
