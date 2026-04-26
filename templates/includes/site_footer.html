@@ -7,12 +7,10 @@
                 <a 
                     href="{% url 'home' %}"
                     class="site-footer__logo"
-                    aria-label="Cities Under Watch home"
-                >
+                    aria-label="Cities Under Watch home">
                     <img 
                         src="{% static 'images/branding/cuw-logo-full.webp' %}" alt="Cities Under Watch"
-                        class="site-footer__logo-image"
-                    >    
+                        class="site-footer__logo-image">    
                 </a>
                 <p class="site-footer__description">
                     A dystopian digital poster store exploring surveillance,
@@ -22,26 +20,44 @@
 
             <div class="site-footer__links">
                 <div class="site-footer__column">
-                    <h2 class="site-footer__heading">Explore</h2>
+                    <h2 class="site-footer__heading">
+                        Explore
+                    </h2>
                     <ul class="site-footer__list">
-                        <li><a href="{% url 'product_list' %}">Shop</a></li>
-                        <li><a href="{% url 'collection_list' %}">Collections</a></li>
-                        <li><a href="{% url 'about' %}">About</a></li>
-                        <li><a href="{% url 'contact' %}">Contact</a></li>
+                        <li>
+                            <a href="{% url 'product_list' %}">Shop</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'collection_list' %}">Collections</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'about' %}">About</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'contact' %}">Contact</a>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="site-footer__column">
-                    <h2 class="site-footer__heading">Account</h2>
+                    <h2 class="site-footer__heading">
+                        Account
+                    </h2>
                     <ul class="site-footer__list">
                         {% if request.user.is_authenticated %}
-                            <li><a href="{% url 'profile' %}">Account</a></li>
                             <li>
-                                <a href="{% url 'profile_orders' %}">Orders</a>
+                                <a href="{% url 'profile' %}">Account</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'profile_orders' %}">
+                                    Orders
+                                </a>
                             </li>
                         {% else %}
                             <li>
-                                <a href="{% url 'account_login' %}">Login</a>
+                                <a href="{% url 'account_login' %}">
+                                    Login
+                                </a>
                             </li>
                             <li>
                                 <a href="{% url 'account_login' %}?next={% url 'profile_orders' %}">
@@ -49,38 +65,59 @@
                                 </a>
                             </li>
                         {% endif %}
-                        <li><a href="{% url 'faq' %}">FAQ</a></li>
+                        <li>
+                            <a href="{% url 'faq' %}">
+                                FAQ
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
                 <div class="site-footer__column">
-                    <h2 class="site-footer__heading">Legal</h2>
+                    <h2 class="site-footer__heading">
+                        Legal
+                    </h2>
                     <ul class="site-footer__list">
                         <li>
-                            <a href="{% url 'terms_and_conditions' %}">Terms</a>
+                            <a href="{% url 'terms_and_conditions' %}">
+                                Terms
+                            </a>
                         </li>
                         <li>
-                            <a href="{% url 'privacy_policy' %}">Privacy</a>
+                            <a href="{% url 'privacy_policy' %}">
+                                Privacy
+                            </a>
                         </li>
                         <li>
-                            <a href="{% url 'refund_policy' %}">Refunds</a>
+                            <a href="{% url 'refund_policy' %}">
+                                Refunds
+                            </a>
                         </li>
                         <li>
-                            <a href="{% url 'delivery_policy' %}">Delivery</a>
+                            <a href="{% url 'delivery_policy' %}">
+                                Delivery
+                            </a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="site-footer__column site-footer__column--newsletter">
-                    <h2 class="site-footer__heading">Updates</h2>
+                    <h2 class="site-footer__heading">
+                        Updates
+                    </h2>
                     <p class="site-footer__updates-text">
                         Stay informed about new collections, releases, and exclusive previews of upcoming cities.
                     </p>
-                    <form action="{% url 'newsletter_subscribe' %}" method="post" class="site-footer__newsletter">
+                    <form 
+                        action="{% url 'newsletter_subscribe' %}" method="post" class="site-footer__newsletter">
                         {% csrf_token %}
-                        <input type="hidden" name="next_url" value="{{ request.path }}">
+                        <input 
+                            type="hidden" 
+                            name="next_url" 
+                            value="{{ request.path }}">
 
-                        <label for="footer-newsletter-email" class="visually-hidden">
+                        <label  
+                            for="footer-newsletter-email" class="visually-hidden">
                             Email address
                         </label>
 
@@ -90,9 +127,9 @@
                                 id="footer-newsletter-email"
                                 name="email"
                                 class="site-footer__input"
-                                placeholder="Enter your email"
-                            >
-                            <button type="submit" class="site-footer__subscribe-button">
+                                placeholder="Enter your email">
+                            <button 
+                                type="submit" class="site-footer__subscribe-button">
                                 Join
                             </button>
                         </div>
@@ -109,21 +146,30 @@
             <p class="site-footer__copyright">
                 © 2026 Cities Under Watch. All rights reserved.
             </p>
+
             <div class="site-footer__social" aria-label="Social media links">
-                <a href="#" class="site-footer__social-link" aria-label="Facebook">
+                <a 
+                    href="https://www.facebook.com/" class="site-footer__social-link"
+                    target="_blank"
+                    rel="noopener noreferrer" 
+                    aria-label="Visit Cities Under Watch on Facebook">
                     <i class="fa-brands fa-facebook-f" aria-hidden="true"></i>
                 </a>
-                <a href="#" class="site-footer__social-link" aria-label="Instagram">
+
+                <a 
+                    href="https://www.instagram.com/" class="site-footer__social-link"
+                    target="_blank"
+                    rel="noopener noreferrer" 
+                    aria-label="Visit Cities Under Watch on Instagram">
                     <i class="fa-brands fa-instagram" aria-hidden="true"></i>
                 </a>
-                <a href="#" class="site-footer__social-link" aria-label="X">
-                    <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="#" class="site-footer__social-link" aria-label="LinkedIn">
-                    <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-                </a>
-                <a href="#" class="site-footer__social-link" aria-label="YouTube">
-                    <i class="fa-brands fa-youtube" aria-hidden="true"></i>
+                
+                <a 
+                    href="https://www.pinterest.com/" class="site-footer__social-link"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    aria-label="Visit Cities Under Watch on Pinterest">
+                    <i class="fa-brands fa-pinterest-p" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
