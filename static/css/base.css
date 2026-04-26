@@ -775,11 +775,14 @@ body {
 
 .product-grid-section__controls {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: stretch;
+    /* justify-content: center; */
     gap: var(--space-3);
-    flex-wrap: wrap;
-    margin-top: calc(-1 * var(--space-3));
+    width: 100%;
+    max-width: 38rem;
+    /* flex-wrap: wrap; */
+    margin: calc(-1 * var(--space-3)) auto 0;
 }
 
 .catalogue-search-clear {
@@ -797,10 +800,14 @@ body {
 
 .catalogue-search-form {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
     gap: var(--space-3);
-    flex-wrap: wrap;
-    justify-content: center;
+    width: 100%;
+}
+
+.catalogue-search-form .btn {
+    width: 100%;
 }
 
 .catalogue-search-form__input {
@@ -822,6 +829,13 @@ body {
 .catalogue-search-form__input:focus-visible {
     outline: 2px solid var(--color-accent-primary);
     outline-offset: 2px;
+}
+
+.product-grid-section__controls > .btn,
+.product-grid-section__controls > .catalogue-search-clear {
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .catalogue-grid {
@@ -918,6 +932,20 @@ body {
 .catalogue-filter-pill input:focus-visible + span {
     outline: 2px solid var(--color-accent-primary);
     outline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+    .product-grid-section__controls {
+        align-items: stretch;
+    }
+
+    .product-grid-section__controls > .btn {
+        width: 100%;
+    }
+
+    .product-grid-section__controls > .btn + .btn {
+        margin-top: 0;
+    }
 }
 
 .collection-showcase {
@@ -3554,6 +3582,11 @@ body {
     }
 
     .product-grid-section__controls {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: none;
         margin-top: calc(-1 * var(--space-5));
     }
 
@@ -3562,11 +3595,23 @@ body {
     }
 
     .catalogue-search-form {
+        flex-direction: row;
+        align-items: center;
         flex-wrap: nowrap;
+        width: auto;
     }
 
     .catalogue-search-form__input {
         width: 16rem;
+    }
+
+    .catalogue-search-form .btn {
+        width: auto;
+    }
+
+    .product-grid-section__controls > .btn,
+    .product-grid-section__controls > .catalogue-search-clear {
+        width: auto;
     }
 
     .section-image .image-placeholder,
