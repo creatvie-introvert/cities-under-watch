@@ -95,29 +95,29 @@ This document records the testing carried out for Cities Under Watch across manu
 
 | Test ID | Feature | Test | Expected Result | Actual Result | Pass/Fail | Notes |
 |---------|---------|------|-----------------|---------------|-----------|-------|
-| PDB-01 | Product Detail Page | Open multiple product detail pages from the catalogue and collection pages | Each product detail page loads correctly with title, price, description, gallery, and purchase options | | | |
-| PDB-02 | Product Gallery | Click each thumbnail image on a product detail page | Main product image updates correctly to match the selected thumbnail | | | |
-| PDB-03 | Product Information | Retrieve product title, price, short description, and context content | Product information displays clearly and matches the product data | | | |
-| PDB-04 | Product Breadcrumbs | Click breadcrumb links on the prduct detail page | Breadcrumb links return the user to the correct catalogue or collection page | | | |
-| PDB-05 | Related Products | Review the related products section on a product detail page | Related products from the same collection display correctly | | | |
-| PDB-06 | Related Product Links | Click products from the related products section | Each related product opens the correct product detail page | | | |
-| PDB-07 | Add to Bag | Add a product to the bag using the Add to bag button | Product is added successfully and a confirmation message appears | | | |
-| PDB-08 | Buy Now | Click the Buy now button on a product detail page | Product is added to the bag and the user is taken to the checkout flow or bag as intended | | | |
-| PDB-09 | Bag Page Load | Open the bag page with one or more products added | Bag page loads correctly and displays selected products | | | |
-| PDB-10 | Bag Item Details | Review bag content | Bag shows the correct product image, title, price, and any relevant product information | | | |
-| PDB-11 | Bag Total Calculation | Add products and review bag totals | Bag totals calculate correctly based on the products added | | | |
-| PDB-12 | Multiple Product Additions | Add more than one product to the bag | All added products appear correctly in the bag and totals update correctly | | | |
-| PDB-13 | Remove From Bag | Remove a product from the bag | Product is successfully removed and totals update correctly | | | |
-| PDB-14 | Empty Bag State | Remove all products from the bag | Empty bag message and layout display correctly | | | |
-| PDB-15 | Bag Navigation | Use bag page button such as Continue shopping and Proceed to checkout | Buttons route correctly to the intended pages | | | |
-| PDB-16 | Toast Messages | Add a product to the bag and observe toast/feedback messages | Clear success feedback appears and dismisses correctly | | | |
-| PDB-17 | Toast Dismiss | Manually close a toast message | Toast closes correctly without affecting page layout | | | |
-| PDB-18 | Product Detail Desktop | Review product detail and bag pages on desktop viewport | Layout is clear, stable, and visually consistent on desktop | | | |
-| PDB-19 | Product Detail Mobile | Review product detail and bag pages on mobile viewport | Layout is clear, stable, and visually consistent on mobile | | | |
-| PDB-20 | Product Detail Tablet | Review product detail and bag pages on tablet viewport | Layout is clear, stable, and visually consistent on tablet | | | |
-| PDB-21 | Product Image Loading | Review product images on product detail and bag pages | Images load correctly without distortion or broken paths | | | |
-| PDB-22 | Superuser Product Actions | View product detail page as a superuser | Edit and delete product links appear only for authorised superuser users | | | |
-| PDB-23 | Normal User Product Restrictions | View product detail page as a logged-out or normal user | Admin-only edit and delete links are visually hidden from unauthorised users | | | |
+| PDB-01 | Product Detail Page | Open multiple product detail pages from the catalogue and collection pages | Each product detail page loads correctly with title, price, description, gallery, and purchase options | Multiple product detail pages loaded correctly with title, price, description, gallery, and purchase options visible | PASS | |
+| PDB-02 | Product Gallery | Click each thumbnail image on a product detail page | Main product image updates correctly to match the selected thumbnail | The main product image updated correctly when each thumbnail was selected | PASS | |
+| PDB-03 | Product Information | Retrieve product title, price, short description, and context content | Product information displays clearly and matches the product data | Product title, price, short description, and context content displayed clearly and matched the product data | PASS | |
+| PDB-04 | Product Breadcrumbs | Click breadcrumb links on the prduct detail page | Breadcrumb links return the user to the correct catalogue or collection page | Product breadcrumb links returned the user to the correct catalogue or collection page | PASS | |
+| PDB-05 | Related Products | Review the related products section on a product detail page | Related products from the same collection display correctly | Related products from the same collection displayed correctly on the product detail page | PASS | |
+| PDB-06 | Related Product Links | Click products from the related products section | Each related product opens the correct product detail page | Each related product link opened the correct product detail page | PASS | |
+| PDB-07 | Add to Bag | Add a product to the bag using the Add to bag button | Product is added successfully and a confirmation message appears | Product was added to the bag successfully and a confirmation message appeared | PASS | |
+| PDB-08 | Buy Now | Click the Buy now button on a product detail page | Product is added to the bag and the user is taken to the checkout flow or bag as intended | The Buy now button added the product successfully and followed the intended purchase flow | PASS | |
+| PDB-09 | Bag Page Load | Open the bag page with one or more products added | Bag page loads correctly and displays selected products | The bag page loaded correctly and displayed the selected products | PASS | |
+| PDB-10 | Bag Item Details | Review bag content | Bag shows the correct product image, title, price, and any relevant product information | The bag displayed the correct product image, title, price, and relevant product information | PASS | |
+| PDB-11 | Bag Total Calculation | Add products and review bag totals | Bag totals calculate correctly based on the products added | Bag totals calculated correctly based on the products added | PASS | |
+| PDB-12 | Multiple Product Additions | Add more than one product to the bag | All added products appear correctly in the bag and totals update correctly | Multiple added products appeared correctly in the bag and totals updated correctly | PASS | |
+| PDB-13 | Remove From Bag | Remove a product from the bag | Product is successfully removed and totals update correctly | The selected product was removed successfully and bag totals updated correctly | PASS | |
+| PDB-14 | Empty Bag State | Remove all products from the bag | Empty bag message and layout display correctly | The empty bag message and layout displayed correctly after all products were removed | PASS | |
+| PDB-15 | Bag Navigation | Use bag page button such as Continue shopping and Proceed to checkout | Buttons route correctly to the intended pages | Continue shopping worked correctly, but the checkout button did not advance to the checkout page | FAIL | Checkout button on the bag page is not routing correctly to the checkout page and needs investigation |
+| PDB-16 | Toast Messages | Add a product to the bag and observe toast/feedback messages | Clear success feedback appears and dismisses correctly | Clear success feedback appeared correctly after adding a product to the bag | PASS | |
+| PDB-17 | Toast Dismiss | Manually close a toast message | Toast closes correctly without affecting page layout | The toast message closed correctly without affecting the page layout | PASS | |
+| PDB-18 | Product Detail Desktop | Review product detail and bag pages on desktop viewport | Layout is clear, stable, and visually consistent on desktop | Product detail and bag pages remained clear, stable, and visually consistent on desktop | PASS | |
+| PDB-19 | Product Detail Mobile | Review product detail and bag pages on mobile viewport | Layout is clear, stable, and visually consistent on mobile | Product detail and bag pages remained clear, stable, and visually consistent on mobile | PASS | |
+| PDB-20 | Product Detail Tablet | Review product detail and bag pages on tablet viewport | Layout is clear, stable, and visually consistent on tablet | Product detail and bag pages remained clear, stable, and visually consistent on tablet | PASS | |
+| PDB-21 | Product Image Loading | Review product images on product detail and bag pages | Images load correctly without distortion or broken paths | Product images loaded correctly on product detail and bag pages without distortion or broken paths | PASS | |
+| PDB-22 | Superuser Product Actions | View product detail page as a superuser | Edit and delete product links appear only for authorised superuser users | Edit and delete product links appeared correctly for the superuser on the product detail page | PASS | |
+| PDB-23 | Normal User Product Restrictions | View product detail page as a logged-out or normal user | Admin-only edit and delete links are visually hidden from unauthorised users | Admin-only edit and delete links were hidden from logged-out users and normal users | PASS | |
 
 ### Checkout and Order Flow
 
