@@ -228,17 +228,23 @@ def checkout(request):
         if request.user.is_authenticated:
             profile = request.user.userprofile
 
-            order_form = OrderForm(initial={
-                'full_name': profile.full_name,
+            initial_data = {
                 'email': request.user.email,
-                'phone_number': profile.phone_number,
-                'country_code': profile.country_code,
-                'postcode': profile.postcode,
-                'town_or_city': profile.town_or_city,
-                'street_address1': profile.street_address1,
-                'street_address2': profile.street_address2,
-                'county': profile.county,
-            })
+            }
+
+            if profile:
+                initial_data.update({
+                    'full_name': profile.full_name,
+                    'phone_number': profile.phone_number,
+                    'country_code': profile.country_code,
+                    'postcode': profile.postcode,
+                    'town_or_city': profile.town_or_city,
+                    'street_address1': profile.street_address1,
+                    'street_address2': profile.street_address2,
+                    'county': profile.county,
+                })
+            
+            order_form = OrderForm(initial=initial_data)
         else:
             order_form = OrderForm()
 
