@@ -41,7 +41,7 @@ This document records the testing carried out for Cities Under Watch across manu
 | STA-02 | About Page | Open the About page | About page loads correctly with all text, images, and CTAs visible | The About page loaded correctly with all text, images, and CTAs visible | PASS | |
 | STA-03 | Contact Page | Open the Contact page | Contact page loads correctly with contact form, support content, and working layout | The Contact page loaded correctly with contact form, support content, and working layout | PASS | |
 | STA-04 | FAQ Page | Open the FAQ page | FAQ page loads correctly will all questions, answers, and suppport links visible | The FAQ page loaded correctly with all questions, answers, and support links visible | PASS | |
-| STA-05 | Privacy Policy | Open the Privacy Policy page | Privacy Policy page loads correctly with full content and correct formatting | PASS | | |
+| STA-05 | Privacy Policy | Open the Privacy Policy page | Privacy Policy page loads correctly with full content and correct formatting | The Privacy Policy page loaded correctly with full content and correct formatting | PASS | |
 | STA-06 | Terms and Conditions | Open the Terms and Conditions page | Terms and Conditions page loads correctly with full content and correct formatting | The Terms and Conditions page loaded correctly with full content and correct formatting | PASS | |
 | STA-07 | Refund Policy | Open the Refund Policy page | Refund policy page loads correctly with full content and correct formatting | The Refund Policy page loaded correctly with full content and correct formatting | PASS | |
 | STA-08 | Delivery Policy | Open the Delivery Policy page | Delivery Policy page loads correctly with fill content and correct formatting | The Delivery Policy page loaded correctly with full content and correct formatting | PASS | |
@@ -68,14 +68,14 @@ This document records the testing carried out for Cities Under Watch across manu
 | CAT-06 | Catalogue Search No Results | Search for a term with no matching products | No results state displays appropiately without errors | | | |
 | CAT-07 | Collection Filter Toggle | Open and close the filter panel on the catalogue page | Filter panel opens and closes correctly | | | |
 | CAT-08 | Collection Filter Selection | Select a collection filter on the catalogue page | Only products from the selected collection are shown | | | |
-| CAT-09 | Clear Filters | Click the Clear ;ink after using search and/or filters | Search term and filters are cleared and full catalogue view returns | | | |
+| CAT-09 | Clear Filters | Click the Clear link after using search and/or filters | Search term and filters are cleared and full catalogue view returns | | | |
 | CAT-10 | Load More Pagination | Click the Load more button when more products are available | Additional products are revealed correctly without losing current filters/search state | | | |
-| CAT-11 | Collection List Page | Open the Collection page | Collection list page loads correctly with all available collections | | | |
-| CAT-12 | Collection Card Content | Review collection cards on the Collections page | Eahc card shows image, collection name, city, and print count correctly | | | |
-| CAT-13 | Collection Card Links | Click multiple collection cards/buttons | Each collection opens the correct collection detail page | | | |
-| CAT-14 | Collection Detail Page | Open a collection detail page | Collection detail page loads correctly with collection info and related products | | | |
+| CAT-11 | Collection List Page | Open the Collection page | Collection list page loads correctly with all available collections | The collection list page loaded correctly and displayed the available collections | PASS | |
+| CAT-12 | Collection Card Content | Review collection cards on the Collections page | Each card shows image, collection name, city, and print count correctly | The collection card content displayed the correct image, collection name, city, and print count, but the alignment was incorrect | FAIL | Collection card content is correct, but layout/alignment needs adjustment |
+| CAT-13 | Collection Card Links | Click multiple collection cards/buttons | Each collection opens the correct collection detail page | Each collection card and button opened the correct collection detail page | PASS | |
+| CAT-14 | Collection Detail Page | Open a collection detail page | Collection detail page loads correctly with collection info and related products | The collection detail page loaded with the collection information, but the story section showed a placeholder because there is no dedicated image field in the model for the collection story media | FAIL | Add a dedicated image field for the collection story/support media section so the placeholder can be replaced with real content |
 | CAT-15 | Collection Product Display | Review products shown on a collection detail page | Only products belonging to that collection are shown | | | |
-| CAT-16 | Collection Detail Navigation | Use collection detail page links and CTAs | links route correctly oy related pages such as products or other collections | | | |
+| CAT-16 | Collection Detail Navigation | Use collection detail page links and CTAs | links route correctly oy related pages such as products or other collections | Collection detail page links and CTAs routed correctly to the expected pages and sections | PASS | |
 | CAT-17 | Featured Collection Display | Review the featured collection section on the catalogue page | Featured collection displays correctly with correct content and link | | | |
 | CAT-18 | Coming Soon Collections | Review the coming soon collection cards on the catalogue page | Coming soon collections display correctly with planned print counts and notify link | | | |
 | CAT-19 | Related Collection Discovery | Review other collections / additional collection sections | Related or additional collections display correctly and link as expected | | | |
@@ -86,10 +86,10 @@ This document records the testing carried out for Cities Under Watch across manu
 | CAT-24 | Catalogue Tablet Layout | Open catalogue and collection pages on tablet viewport | Layout is stable, reusable, and visually consitent on tablet | | | |
 | CAT-25 | Catalogue Admin Links | View catalogue and product cards as superuser | Edit and delete admin links display only for superuser where expected | | | |
 | CAT-26 | Catalogue Admin Link Restriction | View catalogue and product cards as a normal user or logged-out user | Admin edit/delete links are hidden from unauthorised users | | | |
-| CAT-27 | Catalogue Add Product Link | View the catalogue page as a superuser and click the Add product button | Add product button is visible to superuser and opens the add product page correctly | | | |
-| CAT-28 | Catalogue Add Product Restriction | View the catalogue page as a logged-out user and as a normal suthenticated user | Add product button is hidden from unauthorised users | | | |
-| CAT-29 | Collection Add Product Link | View a collection detail page as a superuser and click the Add product button | Add product button is visible to superuser and opens the add product page correctly | | | |
-| CAT-30 | Collection Add Product Restriction | View a collection detail page as a logged-out user and as a normal authenticated user | Add product button is hidden from unauthorised users | | | |
+| CAT-27 | Catalogue Add Product Link | View the catalogue page as a superuser and click the Add product button | Add product button is visible to superuser and opens the add product page correctly | The Add product button was visible to the superuser and opened the add product page correctly | PASS | |
+| CAT-28 | Catalogue Add Product Restriction | View the catalogue page as a logged-out user and as a normal authenticated user | Add product button is hidden from unauthorised users | The Add product button was hidden from logged-out users and normal authenticated users | PASS | |
+| CAT-29 | Collection Add Product Link | View a collection detail page as a superuser and click the Add product button | Add product button is visible to superuser and opens the add product page correctly | The Add product button was visible to the superuser on the collection detail page and opened the add product page correctly | PASS | |
+| CAT-30 | Collection Add Product Restriction | View a collection detail page as a logged-out user and as a normal authenticated user | Add product button is hidden from unauthorised users | The Add product button was hidden from logged-out users and normal authenticated users on the collection detail page | PASS | |
 
 ### Product Detail and Bag
 

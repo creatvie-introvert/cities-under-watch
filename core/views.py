@@ -44,7 +44,7 @@ def index(request):
             collection__city__is_active=True,
         )
         .select_related('collection', 'collection__city')
-        .prefetch_related('images')[:3]
+        .prefetch_related('images')[:4]
     )
 
     newsletter_form = NewsletterSubscriberForm()
