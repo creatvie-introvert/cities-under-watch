@@ -211,9 +211,10 @@ def checkout(request):
             )
 
         except stripe.error.StripeError:
+            print(f'Stripe PaymentIntent error: {error}')
             messages.error(
                 request,
-                'There was a problem connecting to payment services. Please try again.',
+                'There was a problem connectin to payment services. Please try again.',
             )
             return redirect(reverse('view_bag'))
 
