@@ -81,7 +81,7 @@
                         <p class="collection-story__text">
                             {{ collection.story_text_primary }}
                         </p>
-                    {{% elif collection.description %}}
+                    {% elif collection.description %}
                         <p class="collection-story__text">
                             {{ collection.description }}
                         </p>
@@ -98,7 +98,8 @@
                     {% if collection.story_image %}
                         <img 
                             src="{{ collection.story_image.url }}" 
-                            alt="{{ collection.story_image_alt_text|default:collection.name }}">
+                            alt="{{ collection.story_image_alt_text|default:collection.name }}"
+                            class="collection-story__image">
                     {% else %}
                         <div class="image-placeholder">
                             Story media placeholder
