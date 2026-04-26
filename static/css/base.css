@@ -4552,7 +4552,6 @@ body {
 
     .product-detail__main-image {
        max-height: 80vh;
-       position: sticky;
        top: var(--space-8);
     }
 
