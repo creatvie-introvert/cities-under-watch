@@ -6,7 +6,7 @@
     <section class="product-detail-section">
         <div class="container">
             <div class="product-detail">
-                <div class="product-detail__gallery">
+                <div class="product-detail__gallery" id="product-gallery">
                     {% with primary_image=product.images.all|first %}
                         <div class="product-detail__main-image">
                             {% if primary_image %}

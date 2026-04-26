@@ -98,6 +98,7 @@ function initCatalogueAutoFilterSubmit() {
 }
 
 function initProductGallery() {
+    const gallery = document.querySelector("#product-gallery");
     const mainImage = document.querySelector("[data-product-main-image]");
     const thumbnailButtons = document.querySelectorAll("[data-product-thumbnail]");
 
@@ -114,6 +115,10 @@ function initProductGallery() {
                 return;
             }
 
+            if (mainImage.src === newImageSrc) {
+                return;
+            }
+
             mainImage.src = newImageSrc;
             mainImage.alt = newImageAlt || "";
 
@@ -124,6 +129,13 @@ function initProductGallery() {
 
             button.classList.add("is-active");
             button.setAttribute("aria-pressed", "true");
+
+            if (gallery && window.innerWidth < 992) {
+                gallery.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                });
+            }
         });
     });
 }
