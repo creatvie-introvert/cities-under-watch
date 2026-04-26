@@ -74,20 +74,36 @@
             <div class="collection-story">
                 <div class="collection-story__content">
                     <h2 class="collection-story__title">
-                        A city remade
+                        {{ collection.story_title|default:"A city remade" }}
                     </h2>
-                    <p class="collection-story__text">
-                        London Under Watch imagines the city as a controlled metropolis of surveillance, propaganda, and resistance. Towers rise over transit systems, public screens dictate behaviour, and hidden acts of defiance survive in the gaps between authority.
-                    </p>
-                    <p class="collection-story__text">
-                        Each print captures a different fragment of that world — a district, a structure, a warning, or a moment of quiet rebellion. Together, they form a portrait of a city reshaped by control.
-                    </p>
+
+                    {% if collection.story_text_primary %}
+                        <p class="collection-story__text">
+                            {{ collection.story_text_primary }}
+                        </p>
+                    {{% elif collection.description %}}
+                        <p class="collection-story__text">
+                            {{ collection.description }}
+                        </p>
+                    {% endif %}
+
+                    {% if collection.story_text_secondary %}
+                        <p class="collection-story__text">
+                            {{ collection.story_text_secondary }}
+                        </p>
+                    {% endif %}
                 </div>
 
                 <div class="collection-story__media">
-                    <div class="image-placeholder">
-                        Story media placeholder
-                    </div>
+                    {% if collection.story_image %}
+                        <img 
+                            src="{{ collection.story_image.url }}" 
+                            alt="{{ collection.story_image_alt_text|default:collection.name }}">
+                    {% else %}
+                        <div class="image-placeholder">
+                            Story media placeholder
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>

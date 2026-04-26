@@ -44,6 +44,22 @@ class CollectionAdmin(admin.ModelAdmin):
     list_filter = ('release_status', 'is_featured', 'city',)
     search_fields = ('name', 'slug', 'city_name')
     prepopulated_fields = {'slug': ('name',)}
+    fields = (
+        'city',
+        'name',
+        'slug',
+        'short_description',
+        'image',
+        'image_alt_text',
+        'story_title',
+        'story_text_primary',
+        'story_text_secondary',
+        'story_image',
+        'story_image_alt_text',
+        'planned_product_count',
+        'release_status',
+        'is_featured',
+    )
     inlines = [CollectionNarrativePanelInline]
 
 

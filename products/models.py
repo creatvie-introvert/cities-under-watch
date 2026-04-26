@@ -39,6 +39,22 @@ class Collection(models.Model):
         null=True
     )
     image_alt_text = models.CharField(max_length=255, blank=True)
+    story_title = models.CharField(
+        max_length=150,
+        blank=True,
+        default='A city remade'
+    )
+    story_text_primary = models.TextField(blank=True)
+    story_text_secondary = models.TextField(blank=True)
+    story_image = models.ImageField(
+        upload_to='collections/story',
+        blank=True,
+        null=True
+    )
+    story_image_alt_text = models.CharField(
+        max_length=255,
+        blank=True
+    )
     planned_product_count = models.PositiveIntegerField(
         default=0,
         help_text='Use for display counts, coming soon colections'
