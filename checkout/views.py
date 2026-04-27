@@ -342,8 +342,10 @@ def stripe_webhook(request):
     payload = request.body
     sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
 
+    print('WEBHOOK HIT')
+
     if not settings.STRIPE_WH_SECRET:
-        print('Stripe webhook error: missing STRIPE_WH_SECRET')
+        print('WEBHOOK ERROR: missing STRIPE_WH_SECRET')
         return HttpResponse(status=500)
 
     try:
@@ -352,22 +354,27 @@ def stripe_webhook(request):
             sig_header,
             settings.STRIPE_WH_SECRET,
         )
+        print(f"WEBHOOK EVENT TYPE: {event['type']}")
     except ValueError:
-        print('Stripe webhook error: invalid payload')
+        print('WEBHOOK ERROR: invalid payload')
         return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError:
-        print('Stripe webhook error: invalid signature')
+        print('WEBHOOK ERROR: invalid signature')
         return HttpResponse(status=400)
 
     if event['type'] == 'payment_intent.succeeded':
-        intent = event['data']['object']
-        stripe_pid = intent.get('id')
-        metadata = intent.get('metadata', {})
-
-        user = _get_user_from_metadata(metadata.get('user_id'))
-        save_info = metadata.get('save_info') == 'true'
-
         try:
+            intent = event['data']['object']
+            print(f'INTENT OBJECT: {intent}')
+
+            stripe_pid = intent.get('id')
+            metadata = intent.get('metadata', {})
+            print(f'STRIPE PID: {stripe_pid}')
+            print(f'METADATA: {metadata}')
+
+            user = _get_user_from_metadata(metadata.get('user_id'))
+            save_info = metadata.get('save_info') == 'true'
+
             order = (
                 Order.objects
                 .filter(stripe_pid=stripe_pid)
@@ -375,38 +382,31 @@ def stripe_webhook(request):
                 .first()
             )
 
-            print(f'Webhook success received for PaymentIntent {stripe_pid}')
-            print(f'Webhook metadata: {metadata}')
+            print(f'ORDER FOUND: {order}')
 
-            if not order:
-                print(
-                    f'Webhook warning: no order found for PaymentIntent '
-                    f'{stripe_pid}. Returning 200 without recovery.'
-                )
+            if order:
+                if user and order.user is None:
+                    order.user = user
+                    order.save()
+
+                if user and save_info:
+                    _update_profile_from_order(user, order)
+
+                print('WEBHOOK SUCCESS: existing order updated')
                 return HttpResponse(status=200)
 
-            print(
-                f'Webhook matched order {order.order_number} '
-                f'to PaymentIntent {stripe_pid}'
-            )
-
-            if user and order.user is None:
-                order.user = user
-                order.save()
-
-            if user and save_info:
-                _update_profile_from_order(user, order)
+            print('WEBHOOK WARNING: no order found, returning 200')
+            return HttpResponse(status=200)
 
         except Exception as error:
-            print(
-                f'Webhook success handler failed for PaymentIntent '
-                f'{stripe_pid}: {error}'
-            )
+            print(f'WEBHOOK EXCEPTION: {error}')
             print(traceback.format_exc())
             return HttpResponse(status=500)
 
     elif event['type'] == 'payment_intent.payment_failed':
         intent = event['data']['object']
-        print(f"PaymentIntent failed: {intent.get('id')}")
+        print(f"PAYMENT FAILED: {intent.get('id')}")
+        return HttpResponse(status=200)
 
+    print('WEBHOOK IGNORED EVENT')
     return HttpResponse(status=200)
