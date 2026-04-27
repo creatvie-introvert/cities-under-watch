@@ -214,7 +214,7 @@ body {
 
 .site-nav a:focus-visible,
 .header-action-link:focus-visible,
-.header-action-link--bag-mobile,
+.header-action-link--bag-mobile:focus-visible,
 .menu-toggle:focus-visible {
     outline: 2px solid var(--color-accent-primary);
     outline-offset: 2px;
@@ -222,7 +222,7 @@ body {
 
 .site-nav a:active,
 .header-action-link:active,
-.header-action-link--bag-mobile,
+.header-action-link--bag-mobile:active,
 .menu-toggle:active {
     color: var(--color-accent-primary);
 }
