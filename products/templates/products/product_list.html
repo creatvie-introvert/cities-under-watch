@@ -218,7 +218,7 @@
                                         src="{{ featured_collection.image.url }}" 
                                         alt="{{ featured_collection.image_alt_text|default:featured_collection.name }}"
                                         class="collection-preview-card__image-file"
-                                    >
+                                        loading="lazy">
                                 {% else %}
                                     <div class="image-placeholder">
                                         Collection image
@@ -263,7 +263,8 @@
                                     <img 
                                         src="{{ collection.image.url }}" 
                                         alt="{{ collection.image_alt_text|default:collection.name }}"
-                                        class="collection-preview-card__image-file">
+                                        class="collection-preview-card__image-file"
+                                        loading="lazy">
                                 {% else %}
                                     <div class="image-placeholder">
                                         Collection image

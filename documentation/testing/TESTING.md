@@ -1722,6 +1722,29 @@ flake8 . --exclude=.venv,migrations
 
 ## Accessibility Testing
 
+Accessibility testing was completed using WAVE WebAIM.
+
+| Test Area | Tool Used | Result | Notes |
+|----------|-----------|--------|-------|
+| Accessibility | WAVE WebAIM | Pass | No accessibility errors or contrast errors were found. |
+
+### WAVE WebAIM Testing
+
+The deployed homepage was tested using WAVE WebAIM.
+
+The report showed:
+
+- 0 errors
+- 0 contrast errors
+- 14 features
+- 33 structure items
+- 23 ARIA items
+- 12 alerts
+
+The alerts were reviewed manually and did not prevent the page from passing accessibility testing. WAVE reported an accessibility score of 9.7 out of 10.
+
+**Result:** Pass
+
 ## Lighthouse Testing
 
 | Page | Performance | Accessibility | Best Practices | SEO | Notes |
