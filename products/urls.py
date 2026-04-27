@@ -22,12 +22,12 @@ urlpatterns = [
         name='delete_product_image',
     ),
     path(
-        'edit/<slug:slud>/downloads/add/',
+        'edit/<slug:slug>/downloads/add/',
         views.add_product_download,
         name='add_product_download',
     ),
     path(
-        'edit/<slug:slud>/downloads/<int:download_id>/edit/',
+        'edit/<slug:slug>/downloads/<int:download_id>/edit/',
         views.edit_product_download,
         name='edit_product_download',
     ),
