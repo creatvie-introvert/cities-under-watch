@@ -27,7 +27,7 @@ This document records the testing carried out for Cities Under Watch across manu
 | NAV-15 | In-Page Anchor Links | Click anchor links such as Browse prints, View order summary, or newsletter links | User is moved to the correct section on the page | In-page anchor links moved the user to the correct section on the page | PASS | |
 | NAV-16 | Page Load Layout | Open each major page on desktop | Layout loads without broken spacing, overlap, or missing sections | Major pages loaded correctly on desktop without broken spacing, overlap, or missing sections | PASS | |
 | NAV-17 | Mobile Layout | Open each major page on mobile viewport | Layout remains readable, usable, and visually consistent on small screens | Major pages remained readable, usable, and visually consistent on mobile | PASS | |
-| NAV-18 | Tablet Layout | Open each major page on tablet viewport | Layout remains stable and usable on table screen sizes | Major pages remained stable and usable on tablet screen sizes | PASS | |
+| NAV-18 | Tablet Layout | Open each major page on tablet viewport | Layout remains stable and usable on tablet screen sizes | Major pages remained stable and usable on tablet screen sizes | PASS | |
 | NAV-19 | Image Loading | Review major pages containing static and media images | Images load correctly without distortion, missing files, or broken paths | Images loaded correctly on the pages tested without distortion, missing files, or broken paths | PASS | |
 | NAV-20 | Button Consistency | Review buttons across major pages | Buttons are styled consistently and remain readable and clickable | Buttons were styled consistently and remained readable and clickable across the pages tested | PASS | |
 | NAV-21 | Focus States | Navigate key links and button using keyboard tabbing | Visible focus states appear clearly on interactive elements  | Visible focus states appeared clearly on interactive elements during keyboard navigation | PASS | |
@@ -40,11 +40,11 @@ This document records the testing carried out for Cities Under Watch across manu
 | STA-01 | Homepage | open the homepage on the deployed site | Homepage loads correctly with hero content, featured sections, images, and working CTAs | The homepage loaded correctly on the deployed site with hero content, featured sections, images, and working CTAs | PASS | |
 | STA-02 | About Page | Open the About page | About page loads correctly with all text, images, and CTAs visible | The About page loaded correctly with all text, images, and CTAs visible | PASS | |
 | STA-03 | Contact Page | Open the Contact page | Contact page loads correctly with contact form, support content, and working layout | The Contact page loaded correctly with contact form, support content, and working layout | PASS | |
-| STA-04 | FAQ Page | Open the FAQ page | FAQ page loads correctly will all questions, answers, and suppport links visible | The FAQ page loaded correctly with all questions, answers, and support links visible | PASS | |
+| STA-04 | FAQ Page | Open the FAQ page | FAQ page loads correctly will all questions, answers, and support links visible | The FAQ page loaded correctly with all questions, answers, and support links visible | PASS | |
 | STA-05 | Privacy Policy | Open the Privacy Policy page | Privacy Policy page loads correctly with full content and correct formatting | The Privacy Policy page loaded correctly with full content and correct formatting | PASS | |
 | STA-06 | Terms and Conditions | Open the Terms and Conditions page | Terms and Conditions page loads correctly with full content and correct formatting | The Terms and Conditions page loaded correctly with full content and correct formatting | PASS | |
 | STA-07 | Refund Policy | Open the Refund Policy page | Refund policy page loads correctly with full content and correct formatting | The Refund Policy page loaded correctly with full content and correct formatting | PASS | |
-| STA-08 | Delivery Policy | Open the Delivery Policy page | Delivery Policy page loads correctly with fill content and correct formatting | The Delivery Policy page loaded correctly with full content and correct formatting | PASS | |
+| STA-08 | Delivery Policy | Open the Delivery Policy page | Delivery Policy page loads correctly with full content and correct formatting | The Delivery Policy page loaded correctly with full content and correct formatting | PASS | |
 | STA-09 | Static Images | Review all static content pages for image loading | All static images load correctly without broken link paths or distortion | Static images loaded correctly across the static content pages tested without broken paths or distortion | PASS | |
 | STA-10 | Placeholder Content Check | Review all static pages for leftover placeholder text or placeholder blocks | No placeholder copy, placeholder images, or unfinished sections remain | No placeholder copy, placeholder images, or unfinished sections were found on the static pages tested | PASS | |
 | STA-11 | Static Page CTA Links | Click all CTA buttons and support links on static pages | Each CTA or internal link routes to the correct page or section | Static page CTA buttons and support links routed correctly to the intended pages or sections | PASS | |
@@ -75,13 +75,13 @@ This document records the testing carried out for Cities Under Watch across manu
 | CAT-13 | Collection Card Links | Click multiple collection cards/buttons | Each collection opens the correct collection detail page | Each collection card and button opened the correct collection detail page | PASS | |
 | CAT-14 | Collection Detail Page | Open a collection detail page | Collection detail page loads correctly with collection info and related products | The collection detail page loaded correctly with the collection information, related products, and dedicated story media content rendered from the collection model | PASS | Added dedicated story title, text, and image fields to the collection model and updated the template to display them |
 | CAT-15 | Collection Product Display | Review products shown on a collection detail page | Only products belonging to that collection are shown | Only products belonging to the selected collection were displayed on the collection detail page | PASS | |
-| CAT-16 | Collection Detail Navigation | Use collection detail page links and CTAs | links route correctly oy related pages such as products or other collections | Collection detail page links and CTAs routed correctly to the expected pages and sections | PASS | |
+| CAT-16 | Collection Detail Navigation | Use collection detail page links and CTAs | links route correctly to related pages such as products or other collections | Collection detail page links and CTAs routed correctly to the expected pages and sections | PASS | |
 | CAT-17 | Featured Collection Display | Review the featured collection section on the catalogue page | Featured collection displays correctly with correct content and link | The featured collection section displayed correctly with the expected content and working link | PASS | |
 | CAT-18 | Coming Soon Collections | Review the coming soon collection cards on the catalogue page | Coming soon collections display correctly with planned print counts and notify link | Coming soon collection cards displayed correctly with planned print counts and the notify link | PASS | |
 | CAT-19 | Related Collection Discovery | Review other collections / additional collection sections | Related or additional collections display correctly and link as expected | Related and additional collections displayed correctly and linked as expected | PASS | |
 | CAT-20 | Empty Catalogue State | Test catalogue behaviour if no products match filters/search | Page remains stable and displays a clear empty state message | The catalogue remained stable and displayed a clear empty state message when no products matched the search or filter | PASS | |
 | CAT-21 | Catalogue Images | Review catalogue and collection pages for image loading | All product and collection images load correctly without distortion or broken paths | All product and collection images now load correctly, including the previously missing collection detail page asset, which has been added and linked correctly | PASS  |  |
-| CAT-22 | Catalogue Desktop Layout | Open catalogue and collection pages on desktop viewport | Layout is stable, reusable, and visually consitent on desktop | Catalogue and collection pages remained stable and visually consistent on desktop | PASS | |
+| CAT-22 | Catalogue Desktop Layout | Open catalogue and collection pages on desktop viewport | Layout is stable, reusable, and visually consistent on desktop | Catalogue and collection pages remained stable and visually consistent on desktop | PASS | |
 | CAT-23 | Catalogue Mobile Layout | Open catalogue and collection pages on mobile viewport | Layout is stable, reusable, and visually consistent on mobile | The catalogue mobile layout was updated so the search form, filter control, and add product action stack cleanly with consistent spacing and alignment. Controls remain easy to tap and the section now reads as a single, organised control group on smaller screens. | PASS |  |
 | CAT-24 | Catalogue Tablet Layout | Open catalogue and collection pages on tablet viewport | Layout is stable, reusable, and visually consitent on tablet | Catalogue and collection pages remained stable and visually consistent on tablet | PASS | |
 | CAT-25 | Catalogue Admin Links | View catalogue and product cards as superuser | Edit and delete admin links display only for superuser where expected | Admin edit and delete links displayed correctly for the superuser where expected | PASS | |
@@ -98,7 +98,7 @@ This document records the testing carried out for Cities Under Watch across manu
 | PDB-01 | Product Detail Page | Open multiple product detail pages from the catalogue and collection pages | Each product detail page loads correctly with title, price, description, gallery, and purchase options | Multiple product detail pages loaded correctly with title, price, description, gallery, and purchase options visible | PASS | |
 | PDB-02 | Product Gallery | Click each thumbnail image on a product detail page | Main product image updates correctly to match the selected thumbnail | The main product image updated correctly when each thumbnail was selected | PASS | |
 | PDB-03 | Product Information | Retrieve product title, price, short description, and context content | Product information displays clearly and matches the product data | Product title, price, short description, and context content displayed clearly and matched the product data | PASS | |
-| PDB-04 | Product Breadcrumbs | Click breadcrumb links on the prduct detail page | Breadcrumb links return the user to the correct catalogue or collection page | Product breadcrumb links returned the user to the correct catalogue or collection page | PASS | |
+| PDB-04 | Product Breadcrumbs | Click breadcrumb links on the product detail page | Breadcrumb links return the user to the correct catalogue or collection page | Product breadcrumb links returned the user to the correct catalogue or collection page | PASS | |
 | PDB-05 | Related Products | Review the related products section on a product detail page | Related products from the same collection display correctly | Related products from the same collection displayed correctly on the product detail page | PASS | |
 | PDB-06 | Related Product Links | Click products from the related products section | Each related product opens the correct product detail page | Each related product link opened the correct product detail page | PASS | |
 | PDB-07 | Add to Bag | Add a product to the bag using the Add to bag button | Product is added successfully and a confirmation message appears | Product was added to the bag successfully and a confirmation message appeared | PASS | |
@@ -128,8 +128,8 @@ This document records the testing carried out for Cities Under Watch across manu
 | CHK-03 | Checkout Form Visibility | Review the checkout form fields and labels | All required checkout fields are visible, labelled clearly, and usable | All required checkout form fields were visible, clearly labelled, and usable during testing | PASS | |
 | CHK-04 | Checkout Form Validation | Submit the checkout form with missing required fields | Form validation prevents submission and clear  erros messages are shown | Submitting the checkout form with missing required fields was correctly blocked, and clear validation messages were shown to help the user fix the issue | PASS | |
 | CHK-05 | Checkout Email Field | Submit checkout form with a valid email address | Email field accepts valid input and order can proceed | The checkout email field accepted a valid email address correctly, and the order was able to proceed without issue | PASS | |
-| CHK-06 | Checkout Save Info Option | Complete checkout while selecting the save info option as an authenticated user | Profile information is saved to the user profile correctly | Completing checkout with the save info option selected successfully saved the billing and profile details to the authenticated user’s profile | | |
-| CHK-07 | Guest Checkout | Compete checkout as a guest user | Guest user can place an order successfully without being required to log in | PASS | | |
+| CHK-06 | Checkout Save Info Option | Complete checkout while selecting the save info option as an authenticated user | Profile information is saved to the user profile correctly | Completing checkout with the save info option selected successfully saved the billing and profile details to the authenticated user’s profile | PASS | |
+| CHK-07 | Guest Checkout | Complete checkout as a guest user | Guest user can place an order successfully without being required to log in | Guest checkout worked correctly and the order was processed without requiring login | PASS | |
 | CHK-08 | Authenticated Checkout | Complete checkout while logged in | Logged-in user can place an order successfully and the order is linked to their account | A logged-in user completed checkout successfully, and the resulting order was correctly linked to their account | PASS | |
 | CHK-09 | Stripe Payment Success | Complete a successful test payment through Stripe | Payment succeeds, order is created, and user is redirected to the checkout success page | A successful Stripe test payment completed correctly, the order was created, and the user was redirected to the checkout success page | PASS | |
 | CHK-10 | Stripe Payment Failure | Trigger a failed or invalid test payment | Payment is rejected safely and the user is shown an appropiate error or prevented from completing checkout | A failed or invalid Stripe test payment was rejected safely, and the user was prevented from completing checkout without a successful payment | PASS | |
@@ -150,7 +150,7 @@ After successful checkout, the bag was cleared correctly and no purchased items 
 | CHK-23 | Checkout Tablet Layout | Review checkout and success pages on tablet viewport | Layout is clear, stable, and visually consistent on tablet | The checkout and success pages displayed clearly and remained stable and visually consistent on tablet viewport sizes | PASS | |
 | CHK-24 | Webhook Order Handling | Complete a successful payment and confirm order processing works in deployed environment | Order is processed correctly and payment data is handled without errors | Successful checkout reached the success page, the deployed /checkout/wh/ endpoint received the payment_intent.succeeded event, matched the existing order, logged WEBHOOK SUCCESS: existing order updated, and returned HTTP 200 with no webhook errors | PASS | Deployed webhook handling now works correctly for successful payments and processes Stripe event data without server errors |
 | CHK-25 | Save Info Session Cleanup | Complete a successful order and review session behaviour | Save info session data is cleared after the checkout flow completes | The checkout flow completed successfully and subsequent navigation back through catalogue, bag, and checkout behaved normally with no obvious stuck session state or broken carry-over behaviour | PASS | |
-| CHK-26 | Stripe CLI Webhook Forwarding | Run Stripe locally, forward webhook eventsto the local webhook endpoint, and trigger a successful test event | Stripe webhook events are recieved by the local application and processed correctly, allowing local verification od webhook-based order handling | There is no evidence in these logs of a local Stripe CLI forwarding test. The logs shown are Heroku deploy logs and deployed webhook traffic, not local webhook forwarding output | NOT TESTED | Local Stripe CLI webhook forwarding still needs to be tested separately in the local development environment |
+| CHK-26 | Stripe CLI Webhook Forwarding | Run Stripe locally, forward webhook eventsto the local webhook endpoint, and trigger a successful test event | Stripe webhook events are received by the local application and processed correctly, allowing local verification of webhook-based order handling | There is no evidence in these logs of a local Stripe CLI forwarding test. The logs shown are Heroku deploy logs and deployed webhook traffic, not local webhook forwarding output | NOT TESTED | Local Stripe CLI webhook forwarding still needs to be tested separately in the local development environment |
 
 ### Authentication and Profiles
 
@@ -232,7 +232,7 @@ After successful checkout, the bag was cleared correctly and no purchased items 
 | ADM-22 | Edit Product Image | Update product image alt text, sort order, or primary status | Image changes save successfully and display correctly | Product image alt text, sort order, and primary status updated successfully and displayed correctly | PASS | |
 | ADM-23 | Delete Product Image | Delete a product image from the edit product page | Image is removed successfully and no longer appears on the product | The product image was deleted successfully and no longer appeared on the product | PASS | |
 | ADM-24 | Primary Image Logic | Mark one image as primary when other images already exist | Only one product image remains marked as primary at a time | Only one product image remained marked as primary when another image was set as primary | PASS | |
-| ADM-25 | Product Download Form Visibility | Review the downloadable file management section on the edit product page | Download title, file input, and sort order fields are visible and usable | he downloadable file management section displayed correctly on the edit product page, with the title field, file input, and sort order field all visible and usable | PASS | |
+| ADM-25 | Product Download Form Visibility | Review the downloadable file management section on the edit product page | Download title, file input, and sort order fields are visible and usable | The downloadable file management section displayed correctly on the edit product page, with the title field, file input, and sort order field all visible and usable | PASS | |
 | ADM-26 | Add Product Download | Upload a valid downloadable file to a product | Download file is added successfully and appears in the product download management section | A valid downloadable file was uploaded successfully and appeared correctly in the product download management section for the product | PASS | |
 | ADM-27 | Edit Product Download | Update download title or sort order for an existing file | Download details update successfully | The existing product download was updated successfully, and the revised title and sort order were reflected correctly in the download management section | PASS | |
 | ADM-28 | Delete Product Download | Delete an existing downloadable file from a product | Download file is removed successfully | The downloadable file was deleted successfully from the product and no longer appeared in the product download management section | PASS | |
@@ -318,8 +318,7 @@ After successful checkout, the bag was cleared correctly and no purchased items 
 | ERR-14 | Invalid Download Upload Submission | Submit product download form with invalid or incomplete data | Form is not submitted and clear validation errors are shown | Submitting the product download form with missing or invalid data was correctly prevented, and clear validation feedback was displayed so the issue could be fixed before resubmission | PASS | |
 | ERR-15 | Missing Search Results | Search catalogue using a term with no matching products | Page remains stable and shows a clear no-results message | The catalogue remained stable and showed a clear no-results message when no products matched the search term | PASS | |
 | ERR-16 | Missing Filter Results | Apply a filter that returns no matching products | Page remains stable and shows a clear empty-state message | Applying a filter with no matching products did not break the page. The catalogue remained stable and displayed a clear empty-state message to the user | PASS | |
-| ERR-17 | Invalid Download Access | Attempt to open a download link that does not belong to the current user or order | Access is denied safely and file is not served | Access is denied safely and file is not served
-Attempting to access a download link that did not belong to the current user or order was correctly blocked. The file was not served and unauthorised access was handled safely | | |
+| ERR-17 | Invalid Download Access | Attempt to open a download link that does not belong to the current user or order | Access is denied safely and file is not served | Access is denied safely and file is not served. Attempting to access a download link that did not belong to the current user or order was correctly blocked. The file was not served and unauthorised access was handled safely | PASS | |
 | ERR-18 | Failed Stripe Payment | Attempt checkout with an invalid or declined test payment method | Payment fails safely and user sees clear feedback without creating an incorrect completed order | Stripe test card was handled safely. The user received clear feedback, checkout did not complete successfully, and no incorrect completed order was created | PASS | |
 | ERR-19 | Broken Asset Check | Review major pages for broken images, icons, CSS, or JS assets | No broken assets appear; if an asset fails, the page remains stable and usable | No broken assets were visible on the major pages tested, and pages remained stable and usable | PASS | |
 | ERR-20 | Message Display Consistency | Trigger success, info, warning, and error messages where available | Site messages display clearly, dismiss correctly, and do not break layout | Site messages displayed clearly, dismissed correctly, and did not break page layout where tested | PASS | |
@@ -1747,14 +1746,127 @@ The alerts were reviewed manually and did not prevent the page from passing acce
 
 ## Lighthouse Testing
 
-| Page | Performance | Accessibility | Best Practices | SEO | Notes |
-|------|-------------|---------------|----------------|-----|-------|
-| Home | | | | | |
+Lighthouse testing was carried out on the deployed site using Chrome DevTools. Performance, Accessibility, Best Practices, and SEO were evaluated on both desktop and mobile devices.
+
+### Desktop Results
+
+- **Performance:** 90  
+- **Accessibility:** 100  
+- **Best Practices:** 100  
+- **SEO:** 100  
+
+Key metrics:
+
+- First Contentful Paint: 1.3s  
+- Largest Contentful Paint: 1.7s  
+- Total Blocking Time: 0ms  
+- Cumulative Layout Shift: 0  
+
+The desktop performance score is strong, with fast load times and no layout shifts. (See Lighthouse desktop report in `/testing/lighthouse/desktop-cuw.pdf`)
+
+---
+
+### Mobile Results
+
+- **Performance:** 72  
+- **Accessibility:** 100  
+- **Best Practices:** 100  
+- **SEO:** 100  
+
+Key metrics:
+
+- First Contentful Paint: 2.8s  
+- Largest Contentful Paint: 6.9s  
+- Total Blocking Time: 0ms  
+- Cumulative Layout Shift: 0  
+
+Mobile performance is lower due to slower network conditions and larger image payloads.  [oai_citation:1‡mobile-cuw.pdf](sediment://file_00000000c56871f48a72e241b44e706e)
+
+---
+
+### Key Performance Insights
+
+The following optimisation opportunities were identified:
+
+#### Image Optimisation
+- Several images are larger than their displayed size
+- Estimated savings:
+  - Desktop: ~303 KiB
+  - Mobile: ~526 KiB  [oai_citation:2‡desktop-cuw.pdf](sediment://file_00000000cec47243951ddc3f7e9d9806)  [oai_citation:3‡mobile-cuw.pdf](sediment://file_00000000c56871f48a72e241b44e706e)  
+
+#### Render-Blocking Resources
+- CSS and external scripts delay initial rendering
+- Estimated savings:
+  - Desktop: ~280 ms
+  - Mobile: ~1340 ms  [oai_citation:4‡desktop-cuw.pdf](sediment://file_00000000cec47243951ddc3f7e9d9806)  [oai_citation:5‡mobile-cuw.pdf](sediment://file_00000000c56871f48a72e241b44e706e)  
+
+#### Unused CSS
+- A significant portion of CSS is not used on initial load
+- Estimated savings: ~80–100 KiB  [oai_citation:6‡desktop-cuw.pdf](sediment://file_00000000cec47243951ddc3f7e9d9806)  [oai_citation:7‡mobile-cuw.pdf](sediment://file_00000000c56871f48a72e241b44e706e)  
+
+#### Missing Image Dimensions
+- Some images do not include explicit `width` and `height` attributes, which can affect layout stability  [oai_citation:8‡desktop-cuw.pdf](sediment://file_00000000cec47243951ddc3f7e9d9806)  [oai_citation:9‡mobile-cuw.pdf](sediment://file_00000000c56871f48a72e241b44e706e)  
+
+---
+
+### Accessibility
+
+- No accessibility errors were detected
+- All images include appropriate `alt` attributes
+- Form inputs have associated labels
+- Semantic HTML structure and ARIA attributes are used correctly  
+
+Accessibility achieved a full score of **100** across both desktop and mobile.  [oai_citation:10‡desktop-cuw.pdf](sediment://file_00000000cec47243951ddc3f7e9d9806)  [oai_citation:11‡mobile-cuw.pdf](sediment://file_00000000c56871f48a72e241b44e706e)  
+
+---
+
+### Best Practices
+
+- HTTPS is enforced
+- No console errors detected
+- Images maintain correct aspect ratios
+- Modern web standards followed  
+
+Score: **100**
+
+---
+
+### SEO
+
+- All pages include meta titles and descriptions
+- Links are crawlable and descriptive
+- Pages return valid HTTP status codes
+- `lang` attribute is correctly defined  
+
+Score: **100**
+
+---
+
+### Summary
+
+The application performs strongly across all Lighthouse categories, achieving perfect scores in Accessibility, Best Practices, and SEO.
+
+The only notable improvement area is **mobile performance**, primarily due to image optimisation and render-blocking resources.
+
+Due to time constraints before project submission, deeper performance optimisations (such as responsive images and CSS reduction) have been identified but not fully implemented.
 
 ## Bugs Found and Fixed
 
 | Bug | Cause | Fix | Status |
 |-----|-------|-----|--------|
-| Newsletter form 403 error | CSRF handling/form setup issue | Added correct CSRF token and submission route | Fixed |
+| Newsletter form returned a 403 error | CSRF handling and form submission route were not correctly configured | Added the correct CSRF token and routed newsletter submissions through the dedicated subscribe view | Fixed |
+| Stripe webhook returned 500 errors on deployed successful payment events | Stripe webhook data was being accessed with `.get()` on Stripe objects that did not support it as expected | Updated webhook handling to access PaymentIntent and metadata values safely using key-based access | Fixed |
+| HTML validation errors in shared layout | Header and footer partials were wrapped inside extra semantic `<header>` and `<footer>` elements in `base.html`, creating nested landmark elements | Removed duplicate wrapper elements and kept semantic landmarks inside the include files only | Fixed |
+| HTML validation warnings for sections without headings | Several template sections used `<section>` without an accessible heading | Added hidden headings with `aria-labelledby`, or changed non-semantic sections to `<div>` where appropriate | Fixed |
+| Invalid `aria-label` on footer social links container | `aria-label` was applied to a plain `<div>` without a valid landmark role | Changed the social links wrapper to a semantic navigation element with an accessible label | Fixed |
+| Stripe webhook metadata caused deployed errors | Stripe metadata was returned as a Stripe object rather than a normal dictionary | Converted metadata to a plain dictionary before reading `user_id` and `save_info` values | Fixed |
+| Flake8 reported unused imports and line length issues | Default generated files and long strings/imports triggered Python style warnings | Removed unused imports, excluded virtual environment and migrations from checks, and wrapped long lines | Fixed |
 
 ## Known Issues
+
+| Issue | Impact | Planned Action |
+|------|--------|----------------|
+| Mobile Lighthouse performance score is lower than desktop | The site remains usable, but mobile performance could be improved further | Optimise image sizing, add more responsive image handling, and reduce render-blocking resources |
+| Product files cannot be linked to multiple resolution options | Customers receive the correct purchased file, but separate resolution-based downloads were not implemented | Add resolution-specific product download options in a future release |
+| Some automated accessibility tools show alerts rather than errors | No accessibility errors were found, but manual review is still required | Continue manual accessibility checks alongside automated testing |
+| Full image optimisation has not been completed | Some images may be larger than necessary for their display size | Resize source images and add `srcset` support after deadline |
