@@ -2,6 +2,34 @@
 
 Cities Under Watch was developed as a Django e-commerce platform for dystopian digital city posters, combining narrative worldbuilding, editorial design, and downloadable art sales.
 
+## Table of Contents
+
+- [Project Overview](#project-overview)
+- [Project Background](#project-background)
+- [Project Goals](#project-goals)
+- [Target Audience](#target-audience)
+- [Project Identity](#project-identity)
+- [UX](#ux)
+  - [Strategy](#strategy)
+  - [Scope](#scope)
+  - [Structure](#structure)
+  - [Skeleton](#skeleton)
+  - [Surface](#surface)
+  - [Design Choices](#design-choices)
+  - [Wireframes](#wireframes)
+  - [High-Fidelity Designs](#high-fidelity-designs)
+- [Agile Planning](#agile-planning)
+- [Features](#features)
+- [Data Model](#data-model)
+- [Technologies Used](#technologies-used)
+- [Django Apps](#django-apps)
+- [Authentication and Authorisation](#authentication-and-authorisation)
+- [E-Commerce Functionality](#e-commerce-functionality)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Version Control](#version-control)
+- [Credits](#credits)
+
 ---
 
 ## Project Overview
