@@ -422,26 +422,34 @@ def add_product_download(request, slug):
     access_denied = _require_superuser(request)
     if access_denied:
         return access_denied
-    
+
     product = get_object_or_404(Product, slug=slug)
 
     if request.method == 'POST':
         form = ProductDownloadForm(request.POST, request.FILES)
 
         if form.is_valid():
-            product_download = form.save(commit=False)
-            product_download.product = product
-            product_download.save()
-            messages.success(
-                request,
-                f'Download added to "{product.title}" successfully.',
-            )
+            try:
+                product_download = form.save(commit=False)
+                product_download.product = product
+                product_download.save()
+                messages.success(
+                    request,
+                    f'Download added to "{product.title}" successfully.',
+                )
+            except Exception as error:
+                print(f'ADD PRODUCT DOWNLOAD ERROR: {error}')
+                messages.error(
+                    request,
+                    f'Upload failed: {error}',
+                )
         else:
+            print(form.errors)
             messages.error(
                 request,
-                'There was a problem adding the download. Please check the form.'
+                'There was a problem adding the download. Please check the form.',
             )
-    
+
     return redirect('edit_product', slug=product.slug)
 
 

@@ -36,6 +36,12 @@ ALLOWED_HOSTS = [
     'cities-under-watch-65fda223b0f3.herokuapp.com'
 ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://cities-under-watch-65fda223b0f3.herokuapp.com',
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 
 # Application definition
 
