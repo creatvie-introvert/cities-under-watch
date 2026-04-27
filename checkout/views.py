@@ -36,8 +36,13 @@ def _get_user_from_metadata(user_id):
 
 
 def _update_profile_from_order(user, order):
-    """Update a user's profile from order billing details."""
-    profile = user.userprofile
+    """
+    Update a user's profile from order billing details.
+    """
+    try:
+        profile = user.userprofile
+    except Exception:
+        return
 
     profile_data = {
         'full_name': order.full_name,
@@ -116,7 +121,10 @@ def checkout(request):
     bag = request.session.get('bag', {})
 
     if not bag:
-        messages.error(request, 'There is nothing in your basket.')
+        messages.error(
+            request,
+            'There is nothing in your basket.',
+        )
         return redirect(reverse("product_list"))
 
     if request.method == 'POST':
@@ -210,29 +218,29 @@ def checkout(request):
                 }
             )
 
-        except stripe.error.StripeError:
+        except stripe.error.StripeError as error:
             print(f'Stripe PaymentIntent error: {error}')
             messages.error(
                 request,
-                'There was a problem connectin to payment services. Please try again.',
+                'There was a problem connecting to payment services. Please try again.',
             )
             return redirect(reverse('view_bag'))
 
-        if not settings.STRIPE_PUBLIC_KEY:
-            messages.warning(
+        except Exception as error:
+            print(f'Unexpected checkout error: {error}')
+            messages.error(
                 request,
-                'Stripe public key is missing. ',
-                'Did you forget to set it in your environment?',
+                'There was an unexpected problem preparing checkout. Please try again.',
             )
+            return redirect(reverse('view_bag'))
 
         if request.user.is_authenticated:
-            profile = request.user.userprofile
-
             initial_data = {
                 'email': request.user.email,
             }
 
-            if profile:
+            try:
+                profile = request.user.userprofile
                 initial_data.update({
                     'full_name': profile.full_name,
                     'phone_number': profile.phone_number,
@@ -243,7 +251,9 @@ def checkout(request):
                     'street_address2': profile.street_address2,
                     'county': profile.county,
                 })
-            
+            except Exception:
+                pass
+
             order_form = OrderForm(initial=initial_data)
         else:
             order_form = OrderForm()
@@ -271,21 +281,10 @@ def checkout_success(request, order_number):
         order.save()
 
         if save_info:
-            profile = request.user.userprofile
-            profile_data = {
-                'full_name': order.full_name,
-                'phone_number': order.phone_number,
-                'country_code': order.country_code,
-                'postcode': order.postcode,
-                'town_or_city': order.town_or_city,
-                'street_address1': order.street_address1,
-                'street_address2': order.street_address2,
-                'county': order.county,
-            }
-
-            profile_form = UserProfileForm(profile_data, instance=profile)
-            if profile_form.is_valid():
-                profile_form.save()
+            _update_profile_from_order(
+                request.user,
+                order,
+            )
 
     _send_order_confirmation_email(request, order)
 
