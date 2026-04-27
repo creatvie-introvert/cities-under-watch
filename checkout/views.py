@@ -1,4 +1,5 @@
 import traceback
+import logging
 import json
 
 import stripe
@@ -23,6 +24,7 @@ from .models import Order, OrderLineItem
 from profiles.forms import UserProfileForm
 
 User = get_user_model()
+logger = logging.getLogger(__name__)
 
 
 def _get_user_from_metadata(user_id):
@@ -339,7 +341,6 @@ def stripe_webhook(request):
     """Handle Stripe webhooks."""
     payload = request.body
     sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
-    event = None
 
     if not settings.STRIPE_WH_SECRET:
         return HttpResponse(status=500)
@@ -369,16 +370,25 @@ def stripe_webhook(request):
             ).order_by('-created_at')
             order = matching_orders.first()
 
-            if matching_orders.count() > 1:
-                print(
-                    f'Webhook warning: multiple orders found for PaymentIntent '
-                    f'{stripe_pid}. Using latest order {order.order_number}.'
+            logger.info(
+                'Webhook success received for PaymentIntent %s',
+                stripe_pid,
+            )
+            logger.info('Webhook metadata: %s', metadata)
+
+            if matching_orders.count() > 1 and order:
+                logger.warning(
+                    'Multiple orders found for PaymentIntent %s. '
+                    'Using latest order %s.',
+                    stripe_pid,
+                    order.order_number,
                 )
 
             if order:
-                print(
-                    f'Webhook matched order {order.order_number} '
-                    f'to PaymentIntent {stripe_pid}'
+                logger.info(
+                    'Webhook matched order %s to PaymentIntent %s',
+                    order.order_number,
+                    stripe_pid,
                 )
 
                 if user and order.user is None:
@@ -389,27 +399,39 @@ def stripe_webhook(request):
                     _update_profile_from_order(user, order)
 
             else:
-                print(
-                    f'Webhook could not find an order for PaymentIntent '
-                    f'{stripe_pid}. Attempting recovery.'
+                logger.info(
+                    'Webhook could not find an order for PaymentIntent %s. '
+                    'Attempting recovery.',
+                    stripe_pid,
                 )
 
                 bag_json = metadata.get('bag', '')
                 bag = json.loads(bag_json) if bag_json else {}
 
                 if not bag:
-                    print(
-                        f'Webhook recovery failed for PaymentIntent '
-                        f'{stripe_pid}: bag metadata missing.'
+                    logger.warning(
+                        'Webhook recovery failed for PaymentIntent %s: '
+                        'bag metadata missing.',
+                        stripe_pid,
                     )
                     return HttpResponse(status=200)
 
-                charges = intent.get('charges', {}).get('data', [])
+                charges = intent.get('charges')
+                charge_data = []
+
+                if charges and isinstance(charges, dict):
+                    charge_data = charges.get('data', [])
+
+                logger.info('Intent object keys: %s', list(intent.keys()))
+                logger.info('Intent charges value: %s', charges)
+
                 billing_details = {}
                 address = {}
 
-                if charges:
-                    billing_details = charges[0].get('billing_details', {})
+                if charge_data:
+                    billing_details = (
+                        charge_data[0].get('billing_details', {}) or {}
+                    )
                     address = billing_details.get('address', {}) or {}
 
                 recovered_order = Order.objects.create(
@@ -438,28 +460,28 @@ def stripe_webhook(request):
                 if user and save_info:
                     _update_profile_from_order(user, recovered_order)
 
-                print(
-                    f'Webhook recovered missing order '
-                    f'{recovered_order.order_number} for PaymentIntent {stripe_pid}'
+                logger.info(
+                    'Webhook recovered missing order %s for PaymentIntent %s',
+                    recovered_order.order_number,
+                    stripe_pid,
                 )
 
         except Product.DoesNotExist:
-            print(
-                f'Webhook recovery failed for PaymentIntent {stripe_pid}: '
-                f'product missing.'
+            logger.warning(
+                'Webhook recovery failed for PaymentIntent %s: product missing.',
+                stripe_pid,
             )
             return HttpResponse(status=200)
 
-        except Exception as error:
-            print(
-                f'Webhook success handler failed for PaymentIntent '
-                f'{stripe_pid}: {error}'
+        except Exception:
+            logger.exception(
+                'Webhook success handler failed for PaymentIntent %s',
+                stripe_pid,
             )
-            print(traceback.format_exc())
             return HttpResponse(status=500)
 
     elif event['type'] == 'payment_intent.payment_failed':
         intent = event['data']['object']
-        print(f"PaymentIntent failed: {intent['id']}")
+        logger.info('PaymentIntent failed: %s', intent.get('id'))
 
     return HttpResponse(status=200)
