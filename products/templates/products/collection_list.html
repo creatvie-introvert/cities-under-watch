@@ -16,8 +16,12 @@
         </div>
     </section>
 
-    <section class="collection-index-section">
+    <section class="collection-index-section" aria-labelledby="collection-index-heading">
         <div class="container">
+            <h2 id="collection-index-heading" class="visually-hidden">
+                Browse all collections
+            </h2>
+
             {% if collections %}
                 <div class="collection-index-grid">
                     {% for collection in collections %}
@@ -43,9 +47,9 @@
                                     </span>
                                 </div>
 
-                                <h3 class="collection-index-card__title">
+                                <h2 class="collection-index-card__title">
                                     {{ collection.name }}
-                                </h3>
+                                </h2>
 
                                 {% if collection.short_description %}
                                     <p class="collection-index-card__text">
