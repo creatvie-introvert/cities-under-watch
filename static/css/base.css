@@ -189,6 +189,7 @@ body {
 
 .site-nav a,
 .header-action-link,
+.header-action-link--bag-mobile,
 .menu-toggle {
     color: var(--color-text-primary);
     text-decoration: none;
@@ -200,6 +201,7 @@ body {
 
 .site-nav a,
 .header-action-link,
+.header-action-link--bag-mobile,
 .menu-toggle,
 .btn {
     transition: 
@@ -212,6 +214,7 @@ body {
 
 .site-nav a:focus-visible,
 .header-action-link:focus-visible,
+.header-action-link--bag-mobile,
 .menu-toggle:focus-visible {
     outline: 2px solid var(--color-accent-primary);
     outline-offset: 2px;
@@ -219,6 +222,7 @@ body {
 
 .site-nav a:active,
 .header-action-link:active,
+.header-action-link--bag-mobile,
 .menu-toggle:active {
     color: var(--color-accent-primary);
 }
@@ -228,9 +232,11 @@ body {
 }
 
 .header-action-link,
+.header-action-link--bag-mobile,
 .menu-toggle {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-2);
 }
 
@@ -254,6 +260,9 @@ body {
 
 .header-action-link--bag-mobile {
     position: relative;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    line-height: 1;
 }
 
 .header-action-link__count {
@@ -3420,6 +3429,7 @@ body {
 @media (hover: hover) and (pointer: fine) {
     .site-nav a:hover,
     .header-action-link:hover,
+    .header-action-link--bag-mobile
     .menu-toggle:hover,
     .announcement-banner__close:hover,
     .mobile-menu__list a:hover,
