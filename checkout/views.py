@@ -1,3 +1,4 @@
+import traceback
 import json
 
 import stripe
@@ -454,6 +455,7 @@ def stripe_webhook(request):
                 f'Webhook success handler failed for PaymentIntent '
                 f'{stripe_pid}: {error}'
             )
+            print(traceback.format_exc())
             return HttpResponse(status=500)
 
     elif event['type'] == 'payment_intent.payment_failed':
