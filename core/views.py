@@ -9,7 +9,9 @@ from products.models import Product
 
 
 def index(request):
-    """Render the home page and handle newsletter signups."""
+    """
+    Render the home page and handle newsletter signups.
+    """
     if request.method == 'POST':
         newsletter_form = NewsletterSubscriberForm(request.POST)
 
@@ -25,7 +27,7 @@ def index(request):
                 newsletter_form.save()
                 messages.success(
                     request,
-                    'Thanks for sunscrobing. You will be notified about new releases.'
+                    'Thanks for sunscribing. You will be notified about new releases.'
                 )
 
                 return redirect('home')
@@ -44,7 +46,7 @@ def index(request):
             collection__city__is_active=True,
         )
         .select_related('collection', 'collection__city')
-        .prefetch_related('images')[:4]
+        .prefetch_related('images')[:3]
     )
 
     newsletter_form = NewsletterSubscriberForm()
@@ -136,7 +138,7 @@ def newsletter_subscribe(request):
     """Handle newsletter signups from shared forms like the site footer."""
     if request.method != 'POST':
         return redirect('home')
-    
+
     form = NewsletterSubscriberForm(request.POST)
     next_url = request.POST.get('next_url', '/')
 
