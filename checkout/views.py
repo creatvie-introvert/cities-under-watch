@@ -368,12 +368,15 @@ def stripe_webhook(request):
             print(f'INTENT OBJECT: {intent}')
 
             stripe_pid = intent['id']
-            metadata = intent['metadata'] or {}
-            print(f'STRIPE PID: {stripe_pid}')
-            print(f'METADATA: {metadata}')
+            metadata = intent['metadata']
 
-            user = _get_user_from_metadata(metadata.get('user_id'))
-            save_info = metadata.get('save_info') == 'true'
+            user_id = metadata['user_id'] if 'user_id' in metadata else None
+            save_info = (
+                metadata['save_info'] == 'true'
+                if 'save_info' in metadata else False
+            )
+
+            user = _get_user_from_metadata(user_id)
 
             order = (
                 Order.objects
