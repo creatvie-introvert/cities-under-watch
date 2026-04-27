@@ -311,7 +311,7 @@ def delete_product(request, slug):
     access_denied = _require_superuser(request)
     if access_denied:
         return access_denied
-    
+
     product = get_object_or_404(Product, slug=slug)
     product_title = product.title
 
@@ -322,7 +322,7 @@ def delete_product(request, slug):
             f'Product "{product_title}" was deleted successfully.',
         )
         return redirect('product_list')
-    
+
     context = {
         'product': product,
     }
@@ -335,7 +335,7 @@ def add_product_image(request, slug):
     access_denied = _require_superuser(request)
     if access_denied:
         return access_denied
-    
+
     product = get_object_or_404(Product, slug=slug)
 
     if request.method == 'POST':
@@ -346,8 +346,10 @@ def add_product_image(request, slug):
             product_image.product = product
 
             if product_image.is_primary:
-                ProductImage.objects.filter(product=product).update(is_primary=False)
-            
+                ProductImage.objects.filter(
+                    product=product,
+                ).update(is_primary=False)
+
             product_image.save()
             messages.success(
                 request,
@@ -367,23 +369,35 @@ def edit_product_image(request, slug, image_id):
     access_denied = _require_superuser(request)
     if access_denied:
         return access_denied
-    
+
     product = get_object_or_404(Product, slug=slug)
-    product_image = get_object_or_404(ProductImage, pk=image_id, product=product)
+    product_image = get_object_or_404(
+        ProductImage,
+        pk=image_id,
+        product=product,
+    )
 
     if request.method == 'POST':
         post_data = request.POST.copy()
 
         if 'is_primary' not in post_data:
             post_data['is_primary'] = ''
-        
-        form = ProductImageForm(post_data, request.FILES, instance=product_image)
+
+        form = ProductImageForm(
+            post_data,
+            request.FILES,
+            instance=product_image,
+        )
 
         if form.is_valid():
             updated_image = form.save(commit=False)
 
             if updated_image.is_primary:
-                ProductImage.objects.filter(product=product).exclude(pk=updated_image.pk).update(is_primary=False)
+                ProductImage.objects.filter(
+                    product=product,
+                ).exclude(
+                    pk=updated_image.pk,
+                ).update(is_primary=False)
 
             updated_image.save()
             messages.success(
@@ -393,9 +407,10 @@ def edit_product_image(request, slug, image_id):
         else:
             messages.error(
                 request,
-                'There was a problem updating the image. Please check the form.',
+                'There was a problem updating the image. '
+                'Please check the form.',
             )
-    
+
     return redirect('edit_product', slug=product.slug)
 
 
@@ -404,9 +419,13 @@ def delete_product_image(request, slug, image_id):
     access_denied = _require_superuser(request)
     if access_denied:
         return access_denied
-    
+
     product = get_object_or_404(Product, slug=slug)
-    product_image = get_object_or_404(ProductImage, pk=image_id, product=product)
+    product_image = get_object_or_404(
+        ProductImage,
+        pk=image_id,
+        product=product
+    )
 
     if request.method == 'POST':
         product_image.delete()
@@ -414,7 +433,7 @@ def delete_product_image(request, slug, image_id):
             request,
             f'Image removed from "{product.title}" successfully.',
         )
-    
+
     return redirect('edit_product', slug=product.slug)
 
 
@@ -452,7 +471,8 @@ def add_product_download(request, slug):
                 print(f'FORM ERRORS: {form.errors.as_json()}')
                 messages.error(
                     request,
-                    'There was a problem adding the download. Please check the form.',
+                    'There was a problem adding the download. '
+                    'Please check the form.',
                 )
 
         except Exception as error:
@@ -473,7 +493,7 @@ def edit_product_download(request, slug, download_id):
     access_denied = _require_superuser(request)
     if access_denied:
         return access_denied
-    
+
     product = get_object_or_404(Product, slug=slug)
     product_download = get_object_or_404(
         ProductDownload,
@@ -497,9 +517,10 @@ def edit_product_download(request, slug, download_id):
         else:
             messages.error(
                 request,
-                'There was a problem updating the download. Please check the form.',
+                'There was a problem updating the download. '
+                'Please check the form.',
             )
-    
+
     return redirect('edit_product', slug=product.slug)
 
 
@@ -508,7 +529,7 @@ def delete_product_download(request, slug, download_id):
     access_denied = _require_superuser(request)
     if access_denied:
         return access_denied
-    
+
     product = get_object_or_404(Product, slug=slug)
     product_download = get_object_or_404(
         ProductDownload,
@@ -522,5 +543,5 @@ def delete_product_download(request, slug, download_id):
             request,
             f'Download removed from "{product.title}" successfully.',
         )
-    
+
     return redirect('edit_product', slug=product.slug)

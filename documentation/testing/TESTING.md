@@ -1685,15 +1685,40 @@ The only acceptance criterion not fully met was in **US22**, where linking down
 
 | Test Area | Tool Used | Result | Notes |
 |----------|-----------|--------|-------|
-| HTML | W3C HTML Validator | | |
-| CSS | W3C CSS Validator | | |
-| JavaScript | JSHint | | |
-| Python | Python/flake8 | | |
+| HTML | W3C Nu HTML Checker | Pass | All tested pages returned no HTML errors or warnings after template fixes. |
+| CSS | W3C CSS Validator | Pass | CSS validated successfully with no errors found. |
+| JavaScript | JSHint | Pass with warnings | JSHint returned syntax/version warnings for ES6/ES11 features such as `const`, arrow functions, and optional chaining. These are expected because the project uses modern JavaScript. No blocking errors were identified. |
+| Python | Python/flake8 | Pass | flake8 was run with `.venv` and migrations excluded. Reported issues were fixed. |
 
 ### HTML Validation
+
+HTML was tested using the W3C Nu HTML Checker on the deployed site. Key public pages, account pages, checkout-related pages, product pages, collection pages, and policy pages were checked.
+
+Initial validation identified issues including nested landmark elements, missing section headings, heading-level skips, and invalid ARIA usage. These were fixed by updating the base layout, header and footer structure, adding hidden section headings where needed, correcting heading hierarchy, and removing invalid ARIA attributes.
+
+After fixes, tested pages returned no HTML errors or warnings.
+
 ### CSS Validation
+
+CSS was tested using the W3C CSS Validation Service.
+
+The stylesheet validated successfully with no errors found.
+
 ### JavaScript Validation
+
+JavaScript was tested using JSHint.
+
+JSHint reported warnings related to modern JavaScript syntax, including `const`, arrow functions, and optional chaining. These warnings are expected because the project uses ES6/ES11 features. No blocking JavaScript errors were identified during validation.
+
 ### Python Validation
+
+Python code was tested using flake8.
+
+The following command was used:
+
+```bash
+flake8 . --exclude=.venv,migrations
+```
 
 ## Accessibility Testing
 

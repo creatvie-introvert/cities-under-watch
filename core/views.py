@@ -27,7 +27,8 @@ def index(request):
                 newsletter_form.save()
                 messages.success(
                     request,
-                    'Thanks for sunscribing. You will be notified about new releases.'
+                    'Thanks for sunscribing. You will be notified '
+                    'about new releases.'
                 )
 
                 return redirect('home')

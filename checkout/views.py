@@ -94,10 +94,14 @@ def cache_checkout_data(request):
         client_secret = request.POST.get('client_secret', '')
         stripe_pid = client_secret.split('_secret')[0]
 
-        save_info = 'true' if request.POST.get('save_info') == 'on' else 'false'
+        save_info = (
+            'true' if request.POST.get('save_info') == 'on'else 'false'
+        )
         bag = request.session.get('bag', {})
 
-        user_id = request.user.id if request.user.is_authenticated else 'anonymous'
+        user_id = (
+            request.user.id if request.user.is_authenticated else 'anonymous'
+        )
 
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(
@@ -114,7 +118,8 @@ def cache_checkout_data(request):
     except Exception as error:
         messages.error(
             request,
-            'Sorry, your payment cannot be processed right now. Please try again later.',
+            'Sorry, your payment cannot be processed right now. '
+            'Please try again later.',
         )
         return HttpResponse(content=str(error), status=400)
 
@@ -153,7 +158,8 @@ def checkout(request):
             if not stripe_pid:
                 messages.error(
                     request,
-                    'There was a problem identifying your payment. Please try again.'
+                    'There was a problem identifying your payment. '
+                    'Please try again.'
                 )
                 return redirect(reverse('checkout'))
 
@@ -217,7 +223,11 @@ def checkout(request):
                 metadata={
                     'bag': json.dumps(bag),
                     'save_info': 'false',
-                    'user_id': str(request.user.id) if request.user.is_authenticated else 'anonymous',
+                    'user_id': (
+                        str(request.user.id)
+                        if request.user.is_authenticated
+                        else 'anonymous'
+                    ),
                 }
             )
 
@@ -225,7 +235,8 @@ def checkout(request):
             print(f'Stripe PaymentIntent error: {error}')
             messages.error(
                 request,
-                'There was a problem connecting to payment services. Please try again.',
+                'There was a problem connecting to payment services. '
+                'Please try again.',
             )
             return redirect(reverse('view_bag'))
 
@@ -233,7 +244,8 @@ def checkout(request):
             print(f'Unexpected checkout error: {error}')
             messages.error(
                 request,
-                'There was an unexpected problem preparing checkout. Please try again.',
+                'There was an unexpected problem preparing checkout. '
+                'Please try again.',
             )
             return redirect(reverse('view_bag'))
 
