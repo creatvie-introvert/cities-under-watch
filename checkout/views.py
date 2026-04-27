@@ -367,8 +367,8 @@ def stripe_webhook(request):
             intent = event['data']['object']
             print(f'INTENT OBJECT: {intent}')
 
-            stripe_pid = intent.get('id')
-            metadata = intent.get('metadata', {})
+            stripe_pid = intent['id']
+            metadata = intent['metadata'] or {}
             print(f'STRIPE PID: {stripe_pid}')
             print(f'METADATA: {metadata}')
 
@@ -405,7 +405,7 @@ def stripe_webhook(request):
 
     elif event['type'] == 'payment_intent.payment_failed':
         intent = event['data']['object']
-        print(f"PAYMENT FAILED: {intent.get('id')}")
+        print(f"PAYMENT FAILED: {intent['id']}")
         return HttpResponse(status=200)
 
     print('WEBHOOK IGNORED EVENT')
