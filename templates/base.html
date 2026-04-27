@@ -29,11 +29,11 @@
     {% block extrajs %}{% endblock %}
 </head>
 <body>
-    <header>
-        {% block header %}
-            {% include "includes/site_header.html" %}
-        {% endblock %}
-    </header>
+    
+    {% block header %}
+        {% include "includes/site_header.html" %}
+    {% endblock %}
+    
 
     {% if messages %}
         <div class="message-container" data-toast-container>
@@ -59,11 +59,11 @@
         {% block content %}{% endblock %}
     </main>
 
-    <footer>
-        {% block footer %}
-            {% include "includes/site_footer.html" %}
-        {% endblock %}
-    </footer>
+    
+    {% block footer %}
+        {% include "includes/site_footer.html" %}
+    {% endblock %}
+    
 
     <script src="https://js.stripe.com/v3/"></script>
 

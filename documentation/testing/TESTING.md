@@ -326,37 +326,1360 @@ Attempting to access a download link that did not belong to the current user or 
 
 ## User Story Testing
 
-### US01
+**User Story Testing**
+----------------------
 
-**User Story**  
-As a visitor, I want to land on a clear homepage, so that I can quickly understand what Cities Under Watch is and what it sells.
+### **US01**
+
+**User Story**As a visitor, I want to land on a clear homepage, so that I can quickly understand what Cities Under Watch is and what it sells.
 
 **Acceptance Criteria**
-- The homepage clearly introduces the brand and product offer
-- The homepage includes clear paths to browse products or collections
-- The homepage works well on mobile and desktop
+
+*   The homepage clearly introduces the brand and product offer
+    
+*   The homepage includes clear paths to browse products or collections
+    
+*   The homepage works well on mobile and desktop
+    
 
 **Test Performed**
-- Opened the homepage on desktop
-- Reviewed hero heading, supporting copy, and homepage sections
-- Clicked the main Shop and Browse calls to action
-- Checked layout and usability on mobile and desktop screen sizes
+
+*   Opened the homepage on desktop
+    
+*   Reviewed hero heading, supporting copy, and homepage sections
+    
+*   Clicked the main Shop and Browse calls to action
+    
+*   Checked layout and usability on mobile and desktop screen sizes
+    
 
 **Expected Result**
-- The homepage clearly communicates the purpose of the site
-- Users can easily navigate to products or collections
-- The page is responsive and usable across device sizes
+
+*   The homepage clearly communicates the purpose of the site
+    
+*   Users can easily navigate to products or collections
+    
+*   The page is responsive and usable across device sizes
+    
 
 **Actual Result**
-- The homepage clearly introduced the Cities Under Watch brand and explained the dystopian digital poster offer.
-- The Shop and Browse calls to action linked correctly to the catalogue and collection pages.
-- The homepage layout, imagery, and buttons remained clear and usable on both desktop and mobile screen sizes.
+
+*   The homepage clearly introduced the Cities Under Watch brand and explained the dystopian digital poster offer.
+    
+*   The Shop and Browse calls to action linked correctly to the catalogue and collection pages.
+    
+*   The homepage layout, imagery, and buttons remained clear and usable on both desktop and mobile screen sizes.
+    
 
 **Pass/Fail**
-- Pass
+
+*   Pass
+    
 
 **Notes**
-- Tested on local and depolyed versions.
+
+*   Tested on local and deployed versions.
+    
+
+### **US02**
+
+**User Story**As a shopper, I want to browse all available prints in one catalogue, so that I can explore the full product range.
+
+**Acceptance Criteria**
+
+*   Users can access a catalogue page showing all active products
+    
+*   Each product card shows image, title, and price
+    
+*   Users can click through to the product detail page
+    
+
+**Test Performed**
+
+*   Opened the catalogue page
+    
+*   Reviewed the full list of active products
+    
+*   Checked that product cards displayed the expected key information
+    
+*   Clicked product cards to open product detail pages
+    
+
+**Expected Result**
+
+*   The catalogue page shows all active products
+    
+*   Each product card includes image, title, and price
+    
+*   Product cards link correctly to the relevant product detail page
+    
+
+**Actual Result**
+
+*   The catalogue page displayed all active products available for sale.
+    
+*   Each product card showed the product image, title, and price clearly.
+    
+*   Clicking a product card opened the correct product detail page.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Verified on local and deployed versions.
+    
+
+### **US03**
+
+**User Story**As a shopper, I want to browse prints by collection or city, so that I can explore products by theme and narrative world.
+
+**Acceptance Criteria**
+
+*   Users can browse products by collection
+    
+*   Collection pages display only products in that collection
+    
+*   Each collection includes a title and supporting context
+    
+
+**Test Performed**
+
+*   Opened the collections listing page
+    
+*   Navigated into individual collection pages
+    
+*   Reviewed products shown within each collection
+    
+*   Checked collection title and supporting descriptive content
+    
+
+**Expected Result**
+
+*   Users can browse products by collection
+    
+*   Collection pages show only products from the selected collection
+    
+*   Each collection page includes a clear title and supporting context
+    
+
+**Actual Result**
+
+*   Users could browse available collections from the collections page.
+    
+*   Each collection detail page displayed only the products assigned to that collection.
+    
+*   Collection pages included a title and supporting context that reinforced the narrative world.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Collection browsing worked as expected on local and deployed versions.
+    
+
+### **US04**
+
+**User Story**As a shopper, I want to search or filter prints, so that I can find products more quickly.
+
+**Acceptance Criteria**
+
+*   Users can search by product title or keyword
+    
+*   Users can filter by relevant criteria where applicable
+    
+*   The results update clearly and correctly
+    
+
+**Test Performed**
+
+*   Entered product titles and keywords into the catalogue search
+    
+*   Applied available collection filters
+    
+*   Tested valid and no-result combinations
+    
+*   Reviewed resulting product lists and empty-state behaviour
+    
+
+**Expected Result**
+
+*   Search returns matching products by title or keyword
+    
+*   Filters narrow the catalogue correctly
+    
+*   Results update clearly, including no-result states
+    
+
+**Actual Result**
+
+*   Search returned matching products based on title and keyword inputs.
+    
+*   Collection filters updated the product list correctly.
+    
+*   Valid searches and filters returned the correct products, and no-result searches displayed a clear empty-state message.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Includes coverage of missing filter results handling.
+    
+
+### **US05**
+
+**User Story**As a shopper, I want to open a product detail page, so that I can understand exactly what I am buying.
+
+**Acceptance Criteria**
+
+*   Each product has its own detail page
+    
+*   The page shows title, price, description, and available options
+    
+*   The page includes a clear add-to-bag action
+    
+
+**Test Performed**
+
+*   Opened multiple product detail pages
+    
+*   Reviewed displayed product information
+    
+*   Checked available purchase controls and add-to-bag button
+    
+
+**Expected Result**
+
+*   Each product has an individual detail page
+    
+*   The detail page clearly shows title, price, description, and options
+    
+*   A clear add-to-bag action is available
+    
+
+**Actual Result**
+
+*   Each product opened on its own detail page.
+    
+*   Product pages clearly displayed title, price, description, and purchase information.
+    
+*   The add-to-bag action was prominent and usable.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Verified across multiple products.
+    
+
+### **US06**
+
+**User Story**As a shopper, I want to read the story and context behind a print, so that I can decide whether it fits my interests and taste.
+
+**Acceptance Criteria**
+
+*   The product page includes a context section
+    
+*   The context text is unique to the product or collection
+    
+*   The section supports the narrative identity of the brand
+    
+
+**Test Performed**
+
+*   Opened product detail pages with context content
+    
+*   Reviewed context sections across several products
+    
+*   Compared narrative text between products and collections
+    
+
+**Expected Result**
+
+*   Product pages include a context section
+    
+*   Context content is unique and relevant
+    
+*   The section strengthens the brand’s narrative identity
+    
+
+**Actual Result**
+
+*   Product pages included a dedicated context section where content was available.
+    
+*   The context text was specific to the product or collection rather than generic filler.
+    
+*   The section supported the dystopian narrative identity of the brand.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Context content contributes strongly to the project’s brand voice.
+    
+
+### **US07**
+
+**User Story**As a shopper, I want to view related prints from the same collection, so that I can discover more artwork I may want to buy.
+
+**Acceptance Criteria**
+
+*   The product page displays related products
+    
+*   Related products come from the same collection or city
+    
+*   Users can click through to the related product pages
+    
+
+**Test Performed**
+
+*   Opened product detail pages
+    
+*   Reviewed related products sections
+    
+*   Checked whether related items belonged to the same collection
+    
+*   Clicked related products to confirm navigation
+    
+
+**Expected Result**
+
+*   Related products are displayed on the product page
+    
+*   Related items are from the same collection or city
+    
+*   Users can open the related product pages
+    
+
+**Actual Result**
+
+*   Product pages displayed related products beneath the main product content.
+    
+*   Related items were drawn from the same collection.
+    
+*   Each related product linked correctly to its own detail page.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Helps support product discovery and cross-navigation.
+    
+
+### **US08**
+
+**User Story**As a shopper, I want to choose the product resolution or file option, so that I can purchase the version I want.
+
+**Acceptance Criteria**
+
+*   Available options are clearly displayed on the product page
+    
+*   Users can select a valid option before adding to bag
+    
+*   Invalid or unavailable options are handled clearly
+    
+
+**Test Performed**
+
+*   Reviewed product purchase flow and available product options
+    
+*   Checked whether selectable resolution or file options were present
+    
+*   Attempted to identify variant-based purchase behaviour
+    
+
+**Expected Result**
+
+*   Product options are displayed and selectable
+    
+*   Users can choose a valid option before adding to bag
+    
+*   Invalid selections are handled clearly
+    
+
+**Actual Result**
+
+*   This functionality was not implemented in the final project build.
+    
+*   Products are purchased as single digital items without selectable resolution or file variants.
+    
+*   As a result, option-selection behaviour was not available for testing.
+    
+
+**Pass/Fail**
+
+*   Not Implemented
+    
+
+**Notes**
+
+*   This requirement was descoped due to time and is the only acceptance criterion set not fully met in the project.
+    
+
+### **US09**
+
+**User Story**As a shopper, I want to add a print to my bag, so that I can review it before paying.
+
+**Acceptance Criteria**
+
+*   Users can add a product to the bag from the product page
+    
+*   The selected options are saved with the bag item
+    
+*   The user receives clear feedback when the item is added
+    
+
+**Test Performed**
+
+*   Added products to the bag from product detail pages
+    
+*   Reviewed the bag contents after adding items
+    
+*   Checked feedback messages after add-to-bag actions
+    
+
+**Expected Result**
+
+*   Products can be added from the product page
+    
+*   Bag items are stored correctly
+    
+*   Users receive clear confirmation feedback
+    
+
+**Actual Result**
+
+*   Products could be added to the bag directly from the product page.
+    
+*   Bag contents updated correctly after the action.
+    
+*   Clear success feedback was displayed when an item was added.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Option persistence was not applicable because resolution variants were not implemented.
+    
+
+### **US10**
+
+**User Story**As a shopper, I want to view and manage the items in my bag, so that I can confirm my order before paying.
+
+**Acceptance Criteria**
+
+*   The bag page shows all selected items
+    
+*   Users can remove items where appropriate
+    
+*   The bag totals are calculated correctly
+    
+
+**Test Performed**
+
+*   Opened the bag page with items added
+    
+*   Reviewed listed products and totals
+    
+*   Removed items from the bag
+    
+*   Compared totals before and after bag changes
+    
+
+**Expected Result**
+
+*   The bag page lists all selected items
+    
+*   Items can be removed successfully
+    
+*   Totals update correctly
+    
+
+**Actual Result**
+
+*   The bag page displayed all selected items clearly.
+    
+*   Items could be removed successfully from the bag.
+    
+*   Totals updated correctly as items were added or removed.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Core bag management worked correctly.
+    
+
+### **US11**
+
+**User Story**As a shopper, I want to complete checkout securely, so that I can purchase my digital products with confidence.
+
+**Acceptance Criteria**
+
+*   Users can move from bag to checkout
+    
+*   Payment is processed securely
+    
+*   Successful and failed payments are handled clearly
+    
+
+**Test Performed**
+
+*   Moved from bag to checkout with valid items
+    
+*   Submitted successful Stripe test payments
+    
+*   Triggered failed payment scenarios
+    
+*   Reviewed feedback and checkout behaviour in both cases
+    
+
+**Expected Result**
+
+*   Users can proceed from bag to checkout
+    
+*   Payment is handled securely through Stripe
+    
+*   Success and failure cases provide clear feedback
+    
+
+**Actual Result**
+
+*   Users could proceed from bag to checkout without issue.
+    
+*   Payments were processed securely through Stripe test flows.
+    
+*   Successful payments reached checkout success, and failed payments were handled safely with clear feedback.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Includes both frontend checkout and deployed webhook verification after fix.
+    
+
+### **US12**
+
+**User Story**As a shopper, I want to see an order confirmation after payment, so that I know my purchase was successful.
+
+**Acceptance Criteria**
+
+*   A confirmation page is shown after successful checkout
+    
+*   The order summary is displayed clearly
+    
+*   The user is told how to access their purchased files
+    
+
+**Test Performed**
+
+*   Completed successful checkout flows
+    
+*   Reviewed the checkout success page
+    
+*   Checked order summary details and download guidance
+    
+
+**Expected Result**
+
+*   A success page is shown after payment
+    
+*   The order summary is clear and accurate
+    
+*   Users are told how to access purchased downloads
+    
+
+**Actual Result**
+
+*   A checkout success page was shown after successful payment.
+    
+*   The page displayed the order summary clearly.
+    
+*   Purchased file access was explained and linked from the success page where applicable.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Verified during end-to-end checkout testing.
+    
+
+### **US13**
+
+**User Story**As a customer, I want to create an account, so that I can access my orders and downloads later.
+
+**Acceptance Criteria**
+
+*   Users can register with a valid email and password
+    
+*   Registration errors are handled clearly
+    
+*   Successful registration creates a user account correctly
+    
+
+**Test Performed**
+
+*   Registered a new account with valid details
+    
+*   Attempted duplicate signup using an existing email
+    
+*   Reviewed feedback messages and account creation result
+    
+
+**Expected Result**
+
+*   Valid registration creates an account
+    
+*   Duplicate or invalid submissions are blocked
+    
+*   Registration errors are displayed clearly
+    
+
+**Actual Result**
+
+*   Valid email and password combinations created user accounts successfully.
+    
+*   Duplicate signup attempts were prevented.
+    
+*   Registration errors were displayed clearly to the user.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Includes duplicate signup error handling coverage.
+    
+
+### **US14**
+
+**User Story**As a customer, I want to log in and out securely, so that I can access my personal account safely.
+
+**Acceptance Criteria**
+
+*   Users can log in with valid credentials
+    
+*   Users can log out successfully
+    
+*   Protected pages are restricted to authenticated users
+    
+
+**Test Performed**
+
+*   Logged in with valid credentials
+    
+*   Attempted login with invalid credentials
+    
+*   Logged out of the account
+    
+*   Attempted to access protected pages while logged out
+    
+
+**Expected Result**
+
+*   Valid login works correctly
+    
+*   Logout works correctly
+    
+*   Protected pages require authentication
+    
+*   Invalid login attempts fail safely with clear feedback
+    
+
+**Actual Result**
+
+*   Users could log in successfully with valid credentials.
+    
+*   Invalid login attempts failed safely and showed clear feedback.
+    
+*   Logout worked correctly.
+    
+*   Protected account pages were restricted to authenticated users.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Includes invalid login coverage.
+    
+
+### **US15**
+
+**User Story**As a logged-in customer, I want to view my profile and order history, so that I can review my past purchases.
+
+**Acceptance Criteria**
+
+*   Logged-in users can access a profile page
+    
+*   Order history is displayed clearly
+    
+*   Users cannot access another user’s order history
+    
+
+**Test Performed**
+
+*   Logged in as a customer
+    
+*   Opened the profile page
+    
+*   Reviewed order history entries
+    
+*   Attempted to access order history not belonging to the logged-in user
+    
+
+**Expected Result**
+
+*   Logged-in users can access their profile
+    
+*   Order history is shown clearly
+    
+*   Other users’ order records are not accessible
+    
+
+**Actual Result**
+
+*   Logged-in users could access the profile page successfully.
+    
+*   Order history was displayed clearly in the account area.
+    
+*   Users could not access another user’s order history.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Verified with authenticated user account testing.
+    
+
+### **US16**
+
+**User Story**As a logged-in customer, I want to access my purchased downloads, so that I can download my files again whenever needed.
+
+**Acceptance Criteria**
+
+*   Purchased downloads are linked to the correct user
+    
+*   Users can access only their own purchased files
+    
+*   Downloads are clearly visible in the account area
+    
+
+**Test Performed**
+
+*   Completed purchases while logged in
+    
+*   Opened the profile area after checkout
+    
+*   Reviewed purchased downloads
+    
+*   Attempted invalid access to unrelated download links
+    
+
+**Expected Result**
+
+*   Purchased downloads appear for the correct user
+    
+*   Only valid purchased files can be accessed
+    
+*   Downloads are clearly visible in the account area
+    
+
+**Actual Result**
+
+*   Purchased downloads were linked to the correct user account.
+    
+*   Download links were visible in the profile area.
+    
+*   Invalid or unauthorised download access was denied safely.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Includes secure download restriction coverage.
+    
+
+### **US17**
+
+**User Story**As a visitor, I want to read about the concept behind the brand, so that I can better understand the identity and purpose of the site.
+
+**Acceptance Criteria**
+
+*   The site includes an about or concept page/section
+    
+*   The content explains the brand clearly
+    
+*   The page supports the tone and visual identity of the project
+    
+
+**Test Performed**
+
+*   Opened the about/concept content on the site
+    
+*   Reviewed descriptive content and presentation
+    
+*   Checked consistency with project tone and branding
+    
+
+**Expected Result**
+
+*   The site includes clear brand concept content
+    
+*   The content explains the project identity well
+    
+*   The page supports the visual and narrative style of the site
+    
+
+**Actual Result**
+
+*   The site included an about/concept section explaining the project clearly.
+    
+*   The content communicated the brand identity and purpose well.
+    
+*   The page matched the overall tone and visual style of the project.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Supports the narrative world-building of the brand.
+    
+
+### **US18**
+
+**User Story**As a visitor, I want to sign up for updates, so that I can hear about new city collections and future releases.
+
+**Acceptance Criteria**
+
+*   Users can submit an email address for updates
+    
+*   The form validates input correctly
+    
+*   Users receive confirmation after subscribing
+    
+
+**Test Performed**
+
+*   Submitted valid email addresses through the newsletter form
+    
+*   Submitted invalid input
+    
+*   Reviewed confirmation and validation messages
+    
+
+**Expected Result**
+
+*   Valid email addresses can be submitted
+    
+*   Invalid input is rejected with clear feedback
+    
+*   Successful submission confirms subscription
+    
+
+**Actual Result**
+
+*   Users could submit valid email addresses successfully.
+    
+*   Invalid email input was rejected with clear validation feedback.
+    
+*   Successful submissions displayed confirmation feedback.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Newsletter form was tested in visible site locations.
+    
+
+### **US19**
+
+**User Story**As a visitor, I want to contact the site owner, so that I can ask questions or request support.
+
+**Acceptance Criteria**
+
+*   A contact form or method is clearly available
+    
+*   Users can submit a valid message
+    
+*   Invalid form submissions are handled clearly
+    
+
+**Test Performed**
+
+*   Opened the contact page or contact method
+    
+*   Submitted a valid enquiry
+    
+*   Submitted invalid or incomplete form input
+    
+*   Reviewed success and validation behaviour
+    
+
+**Expected Result**
+
+*   Contact method is clearly available
+    
+*   Valid messages can be sent
+    
+*   Invalid submissions are blocked with clear feedback
+    
+
+**Actual Result**
+
+*   A contact method was clearly available on the site.
+    
+*   Valid messages could be submitted successfully.
+    
+*   Invalid or incomplete submissions were handled with clear validation feedback.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Contact flow worked as expected.
+    
+
+### **US20**
+
+**User Story**As a site admin, I want to create, edit, and delete products, so that I can keep the catalogue accurate and up to date.
+
+**Acceptance Criteria**
+
+*   Admin users can create products
+    
+*   Admin users can edit products
+    
+*   Admin users can delete products
+    
+*   Non-admin users cannot access product management controls
+    
+
+**Test Performed**
+
+*   Logged in as admin and created products
+    
+*   Edited existing products
+    
+*   Deleted products
+    
+*   Attempted admin page access as non-admin user
+    
+
+**Expected Result**
+
+*   Admin users can create, edit, and delete products
+    
+*   Product management updates the catalogue correctly
+    
+*   Non-admin users are prevented from accessing admin controls
+    
+
+**Actual Result**
+
+*   Admin users could create, edit, and delete products successfully.
+    
+*   Product changes were reflected correctly in the catalogue.
+    
+*   Non-admin users were blocked from accessing product management controls.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Includes product visibility and access restriction coverage.
+    
+
+### **US21**
+
+**User Story**As a site admin, I want to create, edit, and delete collections, so that I can organise prints into meaningful groups.
+
+**Acceptance Criteria**
+
+*   Admin users can create collections
+    
+*   Admin users can edit collections
+    
+*   Admin users can delete collections
+    
+*   Products can be linked to the correct collections
+    
+
+**Test Performed**
+
+*   Logged in as admin
+    
+*   Created, edited, and deleted collections
+    
+*   Assigned products to collections
+    
+*   Checked collection display in the storefront
+    
+
+**Expected Result**
+
+*   Admin users can manage collections successfully
+    
+*   Products remain linked to the correct collections
+    
+*   Collection changes are reflected correctly on the site
+    
+
+**Actual Result**
+
+*   Admin users could create, edit, and delete collections successfully.
+    
+*   Products could be linked to the correct collections.
+    
+*   Collection changes were reflected correctly across the storefront.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Collection management supported the catalogue structure correctly.
+    
+
+### **US22**
+
+**User Story**As a site admin, I want to manage downloadable product files, so that customers receive the correct assets after purchase.
+
+**Acceptance Criteria**
+
+*   Admin users can upload or assign files to products
+    
+*   Only the correct purchased file is delivered to the user
+    
+*   Files can be linked to different resolutions where needed
+    
+
+**Test Performed**
+
+*   Uploaded downloadable files to products as admin
+    
+*   Edited and deleted existing product downloads
+    
+*   Completed purchases and downloaded files from success/profile pages
+    
+*   Attempted invalid access to unrelated downloads
+    
+
+**Expected Result**
+
+*   Admin users can manage product download files
+    
+*   Customers receive only the files attached to purchased products
+    
+*   Different resolution variants can be linked where required
+    
+
+**Actual Result**
+
+*   Admin users could upload, edit, and delete downloadable product files successfully.
+    
+*   Purchased files were delivered correctly to eligible users only.
+    
+*   Invalid or unauthorised access to files was denied safely.
+    
+*   Resolution-based file variants were not implemented in the final project.
+    
+
+**Pass/Fail**
+
+*   Partial Pass
+    
+
+**Notes**
+
+*   All acceptance criteria were met except resolution-based file linking, which was not implemented due to time.
+    
+
+### **US23**
+
+**User Story**As a site admin, I want to review customer orders, so that I can monitor sales and resolve issues if needed.
+
+**Acceptance Criteria**
+
+*   Admin users can access order records
+    
+*   Orders display customer and item information clearly
+    
+*   Non-admin users cannot access order management pages
+    
+
+**Test Performed**
+
+*   Logged in as admin and reviewed order records
+    
+*   Opened order entries and checked recorded details
+    
+*   Attempted admin order access as non-admin user
+    
+
+**Expected Result**
+
+*   Admin users can access order records
+    
+*   Orders display customer and item details clearly
+    
+*   Non-admin users cannot access order management
+    
+
+**Actual Result**
+
+*   Admin users could access order records successfully.
+    
+*   Orders displayed customer and item information clearly.
+    
+*   Non-admin users could not access order management pages.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Verified through admin order review flow.
+    
+
+### **US24**
+
+**User Story**As a mobile user, I want the site to work well on my phone, so that I can browse and purchase easily on a small screen.
+
+**Acceptance Criteria**
+
+*   Layouts are responsive on mobile
+    
+*   Text remains legible and controls remain usable
+    
+*   Core flows work without layout breaking
+    
+
+**Test Performed**
+
+*   Reviewed key pages on mobile viewport
+    
+*   Tested browsing, bag, checkout, profile, and success flows
+    
+*   Checked text, buttons, cards, forms, and navigation
+    
+
+**Expected Result**
+
+*   Pages remain responsive and usable on mobile
+    
+*   Text is readable and controls remain accessible
+    
+*   Core site flows work without layout issues
+    
+
+**Actual Result**
+
+*   Layouts remained responsive and stable on mobile screen sizes.
+    
+*   Text stayed legible and controls remained usable.
+    
+*   Core flows including browsing, bag, checkout, and downloads worked without layout breaking.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Mobile responsiveness was verified across key customer journeys.
+    
+
+### **US25**
+
+**User Story**As a user, I want to receive clear feedback when I complete an action or make an error, so that I always understand what is happening on the site.
+
+**Acceptance Criteria**
+
+*   Forms provide clear validation messages
+    
+*   Success states are clearly communicated
+    
+*   Errors are shown in a user-friendly way
+    
+
+**Test Performed**
+
+*   Submitted valid and invalid forms across the site
+    
+*   Reviewed success messages after actions
+    
+*   Triggered error states in login, signup, checkout, filters, and file access flows
+    
+
+**Expected Result**
+
+*   Validation messages are shown clearly
+    
+*   Success messages confirm completed actions
+    
+*   Errors are communicated in a user-friendly way
+    
+
+**Actual Result**
+
+*   Forms displayed clear validation messages when input was invalid.
+    
+*   Success states were communicated clearly after key actions.
+    
+*   Errors were shown in a clear and user-friendly way across the site.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Includes validation, authentication, filtering, checkout, and download error coverage.
+    
+
+### **US26**
+
+**User Story**As a user with accessibility needs, I want the site to be clear and usable, so that I can navigate and interact with it without unnecessary barriers.
+
+**Acceptance Criteria**
+
+*   Colour contrast supports readability
+    
+*   Interactive elements are labelled clearly
+    
+*   Keyboard focus states are visible
+    
+*   Semantic structure supports accessibility
+    
+
+**Test Performed**
+
+*   Reviewed key pages for colour contrast and readability
+    
+*   Checked labels on forms, buttons, and interactive controls
+    
+*   Tested visible focus states during keyboard navigation
+    
+*   Reviewed page structure and heading hierarchy
+    
+
+**Expected Result**
+
+*   Contrast supports readability
+    
+*   Interactive elements are labelled clearly
+    
+*   Focus states are visible
+    
+*   Semantic structure supports accessibility
+    
+
+**Actual Result**
+
+*   Colour contrast supported readable text and interface elements across the site.
+    
+*   Interactive elements were labelled clearly.
+    
+*   Keyboard focus states were visible during navigation.
+    
+*   Semantic page structure and headings supported accessibility expectations.
+    
+
+**Pass/Fail**
+
+*   Pass
+    
+
+**Notes**
+
+*   Accessibility remains an ongoing quality consideration across the project.
+    
+
+### **Summary**
+
+Out of 26 user stories, 25 were fully passed and 1 was partially passed.
+
+The only acceptance criterion not fully met was in **US22**, where linking downloadable files to different resolutions was planned but not implemented due to time constraints. All other user stories and acceptance criteria were met through manual testing on local and deployed versions.
 
 ## Validation
 
