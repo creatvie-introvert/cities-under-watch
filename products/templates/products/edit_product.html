@@ -239,7 +239,7 @@
                                             {% csrf_token %}
 
                                             <div class="product-admin-form__grid">
-                                                <div class="product-admin-form__fieldproduct-admin-form__field--full">
+                                                <div class="product-admin-form__field product-admin-form__field--full">
                                                     <label 
                                                         for="alt-text-{{ product_image.id }}" class="product-admin-form__label">
                                                         Alt text
@@ -268,12 +268,12 @@
                                                 </div>
 
                                                 <div 
-                                                class="product-admin-form__fieldproduct-admin-form__field--full">
+                                                class="product-admin-form__field product-admin-form__field--full">
                                                     <label class="product-admin-form__checkbox-label">
                                                         <input 
                                                             type="checkbox"
                                                             name="is_primary"
-                                                            class="produc-admin-form__checkbox"
+                                                            class="product-admin-form__checkbox"
                                                             {% if product_image.is_primary %}checked{% endif %}>
                                                             <span>
                                                                 Primary image
@@ -281,7 +281,7 @@
                                                     </label>
                                                 </div>
 
-                                                <div class="product-admin-form__fieldproduct-admin-form__field--full">
+                                                <div class="product-admin-form__field product-admin-form__field--full">
                                                     <label for="image-file-{{ product_image.id }}" class="product-admin-form__label">
                                                         Replace image file
                                                     </label>
@@ -306,7 +306,9 @@
                                                     class="product-admin-image-card__delete-form">
                                                     {% csrf_token %}
 
-                                                    <button type="submit" class="btn btn-secondary"></button>
+                                                    <button type="submit" class="btn btn-secondary">
+                                                        Delete image
+                                                    </button>
                                                 </form>
                                             </div>
                                     </div>
@@ -383,7 +385,7 @@
                                             {% csrf_token %}
 
                                             <div class="product-admin-form__grid">
-                                                <div class="product-admin-form__fieldproduct-admin-form__field--full">
+                                                <div class="product-admin-form__field product-admin-form__field--full">
                                                 <label 
                                                     for="download-title-{{ product_download.id }}"
                                                     class="product-admin-form__label">
@@ -398,7 +400,7 @@
                                                     placeholder="Download title">
                                                 </div>
 
-                                                <div class="product-admin-form__fieldproduct-admin-form__field--full">
+                                                <div class="product-admin-form__field product-admin-form__field--full">
                                                     <label 
                                                         for="download-file-{{ product_download.id }}" 
                                                         class="product-admin-form__label">

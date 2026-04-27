@@ -426,17 +426,18 @@ def add_product_download(request, slug):
 
     product = get_object_or_404(Product, slug=slug)
 
-    try:
-        if request.method == 'POST':
+    if request.method == 'POST':
+        try:
             print('ADD PRODUCT DOWNLOAD: POST received')
             print(f'FILES KEYS: {list(request.FILES.keys())}')
             print(f'POST KEYS: {list(request.POST.keys())}')
 
             form = ProductDownloadForm(request.POST, request.FILES)
+            is_valid = form.is_valid()
 
-            print(f'FORM VALID: {form.is_valid()}')
+            print(f'FORM VALID: {is_valid}')
 
-            if form.is_valid():
+            if is_valid:
                 product_download = form.save(commit=False)
                 product_download.product = product
                 print(f'ABOUT TO SAVE FILE: {product_download.file}')
@@ -448,20 +449,21 @@ def add_product_download(request, slug):
                     f'Download added to "{product.title}" successfully.',
                 )
             else:
-                print(f'FORM ERRORS: {form.errors}')
+                print(f'FORM ERRORS: {form.errors.as_json()}')
                 messages.error(
                     request,
                     'There was a problem adding the download. Please check the form.',
                 )
 
-    except Exception:
-        print('ADD PRODUCT DOWNLOAD TRACEBACK START')
-        traceback.print_exc()
-        print('ADD PRODUCT DOWNLOAD TRACEBACK END')
-        messages.error(
-            request,
-            'Upload failed due to a server error.',
-        )
+        except Exception as error:
+            print('ADD PRODUCT DOWNLOAD TRACEBACK START')
+            print(str(error))
+            traceback.print_exc()
+            print('ADD PRODUCT DOWNLOAD TRACEBACK END')
+            messages.error(
+                request,
+                'Upload failed due to a server error.',
+            )
 
     return redirect('edit_product', slug=product.slug)
 
