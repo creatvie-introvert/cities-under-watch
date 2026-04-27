@@ -281,7 +281,7 @@ High-fidelity designs were created after the main structure had been validated. 
 The most important customer-facing pages were designed in high fidelity first, including the homepage, catalogue page, and product detail page. Once those patterns were established, the rest of the site could follow the same system without needing every page to be redesigned from scratch.
 
 **High-Fidelity Evidence**<br>
-The visuals below show the high-fidelity designs used to define the final look, structure,and responsive behaviour of the key customer-facing pages across Cities Under Watch.
+The visuals below show the high-fidelity designs used to define the final look, structure, and responsive behaviour of the key customer-facing pages across Cities Under Watch.
 
 #### High-Fidelity Mobile Wireframes
 ![High-Fidelity Mobile Wireframes](documentation/hifi-wifi-mobile.png)
@@ -448,21 +448,35 @@ Supporting content, collection storytelling, and secondary features were added a
 The feature set of Cities Under Watch was planned around the core digital commerce journey, supported by account access, download functionality, and brand-led editorial content.
 
 ### Existing Features
-The following core foundation features were implemented as part of the project:
 
-- a responsive homepage that introduced the brand, product offer, and primary browsing paths
-- django-allauth setup to support account signup, login, logout, and email verification
-- a shared base template structure to support reusable site-wide layout patterns
-- early deployment to Heroku
-- a production PostgreSQL database connected to the deployed application
-- AWS S3 configured for static and media file hosting in production
-- CSS and JavaSCript assers loading correctly in the live deployed environment
-
-These features estabilished the technical and structural foundation of the platform and supported the later development of the catalogue, product pages, and wider e-commerce flow.
-_To be continued_
+- Responsive homepage introducing the brand, product offer, featured prints, collections, and primary calls to action
+- Product catalogue showing active products with image, title, price, search, filters, and pagination/load-more behaviour
+- Collection browsing by city/theme with individual collection detail pages and supporting narrative content
+- Product detail pages with gallery images, price, description, context/story content, related prints, and add-to-bag actions
+- Shopping bag allowing users to review selected products, view totals, remove items, and proceed to checkout
+- Stripe-powered secure checkout with successful and failed payment handling
+- Order confirmation page showing order summary and purchased download access
+- Downloadable digital product delivery from checkout success and profile/order areas
+- User authentication using django-allauth, including registration, login, logout, and email verification
+- User profile area with saved details, order history, and access to purchased downloads
+- Newsletter signup with validation, duplicate handling, and feedback messages
+- Contact form for user enquiries and support requests
+- Admin-only product management including create, edit, delete, image management, and downloadable file management
+- Admin order review through Django admin
+- Custom error pages for 403, 404, and 500 responses
+- Responsive design across mobile, tablet, and desktop
+- Accessibility-focused structure including semantic HTML, labelled controls, visible focus states, and tested colour contrast
+- Production deployment on Heroku with PostgreSQL database and AWS S3 static/media hosting
 
 ### Features Left to Implement
-_To be completed_
+
+- Resolution-specific download options for products
+- More advanced product filtering and sorting
+- Wishlist or saved items functionality
+- Product reviews or customer testimonials
+- More detailed recommendation logic across collections
+- Expanded collection storytelling and future city releases
+- Further image optimisation using responsive `srcset` images and resized source files
 
 ---
 
@@ -483,44 +497,61 @@ The entity relationship diagram below shows the planned database structure for C
 ## Technologies Used
 
 ### Languages
-- HTML
-- CSS
+- HTML5
+- CSS3
 - JavaScript
 - Python
 
-### Frameworks, Libraries and Tools
+### Frameworks and Libraries
 - Django
+- django-allauth
+- django-countries
+- Stripe
+- Gunicorn
+- Pillow
+- dj-database-url
+- boto3
+- django-storages
+- psycopg2
 
 ### Database
 - PostgreSQL
-
-### Design and Planning Tools
-- Figma
-- dbdiagram
-
-### Development Tools
-- VS Code
-- Git 
-- GitHub
-
-### Deployment and Hosting
-- Heroku
-
-### Python Packages and Libraries
-- Django Allauth
-- Gunicorn
-- Psycopg2
-- Pillow
-- django-countries
-- Stripe
+- SQLite for local development
 
 ### Front-End and UI
 - Google Fonts
 - Font Awesome
+- Custom CSS
+- Custom JavaScript
+
+### Design and Planning Tools
+- Figma
+- dbdiagram
+- GitHub Projects
+- MoSCoW prioritisation
+
+### Development Tools
+- VS Code
+- Git
+- GitHub
+- Chrome DevTools
+
+### Deployment and Hosting
+- Heroku
+- AWS S3
+- Heroku PostgreSQL
+
+### Testing and Validation Tools
+- W3C Nu HTML Checker
+- W3C CSS Validator
+- JSHint
+- flake8
+- Lighthouse
+- WAVE WebAIM
 
 ### AI Prompting and Visual Asset Creation
 - ChatGPT
-- Sora  
+- Sora 
 
 ---
 
@@ -572,7 +603,7 @@ The intended purchase flow is:
 
 1. browse products through the catalogue or collection pages
 2. open an individual product detail page
-3. select the appropriate options, such as resolution and quantity
+3. add the selected digital product to the shopping bag
 4. add the product to the shopping bag
 5. review the bag and proceed to checkout
 6. complete payment securely
@@ -585,70 +616,172 @@ The e-commerce functionality is designed specifically for digital downloads rath
 
 ## Testing
 
-Testing was planned to include validation, manual testing, automated testing where appropiate, and ongoing bug tracking throughout development.
+Full testing documentation is available in [TESTING.md](documentation/testing/TESTING.md).
+
+Testing covered:
+
+- manual functional testing
+- user story testing
+- HTML validation
+- CSS validation
+- JavaScript validation
+- Python flake8 validation
+- accessibility testing with WAVE
+- Lighthouse testing
+- responsive testing
+- checkout and Stripe webhook testing
+- authentication and profile testing
+- admin workflow testing
+- bug tracking and known issues
 
 ### Validation
-_To be completed_
+
+Validation evidence is included in the `documentation/testing/` folder.
+
+- HTML passed with no errors or warnings
+- CSS passed with no errors
+- JavaScript was checked with JSHint
+- Python was checked with flake8 using `.venv` and migrations excluded
 
 ### Manual Testing
-_To be completed_
 
-### Automated Testing
-_To be completed_
+Manual testing was completed across the main user journeys, including browsing, filtering, product detail pages, bag management, checkout, profile access, downloads, newsletter signup, contact forms, and admin workflows.
 
 ### Bugs Fixed
-_To be completed_
+
+Key issues fixed during testing included:
+
+- newsletter CSRF submission error
+- Stripe webhook metadata handling error
+- nested HTML landmark validation errors
+- missing section heading warnings
+- invalid ARIA usage
+- login page validation issue
+- Python flake8 style issues
+- static/media configuration issues during production setup
 
 ### Known Issues
-_To be completed_
+
+Known issues are documented in the testing file. The main remaining issue is that resolution-specific download variants were not implemented due to time constraints.
 
 ---
 
 ## Deployment
 
-Deployment was planned to use Heroku, with envirnoment variables and external services configured securely for production use.
+The project was deployed to Heroku with PostgreSQL as the production database and AWS S3 used for static and media file storage.
 
 ### Local Development
-_To be completed_
+
+To run the project locally:
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/creatvie-introvert/cities-under-watch.git
+```
+
+2. Navigate into the project directory:
+```bash
+cd cities-under-watch
+```
+3. Create and activate a virtual environment:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+4. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+5. Create an env.py file in the project root and add the required environment variables.
+6. Run migrations:
+```bash
+python manage.py migrate
+```
+7. Create a superuser:
+```bash
+python manage.py createsuperuser
+```
+8. Run the development server:
+```bash
+python manage.py runserver
+```
 
 ### Heroku Deployment
-_To be completed_
+
+The deployed application was hosted on Heroku.
+
+Deployment steps included:
+
+1. Creating a Heroku app
+2. Adding Heroku PostgreSQL
+3. Adding required Config Vars
+4. Connecting the GitHub repository to Heroku
+5. Deploying from the main branch
+6. Running migrations on Heroku
+7. Creating a production superuser
+8. Configuring AWS S3 for static and media files
+9. Configuring Stripe keys and webhook secret
+10. Testing the deployed checkout and webhook flow
 
 ### Environment Variables
-Sensitive setting were stored using environment variables rather than being hard-coded into the project.
+
+Sensitive settings were stored using environment variables rather than being hard-coded into the project.
 
 The project used environment variables for:
+
 - `SECRET_KEY`
 - `DATABASE_URL`
 - `DEVELOPMENT`
 - `USE_AWS`
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
+- `STRIPE_PUBLIC_KEY`
+- `STRIPE_SECRET_KEY`
+- `STRIPE_WH_SECRET`
+- `EMAIL_HOST`
+- `EMAIL_PORT`
+- `EMAIL_HOST_USER`
+- `EMAIL_HOST_PASSWORD`
+- `DEFAULT_FROM_EMAIL`
+- `CONTACT_EMAIL`
+- `ORDER_CONFIRMATION_FROM_EMAIL`
 
-Local development values were stored in `env.py`, ehich was excluded from version control. Production values were stored in Heroku Config Vars.
+Local development values were stored in `env.py`
 
 ---
 
 ## Version Control
 
-This project is version controlled using Git and GitHub.
+This project was version controlled using Git and GitHub.
 
-Development will follow a clean and regular commit history using meaningful commit messages.
+A regular commit history was maintained throughout the project using clear, descriptive commit messages. Commits were made for major setup tasks, feature development, bug fixes, validation fixes, documentation updates, and deployment changes.
 
-A structured commit history was maintained during the foundation phase to document setup, authentication, deployment, and static file configurationm clearly.
+GitHub Projects was used to organise the workflow, track user stories, and monitor progress across planned, active, and completed tasks.
 
 ---
 
 ## Credits
 
 ### Code
-_To be completed_
+
+- Django documentation was used for guidance on models, views, templates, forms, authentication, static files, and deployment configuration.
+- django-allauth documentation was used for account registration, login, logout, and email verification setup.
+- Stripe documentation was used to support payment intent creation, Stripe Elements, checkout handling, and webhook processing.
+- Heroku documentation was used for deployment guidance.
+- AWS S3 and django-storages documentation were used for production static and media file configuration.
+- Code Institute course materials were used as a foundation for Django e-commerce structure and deployment workflow.
 
 ### Content
-_To be completed_
+
+All brand copy, product descriptions, collection context, support content, policy content, and user-facing text were written specifically for Cities Under Watch.
 
 ### Media
-_To be completed_
+
+Visual assets were created for the Cities Under Watch concept and used to support the fictional dystopian poster store identity. Any AI-assisted image generation was used as part of the original creative process for this student project.
 
 ### Acknowledgements
-_To be completed_
+
+Thanks to Code Institute for the project structure, assessment guidance, and learning materials used throughout development.
+
+Additional thanks to peers, mentors, and reviewers who provided feedback during the build, testing, and documentation stages.
