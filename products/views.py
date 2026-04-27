@@ -1,3 +1,4 @@
+import traceback
 from django.contrib import messages
 from django.db.models import Count, Q
 from django.shortcuts import render, get_object_or_404, redirect
@@ -425,30 +426,42 @@ def add_product_download(request, slug):
 
     product = get_object_or_404(Product, slug=slug)
 
-    if request.method == 'POST':
-        form = ProductDownloadForm(request.POST, request.FILES)
+    try:
+        if request.method == 'POST':
+            print('ADD PRODUCT DOWNLOAD: POST received')
+            print(f'FILES KEYS: {list(request.FILES.keys())}')
+            print(f'POST KEYS: {list(request.POST.keys())}')
 
-        if form.is_valid():
-            try:
+            form = ProductDownloadForm(request.POST, request.FILES)
+
+            print(f'FORM VALID: {form.is_valid()}')
+
+            if form.is_valid():
                 product_download = form.save(commit=False)
                 product_download.product = product
+                print(f'ABOUT TO SAVE FILE: {product_download.file}')
                 product_download.save()
+                print('DOWNLOAD SAVE SUCCESS')
+
                 messages.success(
                     request,
                     f'Download added to "{product.title}" successfully.',
                 )
-            except Exception as error:
-                print(f'ADD PRODUCT DOWNLOAD ERROR: {error}')
+            else:
+                print(f'FORM ERRORS: {form.errors}')
                 messages.error(
                     request,
-                    f'Upload failed: {error}',
+                    'There was a problem adding the download. Please check the form.',
                 )
-        else:
-            print(form.errors)
-            messages.error(
-                request,
-                'There was a problem adding the download. Please check the form.',
-            )
+
+    except Exception:
+        print('ADD PRODUCT DOWNLOAD TRACEBACK START')
+        traceback.print_exc()
+        print('ADD PRODUCT DOWNLOAD TRACEBACK END')
+        messages.error(
+            request,
+            'Upload failed due to a server error.',
+        )
 
     return redirect('edit_product', slug=product.slug)
 
