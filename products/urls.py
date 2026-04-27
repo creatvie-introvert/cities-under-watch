@@ -32,7 +32,7 @@ urlpatterns = [
         name='edit_product_download',
     ),
     path(
-        'edit/<slug:slud>/downloads/<int:download_id>/delete/',
+        'edit/<slug:slug>/downloads/<int:download_id>/delete/',
         views.delete_product_download,
         name='delete_product_download',
     ),
